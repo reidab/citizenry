@@ -1,4 +1,6 @@
 Epdx::Application.routes.draw do
+  root :to => "site#index"
+
   resources :companies
 
   resources :projects

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100926033806) do
+ActiveRecord::Schema.define(:version => 20100926035859) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,29 @@ ActiveRecord::Schema.define(:version => 20100926033806) do
     t.string   "twitter"
     t.text     "address"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies_projects", :id => false, :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employments", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "company_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_memberships", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "person_id"
+    t.string   "membership_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +56,13 @@ ActiveRecord::Schema.define(:version => 20100926033806) do
     t.datetime "updated_at"
   end
 
+  create_table "groups_projects", :id => false, :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -44,11 +74,26 @@ ActiveRecord::Schema.define(:version => 20100926033806) do
     t.datetime "updated_at"
   end
 
+  create_table "people_projects", :id => false, :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "url"
     t.string   "twitter"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sponsorships", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "company_id"
+    t.string   "sponsorship_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

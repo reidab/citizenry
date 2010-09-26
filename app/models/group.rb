@@ -1,7 +1,13 @@
 class Group < ActiveRecord::Base
+  has_and_belongs_to_many :projects
+
   has_many :group_memberships
   has_many :people, :through => :group_memberships
-  
+
+  has_many :sponsorships
+  has_many :companies, :through => :sponsorships
+
+  validates_presence_of :name
 end
 
 # == Schema Information

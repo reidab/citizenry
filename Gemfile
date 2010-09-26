@@ -8,6 +8,10 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'formtastic', '~>1.1.0'
 
+gem "twitter-auth", :require => 'twitter_auth/engine',
+                    :git => "git://github.com/benders/twitter-auth.git",
+                    :branch => "rails_3"
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

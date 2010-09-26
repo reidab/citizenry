@@ -1,0 +1,26 @@
+development:
+  strategy: oauth
+  oauth_consumer_key: QanfwVWWT86uL1JoICBIA
+  oauth_consumer_secret: fXTwkCQL9fYqtA1kxUVsNxtKJcLhOen85uRt3q6so
+  base_url: "https://twitter.com"
+  authorize_path: "/oauth/authenticate"
+  api_timeout: 10
+  remember_for: 14 # days
+  oauth_callback: "http://localhost:3000/oauth_callback"
+test:
+  strategy: oauth
+  oauth_consumer_key: testkey
+  oauth_consumer_secret: testsecret
+  base_url: "https://twitter.com"
+  authorize_path: "/oauth/authenticate"
+  api_timeout: 10
+  remember_for: 14 # days
+  oauth_callback: "http://localhost:3000/oauth_callback"
+production:
+  strategy: oauth
+  oauth_consumer_key: LmE7Cre33pZRjJa2PKaFQ
+  oauth_consumer_secret: VOqZ4KbFkHG6vjJxUavGP8opB8r2iPftCK2x3Ph3c
+  authorize_path: "/oauth/authenticate"
+  base_url: "https://twitter.com"
+  api_timeout: 10
+  remember_for: 14 # days

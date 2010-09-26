@@ -1,4 +1,15 @@
 class Person < ActiveRecord::Base
+  belongs_to :user
+
+  has_and_belongs_to_many :projects
+
+  has_many :group_memberships
+  has_many :groups, :through => :group_memberships
+
+  has_many :employments
+  has_many :companies, :through => :employments
+
+  validates_presence_of :first_name, :last_name
 end
 
 # == Schema Information
