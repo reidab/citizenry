@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @group.description %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @group.url %>
+</p>
+
+<p>
+  <b>Mailing list:</b>
+  <%= @group.mailing_list %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%= @group.twitter %>
+</p>
+
+<p>
+  <b>Meeting info:</b>
+  <%= @group.meeting_info %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
