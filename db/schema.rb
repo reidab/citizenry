@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100926030220) do
+ActiveRecord::Schema.define(:version => 20100926033806) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "twitter"
+    t.text     "address"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -19,16 +29,6 @@ ActiveRecord::Schema.define(:version => 20100926030220) do
     t.string   "mailing_list"
     t.string   "twitter"
     t.text     "meeting_info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "organizations", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "twitter"
-    t.text     "address"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

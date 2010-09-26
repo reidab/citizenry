@@ -1,6 +1,6 @@
-class CreateOrganizations < ActiveRecord::Migration
+class CreateCompanies < ActiveRecord::Migration
   def self.up
-    create_table :organizations do |t|
+    create_table :companies do |t|
       t.string :name
       t.string :url
       t.string :twitter
@@ -12,6 +12,6 @@ class CreateOrganizations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :organizations
+    drop_table :companies
   end
 end

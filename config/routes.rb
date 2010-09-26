@@ -1,5 +1,5 @@
 Epdx::Application.routes.draw do
-  resources :organizations
+  resources :companies
 
   resources :projects
 
