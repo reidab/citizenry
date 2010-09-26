@@ -8,6 +8,7 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'formtastic', '~>1.1.0'
 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -30,4 +31,5 @@ group :development, :test do
   gem 'webrat'
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'cucumber'
+  gem 'annotate'
 end
