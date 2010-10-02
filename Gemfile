@@ -12,6 +12,10 @@ gem "twitter-auth", :require => 'twitter_auth/engine',
                     :git => "git://github.com/benders/twitter-auth.git",
                     :branch => "rails_3"
 
+gem "haml", "~> 3.0.18"
+gem "compass", "~> 0.10.5"
+gem "compass-960-plugin", "~> 0.9.13", :require => 'ninesixty'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
