@@ -1,0 +1,26 @@
+!!! 5
+%html
+  %head
+    %title ePDX
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    #header
+      %h1= link_to 'ePDX', root_path
+    - if current_user.present?
+      #account_box
+        =link_to current_user.name, user_path(current_user)
+        |
+        = link_to 'log out', logout_path
+    - else
+      = link_to 'Log In / Sign Up', login_path
+  
+    = unless front_page?
+      %ul
+        %li= link_to "People", people_path
+        %li= link_to "Groups", groups_path
+        %li= link_to "Companies", companies_path
+        %li= link_to "Projects + Products", projects_path
+
+  = yield
