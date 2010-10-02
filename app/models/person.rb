@@ -10,7 +10,24 @@ class Person < ActiveRecord::Base
   has_many :companies, :through => :employments
 
   validates_presence_of :first_name, :last_name
+
+  def self.from_user(user)
+    first_name, last_name = user.name.split(/\s+/, 2)
+
+    return  self.new(
+              :twitter => user.login,
+              :first_name => first_name,
+              :last_name => last_name,
+              :bio => user.description,
+              :url => user.url
+            )
+  end
+
+  def name
+    [first_name, last_name].join(' ')
+  end
 end
+
 
 # == Schema Information
 #
@@ -25,5 +42,6 @@ end
 #  bio        :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 

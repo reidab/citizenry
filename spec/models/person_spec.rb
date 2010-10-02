@@ -4,6 +4,7 @@ describe Person do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: people
@@ -17,5 +18,6 @@ end
 #  bio        :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 

@@ -1,4 +1,5 @@
 Epdx::Application.routes.draw do
+
   root :to => "site#index"
 
   resources :companies
@@ -8,6 +9,8 @@ Epdx::Application.routes.draw do
   resources :groups
 
   resources :people
+
+  resources :users, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

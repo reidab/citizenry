@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
   # GET /people
   # GET /people.xml
   def index
@@ -41,6 +42,7 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
+    @person.user = current_user unless current_user.try(:person).present?
 
     respond_to do |format|
       if @person.save
