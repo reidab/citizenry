@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "groups/index.html.erb" do
+describe "groups/index.html.haml" do
   before(:each) do
     assign(:groups, [
       stub_model(Group,
