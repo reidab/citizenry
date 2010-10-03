@@ -1,0 +1,274 @@
+h1. Formtastic Sass Mixins
+
+A few simple, yet powerful macros that add flexible styling to your "Formtastic":http://github.com/justinfrench/formtastic forms.
+
+*Version Bump!*: Some big changes are taking place here. As of this release (0.3.2) The +formtastic mixin will be deprecated in favor of tighter, more agile helpers.
+
+Some improvements in this release:
+
+* All custom styling removed from core
+* Skinnable forms (example provided in _skintastic.sass)
+* New mixins for checkboxes and radio buttons (float and grid styling)
+* "Demo Rails app":http://www.github.com/activestylus/test_formtastic_sass is available, with a jQuery-powered debugging interface
+* Much less CSS selectors = smaller footprint
+* No more Safari Hacks :)
+
+h2. Installation
+
+First we will need to install Haml -- Yes even you ERB enthusiasts who wont drink the Haml-Aid need to get on the Sass track if you are serious about productivity and DRYness. Sass kicks ass!
+
+<pre>
+  gem install haml
+  cd my_rails_app
+  haml --rails
+</pre>
+
+1. Set up a master Sass file and include it in your layout
+2. Drop this file in the same directory as your master.sass
+3. Include this file at the top of that sheet with:
+
+<pre>
+  @import formtastic_base.sass
+</pre>
+
+If you haven't already, you should also install *"Formtastic":http://github.com/justinfrench/formtastic*
+
+Done! Are you ready to churn out beautiful forms in SECONDS?
+
+Let's rock...
+
+h2. Stacked Forms
+
+Gives you labels above the inputs, everything on new lines.
+
+<pre>
+  +stack-form
+</pre>
+
+Defaults are clearly labeled in _formtastic_base.sass, although you can override them directly in your stylesheet:
+
+<pre>
+  +stack-form(960px,"auto","10px")
+</pre>
+
+h3. Stacked Form Settings
+
+These are the arguments provided to the mixin (must be supplied in the correct order!)
+
++form-stack(!stacked_fieldset-width, !stacked_input, !stacked_padding, !stacked_button_align, !stacked_select_width)
+
+1. *!stacked_fieldset*
+Full width of the fieldset (default = 100%)
+
+2. *!stacked_input*
+"auto"  : automatic widths (default)
+"full"  : same width as fieldset
+"960px" : custom width
+
+3. *!stacked_padding*
+Left-hand padding on all labels and inputs (default = 0)
+
+4. *!stacked_button_align*
+"buttons-left"  : float submit buttons left (default)
+"buttons-right" : float submit buttons right
+"buttons-full"  : submit button matches input width
+
+5. *!stacked_select_width*
+"select-auto" : auto width (default)
+"select-full" : same as specified input width
+
+h2. Floated Forms
+
+Even more time-consuming are the typical floated column layouts on forms, labels left and inputs right. This used to take at least a good hour to look solid across browsers.
+
+No longer:
+
+<pre>
+  .formtastic
+    +float-form
+</pre>
+
+or you can be specific:
+
+<pre>
+  .formtastic
+    +float-form(600px,200px,400px)
+</pre>
+
+h3. Floated Forms Options
+
+1. *!floated_total_width*
+Total Width of form (default = 100%)
+
+2. *!floated_input_width*
+Width of inputs (default = 70%)
+
+3. *!floated_label_width*
+Width of Label (default = 20%)
+
+4. *!floated_label_padding_x*
+How far labels are spaced from inputs (default = 0)
+
+5. *!floated_button_align*
+"buttons-left"  : float submit button left (default)
+"buttons-right" : float submit button right
+"buttons-full"  : submit button matches input width
+
+6. *!floated_select_width*
+"select-auto" : auto width (default)
+"select-full" : same as specified input width
+
+*Note*: It is very important that you do not mix units (px,em,%) as calculations must be done
+
+h2. Checkbox & Radio Button Helpers
+
+Previously, formtastic assumed that you wanted all your checks/radios floated, but after using it in production on several projects I decided it needed to be more flexible. By default the lists are still block (stacked), but you can easily override this using a couple of handy mixins:
+
+h3. Floated Inputs
+
+Make all the checkboxes line up next to each other, inline-style and specify the spacing between them
+
+<pre>
+  +float-inputs
+  +float-inputs(10px)
+  +float-inputs(10px,1.4em)
+</pre>
+
+1st option is right margin, 2nd is line-height.
+
+As cool as that may seem at first, sometimes you dont want ALL your checkboxes to line up a certain way. Wouldn't it be great if you could pass a dom id or class to the helper and have it style ONLY those elements?
+
+I thought so:
+
+<pre>
+  +float-inputs-for("#post_category",10px,1.4em)
+  +float-inputs-for(".required",10px,1.4em)
+</pre>
+
+You can isolate however you want, using the handy classes formtastic generates to your advantage. Sweet!
+
+*Bug Alert:* Floated checkboxes tend to misbehave for some reason on IE 6 and 7 when using a floated form layout. Suggestions/patches would be welcome.
+
+h3. Grid Inputs
+
+Make all the checkboxes the same exact width, so they line up in columns.
+
+<pre>
+  +grid-inputs(100px,1.4em)
+</pre>
+
+1st option is the width, 2nd is line-height.
+
+And of course, you can also define for specific elements:
+
+<pre>
+  +grid-inputs-for("#post_category",100px)
+  +grid-inputs-for(".required",100px)
+</pre>
+
+h2. Original Formtastic Mixin
+
+This helper will be deprecated in future versions. Please use the mixins specified above.
+
+h3. Set width of entire fieldset
+
+<pre>
+  !total_width=100%
+</pre>
+
+h3. Set label widths and hint/error left margins
+
+<pre>
+  !label_width=24%
+</pre>
+
+h3. Set width of inputs, textareas and selects
+
+<pre>
+  !input_width=70%
+</pre>
+
+h3. Set horizontal padding for labels
+
+<pre>
+  !label_pad=2%
+</pre>
+
+h3. Set alignment of labels
+
+* "left" = labels floated left and text-align left
+* "right" = labels floated left and text-align right
+* "clear" = labels above inputs
+
+<pre>
+  !label_float="left"
+</pre>
+
+h3. Set alignment of commit buttons ("left" or "right")
+
+<pre>
+  !button_float="left"
+</pre>
+
+*Note:* Do not mix units (em px %) as it will break the calculations.
+
+Percentages will yield elastic forms.
+
+As for other defaults (color, fonts, etc), the file is well-commented
+
+h2. The Magic
+
+In order to set the basic layout, you don't need to even touch the defaults.
+
+<pre>
+  form.formtastic
+    +formtastic(510px,100px,400px,8px,"right","left")
+</pre>
+
+Sweet!
+
+*Note:* When using floated labels (left or right), it's good to give your form !total_width a little leeway (add 10px or 5% minimum) to keep those floats intact.
+
+h2. Alternative Inline Order
+
+You can align labels with error messages so they read like sentences.
+
+Create formtastic.rb in config/initializers and add this:
+<pre>
+  Formtastic::SemanticFormBuilder.inline_order = [:errors, :input, :hints]
+</pre>
+
+This is best used with right-aligned labels
+<pre>
+  form.formtastic
+    +formtastic(100%,20%,70%,4%,"right")
+</pre>
+
+You will need to provide a margin-top value to align labels with error messages, there is a convenient mixin for that
+
+<pre>
+  form.formtastic
+    +formtastic(100%,20%,70%,4%,"right")
+    +formtastic-errors-on-top(21px)
+</pre>
+
+The value must be adjusted until label and error message line up.
+
+h2. Found a Bug?
+
+Please direct all queries to the issue tracker:
+
+"http://github.com/activestylus/formtastic-sass/issues":http://github.com/activestylus/formtastic-sass/issues
+
+h2. Compatibility
+
+Tested and looking good on
+
+* Chrome Beta
+* Firefox 3+
+* Internet Explorer 6+ (except floated inputs)
+* Safari 3+
+
+h2. Caveat
+
+This is an active work in progress - currently only used on 3 live projects right now. Use at your own discretion.

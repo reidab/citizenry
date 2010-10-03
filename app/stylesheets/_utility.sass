@@ -1,0 +1,75 @@
+$success_color: #3FC213 !default
+$notice_color:  #1496c1 !default
+$warning_color: #ffc908 !default
+$error_color:   #C21313 !default
+$urgent_color:  #DB8700 !default
+
+.highlight
+  @extend mark
+
+div.message
+  padding: 0 1em 1em
+  +border-radius(0.5em)
+  &.with_label
+    padding-left: 7.5em
+  margin: 1em 0
+  border: 1px solid
+  position: relative
+  p + p
+    text-indent: 0
+  a
+    font-weight: bold
+    text-decoration: underline
+  .message_type
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    height: 100%
+    width: 6em
+    padding-right: 0.8em
+    color: white
+    text-transform: uppercase
+    line-height: 2.5em
+    text-align: right
+    +border-top-left-radius(0.5em)
+    +border-bottom-left-radius(0.5em)
+  .message_content
+    margin-top: 5px
+    p
+      top: 0
+      margin-bottom: 5px
+  &.notice
+    border-color: $notice_color
+    background: hsl(hue($notice_color), saturation($notice_color), 90)
+    .message_type
+      background: $notice_color
+    a
+      color: $notice_color
+  &.success
+    border-color: $success_color
+    background: hsl(hue($success_color), saturation($success_color), 90)
+    .message_type
+      background: $success_color
+    a
+      color: $success_color
+  &.warning
+    border-color: $warning_color
+    background: hsl(hue($warning_color), saturation($warning_color), 90)
+    .message_type
+      background: $warning_color
+      color: #222222
+  &.error
+    border-color: $error_color
+    background: hsl(hue($error_color), saturation($error_color), 90)
+    .message_type
+      background: $error_color
+    a
+      color: $error_color
+  &.urgent
+    border-color: $urgent_color
+    background: hsl(hue($urgent_color), saturation($urgent_color), 90)
+    .message_type
+      background: $urgent_color
+    a
+      color: $urgent_color

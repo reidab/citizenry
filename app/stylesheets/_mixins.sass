@@ -1,0 +1,26 @@
+// Import utility mixins provided by compass.
+@import compass/utilities/lists 
+@import compass/utilities/links
+@import compass/utilities/general
+@import compass/css3
+
+// Import fortastic-sass' base mixins
+@import lib/formtastic-sass/formtastic_base
+
+// Import the 960.gs grid mixins
+@import 960/grid
+
+// Our Mixins
+
+=text_color_for_background($color)
+  @if lightness($color) > 50
+    color: black
+    &.disabled
+      color: #666666
+  @else
+    color: white
+    &.disabled
+      color: #333333
+
+=debug($debug_color: orange)
+  background: orange
