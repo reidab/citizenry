@@ -1,4 +1,4 @@
-Epdx::Application.routes.draw do
+Citizenry::Application.routes.draw do
 
   root :to => "site#index"
 
