@@ -1,4 +1,7 @@
 // Basic Elements
+
+// Styles for tags that we never actually use in the layout are commented out.
+// TODO: Uncomment them if we ever have HTML-y user-submitted content.
 html, body
   font-family: $sans_family
   line-height: 1.5
@@ -14,20 +17,19 @@ h1, h2, h3, h4, h5, h6
   word-spacing: -0.125em
 p
   word-spacing: 0.125em
-  hyphenate: auto
-  hyphenate-lines: 3
 pre
   white-space: pre
-del
+//del
   text-decoration: line-through
-ins
+//ins
   color: red
-mark
+//mark, .highlight
+  background: #ffffcc
   background: rgba(255, 255, 0, 0.4)
   padding: 0 0.25em
 small, sup, sub
   font-size: 80%
-big
+//big
   font-size: 125%
   line-height: 80%
 abbr, acronym
