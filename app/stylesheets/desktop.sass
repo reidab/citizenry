@@ -17,8 +17,35 @@
   #main_nav
     display: block
     +horizontal-list
+    @extend .league_gothic
     li
-      +grid(2,16)
+      margin-right: 2em
+      margin-top: 6px
+      a
+        color: black
+        text-transform: uppercase
+        font-size: 20px
+        line-height: 20px
+        &:hover, &.active
+          text-decoration: none
+        &.people
+          &:hover, &.active
+            @extend .people-text
+        &.companies
+          &:hover, &.active
+            @extend .companies-text
+        &.groups
+          &:hover, &.active
+            @extend .groups-text
+        &.projects
+          &:hover, &.active
+            @extend .projects-text
+        &.resources
+          &:hover, &.active
+            @extend .resources-text
+        &.events
+          &:hover, &.active
+            @extend .events-text
 
 #site_intro
   margin: 0
@@ -28,7 +55,6 @@
   font-size: 30px
   .awesome
     font-size: 35px
-
 
 #front_nav
   width: 360px

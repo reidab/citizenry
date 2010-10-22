@@ -56,6 +56,8 @@ body.site_index
     position: absolute
     right: 10px
     top: 10px
+    img.avatar
+      margin-right: .5em
     .sign_in
       display: block
       height: 24px
@@ -133,31 +135,26 @@ body.site_index
       +section_count_color($events_color)
       +section_hover_color($events_color)
 
+#content
+  position: relative
+  h1
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    color: #fff
+    padding: 5px 10px
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    &.people
+      @extend .people-bg
+    &.companies
+      @extend .companies-bg
+    &.groups
+      @extend .groups-bg
+    &.projects
+      @extend .projects-bg
+    &.resources
+      @extend .resources-bg
+    &.events
+      @extend .events-bg
