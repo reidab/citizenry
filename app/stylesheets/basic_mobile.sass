@@ -52,12 +52,25 @@ body.site_index
         color: $logo_highlight
       .home_marker
         margin-left: 6px
+      &:hover
+        text-decoration: none
+        color: lighten($text_color, 20)
   #account_box
     position: absolute
     right: 10px
     top: 10px
     img.avatar
       margin-right: .5em
+      width: 28px
+      height: 28px
+    .name
+      font-weight: bold
+      display: inline
+      padding-right: .5em
+      margin-right: .5em
+      border-right: 1px solid #666
+      a
+        color: #000
     .sign_in
       display: block
       height: 24px

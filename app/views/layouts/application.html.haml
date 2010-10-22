@@ -29,9 +29,9 @@
             :height => 12, :width => 12}
       #account_box
         - if current_user.present?
-          %img.avatar{:src => current_user.profile_image_url, :width => 28, :height => 28, :align => 'left'}
-          =link_to current_user.name, user_path(current_user)
-          |
+          %img.avatar{:src => current_user.profile_image_url, :align => 'left'}
+          .name
+            = link_to current_user.name, user_path(current_user)
           = link_to 'log out', logout_path
         - else
           %a{:href => login_path, :class => 'sign_in'}
@@ -41,8 +41,8 @@
         %li= link_to "Companies", companies_path, :class => 'companies'
         %li= link_to "Groups", groups_path, :class => 'groups'
         %li= link_to "Projects + Products", projects_path, :class => 'projects'
-        %li= link_to "Resources", '/', :class => 'resources'
-        %li= link_to "Events", 'http://calagator.org', :class => 'events'
+        %li= link_to "Resources", resources_path, :class => 'resources'
+        /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
     #content
       = yield

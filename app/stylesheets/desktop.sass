@@ -11,13 +11,19 @@
   +grid-container
 
 #header
+  +clearfix
   h1
     +grid(2,16)
     +alpha
+    a img
+      visibility: hidden
+    a:hover img
+      visibility: visible
   #main_nav
     display: block
     +horizontal-list
     @extend .league_gothic
+    +grid(11,16)
     li
       margin-right: 2em
       margin-top: 6px
@@ -46,7 +52,20 @@
         &.events
           &:hover, &.active
             @extend .events-text
-
+  #account_box
+    position: static
+    padding-top: 5px
+    +grid(3,16)
+    +omega
+    float: right
+    img.avatar
+      width: 35px
+      height: 35px
+    .name
+      display: block
+      padding-right: 0
+      margin-right: 0
+      border-right: none
 #site_intro
   margin: 0
   width: 300px

@@ -1,14 +1,12 @@
-Citizenry::Application.routes.draw do
+Citizenry::Application.routes.draw do 
 
   root :to => "site#index"
 
-  resources :companies
-
-  resources :projects
-
-  resources :groups
-
   resources :people
+  resources :companies
+  resources :groups
+  resources :projects
+  resources :resources
 
   resources :users, :only => [:show]
 
