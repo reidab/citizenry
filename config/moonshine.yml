@@ -12,16 +12,16 @@
 :application: citizenry
 
 # Deploy user
-:user: rails
+:user: epdx
 
 # Timezone to set server's time to. Defaults to UTC
 #:time_zone: UTC
 
 # Directory where application is deployed to
-:deploy_to: /srv/citizenry
+:deploy_to: /var/www/sites/epdx.org
 
 # Primary domain application will be accessed as 
-:domain: yourapp.com
+:domain: epdx.org
 
 # Domain aliases for application. One common use of this is for asset hosts.
 #:domain_aliases:
@@ -32,7 +32,7 @@
 # If you change this value, you will need to run: cap vcs:install
 #:scm: git
 # Reposistory URI for checking out code at deploy time
-:repository: git@github.com:username/your_app_name.git
+:repository: git@github.com:reidab/citizenry.git
 
 # Use :app_symlinks to setup directories under public/ that you want to persist
 # across deployments. They'll be symlinked to the shared directory.
