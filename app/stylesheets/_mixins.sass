@@ -2,7 +2,6 @@
 @import compass/utilities/lists 
 @import compass/utilities/links
 @import compass/utilities/general
-@import compass/css3
 
 // Import fortastic-sass' base mixins
 @import lib/formtastic-sass/formtastic_base
@@ -21,6 +20,13 @@
     color: white
     &.disabled
       color: #333333
+
+// Off with the stuff we added to headers
+=behead
+  position: static
+  top: 0
+  margin: 0
+  line-height: 1
 
 =debug($debug_color: orange)
   background: orange

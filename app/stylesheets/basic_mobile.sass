@@ -1,0 +1,201 @@
+// Default styles for _all_ browsers.
+
+// This file should include styles that will render the page nicely in the most
+// basic of browsers. The layout it provides is suitable for mobile browsing on
+// simple devices and, accordingly, it should be kept fairly lean and mostly
+// valid CSS level 2.1
+
+// More advanced features are added for browsers that support them in level2 and level3
+
+@import config
+
+@import mixins
+
+@import reset
+@import basic_elements
+@import type
+
+@import utility
+
+body
+  background: $background_color
+
+h1, h2, h3
+  font-weight: bold
+h1, h2
+  color: #333
+h3
+  color: $heading_accent_color
+h4
+  color: darken($heading_accent_color, 10)
+h5
+  color: darken($heading_accent_color, 25)
+h6
+  color: darken($heading_accent_color, 35)
+h5, h6
+  text-transform: uppercase
+
+// Section Colors
+
+@mixin section_count_color($base_color)
+  .count
+    background: desaturate(darken($base_color, 10), 20)
+
+@mixin section_hover_color($base_color)
+  $hover_color: lighten(saturate($base_color, 30), 5)
+  &:hover
+    background: $hover_color
+    +section_count_color($hover_color)
+
+.people-text
+  color: $people_color
+.companies-text
+  color: $companies_color
+.groups-text
+  color: $groups_color
+.projects-text
+  color: $projects_color
+.resources-text
+  color: $resources_color
+.events-text
+  color: $events_color
+
+.people-bg
+  background: $people_color
+.companies-bg
+  background: $companies_color
+.groups-bg
+  background: $groups_color
+.projects-bg
+  background: $projects_color
+.resources-bg
+  background: $resources_color
+.events-bg
+  background: $events_color
+
+body.site_index
+  .home_marker
+    display: none
+
+#header
+  position: relative
+  padding: 10px
+  h1
+    +behead
+    font-size: 28px
+    display: inline
+    a
+      color: $text_color
+      span
+        color: $logo_highlight
+      .home_marker
+        margin-left: 6px
+  #account_box
+    position: absolute
+    right: 10px
+    top: 10px
+    .sign_in
+      display: block
+      height: 24px
+      padding: 0 1em 0 30px
+      margin: 0 .5em 0 0
+      background: image-url('twitter-24x24.png') no-repeat
+      line-height: 24px
+      font-weight: bold
+  #main_nav
+    display: none
+
+#content
+  padding: 10px
+
+#site_intro
+  padding: 10px
+  margin: -10px -10px 0
+  background: #424242
+  color: #f2f2f2
+  font-size: 16px
+  font-weight: bold
+  line-height: 1.3em
+  .awesome
+    display: block
+    color: $logo_highlight
+    text-transform: uppercase
+    font-size: 22px
+    position: relative
+    top: 0.08em
+
+#home_to
+  text-transform: uppercase
+#front_nav
+  +no-bullets
+  margin: 0
+  font-weight: bold
+  font-size: 26px
+  li
+    margin: 0 0 5px
+    a
+      position: relative
+      display: block
+      padding: 5px
+      color: #fff
+      .count
+        padding: 5px
+        display: inline-block
+        margin-right: 5px
+        text-align: right
+      &:hover
+        text-decoration: none
+
+    &.people a
+      @extend .people-bg
+      +section_count_color($people_color)
+      +section_hover_color($people_color)
+    &.companies a
+      @extend .companies-bg
+      +section_count_color($companies_color)
+      +section_hover_color($companies_color)
+    &.groups a
+      @extend .groups-bg
+      +section_count_color($groups_color)
+      +section_hover_color($groups_color)
+    &.projects a
+      @extend .projects-bg
+      +section_count_color($projects_color)
+      +section_hover_color($projects_color)
+    &.resources a
+      @extend .resources-bg
+      +section_count_color($resources_color)
+      +section_hover_color($resources_color)
+    &.events a
+      @extend .events-bg
+      +section_count_color($events_color)
+      +section_hover_color($events_color)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

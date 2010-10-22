@@ -2,25 +2,43 @@
 %html
   %head
     %title ePDX
-    = stylesheet_link_tag 'compiled/default'
-    = javascript_include_tag :defaults
+    %meta{:name=>"viewport", :content=>"width=device-width"}
+    -#
+      Level 1: All browsers, evar.
+      Provides basic mobile layout
+    = stylesheet_link_tag 'compiled/basic_mobile', :media => 'all'
+
+    -#
+      Level 2: Nicer mobile browsers
+      Narrow things that support @media queries get this one
+    = stylesheet_link_tag('compiled/advanced_mobile',
+        :media => 'only screen and (max-device-width: 960px)')
+
+    -# Level 3: Desktop browsers only
+    = stylesheet_link_tag('compiled/desktop',
+        :media => 'all and (min-device-width: 961px)')
+
     = csrf_meta_tag
-  %body
+  %body{:class => "#{controller_name} #{controller_name}_#{action_name}"}
     #header
-      %h1= link_to 'ePDX', root_path
-    - if current_user.present?
+      %h1
+        %a{:href => root_path}
+          ="<span>e</span>PDX".html_safe
+          %img{:class => 'home_marker', :src => '/images/home_12x12.png', :height => 12, :width => 12}
       #account_box
-        =link_to current_user.name, user_path(current_user)
-        |
-        = link_to 'log out', logout_path
-    - else
-      = link_to 'Log In / Sign Up', login_path
-  
-    = unless front_page?
-      %ul
+        - if current_user.present?
+          %img.avatar{:src => current_user.profile_image_url, :width => 28, :height => 28, :align => 'left'}
+          =link_to current_user.name, user_path(current_user)
+          |
+          = link_to 'log out', logout_path
+        - else
+          %a{:href => login_path, :class => 'sign_in'}
+            Sign in with Twitter
+      %ul{:id=>'main_nav'}
         %li= link_to "People", people_path
         %li= link_to "Groups", groups_path
         %li= link_to "Companies", companies_path
         %li= link_to "Projects + Products", projects_path
-
-  = yield
+        
+    #content
+      = yield

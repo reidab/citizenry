@@ -1,11 +1,13 @@
 #site_intro
-  Your simple guide to the
+  A community-edited guide to the
   %span{:class => 'awesome'} awesome tech community
-  in Portland, Oregon
+  of Portland, Oregon
 
-%h2 Home to
-%ul
-  %li= link_to semantic_pluralize(Person.count, "Person"), people_path
-  %li= link_to semantic_pluralize(Group.count, "Group"), groups_path
-  %li= link_to semantic_pluralize(Company.count, "Company"), companies_path
-  %li= link_to semantic_pluralize(Project.count, "Project or Product", "Projects & Products"), projects_path
+%h2#home_to Home to
+%ul#front_nav
+  %li.people= link_to semantic_pluralize(Person.count, "Person"), people_path
+  %li.companies= link_to semantic_pluralize(Company.count, "Company"), companies_path
+  %li.groups= link_to semantic_pluralize(Group.count, "Group"), groups_path
+  %li.projects= link_to semantic_pluralize(Project.count, "Project or Product", "Projects & Products"), projects_path
+  %li.resources= link_to semantic_pluralize(0, "Resource"), '/resources'
+  %li.events= link_to semantic_pluralize(0, "Upcoming Events"), '/events'

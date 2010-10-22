@@ -1,0 +1,34 @@
+@import config
+@import mixins
+
+@import compass/css3
+@import 960/grid
+
+@import webfonts
+@import transitions
+
+#header, #content
+  +grid-container
+
+#header
+  h1
+    +grid(2,16)
+    +alpha
+  #main_nav
+    display: block
+    +horizontal-list
+    li
+      +grid(2,16)
+
+#site_intro
+  margin: 0
+  width: 300px
+
+#site_intro
+  font-size: 30px
+  .awesome
+    font-size: 35px
+
+
+#front_nav
+  width: 360px

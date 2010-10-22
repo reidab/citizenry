@@ -1,0 +1,28 @@
+@font-face
+  font-family: 'LeagueGothicRegular'
+  src: url('/fonts/League_Gothic-webfont.eot')
+  src: local('?'), url('/fonts/League_Gothic-webfont.woff') format('woff'), url('/fonts/League_Gothic-webfont.ttf') format('truetype'), url('/fonts/League_Gothic-webfont.svg#webfontOTINA1xY') format('svg')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'LeagueGothicRegular'
+  src: url('/fonts/League_Gothic-webfont.eot')
+  src: local('?'), url('/fonts/League_Gothic-webfont.woff') format('woff'), url('/fonts/League_Gothic-webfont.ttf') format('truetype'), url('/fonts/League_Gothic-webfont.svg#webfontOTINA1xY') format('svg')
+  font-weight: bold
+  font-style: normal
+
+.league_gothic
+  font-family: LeagueGothicRegular
+  -webkit-font-smoothing: antialiased
+
+h1, h2, #site_intro, #front_nav
+  @extend .league_gothic
+
+#header h1
+  font-size: 35px
+  margin: 0
+#site_intro
+  font-size: 20px
+  .awesome
+    font-size: 30px
