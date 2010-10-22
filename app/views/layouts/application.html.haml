@@ -3,6 +3,7 @@
   %head
     %title ePDX
     %meta{:name=>"viewport", :content=>"width=device-width"}
+    - force_mobile = params[:force_mobile].present?
     -#
       Level 1: All browsers, evar.
       Provides basic mobile layout
@@ -10,13 +11,13 @@
 
     -#
       Level 2: Nicer mobile browsers
-      Narrow things that support @media queries get this one
+      Narrow devices that support @media queries get this one
     = stylesheet_link_tag('compiled/advanced_mobile',
-        :media => 'only screen and (max-device-width: 960px)')
+        :media => force_mobile ? 'all' : 'only screen and (max-device-width: 960px)')
 
     -# Level 3: Desktop browsers only
     = stylesheet_link_tag('compiled/desktop',
-        :media => 'all and (min-device-width: 961px)')
+        :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
 
     = csrf_meta_tag
   %body{:class => "#{controller_name} #{controller_name}_#{action_name}"}
@@ -24,7 +25,8 @@
       %h1
         %a{:href => root_path}
           ="<span>e</span>PDX".html_safe
-          %img{:class => 'home_marker', :src => '/images/home_12x12.png', :height => 12, :width => 12}
+          %img{:class => 'home_marker', :src => '/images/home_12x12.png',
+            :height => 12, :width => 12}
       #account_box
         - if current_user.present?
           %img.avatar{:src => current_user.profile_image_url, :width => 28, :height => 28, :align => 'left'}
@@ -35,10 +37,12 @@
           %a{:href => login_path, :class => 'sign_in'}
             Sign in with Twitter
       %ul{:id=>'main_nav'}
-        %li= link_to "People", people_path
-        %li= link_to "Groups", groups_path
-        %li= link_to "Companies", companies_path
-        %li= link_to "Projects + Products", projects_path
-        
+        %li= link_to "People", people_path, :class => 'people'
+        %li= link_to "Companies", companies_path, :class => 'companies'
+        %li= link_to "Groups", groups_path, :class => 'groups'
+        %li= link_to "Projects + Products", projects_path, :class => 'projects'
+        %li= link_to "Resources", '/', :class => 'resources'
+        %li= link_to "Events", 'http://calagator.org', :class => 'events'
+
     #content
       = yield
