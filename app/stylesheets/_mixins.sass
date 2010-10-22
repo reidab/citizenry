@@ -30,3 +30,41 @@
 
 =debug($debug_color: orange)
   background: orange
+
+// Section Colors
+
+@mixin section_count_color($base_color)
+  .count
+    background: desaturate(darken($base_color, 10), 20)
+
+@mixin section_hover_color($base_color)
+  $hover_color: lighten(saturate($base_color, 30), 5)
+  &:hover
+    background: $hover_color
+    +section_count_color($hover_color)
+
+.people-text
+  color: $people_color
+.companies-text
+  color: $companies_color
+.groups-text
+  color: $groups_color
+.projects-text
+  color: $projects_color
+.resources-text
+  color: $resources_color
+.events-text
+  color: $events_color
+
+.people-bg
+  background: $people_color
+.companies-bg
+  background: $companies_color
+.groups-bg
+  background: $groups_color
+.projects-bg
+  background: $projects_color
+.resources-bg
+  background: $resources_color
+.events-bg
+  background: $events_color
