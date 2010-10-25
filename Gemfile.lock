@@ -127,6 +127,7 @@ DEPENDENCIES
   cucumber
   formtastic (~> 1.1.0)
   haml (~> 3.0.18)
+  json (~> 1.4.6)
   rails (= 3.0.0)
   rspec-rails (>= 2.0.0.beta.22)
   sqlite3-ruby
