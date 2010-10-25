@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :load_user, :only => [:show]
+  before_filter :login_required, :only => [:welcome]
 
   def show
     if @user.person
