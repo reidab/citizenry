@@ -1,6 +1,7 @@
 %h1= "Welcome #{current_user.name}!"
 %p
   Hi there,
-  = current_user.name!
+  = current_user.name
   We haven't seen you before, would you like to add yoursef to the directory?
-%a{:href => 'people/new'
+%a{:href => new_person_path} Of course!
+%a{:href => root_path} Not now, let me browse.
