@@ -8,7 +8,12 @@ Citizenry::Application.routes.draw do
   resources :projects
   resources :resources
 
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    collection do
+      get 'welcome'
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :load_user
+  before_filter :load_user, :only => [:show]
 
   def show
     if @user.person
@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     else
       @person = Person.from_user(@user)
     end
+  end
+
+  def welcome
   end
 
   private
