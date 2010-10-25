@@ -7,7 +7,7 @@
 @import webfonts
 @import transitions
 
-#header, #content
+#header, #content, #footer
   +grid-container
 
 #header
@@ -16,9 +16,9 @@
     +grid(2,16)
     +alpha
     a img
-      visibility: hidden
+      +opacity(0)
     a:hover img
-      visibility: visible
+      +opacity(0.7)
   #main_nav
     display: block
     +horizontal-list
@@ -77,3 +77,8 @@
 
 #front_nav
   width: 360px
+
+#footer
+  div
+    display: inline
+    margin-right: 4em

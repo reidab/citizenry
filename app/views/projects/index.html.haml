@@ -1,0 +1,10 @@
+.section_header
+  %h1{:class => 'projects'} Projects + Products
+  = link_to "+ Add a Project", new_project_path
+
+%ul{:class => 'projects_grid'}
+  - @projects.each do |project|
+    %li
+      %a{:href => project_path(project)}
+        %strong.name= project.name
+        %span.twitter= "@#{project.twitter}"

@@ -1,0 +1,10 @@
+.section_header
+  %h1{:class => 'groups'} Groups
+  = link_to "+ Add a Group", new_group_path
+
+%ul{:class => 'group_grid'}
+  - @groups.each do |group|
+    %li
+      %a{:href => group_path(group)}
+        %strong.name= group.name
+        %span.twitter= "@#{group.twitter}"

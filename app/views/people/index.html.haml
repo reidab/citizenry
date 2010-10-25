@@ -1,0 +1,10 @@
+.section_header
+  %h1{:class => 'people'} People
+  = link_to "+ Add Someone", new_person_path
+
+%ul{:class => 'person_grid'}
+  - @people.each do |person|
+    %li
+      %a{:href => person_path(person)}
+        %strong.name= person.name
+        %span.twitter= "@#{person.twitter}"

@@ -82,8 +82,21 @@ body.site_index
   #main_nav
     display: none
 
-#content
+#content, #footer
   padding: 10px
+
+body.people #content
+  border-top: 3px solid $people_color
+body.companies #content
+  border-top: 3px solid $companies_color
+body.groups #content
+  border-top: 3px solid $groups_color
+body.projects #content
+  border-top: 3px solid $projects_color
+body.resources #content
+  border-top: 3px solid $resources_color
+body.events #content
+  border-top: 3px solid $events_color
 
 #site_intro
   padding: 10px
@@ -151,23 +164,31 @@ body.site_index
 #content
   position: relative
   h1
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    color: #fff
-    padding: 5px 10px
+    +behead
+    margin-bottom: 1em
+  .section_header
+    h1
+      +behead
+      margin: -10px -10px 0
+      padding: 5px 10px
+      color: #fff
 
+      &.people
+        @extend .people-bg
+      &.companies
+        @extend .companies-bg
+      &.groups
+        @extend .groups-bg
+      &.projects
+        @extend .projects-bg
+      &.resources
+        @extend .resources-bg
+      &.events
+        @extend .events-bg
 
-    &.people
-      @extend .people-bg
-    &.companies
-      @extend .companies-bg
-    &.groups
-      @extend .groups-bg
-    &.projects
-      @extend .projects-bg
-    &.resources
-      @extend .resources-bg
-    &.events
-      @extend .events-bg
+.person_grid
+  +no-bullets
+  margin: 0
+
+#footer
+  color: #555

@@ -1,0 +1,10 @@
+.section_header
+  %h1{:class => 'companies'} Companies
+  = link_to "+ Add a Company", new_company_path
+
+%ul{:class => 'company_grid'}
+  - @companies.each do |company|
+    %li
+      %a{:href => company_path(company)}
+        %strong.name= company.name
+        /%span.twitter= "@#{company.twitter}"
