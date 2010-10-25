@@ -19,7 +19,8 @@ class Person < ActiveRecord::Base
               :first_name => first_name,
               :last_name => last_name,
               :bio => user.description,
-              :url => user.url
+              :url => user.url,
+              :avatar_url => user.profile_image_url
             )
   end
 
