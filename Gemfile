@@ -41,4 +41,5 @@ group :development, :test do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'cucumber'
   gem 'annotate'
+  gem 'ruby-debug'
 end
