@@ -1,0 +1,134 @@
+// Forms
+form.formtastic
+  +stack-form(auto)
+  .faux_label
+    clear: both
+    display: block
+    float: none
+    width: auto
+  li.state_input, li.zip_input
+    width: 8em
+    float: left
+    clear: none
+  // <li> Field wrappers
+  li
+    padding: 10px 0px
+    // <li> Check/Radio wrappers
+    li
+      padding: 0
+  //--------------------------------------------------------
+  // Fieldsets
+  //--------------------------------------------------------
+  fieldset
+    margin-top: 20px
+  // Be sure to override styling for nested fieldsets
+  li
+    fieldset
+      padding: 0
+  //--------------------------------------------------------
+  // Legend & Labels
+  //--------------------------------------------------------
+  legend, label, .faux_label
+    // Set color manually to override IE's stupid rules for legends
+    color: $text_color
+    &.disabled
+      color: lighten($text_color, 50)
+  label, .label, .faux_label
+    padding-bottom: 5px
+    // required * <--styling
+    abbr
+      color: red
+  label, .faux_label
+    line-height: 1.4
+  legend
+    span
+      font-size: 1.4em
+      // Set lineheight for IE
+      line-height: 1em
+      &.label, .faux_label
+        font-size: 1em
+  //--------------------------------------------------------
+  // Inputs
+  //--------------------------------------------------------
+  select
+    padding: 3px
+  input, textarea, select
+    font-family: inherit
+    font-size: inherit
+  textarea, input, .radio input.text
+    padding: 6px
+    line-height: 100%
+  .radio input.text
+    cursor: text
+    border: 2px inset
+  .string input, .password input, textarea, input.text
+    cursor: text
+  //--------------------------------------------------------
+  // Date Time Styling
+  //--------------------------------------------------------
+  .date, .time, .datetime
+    li
+      margin: 0 0.3em 0 0
+  //--------------------------------------------------------
+  // Feedback (Requirements, Errors and Hints)
+  // Add horizontal margin/padding with care as it can
+  // break the layout on floats!
+  //--------------------------------------------------------
+  #errorExplanation
+    li
+      margin-left: 15px
+  form p, .errors
+    padding: 3px 0px
+  .required
+    input,textarea,select
+      background-color: white
+  .error
+    input,textarea,select
+      background-color: #ffcccc
+      border: 1px solid #ff6666
+  .optional
+    input,textarea,select
+      background-color: white
+  .errors
+    color: #aa0000
+    li
+      margin-left: 1.2em
+  p.inline-errors
+    color: red
+  p.inline-hints
+    color: #777777
+  //--------------------------------------------------------
+  // Submit Buttons
+  //--------------------------------------------------------
+  .buttons
+    padding-top: 8px
+    padding-bottom: 8px
+    margin-top: 8px
+    li
+      padding-right: 0.5em
+    input
+      // TODO +buttony
+    input, a
+      font-weight: normal
+    .default
+      input
+        font-weight: bold
+  //-------------------------------------------------------
+  // Custom Layout
+  //-------------------------------------------------------
+  fieldset.current_password
+    padding: 0 1em 0.5em 1em
+    border: 1px solid
+    &, li
+      width: auto
+
+.errorExplanation
+  color: $error_color
+
+.formError
+  color: $error_color
+  font-weight: bold
+
+.fieldWithErrors
+  input
+    border-color: lighten($error_color, 20)
