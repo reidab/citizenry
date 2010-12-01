@@ -6,6 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'mysql'
 gem 'formtastic', '~>1.1.0'
 
 gem "twitter-auth", :require => 'twitter_auth/engine',
