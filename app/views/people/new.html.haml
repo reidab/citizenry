@@ -1,0 +1,32 @@
+%h1 Add someone to ePDX
+- if request.post?
+  = render 'form'
+  = link_to 'Back', people_path
+-else
+  %h2 Search for a person to add
+  %p
+    :erb
+      We'll search Twitter.
+      <% if params[:q].present? %>
+        You have <%= pluralize(@rate_limit_status['remaining_hits'].to_i, 'API call') %> remaining;
+        limit resets in <%= distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status['reset_time'])) %>.
+      <% end %>
+  = form_tag new_person_path, :method => :get do
+    = text_field_tag(:q, params[:q])
+    = submit_tag("Search")
+
+  - if @found_people.present?
+    %ul{:id => 'people_search_results'}
+      - @found_people.each do |person|
+        %li
+          .avatar
+            %img{:src => person['profile_image_url']}
+          %h3= person['name']
+          %strong
+            %a{:href => "https://twitter.com/#{person['screen_name']}"}= "@#{person['screen_name']}"
+            on Twitter
+          %p{:class=>'location'}= person['location']
+          %p{:class=>'bio'}= person['description']
+          =form_tag(people_path, :method => :post) do
+            =hidden_field_tag :from_twitter, person['screen_name']
+            =submit_tag "Add #{person['name']} to directory"

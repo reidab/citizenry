@@ -24,6 +24,20 @@ class Person < ActiveRecord::Base
             )
   end
 
+  def self.from_twitter(screen_name, twitter_token)
+    twitterer = twitter_token.get("/users/show?screen_name=#{screen_name}")
+    first_name, last_name = twitterer['name'].split(/\s+/, 2)
+
+    return self.new(
+      :twitter => screen_name,
+      :first_name => first_name,
+      :last_name => last_name,
+      :bio => twitterer['description'],
+      :url => twitterer['url'],
+      :avatar_url => twitterer['profile_image_url']
+    )
+  end
+
   def name
     [first_name, last_name].join(' ')
   end
