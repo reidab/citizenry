@@ -8,7 +8,20 @@ class Group < ActiveRecord::Base
   has_many :companies, :through => :sponsorships
 
   validates_presence_of :name
+
+  def self.from_twitter(screen_name, twitter_token)
+    twitterer = twitter_token.get("/users/show?screen_name=#{screen_name}")
+
+    return self.new(
+      :twitter => screen_name,
+      :name => twitterer['name'],
+      :description => twitterer['description'],
+      :url => twitterer['url'],
+      :logo_url => twitterer['profile_image_url']
+    )
+  end
 end
+
 
 # == Schema Information
 #
