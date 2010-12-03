@@ -18,6 +18,9 @@
 
 @import utility
 
+.desktop-only
+  display: none
+
 body
   background: $background_color
 
@@ -168,24 +171,57 @@ body.events #content
     +behead
     margin-bottom: 1em
   .section_header
+    margin: -10px -10px 0
+    color: #fff
+    &.people
+      @extend .people-bg
+      a
+        @extend .people-text
+        background: #fff
+    &.companies
+      @extend .companies-bg
+      a
+        @extend .companies-text
+        background: #fff
+    &.groups
+      @extend .groups-bg
+      a
+        @extend .groups-text
+        background: #fff
+    &.projects
+      @extend .projects-bg
+      a
+        @extend .projects-text
+        background: #fff
+    &.resources
+      @extend .resources-bg
+      a
+        @extend .resources-text
+        background: #fff
+    &.events
+      @extend .events-bg
+      a
+        @extend .events-text
+        background: #fff
+
     h1
       +behead
-      margin: -10px -10px 0
-      padding: 5px 10px
+      line-height: 1.2
+      margin-left: 10px
+      display: inline
       color: #fff
 
-      &.people
-        @extend .people-bg
-      &.companies
-        @extend .companies-bg
-      &.groups
-        @extend .groups-bg
-      &.projects
-        @extend .projects-bg
-      &.resources
-        @extend .resources-bg
-      &.events
-        @extend .events-bg
+    a.new
+      font-weight: bold
+      font-size: 1.5em
+      float: right
+      display: block
+      background: #fff
+      margin: 3px 5px
+      padding: 3px 8px
+      
+      
+
 
 .person_grid
   +no-bullets

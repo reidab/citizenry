@@ -1,6 +1,6 @@
-.section_header
-  %h1{:class => 'projects'} Projects + Products
-  = link_to "+ Add a Project", new_project_path
+.section_header{:class => 'projects'}
+  %h1 Projects<span class='desktop-only'> &amp; Products</span>
+  = link_to "+ Add a Project", new_project_path, :class => 'new'
 
 %ul{:class => 'projects_grid'}
   - @projects.each do |project|

@@ -1,6 +1,6 @@
-.section_header
-  %h1{:class => 'people'} People
-  = link_to "+ Add Someone", new_person_path
+.section_header{:class => 'people'}
+  %h1 People
+  = link_to "+ Add Someone", new_person_path, :class => 'new'
 
 %ul{:class => 'person_grid'}
   - @people.each do |person|

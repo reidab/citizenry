@@ -1,6 +1,6 @@
-.section_header
-  %h1{:class => 'groups'} Groups
-  = link_to "+ Add a Group", new_group_path
+.section_header{:class => 'groups'}
+  %h1 Groups
+  = link_to "+ Add a Group", new_group_path, :class => 'new'
 
 %ul{:class => 'group_grid'}
   - @groups.each do |group|

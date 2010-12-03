@@ -1,6 +1,6 @@
-.section_header
-  %h1{:class => 'resources'} Resources
-  = link_to "+ Add a Link", new_resource_path
+.section_header{:class => 'resources'}
+  %h1 Resources
+  = link_to "+ Add a Link", new_resource_path, :class => 'new'
 
 %ul{:class => 'resources_grid'}
   - @resources.each do |resource|

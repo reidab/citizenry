@@ -1,6 +1,6 @@
-.section_header
-  %h1{:class => 'companies'} Companies
-  = link_to "+ Add a Company", new_company_path
+.section_header{:class => 'companies'}
+  %h1 Companies
+  = link_to "+ Add a Company", new_company_path, :class => 'new'
 
 %ul{:class => 'company_grid'}
   - @companies.each do |company|
