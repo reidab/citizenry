@@ -224,11 +224,22 @@ body.events #content
     +no-bullets
     margin: 0
     li
-      background: darken($background_color, 10)
+      background: darken($background_color, 5)
       padding: .8em .8em .8em 75px
       margin: 1em 0
       position: relative
       width: 90%
+      border-left: 3px solid darken($background_color, 50)
+      &.existing
+        background: lighten($people_color, 30)
+        border-left: 3px solid $people_color
+      .existing_user_label
+        font-weight: bold
+        background: $people_color
+        color: #fff
+        display: inline-block
+        padding: .3em .5em .3em 75px
+        margin-left: -75px
       h3
         margin-top: 0
         color: #444

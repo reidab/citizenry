@@ -31,6 +31,10 @@ class PeopleController < ApplicationController
       @found_people = current_user.twitter.get("/users/search?q=#{CGI::escape params[:q]}&per_page=20")
       @found_people.sort! {|a,b| localness(b) <=> localness(a)}
 
+      @existing_people =  Person.all(:conditions => {
+                            :twitter => @found_people.map{|p| p['screen_name']}
+                          })
+
       @rate_limit_status = current_user.twitter.get('/account/rate_limit_status')
     end
 

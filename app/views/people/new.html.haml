@@ -18,7 +18,8 @@
   - if @found_people.present?
     %ul{:id => 'people_search_results'}
       - @found_people.each do |person|
-        %li
+        - existing_person = @existing_people.find{|p| p.twitter == person['screen_name']}
+        %li{:class => existing_person ? 'existing' : ''}
           .avatar
             %img{:src => person['profile_image_url']}
           %h3= person['name']
@@ -27,6 +28,10 @@
             on Twitter
           %p{:class=>'location'}= person['location']
           %p{:class=>'bio'}= person['description']
-          =form_tag(people_path, :method => :post) do
-            =hidden_field_tag :from_twitter, person['screen_name']
-            =submit_tag "Add #{person['name']} to directory"
+          - if existing_person
+            .existing_user_label
+              ePDX already knows #{person['name']}!
+          - else
+            =form_tag(people_path, :method => :post) do
+              =hidden_field_tag :from_twitter, person['screen_name']
+              =submit_tag "Add #{person['name']} to directory"
