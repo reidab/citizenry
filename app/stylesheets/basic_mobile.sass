@@ -220,7 +220,7 @@ body.events #content
       margin: 3px 5px
       padding: 3px 8px
 
-  #people_search_results
+  #people_search_results, .person_grid
     +no-bullets
     margin: 0
     li
@@ -254,13 +254,15 @@ body.events #content
           width: 48px
           height: 48px
 
-      
-      
-
-
-.person_grid
-  +no-bullets
-  margin: 0
+  .person_grid
+    li
+      margin: 0
+      background: transparent
+      border: none
+      border-bottom: 1px solid darken($background_color, 30)
+      min-height: 52px
+      p.bio
+        color: #777
 
 #footer
   color: #555
