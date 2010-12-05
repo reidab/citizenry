@@ -2,9 +2,14 @@
   %h1 Projects<span class='desktop-only'> &amp; Products</span>
   = link_to "+ Add a Project", new_project_path, :class => 'new'
 
-%ul{:class => 'projects_grid'}
+%ul{:class => 'resource_list projects'}
   - @projects.each do |project|
     %li
-      %a{:href => project_path(project)}
-        %strong.name= project.name
-        %span.twitter= "@#{project.twitter}"
+      %h3
+        =link_to project.name, projects_path(project)
+      - if project.twitter.present?
+        %span{:class => 'twitter_link'}
+          %a{:href => "https://twitter.com/#{project.twitter}"}= "@#{project.twitter}"
+          on Twitter
+      -#%p{:class=>'location'}= person['location']
+      %p{:class=>'description'}= truncate(project.description, :length => 350)

@@ -220,15 +220,25 @@ body.events #content
       margin: 3px 5px
       padding: 3px 8px
 
-  #people_search_results, .person_grid
+  .resource_list
     +no-bullets
     margin: 0
     li
-      background: darken($background_color, 5)
-      padding: .8em .8em .8em 75px
-      margin: 1em 0
+      padding: .8em
+      margin: 0
       position: relative
       width: 90%
+      border-bottom: 1px solid darken($background_color, 30)
+      h3
+        margin-top: 0
+        color: #444
+      p.bio, p.description
+        color: #777
+  #people_search_results
+    li
+      background: darken($background_color, 5)
+      margin: 1em 0
+      border: none
       border-left: 3px solid darken($background_color, 50)
       &.existing
         background: lighten($people_color, 30)
@@ -240,9 +250,10 @@ body.events #content
         display: inline-block
         padding: .3em .5em .3em 75px
         margin-left: -75px
-      h3
-        margin-top: 0
-        color: #444
+  .people, #people_search_results
+    li
+      padding: .8em .8em .8em 75px
+      min-height: 52px
       .avatar
         background: #fff
         border: 1px solid #999
@@ -253,16 +264,9 @@ body.events #content
         &, img
           width: 48px
           height: 48px
-
-  .person_grid
-    li
-      margin: 0
-      background: transparent
-      border: none
-      border-bottom: 1px solid darken($background_color, 30)
-      min-height: 52px
-      p.bio
-        color: #777
+  .resource_list.companies
+    .avatar
+      display: none
 
 #footer
   color: #555

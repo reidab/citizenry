@@ -16,7 +16,7 @@
     = submit_tag("Search")
 
   - if @found_people.present?
-    %ul{:id => 'people_search_results'}
+    %ul{:id => 'people_search_results', :class => 'resource_list people'}
       - @found_people.each do |person|
         - existing_person = @existing_people.find{|p| p.twitter == person['screen_name']}
         %li{:class => existing_person ? 'existing' : ''}

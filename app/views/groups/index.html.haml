@@ -2,9 +2,17 @@
   %h1 Groups
   = link_to "+ Add a Group", new_group_path, :class => 'new'
 
-%ul{:class => 'group_grid'}
+%ul{:class => 'resource_list groups'}
   - @groups.each do |group|
     %li
-      %a{:href => group_path(group)}
-        %strong.name= group.name
-        %span.twitter= "@#{group.twitter}"
+      - if group.logo_url.present?
+        .avatar
+          %img{:src => group.logo_url}
+      %h3
+        =link_to group.name, group_path(group)
+      - if group.twitter.present?
+        %span{:class => 'twitter_link'}
+          %a{:href => "https://twitter.com/#{group.twitter}"}= "@#{group.twitter}"
+          on Twitter
+      -#%p{:class=>'location'}= person['location']
+      %p{:class=>'description'}= truncate(group.description, :length => 350)

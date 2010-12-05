@@ -2,9 +2,17 @@
   %h1 Companies
   = link_to "+ Add a Company", new_company_path, :class => 'new'
 
-%ul{:class => 'company_grid'}
+%ul{:class => 'resource_list companies'}
   - @companies.each do |company|
     %li
-      %a{:href => company_path(company)}
-        %strong.name= company.name
-        /%span.twitter= "@#{company.twitter}"
+      - if company.logo_url.present?
+        .avatar
+          %img{:src => company.logo_url}
+      %h3
+        =link_to company.name, company_path(company)
+      - if company.twitter.present?
+        %span{:class => 'twitter_link'}
+          %a{:href => "https://twitter.com/#{company.twitter}"}= "@#{company.twitter}"
+          on Twitter
+      -#%p{:class=>'location'}= person['location']
+      %p{:class=>'description'}= truncate(company.description, :length => 350)

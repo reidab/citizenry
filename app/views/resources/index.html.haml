@@ -2,8 +2,12 @@
   %h1 Resources
   = link_to "+ Add a Link", new_resource_path, :class => 'new'
 
-%ul{:class => 'resources_grid'}
-  - @resources.each do |resource|
-    %li
-      %a{:href => resource_path(resource)}
+- @resources.keys.sort.each do |category|
+  %h2 #{category}
+  %ul{:class => 'resources'}
+  - @resources[category].each do |resource|
+    %li{:id => resource.id}
+      %a{:href => resource.url}
         %strong.name= resource.name
+      %span.description &mdash; #{resource.description}
+      %a{:href => edit_resource_path(resource)} edit
