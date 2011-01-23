@@ -5,7 +5,7 @@ class Company < ActiveRecord::Base
   has_many :groups, :through => :sponsorships
 
   has_many :employments
-  has_many :people, :through => :employments
+  has_many :employees, :through => :employments, :source => :person
 
   validates_presence_of :name
 
