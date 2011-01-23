@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  include Localness
   before_filter :login_required, :except => [:index, :show]
   # GET /people
   # GET /people.xml
@@ -95,27 +96,6 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(people_url) }
       format.xml  { head :ok }
-    end
-  end
-
-  private
-
-  PORTLAND_SUBURBS = ["beaverton", "gresham", "hillsboro", "clackamas",
-                      "damascus", "gladstone", "king city", "lake oswego",
-                      "milwaukie", "oregon city", "sherwood", "tigard",
-                      "troutdale", "tualatin", "west linn", "wilsonville",
-                      "aloha"]
-
-  def localness(user)
-    location = user['location'].try(:downcase) || ''
-    if %w(portland pdx stumptown).any?{|term| location.include?(term) }
-      return 5
-    elsif PORTLAND_SUBURBS.any?{|term| location.include?(term) }
-      return 4
-    elsif %w(oregon washington or wa).any?{|term| location.include?(term) }
-      return 3
-    else
-      return 0
     end
   end
 end
