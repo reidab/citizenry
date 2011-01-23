@@ -3,7 +3,9 @@ Citizenry::Application.routes.draw do
   root :to => "site#index"
 
   resources :people
-  resources :companies
+  resources :companies do
+    resources :employees, :controller => :employments, :only => [:new, :create]
+  end
   resources :groups
   resources :projects
   resources :resources
