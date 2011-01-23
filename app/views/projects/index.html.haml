@@ -6,7 +6,7 @@
   - @projects.each do |project|
     %li
       %h3
-        =link_to project.name, projects_path(project)
+        =link_to project.name, project_path(project)
       - if project.twitter.present?
         %span{:class => 'twitter_link'}
           %a{:href => "https://twitter.com/#{project.twitter}"}= "@#{project.twitter}"
