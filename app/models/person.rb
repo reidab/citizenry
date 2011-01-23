@@ -37,26 +37,23 @@ class Person < ActiveRecord::Base
       :avatar_url => twitterer['profile_image_url']
     )
   end
-
-  def name
-    [first_name, last_name].join(' ')
-  end
 end
+
 
 
 # == Schema Information
 #
 # Table name: people
 #
-#  id         :integer         not null, primary key
-#  first_name :string(255)
-#  last_name  :string(255)
+#  id         :integer(4)      not null, primary key
 #  email      :string(255)
 #  twitter    :string(255)
 #  url        :string(255)
 #  bio        :text
 #  created_at :datetime
 #  updated_at :datetime
-#  user_id    :integer
+#  user_id    :integer(4)
+#  avatar_url :string(255)
+#  name       :string(255)
 #
 

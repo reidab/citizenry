@@ -4,11 +4,12 @@ describe Project do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: projects
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  name        :string(255)
 #  url         :string(255)
 #  twitter     :string(255)

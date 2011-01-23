@@ -6,11 +6,12 @@ class Project < ActiveRecord::Base
   validates_presence_of :name
 end
 
+
 # == Schema Information
 #
 # Table name: projects
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  name        :string(255)
 #  url         :string(255)
 #  twitter     :string(255)

@@ -3,13 +3,14 @@ class Employment < ActiveRecord::Base
   belongs_to :company
 end
 
+
 # == Schema Information
 #
 # Table name: employments
 #
-#  id         :integer         not null, primary key
-#  person_id  :integer
-#  company_id :integer
+#  id         :integer(4)      not null, primary key
+#  person_id  :integer(4)
+#  company_id :integer(4)
 #  title      :string(255)
 #  created_at :datetime
 #  updated_at :datetime

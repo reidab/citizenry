@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203070316) do
+ActiveRecord::Schema.define(:version => 20101205015222) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(:version => 20101203070316) do
   end
 
   create_table "people", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "email"
     t.string   "twitter"
     t.string   "url"
@@ -76,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20101203070316) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "avatar_url"
+    t.string   "name"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
