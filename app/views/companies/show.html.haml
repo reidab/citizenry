@@ -1,0 +1,12 @@
+%h1= @company.name
+=twitter_link(@company.twitter)
+=link_to @company.url
+%p.description
+  = @company.description
+
+:erb
+  <%= link_to 'Edit', edit_company_path(@company) %> |
+  <%= link_to 'Back', companies_path %>
+
+#sidebar
+  
