@@ -7,4 +7,9 @@ module ApplicationHelper
     content_tag(:span, "#{count || 0} ", :class => 'count') +
       ((count == 1 || count == '1') ? singular : (plural || singular.pluralize))
   end
+
+  def twitter_link(screen_name)
+    url = "https://twitter.com/#{screen_name}"
+    link_to "@#{screen_name}", url
+  end
 end
