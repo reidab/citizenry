@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @person.name
+%p
+  %b Email:
+  = @person.email
+%p
+  %b Twitter:
+  = @person.twitter
+%p
+  %b Url:
+  = @person.url
+= link_to 'Edit', edit_person_path(@person)
+|
+\#{link_to 'Back', people_path}
