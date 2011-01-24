@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205015222) do
+ActiveRecord::Schema.define(:version => 20110123235946) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_token"
+    t.string   "access_token_secret"
+    t.text     "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -111,33 +122,16 @@ ActiveRecord::Schema.define(:version => 20101205015222) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "twitter_id"
-    t.string   "login"
-    t.string   "access_token"
-    t.string   "access_secret"
     t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.string   "name"
-    t.string   "location"
-    t.string   "description"
-    t.string   "profile_image_url"
-    t.string   "url"
-    t.boolean  "protected"
-    t.string   "profile_background_color"
-    t.string   "profile_sidebar_fill_color"
-    t.string   "profile_link_color"
-    t.string   "profile_sidebar_border_color"
-    t.string   "profile_text_color"
-    t.string   "profile_background_image_url"
-    t.boolean  "profile_background_tile"
-    t.integer  "friends_count"
-    t.integer  "statuses_count"
-    t.integer  "followers_count"
-    t.integer  "favourites_count"
-    t.integer  "utc_offset"
-    t.string   "time_zone"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",               :default => false
   end
 
 end

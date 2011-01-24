@@ -1,20 +1,20 @@
 Citizenry::Application.routes.draw do 
-
   root :to => "site#index"
 
-  resources :people
   resources :companies do
     resources :employees, :controller => :employments, :only => [:new, :create]
   end
   resources :groups
+  resources :people
   resources :projects
   resources :resources
-
   resources :users, :only => [:show] do
     collection do
       get 'welcome'
     end
   end
+
+  devise_for :users
 
 
   # The priority is based upon order of creation:
