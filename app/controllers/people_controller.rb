@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   include Localness
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
   # GET /people
   # GET /people.xml
   def index
