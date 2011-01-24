@@ -1,6 +1,7 @@
 Citizenry::Application.routes.draw do 
   root :to => "site#index"
 
+  resources :authentications
   resources :companies do
     resources :employees, :controller => :employments, :only => [:new, :create]
   end
@@ -15,6 +16,7 @@ Citizenry::Application.routes.draw do
   end
 
   devise_for :users
+  match '/auth/:provider/callback' => 'authentications#create'
 
 
   # The priority is based upon order of creation:
