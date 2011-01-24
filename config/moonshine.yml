@@ -43,6 +43,7 @@
 # directory to the server: these are files that you don't have/want in scm.
 :shared_config:
   - config/database.yml
+  - config/settings.yml
 
 # The entries in shared_children are created in #{application}/shared
 :shared_children:

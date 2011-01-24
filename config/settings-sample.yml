@@ -1,0 +1,18 @@
+# environent-specific settings will be deep merged with the common hash, overriding values therein
+
+common:
+  auth_credentials:
+    twitter:
+      key: skeletonkey
+      secret: seekrit!
+    facebook:
+      key: skeletonkey
+      secret: seekrit!
+    linked_in:
+      key:
+      secret: seekrit!
+development:
+  auth_credentials:
+    github:
+      key: developmentkey
+      secret: devseekrit!
