@@ -46,4 +46,11 @@ group :development, :test do
   gem 'cucumber'
   gem 'annotate'
   gem 'ruby-debug'
+  gem "nifty-generators"
+
+  gem 'awesome_print'
+  gem 'drx'
+  gem 'wirble'
+  gem 'utility_belt'
 end
+gem "mocha", :group => :test
