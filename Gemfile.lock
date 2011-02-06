@@ -7,6 +7,15 @@ GIT
       ezcrypto (>= 0.7.2)
       oauth (>= 0.3.1)
 
+GIT
+  remote: https://github.com/pengwynn/linkedin.git
+  revision: 4dbaa803f91ff189a201402b2f7605d22f0e4c99
+  specs:
+    linkedin (0.1.7)
+      crack (~> 0.1.4)
+      nokogiri (~> 1.4.4)
+      oauth (~> 0.4.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -53,6 +62,7 @@ GEM
       haml (>= 3.0.4)
     compass-960-plugin (0.9.13)
       compass (>= 0.10.0.rc3)
+    crack (0.1.8)
     cucumber (0.9.4)
       builder (~> 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -71,14 +81,23 @@ GEM
       addressable (~> 2.2.2)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
+    faraday_middleware (0.3.1)
+      faraday (~> 0.5.3)
     formtastic (1.1.0)
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
       i18n (>= 0.4.0)
+    foursquare (0.3.4)
+      hashie (>= 0.1.8)
+      httparty (>= 0.4.3)
+      oauth (>= 0.3.5)
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     haml (3.0.24)
+    hashie (0.4.0)
+    httparty (0.7.3)
+      crack (= 0.1.8)
     i18n (0.5.0)
     json (1.4.6)
     linecache (0.43)
@@ -90,7 +109,10 @@ GEM
     mime-types (1.16)
     mocha (0.9.10)
       rake
+    mogli (0.0.25)
+      httparty (>= 0.4.3)
     multi_json (0.0.5)
+    multi_xml (0.2.0)
     multipart-post (1.1.0)
     mysql (2.8.1)
     net-ldap (0.1.1)
@@ -177,11 +199,19 @@ GEM
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
     rubyntlm (0.1.1)
+    simple_oauth (0.1.3)
     sqlite3-ruby (1.3.2)
     term-ansicolor (1.0.5)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
+    twitter (1.1.1)
+      faraday (~> 0.5.4)
+      faraday_middleware (~> 0.3.1)
+      hashie (~> 0.4.0)
+      multi_json (~> 0.0.5)
+      multi_xml (~> 0.2.0)
+      simple_oauth (~> 0.1.3)
     tzinfo (0.3.23)
     utility_belt (1.1.0)
       Platform (>= 0.4.0)
@@ -208,9 +238,12 @@ DEPENDENCIES
   devise (~> 1.1.5)
   drx
   formtastic (~> 1.1.0)
+  foursquare (~> 0.3.4)
   haml (~> 3.0.18)
   json (~> 1.4.6)
+  linkedin (~> 0.1.7)!
   mocha
+  mogli (~> 0.0.25)
   mysql
   nifty-generators
   omniauth (~> 0.1.6)
@@ -218,6 +251,7 @@ DEPENDENCIES
   rspec-rails (>= 2.0.0.beta.22)
   ruby-debug
   sqlite3-ruby
+  twitter (~> 1.1.1)
   twitter-auth!
   utility_belt
   webrat

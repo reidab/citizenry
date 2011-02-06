@@ -16,6 +16,12 @@ gem "twitter-auth", :require => 'twitter_auth/engine',
 gem 'devise', "~> 1.1.5"
 gem 'omniauth', "~> 0.1.6"
 
+gem 'twitter', '~> 1.1.1'
+gem 'linkedin', '~> 0.1.7', :git => "https://github.com/pengwynn/linkedin.git"
+gem 'mogli', '~>0.0.25'
+gem 'foursquare', '~>0.3.4'
+# https://gist.github.com/419219 <- github oauth!
+
 gem "haml", "~> 3.0.18"
 gem "compass", "~> 0.10.5"
 gem "compass-960-plugin", "~> 0.9.13", :require => 'ninesixty'

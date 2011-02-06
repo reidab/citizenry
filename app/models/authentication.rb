@@ -1,4 +1,6 @@
 class Authentication < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+
   belongs_to :user
   serialize :info
 
@@ -9,22 +11,51 @@ class Authentication < ActiveRecord::Base
     scope "via_#{provider.to_sym}", where("provider = ?", provider)
   end
 
-  def self.new_from_omniauth(omniauth, options={})
-    options.reverse_merge!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  def oauth_token
+    consumer = OAUTH_CONSUMERS[provider]
 
-    auth = self.new(options)
-    auth.extract_credentials_from_omniauth(omniauth)
-    auth.extract_info_from_omniauth(omniauth)
-
-    auth
+    if consumer.is_a?(OAuth::Consumer)
+      OAuth::AccessToken.new(consumer, access_token, access_token_secret)
+    elsif consumer.is_a?(OAuth2::Client)
+      OAuth2::AccessToken.new(consumer, access_token)
+    else
+      nil
+    end
   end
+  memoize :oauth_token
 
-  def self.create_from_omniauth(omniauth, options={})
-    self.new_from_omniauth(omniauth, options).save
+  def client
+    case self.provider.to_sym
+    when :twitter
+      Twitter.client(:consumer_key => SETTINGS['auth_credentials']['twitter']['key'],
+                     :consumer_secret => SETTINGS['auth_credentials']['twitter']['secret'],
+                     :oauth_token => self.access_token,
+                     :oauth_token_secret => self.access_token_secret)
+    when :facebook
+      Mogli::Client.new(self.access_token)
+    when :linked_in
+      li_client = LinkedIn::Client.new( SETTINGS['auth_credentials']['linked_in']['key'],
+                                        SETTINGS['auth_credentials']['linked_in']['secret'] )
+      li_client.authorize_from_access(self.access_token, self.access_token_secret)
+
+      li_client
+    when :foursquare
+      fs_auth = Foursquare::OAuth.new(SETTINGS['auth_credentials']['foursquare']['key'],
+                                        SETTINGS['auth_credentials']['foursquare']['secret'] )
+      fs_auth.authorize_from_access(self.access_token, self.access_token_secret)
+
+      Foursquare::Base.new(fs_auth)
+    else
+      self.oauth_token
+    end
   end
+  memoize :client
 
-  def self.create_from_omniauth!(omniauth, options={})
-    self.new_from_omniauth(omniauth, options).save!
+  #--[ Updating information at auth-time ]-------------------------------------
+
+  def update_from_omniauth(omniauth)
+    extract_credentials_from_omniauth(omniauth)
+    extract_info_from_omniauth(omniauth)
   end
 
   def extract_credentials_from_omniauth(omniauth)
@@ -43,7 +74,27 @@ class Authentication < ActiveRecord::Base
     end
   end
 
-  private
+  #--[ Building Authentications from OmniAuth responses ]----------------------
+
+  def self.new_from_omniauth(omniauth, options={})
+    options.reverse_merge!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+
+    auth = self.new(options)
+    auth.update_from_omniauth(omniauth)
+
+    auth
+  end
+
+  def self.create_from_omniauth(omniauth, options={})
+    auth = self.new_from_omniauth(omniauth, options)
+    auth if auth.save
+  end
+
+  def self.create_from_omniauth!(omniauth, options={})
+    auth = self.new_from_omniauth(omniauth, options)
+    auth if auth.save!
+  end
+
   def initialize_user_if_absent
     self.build_user unless self.user.present?
   end
