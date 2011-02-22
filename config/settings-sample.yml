@@ -1,6 +1,15 @@
 # environent-specific settings will be deep merged with the common hash, overriding values therein
 
 common:
+  providers:
+    - twitter
+    - open_id
+    - google
+    - yahoo
+    - facebook
+    - linked_in
+    - github
+    - foursquare
   auth_credentials:
     twitter:
       key: skeletonkey

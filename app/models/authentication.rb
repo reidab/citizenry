@@ -7,9 +7,14 @@ class Authentication < ActiveRecord::Base
   before_validation_on_create :initialize_user_if_absent
   validates_presence_of :user
 
-  SETTINGS['auth_credentials'].each do |provider, opts|
+  SETTINGS['providers'].each do |provider|
     scope "via_#{provider.to_sym}", where("provider = ?", provider)
   end
+
+  PROVIDER_OPTIONS = [["Choose automatically", 'auto']] \
+                        + SETTINGS['providers'].map{|provider|
+                            [OmniAuth::Utils.camelize(provider), provider]
+                          }
 
   def oauth_token
     consumer = OAUTH_CONSUMERS[provider]
