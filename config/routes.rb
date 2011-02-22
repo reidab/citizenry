@@ -15,7 +15,10 @@ Citizenry::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_scope :user do
+    get "/logout" => "devise/sessions#destroy"
+  end
+
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/auto' => 'authentications#auto'
   match 'login' => 'authentications#login', :as => 'login'
