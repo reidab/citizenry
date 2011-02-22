@@ -50,6 +50,9 @@
         /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
     #content
+      - flash.each do |message_type, message|
+        %div{:class => [message_type, 'flash_message']}
+          =message
       = yield
 
     #footer
