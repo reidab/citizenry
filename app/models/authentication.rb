@@ -73,9 +73,9 @@ class Authentication < ActiveRecord::Base
   # We only want to retain certain user info from omniauth responses, depending on the provider.
   def extract_info_from_omniauth(omniauth)
     if omniauth.has_key?('extra') && omniauth['extra'].has_key?('user_hash')
-      self.info = omniauth['user_info'].merge(omniauth['extra']['user_hash'])
+      self.info = omniauth['user_info'].merge(omniauth['extra']['user_hash']).symbolize_keys
     else
-      self.info = omniauth['user_info']
+      self.info = omniauth['user_info'].symbolize_keys
     end
   end
 

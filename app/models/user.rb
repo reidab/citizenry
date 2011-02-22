@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable
 
   def avatar_url
-    self.person.try(:avatar_url)
+    self.person.try(:avatar_url) || self.authentications.first.info[:image]
   end
 
   def name
-    self.person.try(:name) || self.authentications.first.info['name']
+    self.person.try(:name) || self.authentications.first.info[:name]
+  end
+
   def default_authentication
     self.authentications.first
   end
