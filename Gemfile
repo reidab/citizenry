@@ -16,6 +16,12 @@ gem "twitter-auth", :require => 'twitter_auth/engine',
 gem 'devise', "~> 1.1.5"
 gem 'omniauth', "~> 0.1.6"
 
+gem 'redfinger', '~> 0.1.0', :git => "https://github.com/reidab/redfinger.git"
+
+gem 'httparty', '~> 0.7.4'
+gem 'openid', '~> 0.0.1'
+gem 'net-dns', '~> 0.6.1'
+
 gem 'twitter', '~> 1.1.1'
 gem 'linkedin', '~> 0.1.7', :git => "https://github.com/pengwynn/linkedin.git"
 gem 'mogli', '~>0.0.25'
