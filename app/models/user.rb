@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   def name
     self.person.try(:name) || self.authentications.first.info['name']
+  def default_authentication
+    self.authentications.first
   end
 end
 

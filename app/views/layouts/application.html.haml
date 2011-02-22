@@ -34,8 +34,13 @@
             = link_to current_user.name, user_path(current_user)
           = link_to 'log out', logout_path
         - else
-          %a{:href => login_path, :class => 'sign_in'}
-            Sign in with Twitter
+          = form_tag login_path do
+            = label_tag :email, "Email address"
+            = text_field_tag :email, '', :placeholder => 'Email Address'
+            = label_tag :provider, "Login via"
+            %select{:name => 'provider'}
+              =options_for_select Authentication::PROVIDER_OPTIONS
+            = submit_tag "Synergize!"
       %ul{:id=>'main_nav'}
         %li= link_to "People", people_path, :class => 'people'
         %li= link_to "Companies", companies_path, :class => 'companies'

@@ -17,6 +17,8 @@ Citizenry::Application.routes.draw do
 
   devise_for :users
   match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/auto' => 'authentications#auto'
+  match 'login' => 'authentications#login', :as => 'login'
 
 
   # The priority is based upon order of creation:

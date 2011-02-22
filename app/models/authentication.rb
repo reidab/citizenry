@@ -82,10 +82,13 @@ class Authentication < ActiveRecord::Base
   #--[ Building Authentications from OmniAuth responses ]----------------------
 
   def self.new_from_omniauth(omniauth, options={})
+    new_user = options.delete(:new_user)
     options.reverse_merge!(:provider => omniauth['provider'], :uid => omniauth['uid'])
 
     auth = self.new(options)
     auth.update_from_omniauth(omniauth)
+
+    auth.build_user(new_user) if new_user.present?
 
     auth
   end
