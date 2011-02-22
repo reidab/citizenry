@@ -8,9 +8,9 @@
   - for authentication in @authentications
     %tr
       %td
-        - if authentication.info['image']
-          %img{:src => authentication.info['image'], :width => 48, :height => 48} 
+        - if authentication.info[:image]
+          %img{:src => authentication.info[:image], :width => 48, :height => 48}
       %td=provider_icon(authentication.provider)
-      %td= authentication.info['name']
-      %td= authentication.info['nickname']
+      %td= authentication.info[:name]
+      %td= authentication.info[:nickname]
       %td= link_to "Destroy", authentications_path, :confirm => 'Are you sure?', :method => :delete
