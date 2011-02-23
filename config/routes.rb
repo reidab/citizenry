@@ -15,6 +15,7 @@ Citizenry::Application.routes.draw do
     end
   end
 
+  devise_for :users
   devise_scope :user do
     get "/logout" => "devise/sessions#destroy"
   end
