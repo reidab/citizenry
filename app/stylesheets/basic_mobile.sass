@@ -75,19 +75,22 @@ body.site_index
       border-right: 1px solid #666
       a
         color: #000
-    .sign_in
+    #sign_in_link
       display: block
-      height: 24px
-      padding: 0 1em 0 30px
-      margin: 0 .5em 0 0
-      background: image-url('twitter-24x24.png') no-repeat
-      line-height: 24px
       font-weight: bold
+      color: #fff
+      background: $link_color
+      padding: .5em
+    .sign_in_form
+      display: none
   #main_nav
     display: none
 
 #content, #footer
   padding: 10px
+
+body.authentications_login #header #account_box
+  display: none
 
 body.people #content
   border-top: 3px solid $people_color

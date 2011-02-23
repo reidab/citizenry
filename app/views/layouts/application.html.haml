@@ -34,7 +34,7 @@
             = link_to current_user.name, user_path(current_user)
           = link_to 'log out', logout_path
         - else
-          = link_to "Login", login_path, :id => 'login_link'
+          = link_to "Sign In", login_path, :id => 'sign_in_link'
           = render :partial => 'authentications/login_form'
       %ul{:id=>'main_nav'}
         %li= link_to "People", people_path, :class => 'people'
