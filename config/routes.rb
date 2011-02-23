@@ -21,7 +21,8 @@ Citizenry::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/auto' => 'authentications#auto'
-  match 'login' => 'authentications#login', :as => 'login'
+  match '/route_login' => 'authentications#route_login', :as => 'login_router'
+  match '/login' => 'authentications#login', :as => 'login'
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,4 @@
+= semantic_form_for((@signin_data || SignInData.new), :url => login_router_path) do |f| 
+  = f.input :email, :label => "Email address"
+  = f.input :provider, :collection => Authentication::PROVIDER_OPTIONS, :include_blank => false
+  = f.commit_button "Synergize!"
