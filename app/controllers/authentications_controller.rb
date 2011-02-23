@@ -1,4 +1,6 @@
 class AuthenticationsController < ApplicationController
+  class SessionRequired < Exception; end
+
   def index
     @authentications = current_user.authentications.all
   end
@@ -49,19 +51,37 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env["omniauth.auth"]
 
-    if authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+      # Existing user, existing authentication, login!
       flash[:notice] = "Signed in successfully."
-      sign_in_and_redirect(:user, authentication.user)
+      sign_in(auth.user)
+      redirect_to root_path
     elsif current_user
+      # Logged in user => give them a new authentication
       Authentication.create_from_omniauth!(omniauth, :user => current_user)
       flash[:notice] = "Authentication successful."
       redirect_to authentications_url
     else
-      auth = Authentication.create_from_omniauth!(omniauth, :new_user => {:email => session[:login_email]})
-      flash[:notice] = "Signed in successfully."
-      sign_in_and_redirect(:user, auth.user)
+      # Entirely new user
+
+      if session[:login_email].blank?
+        flash[:error] = "Ack! It looks like you might have cookies disabled. Please re-enable cookies and try again."
+      elsif User.find_by_email(session[:login_email])
+        flash[:error] = "A user already exists for #{session[:login_email]}, but you're using a different login method than we've seen for them. Please try again with with the 'choose automatically' option selected."
+      else
+        auth = Authentication.create_from_omniauth!(omniauth, :new_user => {:email => session[:login_email]})
+        flash[:notice] = "Signed in successfully."
+      end
+
+      session[:login_email] = nil
+
+      if auth.present?
+        sign_in(auth.user)
+        redirect_to root_path
+      else
+        redirect_to login_path
+      end
     end
-    session[:login_email] = nil
   end
 
   def destroy
