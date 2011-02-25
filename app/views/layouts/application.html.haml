@@ -19,6 +19,12 @@
     = stylesheet_link_tag('compiled/desktop',
         :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
 
+    = javascript_include_tag 'lib/jquery-1.5.js',
+                             'lib/json2.js',
+                             'lib/underscore.js',
+                             'lib/backbone.js',
+                             'citizenry.js'
+
     = csrf_meta_tag
   %body{:class => "#{controller_name} #{controller_name}_#{action_name}"}
     #header
