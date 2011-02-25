@@ -71,6 +71,22 @@ div.desktop-only
       padding-right: 0
       margin-right: 0
       border-right: none
+    #global_sign_in
+      float: right
+
+#global_sign_in_form
+  width: 250px
+  position: absolute
+  margin: -10px 10px 0 0
+  top: 0
+  right: 0
+  +transition('height, opacity', 0.3s)
+  +opacity(0)
+  &.open
+    height: 110px
+    +opacity(1)
+
+
 #site_intro
   margin: 0
   width: 300px

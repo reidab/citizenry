@@ -1,4 +1,11 @@
 @import config
 @import mixins
 
+@import compass/css3
+
 @import webfonts
+
+#global_sign_in_form
+  +transition('height, opacity', 0.5s)
+  &.open
+    height: 120px

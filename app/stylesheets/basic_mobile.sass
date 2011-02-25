@@ -75,16 +75,52 @@ body.site_index
       border-right: 1px solid #666
       a
         color: #000
-    #sign_in_link
-      display: block
-      font-weight: bold
-      color: #fff
+    #global_sign_in
+      width: 100px
       background: $link_color
-      padding: .5em
-    .sign_in_form
-      display: none
+      #sign_in_link
+        display: block
+        font-weight: bold
+        color: #fff
+        background: $link_color
+        padding: .5em
+      .sign_in_form
+        position: static
+        left: 0
+        height: 0
+        overflow: hidden
+        width: 85%
+      &.open
+        #sign_in_link
+          // height: 4em
+        .sign_in_form
+          display: block
+          height: auto
   #main_nav
     display: none
+
+#global_sign_in_form
+  background: $link_color
+  padding: 0 10px
+  margin: -10px -10px 0
+  height: 0
+  overflow: hidden
+  &.open
+    height: auto
+    padding-bottom: 1em
+  label
+    color: #fff
+    font-weight: bold
+  .required label abbr
+    display: none
+  .string input
+    width: 90%
+  #sign_in_data_provider_input
+    label
+      display: none
+  #sign_in_data_provider_input, li.commit
+    display: inline-block
+    padding: 0
 
 #content, #footer
   padding: 10px
@@ -107,7 +143,7 @@ body.events #content
 
 #site_intro
   padding: 10px
-  margin: -10px -10px 0
+  margin: 0 -10px
   background: #424242
   color: #f2f2f2
   font-size: 16px

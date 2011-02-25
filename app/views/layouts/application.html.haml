@@ -38,10 +38,10 @@
           %img.avatar{:src => current_user.avatar_url, :align => 'left'}
           .name
             = link_to current_user.name, user_path(current_user)
-          = link_to 'log out', logout_path
+          = link_to 'sign out', logout_path
         - else
-          = link_to "Sign In", login_path, :id => 'sign_in_link'
-          = render :partial => 'authentications/login_form'
+          #global_sign_in
+            = link_to "Sign In", login_path, :id => 'sign_in_link'
       %ul{:id=>'main_nav'}
         %li= link_to "People", people_path, :class => 'people'
         %li= link_to "Companies", companies_path, :class => 'companies'
@@ -50,7 +50,11 @@
         %li= link_to "Resources", resources_path, :class => 'resources'
         /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
+
     #content
+      - if current_user.blank?
+        #global_sign_in_form
+          = render :partial => 'authentications/login_form'
       - flash.each do |message_type, message|
         %div{:class => [message_type, 'flash_message']}
           =message
