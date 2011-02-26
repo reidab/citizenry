@@ -9,10 +9,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql'
 gem 'formtastic', '~>1.1.0'
 
-gem "twitter-auth", :require => 'twitter_auth/engine',
-                    :git => "git://github.com/benders/twitter-auth.git",
-                    :branch => "rails_3"
-
 gem 'devise', "~> 1.1.5"
 gem 'omniauth', "~> 0.1.6"
 
