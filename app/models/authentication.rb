@@ -16,45 +16,10 @@ class Authentication < ActiveRecord::Base
                             [OmniAuth::Utils.camelize(provider), provider]
                           }
 
-  def oauth_token
-    consumer = OAUTH_CONSUMERS[provider]
-
-    if consumer.is_a?(OAuth::Consumer)
-      OAuth::AccessToken.new(consumer, access_token, access_token_secret)
-    elsif consumer.is_a?(OAuth2::Client)
-      OAuth2::AccessToken.new(consumer, access_token)
-    else
-      nil
-    end
+  def api_client
+    APIClient.for(self)
   end
-  memoize :oauth_token
-
-  def client
-    case self.provider.to_sym
-    when :twitter
-      Twitter.client(:consumer_key => SETTINGS['auth_credentials']['twitter']['key'],
-                     :consumer_secret => SETTINGS['auth_credentials']['twitter']['secret'],
-                     :oauth_token => self.access_token,
-                     :oauth_token_secret => self.access_token_secret)
-    when :facebook
-      Mogli::Client.new(self.access_token)
-    when :linked_in
-      li_client = LinkedIn::Client.new( SETTINGS['auth_credentials']['linked_in']['key'],
-                                        SETTINGS['auth_credentials']['linked_in']['secret'] )
-      li_client.authorize_from_access(self.access_token, self.access_token_secret)
-
-      li_client
-    when :foursquare
-      fs_auth = Foursquare::OAuth.new(SETTINGS['auth_credentials']['foursquare']['key'],
-                                        SETTINGS['auth_credentials']['foursquare']['secret'] )
-      fs_auth.authorize_from_access(self.access_token, self.access_token_secret)
-
-      Foursquare::Base.new(fs_auth)
-    else
-      self.oauth_token
-    end
-  end
-  memoize :client
+  memoize :api_client
 
   #--[ Updating information at auth-time ]-------------------------------------
 
