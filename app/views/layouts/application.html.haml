@@ -38,10 +38,10 @@
           %img.avatar{:src => current_user.avatar_url, :align => 'left'}
           .name
             = link_to current_user.name, user_path(current_user)
-          = link_to 'sign out', logout_path
+          = link_to 'sign out', sign_out_path
         - else
           #global_sign_in
-            = link_to "Sign In", login_path, :id => 'sign_in_link'
+            = link_to "Sign In", sign_in_path, :id => 'sign_in_link'
       %ul{:id=>'main_nav'}
         %li= link_to "People", people_path, :class => 'people'
         %li= link_to "Companies", companies_path, :class => 'companies'

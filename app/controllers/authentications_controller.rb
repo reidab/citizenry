@@ -5,10 +5,6 @@ class AuthenticationsController < ApplicationController
     @authentications = current_user.authentications.all
   end
 
-  def login
-    @signin_data = SignInData.new
-  end
-
   def route_login
     @signin_data = SignInData.new(params[:sign_in_data])
     render(:action => :login) and return unless @signin_data.valid?

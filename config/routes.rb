@@ -14,16 +14,16 @@ Citizenry::Application.routes.draw do
       get 'welcome'
     end
   end
+  resources :user_sessions, :only => [:new], :controller => 'users/sessions'
 
-  devise_for :users
-  devise_scope :user do
-    get "/logout" => "devise/sessions#destroy"
+  devise_for :users do
+    get "/sign_out" => "devise/sessions#destroy"
+    get "/sign_in" => "users/sessions#new"
   end
 
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/auto' => 'authentications#auto'
   match '/route_login' => 'authentications#route_login', :as => 'login_router'
-  match '/login' => 'authentications#login', :as => 'login'
 
 
   # The priority is based upon order of creation:
