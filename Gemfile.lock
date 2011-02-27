@@ -8,6 +8,13 @@ GIT
       oauth (~> 0.4.0)
 
 GIT
+  remote: https://github.com/reidab/mogli.git
+  revision: bf9cc73404b66c5812f07fd542af2f373b7a3e76
+  specs:
+    mogli (0.0.25)
+      httparty (>= 0.4.3)
+
+GIT
   remote: https://github.com/reidab/redfinger.git
   revision: 54ae948ca4cb8ac908b19779a02d27e58dbfbc11
   specs:
@@ -106,8 +113,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mocha (0.9.12)
-    mogli (0.0.25)
-      httparty (>= 0.4.3)
     multi_json (0.0.5)
     multi_xml (0.2.1)
     multipart-post (1.1.0)
@@ -244,7 +249,7 @@ DEPENDENCIES
   json (~> 1.4.6)
   linkedin (~> 0.1.7)!
   mocha
-  mogli (~> 0.0.25)
+  mogli (~> 0.0.25)!
   mysql
   net-dns (~> 0.6.1)
   nifty-generators
