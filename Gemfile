@@ -34,6 +34,8 @@ gem 'addressable', '~> 2.2.4'
 gem "paperclip", "~> 2.3"
 
 
+gem 'paper_trail', '~> 2'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
