@@ -8,6 +8,16 @@ module APIClient
 
       @client = ::Foursquare::Base.new(fs_auth)
     end
+
+    def search(query, options = {})
+      @client.findfriends_byname(:q => query, :l => (options[:limit] || DEFAULT_LIMIT)).map{|fs_user|
+        Person.new(:name => [fs_user.firstname, fs_user.lastname].join(' '),
+                   :avatar_url => fs_user.photo,
+                   :location => fs_user.homecity,
+                   :imported_from_provider => 'foursquare',
+                   :imported_from_id => fs_user.id)
+      }
+    end
   end
 end
 
