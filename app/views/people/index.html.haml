@@ -6,7 +6,7 @@
   - @people.each do |person|
     %li
       .avatar
-        %img{:src => person.avatar_url}
+        %img{:src => normalize_url(person.avatar_url)}
       %h3
         =link_to person.name, person_path(person)
       - if person.twitter.present?

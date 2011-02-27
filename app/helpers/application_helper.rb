@@ -12,4 +12,9 @@ module ApplicationHelper
     url = "https://twitter.com/#{screen_name}"
     link_to "@#{screen_name}", url
   end
+
+  # Return a URL for the given +string+.
+  def normalize_url(string)
+    return Addressable::URI.heuristic_parse(string).to_s
+  end
 end

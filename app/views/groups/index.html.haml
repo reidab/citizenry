@@ -7,7 +7,7 @@
     %li
       - if group.logo_url.present?
         .avatar
-          %img{:src => group.logo_url}
+          %img{:src => normalize_url(group.logo_url)}
       %h3
         =link_to group.name, group_path(group)
       - if group.twitter.present?

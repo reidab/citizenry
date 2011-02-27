@@ -1,6 +1,6 @@
 %h1= @company.name
 =twitter_link(@company.twitter)
-=link_to @company.url
+=link_to normalize_url(@company.url)
 %p.description
   = @company.description
 

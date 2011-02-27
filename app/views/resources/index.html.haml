@@ -7,7 +7,7 @@
   %ul{:class => 'resources'}
   - @resources[category].each do |resource|
     %li{:id => resource.id}
-      %a{:href => resource.url}
+      %a{:href => normalize_url(resource.url)}
         %strong.name= resource.name
       %span.description &mdash; #{resource.description}
       %a{:href => edit_resource_path(resource)} edit

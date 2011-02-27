@@ -21,7 +21,7 @@
         - existing_person = @existing_people.find{|p| p.twitter == person['screen_name']}
         %li{:class => existing_person ? 'existing' : ''}
           .avatar
-            %img{:src => person['profile_image_url']}
+            %img{:src => normalize_url(person['profile_image_url'])}
           %h3= person['name']
           %strong
             %a{:href => "https://twitter.com/#{person['screen_name']}"}= "@#{person['screen_name']}"
