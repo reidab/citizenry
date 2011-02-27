@@ -7,7 +7,7 @@
     %li
       - if company.logo_url.present?
         .avatar
-          %img{:src => company.logo_url}
+          %img{:src => normalize_url(company.logo_url)}
       %h3
         =link_to company.name, company_path(company)
       - if company.twitter.present?
