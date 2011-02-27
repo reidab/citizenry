@@ -104,6 +104,9 @@ GEM
     httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
+    jquery-rails (0.2.7)
+      rails (~> 3.0)
+      thor (~> 0.14.4)
     json (1.4.6)
     linecache (0.43)
     mail (2.2.15)
@@ -247,6 +250,7 @@ DEPENDENCIES
   foursquare (~> 0.3.4)
   haml (~> 3.0.18)
   httparty (~> 0.7.4)
+  jquery-rails (>= 0.2.6)
   json (~> 1.4.6)
   linkedin (~> 0.1.7)!
   mocha

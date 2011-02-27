@@ -28,6 +28,7 @@ gem "haml", "~> 3.0.18"
 gem "compass", "~> 0.10.5"
 gem "compass-960-plugin", "~> 0.9.13", :require => 'ninesixty'
 gem "json", "~> 1.4.6"
+gem 'jquery-rails', '>= 0.2.6'
 
 gem 'addressable', '~> 2.2.4'
 
