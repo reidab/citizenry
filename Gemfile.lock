@@ -235,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable (~> 2.2.4)
   annotate
   awesome_print
   compass (~> 0.10.5)
