@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  has_paper_trail
+
   require 'open-uri'
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }
 

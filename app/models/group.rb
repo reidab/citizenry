@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  has_paper_trail
+
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }
 
   has_and_belongs_to_many :projects

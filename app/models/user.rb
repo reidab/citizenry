@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_paper_trail :ignore => [:remember_token, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_ip, :last_sign_in_ip, :updated_at]
+
   has_one :person
   has_many :authentications
 
