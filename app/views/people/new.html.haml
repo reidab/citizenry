@@ -14,7 +14,7 @@
   - if @found_people.present?
     %ul{:id => 'people_search_results', :class => 'resource_list people'}
       - @found_people.each do |person|
-        %li{:class => [person.new_record? ? '' : 'existing', person.imported_from_provider]}
+        %li{:class => [person.new_record? ? person.imported_from_provider : 'existing']}
           - if person.avatar_url.present?
             .avatar
               %img{:src => person.avatar_url}
