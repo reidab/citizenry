@@ -5,8 +5,8 @@ module Localness
                       "troutdale", "tualatin", "west linn", "wilsonville",
                       "aloha"]
 
-  def localness(user)
-    location = user['location'].try(:downcase) || ''
+  def localness(person)
+    location = person.location.try(:downcase) || ''
     if %w(portland pdx stumptown).any?{|term| location.include?(term) }
       return 5
     elsif PORTLAND_SUBURBS.any?{|term| location.include?(term) }

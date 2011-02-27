@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
   has_many :employments
   has_many :companies, :through => :employments
 
-  validates_presence_of :first_name
+  validates_presence_of :name
 
   def self.from_user(user)
     first_name, last_name = user.name.split(/\s+/, 2)

@@ -7,10 +7,6 @@
   %p
     :erb
       We'll search Twitter.
-      <% if params[:q].present? %>
-        You have <%= pluralize(@rate_limit_status['remaining_hits'].to_i, 'API call') %> remaining;
-        limit resets in <%= distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status['reset_time'])) %>.
-      <% end %>
   = form_tag new_person_path, :method => :get do
     = text_field_tag(:q, params[:q])
     = submit_tag("Search")
@@ -18,20 +14,25 @@
   - if @found_people.present?
     %ul{:id => 'people_search_results', :class => 'resource_list people'}
       - @found_people.each do |person|
-        - existing_person = @existing_people.find{|p| p.twitter == person['screen_name']}
-        %li{:class => existing_person ? 'existing' : ''}
-          .avatar
-            %img{:src => normalize_url(person['profile_image_url'])}
-          %h3= person['name']
-          %strong
-            %a{:href => "https://twitter.com/#{person['screen_name']}"}= "@#{person['screen_name']}"
-            on Twitter
-          %p{:class=>'location'}= person['location']
-          %p{:class=>'bio'}= person['description']
-          - if existing_person
+        %li{:class => [person.new_record? ? '' : 'existing', person.imported_from_provider]}
+          - if person.avatar_url.present?
+            .avatar
+              %img{:src => person.avatar_url}
+          %h3= person.name
+          %p{:class=>'location'}= person.location
+          %p{:class=>'bio'}= person.bio
+          - if !person.new_record?
             .existing_user_label
-              ePDX already knows #{person['name']}!
+              ePDX already knows #{person.name}!
           - else
-            =form_tag(people_path, :method => :post) do
-              =hidden_field_tag :from_twitter, person['screen_name']
-              =submit_tag "Add #{person['name']} to directory"
+            = form_for person, :html => { :id => "#{person.imported_from_provider}_#{person.imported_from_id}_form"} do |f|
+              - [ :name,
+                  :bio,
+                  :location,
+                  :avatar_url,
+                  :imported_from_provider,
+                  :imported_from_id,
+                  :url].each do |attribute|
+                = f.hidden_field attribute,
+                  :id => "#{person.imported_from_provider}_#{person.imported_from_id}_#{attribute}"
+              =submit_tag "Add #{person.name} to directory"

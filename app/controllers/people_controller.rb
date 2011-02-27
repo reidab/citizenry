@@ -29,14 +29,19 @@ class PeopleController < ApplicationController
     @person = Person.new
 
     if params[:q].present?
-      @found_people = current_user.twitter.get("/users/search?q=#{CGI::escape params[:q]}&per_page=20")
+      query = params[:q]
+
+      @found_people = []
+      current_user.authentications.each do |auth|
+        if auth.api_client
+          @found_people += auth.api_client.search(query)
+        end
+      end
+
       @found_people.sort! {|a,b| localness(b) <=> localness(a)}
+      @found_people = Person.all(:conditions => ['name LIKE ?', "%#{query}%"]) + @found_people
 
-      @existing_people =  Person.all(:conditions => {
-                            :twitter => @found_people.map{|p| p['screen_name']}
-                          })
-
-      @rate_limit_status = current_user.twitter.get('/account/rate_limit_status')
+      # @rate_limit_status = current_user.twitter.get('/account/rate_limit_status')
     end
 
     respond_to do |format|
@@ -53,12 +58,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.xml
   def create
-    if params[:from_twitter].present?
-      @person = Person.from_twitter(params[:from_twitter], current_user.twitter)
-    else
-      @person = Person.new(params[:person])
-#      @person.user = current_user unless current_user.try(:person).present?
-    end
+    @person = Person.new(params[:person])
 
     respond_to do |format|
       if @person.save
