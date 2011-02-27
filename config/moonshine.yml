@@ -56,10 +56,10 @@
 # defaults, but this allows you to add to them. Please file an issue at
 # http://github.com/railsmachine/moonshine/issues if there are additional gem
 # dependencies Moonshine should know about.
-#:apt_gems:
-#  :awesomegem:
-#    - awesome
-#    - libawesome-dev
+:apt_gems:
+  :nokogiri:
+    - libxml2
+    - libxml2-dev
 
 # Passenger-specific options. Refer to the following templates for details
 # about what values are used:
