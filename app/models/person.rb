@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  has_attached_file :photo, :styles => { :medium => '250x250', :thumb => '48x48' }
+
   belongs_to :user
 
   has_and_belongs_to_many :projects

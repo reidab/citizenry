@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227002639) do
+ActiveRecord::Schema.define(:version => 20110227043025) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(:version => 20110227002639) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_url"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "companies_projects", :id => false, :force => true do |t|
@@ -67,6 +71,10 @@ ActiveRecord::Schema.define(:version => 20110227002639) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_url"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "groups_projects", :id => false, :force => true do |t|
@@ -89,6 +97,10 @@ ActiveRecord::Schema.define(:version => 20110227002639) do
     t.string   "imported_from_provider"
     t.string   "imported_from_id"
     t.string   "location"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
@@ -105,6 +117,10 @@ ActiveRecord::Schema.define(:version => 20110227002639) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "resources", :force => true do |t|

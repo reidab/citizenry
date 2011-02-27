@@ -31,6 +31,8 @@ gem "json", "~> 1.4.6"
 gem 'jquery-rails', '>= 0.2.6'
 
 gem 'addressable', '~> 2.2.4'
+gem "paperclip", "~> 2.3"
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

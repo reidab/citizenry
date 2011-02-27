@@ -157,6 +157,9 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -259,6 +262,7 @@ DEPENDENCIES
   net-dns (~> 0.6.1)
   nifty-generators
   omniauth (~> 0.1.6)
+  paperclip (~> 2.3)
   rails (= 3.0.3)
   redfinger (~> 0.1.0)!
   rspec-rails (>= 2.0.0.beta.22)
