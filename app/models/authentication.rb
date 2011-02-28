@@ -9,6 +9,8 @@ class Authentication < ActiveRecord::Base
 
   validates_presence_of :user
 
+  scope :via, lambda{|provider| where(:provider => provider)}
+
   SETTINGS['providers'].each do |provider|
     scope "via_#{provider.to_sym}", where("provider = ?", provider)
   end

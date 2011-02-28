@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   def default_authentication
     self.authentications.first
   end
+
+  def has_auth_from?(provider)
+    self.authentications.via(provider).present?
+  end
 end
 
 
