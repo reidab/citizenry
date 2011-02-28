@@ -1,5 +1,7 @@
 # Provides a common interface for interacting with various oauthed services
 module APIClient
+  class APIAuthenticationError < StandardError; end
+
   def self.for(auth, options={})
     return ("APIClient::" + OmniAuth::Utils.camelize(auth.provider)).constantize.new(auth, options)
   rescue NameError

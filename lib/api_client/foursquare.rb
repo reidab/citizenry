@@ -11,12 +11,27 @@ module APIClient
 
     def search(query, options = {})
       @client.findfriends_byname(:q => query, :l => (options[:limit] || DEFAULT_LIMIT)).map{|fs_user|
-        Person.new(:name => [fs_user.firstname, fs_user.lastname].join(' '),
-                   :photo_import_url => fs_user.photo,
-                   :location => fs_user.homecity,
-                   :imported_from_provider => 'foursquare',
-                   :imported_from_id => fs_user.id)
+        self.person_from(fs_user)
       }
+    rescue ::Foursquare::Unauthorized => e
+      raise APIAuthenticationError, e.inspect
+    end
+
+    def get(id)
+      fs_user = @client.user(:uid => id)
+      self.person_from(fs_user) if fs_user.present?
+    rescue ::Foursquare::Unauthorized => e
+      raise APIAuthenticationError, e.inspect
+    end
+
+    def person_from(fs_user)
+      fs_user = Hashie::Mash.new(fs_user) if fs_user.class == Hash
+
+      Person.new( :name                   => [fs_user.firstname, fs_user.lastname].join(' '),
+                  :photo_import_url       => fs_user.photo,
+                  :location               => fs_user.homecity,
+                  :imported_from_provider => 'foursquare',
+                  :imported_from_id       => fs_user.id )
     end
   end
 end

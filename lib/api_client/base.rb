@@ -7,8 +7,12 @@ module APIClient
       @auth = auth
     end
 
-    def search(query)
+    def search(query, options = {})
       []
+    end
+
+    def get(id)
+      nil
     end
   end
 end
