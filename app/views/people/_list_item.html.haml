@@ -1,3 +1,4 @@
+- context ||= :general
 %li
   .avatar
     =image_tag list_item.photo.url(:thumb)
@@ -8,3 +9,7 @@
       %a{:href => "https://twitter.com/#{list_item.twitter}"}= "@#{list_item.twitter}"
       on Twitter
   %p{:class=>'bio'}= list_item.bio
+  - if context == :claim
+    %ul{:class=>'actions'}
+      %li
+        = link_to "That's me!", claim_person_path(list_item)

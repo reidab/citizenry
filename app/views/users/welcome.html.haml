@@ -1,9 +1,6 @@
-%h1= "Welcome #{current_user.name}!"
-%p
-  Hi there,
-  = current_user.name
-  We haven't seen you before, would you like to add yourself to the directory?
-=form_tag(people_path, :method => :post) do
-  =hidden_field_tag :from_twitter, current_user.login
-  =submit_tag "Of course!"
-%a{:href => root_path} Not now, let me browse.
+%h1= "Hi #{@name.split(' ').first}!"
+%h2 Add yourself to ePDX
+= render :partial => 'people/form'
+- if @possible_duplicates.present?
+  %strong What ho! It looks like someone might have already added you to ePDX? Are you any of these fine people?
+  = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}

@@ -52,8 +52,7 @@ class AuthenticationsController < ApplicationController
       auth.update_from_omniauth(omniauth)
       auth.save
       flash[:notice] = "Signed in successfully."
-      sign_in(auth.user)
-      redirect_to root_path
+      sign_in_and_redirect(auth.user)
     elsif current_user
       # Logged in user => give them a new authentication
       Authentication.create_from_omniauth!(omniauth, :user => current_user)
@@ -75,7 +74,7 @@ class AuthenticationsController < ApplicationController
 
       if auth.present?
         sign_in(auth.user)
-        redirect_to root_path
+        redirect_to stored_location_for(:user) || welcome_users_path
       else
         redirect_to login_path
       end
