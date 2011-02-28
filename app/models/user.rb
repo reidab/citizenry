@@ -21,6 +21,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -36,5 +37,6 @@ end
 #  created_at          :datetime
 #  updated_at          :datetime
 #  admin               :boolean(1)      default(FALSE)
+#  email               :string(255)
 #
 

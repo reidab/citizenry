@@ -5,18 +5,23 @@ describe Company do
 end
 
 
+
 # == Schema Information
 #
 # Table name: companies
 #
-#  id          :integer(4)      not null, primary key
-#  name        :string(255)
-#  url         :string(255)
-#  twitter     :string(255)
-#  address     :text
-#  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
-#  logo_url    :string(255)
+#  id                :integer(4)      not null, primary key
+#  name              :string(255)
+#  url               :string(255)
+#  twitter           :string(255)
+#  address           :text
+#  description       :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#  logo_url          :string(255)
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
+#  logo_file_size    :integer(4)
+#  logo_updated_at   :datetime
 #
 
