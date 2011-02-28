@@ -15,10 +15,14 @@
     %ul{:id => 'people_search_results', :class => 'resource_list people'}
       - @found_people.each do |person|
         %li{:class => [person.new_record? ? person.imported_from_provider : 'existing']}
-          - if person.avatar_url.present?
+          - if photo_url = person.photo_import_url || person.photo.url
             .avatar
-              %img{:src => person.avatar_url}
+              %img{:src => photo_url}
           %h3= person.name
+          - if person.imported_from_provider == 'twitter'
+            %strong
+              %a{:href => "https://twitter.com/#{person.imported_from_id}"}= "@#{person.imported_from_id}"
+              on Twitter
           %p{:class=>'location'}= person.location
           %p{:class=>'bio'}= person.bio
           - if !person.new_record?
@@ -29,7 +33,7 @@
               - [ :name,
                   :bio,
                   :location,
-                  :avatar_url,
+                  :photo_import_url,
                   :imported_from_provider,
                   :imported_from_id,
                   :url].each do |attribute|

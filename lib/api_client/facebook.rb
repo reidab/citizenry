@@ -11,7 +11,7 @@ module APIClient
 
         Person.new(:name => fb_user.name,
                    :bio => fb_user.bio,
-                   :avatar_url => fb_user.image_url,
+                   :photo_import_url => fb_user.large_image_url,
                    :url => fb_user.website,
                    :location => fb_user.location.try(:name),
                    :imported_from_provider => 'facebook',

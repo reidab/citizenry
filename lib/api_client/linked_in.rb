@@ -10,10 +10,11 @@ module APIClient
 
     def search(query, options = {})
       @client.search(:keywords => query, :count => (options[:limit] || DEFAULT_LIMIT)).profiles.map{|li_user|
+        avatar_url = @client.profile(:id => li_user.id, :fields => ['picture_url']).picture_url
         Person.new(:name => [li_user.first_name,
                              li_user.last_name].reject{|n| n.blank? }.join(' '),
                    :bio => li_user.headline,
-                   :avatar_url => li_user.picture_url,
+                   :photo_import_url => avatar_url,
                    :url => li_user.public_profile_url,
                    :location => li_user.location.try(:name),
                    :imported_from_provider => 'linked_in',

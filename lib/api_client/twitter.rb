@@ -11,9 +11,11 @@ module APIClient
 
     def search(query, options = {})
       @client.user_search(query, :per_page => (options[:limit] || DEFAULT_LIMIT)).map{|twitter_user|
+        full_size_avatar = twitter_user.profile_image_url.gsub(/_normal(\.\w{3})$/, '\1')
+
         Person.new(:name => twitter_user.name,
                    :bio => twitter_user.description,
-                   :avatar_url => twitter_user.profile_image_url,
+                   :photo_import_url => full_size_avatar,
                    :url => twitter_user.url,
                    :location => twitter_user.location,
                    :imported_from_provider => 'twitter',
