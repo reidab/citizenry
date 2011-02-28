@@ -36,6 +36,9 @@ gem "paperclip", "~> 2.3"
 
 gem 'paper_trail', '~> 2'
 
+gem 'paper_trail_manager', :git => 'https://github.com/igal/paper_trail_manager.git'
+# gem 'paper_trail_manager', :path => '../paper_trail_manager'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

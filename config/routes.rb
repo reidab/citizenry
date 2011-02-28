@@ -30,6 +30,7 @@ Citizenry::Application.routes.draw do
   match '/auth/auto' => 'authentications#auto'
   match '/route_login' => 'authentications#route_login', :as => 'login_router'
 
+  resources :changes, :controller => 'paper_trail_manager/changes'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
