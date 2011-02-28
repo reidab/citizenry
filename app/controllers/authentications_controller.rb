@@ -49,6 +49,8 @@ class AuthenticationsController < ApplicationController
 
     if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
       # Existing user, existing authentication, login!
+      auth.update_from_omniauth(omniauth)
+      auth.save
       flash[:notice] = "Signed in successfully."
       sign_in(auth.user)
       redirect_to root_path
