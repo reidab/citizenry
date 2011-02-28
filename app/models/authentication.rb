@@ -23,6 +23,10 @@ class Authentication < ActiveRecord::Base
   end
   memoize :api_client
 
+  def to_person
+    api_client.get(self.uid) if self.uid.present?
+  end
+
   #--[ Updating information at auth-time ]-------------------------------------
 
   def update_from_omniauth(omniauth)
