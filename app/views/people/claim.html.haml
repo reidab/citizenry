@@ -1,0 +1,5 @@
+%h1= "Claiming #{@person.name}"
+%p
+  = "It looks like this person was imported from #{provider_name(@person.imported_from_provider)}"
+  = "but you aren't logged in using your #{provider_name(@person.imported_from_provider)} account."
+=link_to "Sign in to #{provider_name(@person.imported_from_provider)} to continue", "/auth/#{@person.imported_from_provider}"

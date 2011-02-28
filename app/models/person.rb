@@ -26,6 +26,9 @@ class Person < ActiveRecord::Base
 
   before_create :attach_to_matching_user
 
+  scope :claimed, where('user_id IS NOT null')
+  scope :unclaimed, where('user_id IS null')
+
   private
 
   def matching_user

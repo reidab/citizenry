@@ -6,7 +6,11 @@ Citizenry::Application.routes.draw do
     resources :employees, :controller => :employments, :only => [:new, :create]
   end
   resources :groups
-  resources :people
+  resources :people do
+    member do
+      get 'claim'
+    end
+  end
   resources :projects
   resources :resources
   resources :users, :only => [:show] do

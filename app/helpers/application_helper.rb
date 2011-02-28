@@ -17,4 +17,8 @@ module ApplicationHelper
   def normalize_url(string)
     return Addressable::URI.heuristic_parse(string).to_s
   end
+
+  def provider_name(provider)
+    OmniAuth::Utils.camelize(provider)
+  end
 end
