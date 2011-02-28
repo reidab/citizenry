@@ -24,6 +24,20 @@ class Person < ActiveRecord::Base
 
   validates_presence_of :name
 
+  before_create :attach_to_matching_user
+
+  private
+
+  def matching_user
+    @matching_user ||= Authentication.where( :provider => self.imported_from_provider,
+                                             :uid => self.imported_from_id ).first.try(:user)
+  end
+
+  def attach_to_matching_user
+    if self.user.nil? && matching_user.present?
+      self.user = matching_user
+    end
+  end
 end
 
 

@@ -4,7 +4,9 @@ class Authentication < ActiveRecord::Base
   belongs_to :user
   serialize :info
 
-  before_validation_on_create :initialize_user_if_absent
+  before_validation(:initialize_user_if_absent, :on => :create)
+  after_create :attach_matching_person_to_user
+
   validates_presence_of :user
 
   SETTINGS['providers'].each do |provider|
@@ -70,6 +72,19 @@ class Authentication < ActiveRecord::Base
 
   def initialize_user_if_absent
     self.build_user unless self.user.present?
+  end
+
+  private
+
+  def matching_person
+    @matching_person ||= Person.where(:imported_from_provider => self.provider,
+                                      :imported_from_id => self.uid).first
+  end
+
+  def attach_matching_person_to_user
+    if self.user && self.user.person.nil? && matching_person.present?
+      matching_person.update_attribute(:user_id, self.user_id)
+    end
   end
 end
 
