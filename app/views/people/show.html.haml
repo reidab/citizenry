@@ -1,10 +1,10 @@
-%p#notice= notice
-%p
-  %b Name:
-  = @person.name
-%p
-  %b Email:
-  = @person.email
+%h1= @person.name
+- if @person.user.blank?
+  #claim_user
+    Is this you?
+    - if current_user.person.blank?
+      = link_to "Claim this person", claim_person_path(@person)
+    -# TODO: Report duplicate if current_user.person.present?
 %p
   %b Twitter:
   = @person.twitter
@@ -12,5 +12,3 @@
   %b Url:
   = normalize_url(@person.url)
 = link_to 'Edit', edit_person_path(@person)
-|
-\#{link_to 'Back', people_path}
