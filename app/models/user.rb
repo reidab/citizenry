@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable
 
   def avatar_url
-    self.person.try(:avatar_url) || self.authentications.first.info[:image]
+    self.person.try(:photo).try(:url, :thumb) || self.authentications.first.info[:image]
   end
 
   def name
