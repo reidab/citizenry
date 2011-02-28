@@ -1,0 +1,10 @@
+%li
+  .avatar
+    =image_tag list_item.photo.url(:thumb)
+  %h3
+    =link_to list_item.name, person_path(list_item)
+  - if list_item.twitter.present?
+    %span{:class => 'twitter_link'}
+      %a{:href => "https://twitter.com/#{list_item.twitter}"}= "@#{list_item.twitter}"
+      on Twitter
+  %p{:class=>'bio'}= list_item.bio

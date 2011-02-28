@@ -2,16 +2,4 @@
   %h1 People
   = link_to "+ Add Someone", new_person_path, :class => 'new'
 
-%ul{:class => 'resource_list people'}
-  - @people.each do |person|
-    %li
-      .avatar
-        %img{:src => normalize_url(person.avatar_url)}
-      %h3
-        =link_to person.name, person_path(person)
-      - if person.twitter.present?
-        %span{:class => 'twitter_link'}
-          %a{:href => "https://twitter.com/#{person.twitter}"}= "@#{person.twitter}"
-          on Twitter
-      -#%p{:class=>'location'}= person['location']
-      %p{:class=>'bio'}= person.bio
+= render :partial => 'list', :object => @people
