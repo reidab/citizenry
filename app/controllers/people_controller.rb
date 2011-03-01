@@ -60,6 +60,11 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
+    if params[:form_context] == 'add_self'
+      @person.user = current_user
+      @person.imported_from_provider = current_user.authentications.first.provider
+      @person.imported_from_id = current_user.authentications.first.uid
+    end
 
     respond_to do |format|
       if @person.save

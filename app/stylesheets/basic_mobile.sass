@@ -284,6 +284,8 @@ body.events #content
         color: #444
       p.bio, p.description
         color: #777
+      a.claim
+        @extend .claim_link
   #people_search_results
     li
       background: darken($background_color, 5)
@@ -326,6 +328,20 @@ body.events #content
       margin-bottom: .2em
     img
       max-width: 100%
+  #welcome
+    h2
+      +behead
+      color: #fff
+      padding: .5em
+      margin: 0 -10px
+    #possible_duplicates, #add_yourself
+      margin: 1em 0 2em
+    #possible_duplicates
+      h2
+        background: $companies_color
+    #add_yourself
+      h2
+        background: $people_color
 
 
 .changes_feed a

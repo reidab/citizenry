@@ -1,6 +1,17 @@
-%h1= "Hi #{@name.split(' ').first}!"
-%h2 Add yourself to ePDX
-= render :partial => 'people/form'
-- if @possible_duplicates.present?
-  %strong What ho! It looks like someone might have already added you to ePDX? Are you any of these fine people?
-  = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}
+#welcome
+  %h1= "Hi #{@name.split(' ').first}!"
+  - if @possible_duplicates.present?
+    #possible_duplicates
+      %h2 Might this be you?
+      %p.hint
+        It looks like someone may have already added you to ePDX.
+        = @possible_duplicates.size == 1 ? 'Is this you?' : 'Are you any of these people?'
+      = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}
+  #add_yourself
+    - if @person.new_record?
+      %h2 Add yourself to ePDX
+      %p= "We imported as much info as we could from your #{provider_name(current_user.authentications.first.provider)} account. Look it over and hit the big button to get started."
+    - else
+      %h2 Review your details
+      %p= "You were already in the directory! Please review your details and let us know they're right."
+    = render :partial => 'people/form', :locals => {:context => @person.new_record? ? :add_self : :review}

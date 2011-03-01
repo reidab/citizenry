@@ -8,7 +8,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def home
+    redirect_to person_path(current_user.person) # temporary
+  end
+
   def welcome
+    redirect_to :action => :home and return if current_user.person.try(:reviewed)
+
     @name = current_user.name || params[:name]
     @person = current_user.person || current_user.authentications.first.to_person || Person.new
 

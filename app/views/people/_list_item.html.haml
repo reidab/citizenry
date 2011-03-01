@@ -10,6 +10,5 @@
       on Twitter
   %p{:class=>'bio'}= list_item.bio
   - if context == :claim
-    %ul{:class=>'actions'}
-      %li
-        = link_to "That's me!", claim_person_path(list_item)
+    .actions
+      = link_to "That's me!", claim_person_path(list_item), :class => 'claim'
