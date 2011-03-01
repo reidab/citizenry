@@ -18,9 +18,12 @@ module APIClient
     end
 
     def person_from(fb_user)
+      # Facebook's large image URL redirects from https to http, which open-uri forbids.
+      photo_url = fb_user.large_image_url.gsub!("https://graph.facebook.com/", "http://graph.facebook.com/")
+
       Person.new( :name                   => fb_user.name,
                   :bio                    => fb_user.bio,
-                  :photo_import_url       => fb_user.large_image_url,
+                  :photo_import_url       => photo_url,
                   :url                    => fb_user.website,
                   :location               => fb_user.location.try(:name),
                   :imported_from_provider => 'facebook',
