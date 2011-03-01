@@ -1,6 +1,12 @@
 .single_record.person{:class => @person.photo.file? ? 'with_image' : 'without_image'}
   = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person) if @person.photo.file?
   %h1= @person.name
+  - if current_user && @person.user.blank? && current_person.nil?
+    #claim_user
+      %p= "Are you #{@person.name}?"
+      = link_to "Claim this person", claim_person_path(@person), :class => 'claim'
+      -# TODO: Report duplicate if current_user.person.present?
+
   - if @person.location.present?
     .location= @person.location
   - if @person.bio.present?
@@ -8,14 +14,6 @@
   .links
     - if @person.url.present?
       = link_to( normalize_url(@person.url), normalize_url(@person.url), :class => 'url') if @person.url.present?
-
-  - if current_user
-    - if @person.user.blank?
-      - if current_person.nil?
-        #claim_user
-          = "Are you #{@person.name}?"
-          = link_to "Claim this person", claim_person_path(@person)
-          -# TODO: Report duplicate if current_user.person.present?
 
   .record_actions
     - if current_user && (current_user.admin? || current_user.person == @person)

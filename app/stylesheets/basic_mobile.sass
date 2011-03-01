@@ -323,6 +323,14 @@ body.events #content
       @extend .edit_link
     .delete
       @extend .delete_link
+    #claim_user
+      display: inline-block
+      background: lighten($events_color, 20)
+      padding: .5em 1em 1em
+      p
+        font-weight: bold
+      .claim
+        @extend .claim_link
   .single_photo
     h1
       margin-bottom: .2em
