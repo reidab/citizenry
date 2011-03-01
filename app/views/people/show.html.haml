@@ -1,5 +1,5 @@
 .single_record.person{:class => @person.photo.file? ? 'with_image' : 'without_image'}
-  = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person)
+  = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person) if @person.photo.file?
   %h1= @person.name
   - if @person.location.present?
     .location= @person.location
