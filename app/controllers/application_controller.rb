@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
       redirect_back_or_default(root_path)
     end
   end
+
+  def current_person
+    current_user && current_user.person
+  end
+  helper_method :current_person
 end
