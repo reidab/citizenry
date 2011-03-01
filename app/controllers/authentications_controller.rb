@@ -51,18 +51,17 @@ class AuthenticationsController < ApplicationController
       # Existing user, existing authentication, login!
       auth.update_from_omniauth(omniauth)
       auth.save
-      flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(auth.user)
     elsif current_user
       # Logged in user => give them a new authentication
       Authentication.create_from_omniauth!(omniauth, :user => current_user)
-      flash[:notice] = "Authentication successful."
+      flash[:success] = "Your #{OmniAuth::Utils.camelize(omniauth['provider'])} account has been added."
       redirect_to authentications_url
     else
       # Entirely new user
 
       if session[:login_email].blank?
-        flash[:error] = "Ack! It looks like you might have cookies disabled. Please re-enable cookies and try again."
+        flash[:error] = "It looks like you might have cookies disabled. Please re-enable cookies and try again."
       elsif User.find_by_email(session[:login_email])
         flash[:error] = "A user already exists for #{session[:login_email]}, but you're using a different login method than we've seen for them. Please try again with with the 'choose automatically' option selected."
       else
@@ -84,7 +83,7 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = Authentication.find(params[:id])
     @authentication.destroy
-    flash[:notice] = "Successfully destroyed authentication."
+    flash[:success] = "Your #{OmniAuth::Utils.camelize(@authentication.provider)} account has been removed."
     redirect_to authentications_url
   end
 end

@@ -4,7 +4,7 @@
     %th Provider
     %th Name
     %th Account
-    %th Info
+    %th Actions
   - for authentication in @authentications
     %tr
       %td
@@ -13,4 +13,6 @@
       %td=provider_icon(authentication.provider)
       %td= authentication.info[:name]
       %td= authentication.info[:nickname]
-      %td= link_to "Destroy", authentications_path, :confirm => 'Are you sure?', :method => :delete
+      %td
+        - if @authentications.size > 1
+          = link_to "Remove", authentication_path(authentication), :confirm => 'Are you sure?', :method => :delete
