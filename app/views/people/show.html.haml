@@ -1,14 +1,14 @@
-%h1= @person.name
-- if @person.user.blank?
-  #claim_user
-    Is this you?
-    - if current_user.person.blank?
-      = link_to "Claim this person", claim_person_path(@person)
-    -# TODO: Report duplicate if current_user.person.present?
-%p
-  %b Twitter:
-  = @person.twitter
-%p
-  %b Url:
-  = normalize_url(@person.url)
-= link_to 'Edit', edit_person_path(@person)
+.single_person
+  = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person)
+  %h1= @person.name
+  = link_to normalize_url(@person.url)
+
+  - if current_user
+    - if @person.user.blank?
+      #claim_user
+        Is this you?
+        - if current_person.nil?
+          = link_to "Claim this person", claim_person_path(@person)
+        -# TODO: Report duplicate if current_user.person.present?
+  - if current_user && (current_user.admin? || current_user.person == @person)
+    = link_to 'Edit', edit_person_path(@person)

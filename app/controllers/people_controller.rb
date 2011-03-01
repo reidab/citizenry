@@ -103,6 +103,9 @@ class PeopleController < ApplicationController
     end
   end
 
+  def photo
+  end
+
   private
 
   def assign_person

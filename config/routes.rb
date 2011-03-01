@@ -9,6 +9,7 @@ Citizenry::Application.routes.draw do
   resources :people do
     member do
       get 'claim'
+      get 'photo'
     end
   end
   resources :projects
