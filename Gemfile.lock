@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pengwynn/linkedin.git
-  revision: edff05c1dd70f98495d53ec1fe78968749e9110b
+  revision: 91e0a17dfa112a32ef5a0b66cab03371d7a4bb83
   specs:
     linkedin (0.1.7)
       crack (~> 0.1.4)
@@ -118,7 +118,7 @@ GEM
     factory_girl_rails (1.1.beta1)
       factory_girl (~> 2.0.0.beta)
       rails (>= 3.0.0)
-    faraday (0.5.6)
+    faraday (0.5.7)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)

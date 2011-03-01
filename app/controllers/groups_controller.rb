@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /groups
   # GET /groups.xml
   def index
