@@ -1,12 +1,12 @@
-%h1= @company.name
-=twitter_link(@company.twitter)
-=link_to normalize_url(@company.url)
-%p.description
-  = @company.description
+.single_record.company{:class => @company.logo.file? ? 'with_image' : 'without_image'}
+  = image_tag(@company.logo.url(:medium), :class => 'logo') if @company.logo.file?
+  %h1= @company.name
+  - if @company.address.present?
+    .location= @company.address
+  - if @company.description.present?
+    .description= simple_format @company.description
+  .links
+    - if @company.url.present?
+      =link_to normalize_url(@company.url), normalize_url(@company.url), :class => 'url'
 
-:erb
-  <%= link_to 'Edit', edit_company_path(@company) %> |
-  <%= link_to 'Back', companies_path %>
-
-#sidebar
-  
+  = link_to 'Edit', edit_company_path(@company), :class => 'edit'

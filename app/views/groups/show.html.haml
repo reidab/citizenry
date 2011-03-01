@@ -1,0 +1,15 @@
+.single_record.group{:class => @group.logo.file? ? 'with_image' : 'without_image'}
+  = image_tag(@group.logo.url(:medium), :class => 'logo') if @group.logo.file?
+  %h1= @group.name
+  - if @group.description.present?
+    .description= simple_format @group.description
+  - if @group.meeting_info.present?
+    %h2 Meeting Info
+    .description= simple_format @group.meeting_info
+  .links
+    - if @group.url.present?
+      =link_to normalize_url(@group.url), normalize_url(@group.url), :class => 'url'
+    - if @group.mailing_list.present?
+      =link_to "Mailing List", normalize_url(@group.mailing_list), :class => 'mailing_list'
+
+  = link_to 'Edit', edit_group_path(@group), :class => 'edit'

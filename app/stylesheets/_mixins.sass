@@ -68,3 +68,26 @@
   background: $resources_color
 .events-bg
   background: $events_color
+
+.blocky_link
+  display: inline-block
+  color: #fff
+  font-weight: bold
+  padding: .5em .75em
+  background-color: darken($link_color, 10)
+
+.blocky_icon_link
+  @extend .blocky_link
+  padding-left: 25px
+  background:
+    position: 6px center
+    repeat: no-repeat
+
+.external_link
+  @extend .blocky_icon_link
+  background-image: image_url('sansicons_16/arrow1_e.png')
+
+.edit_link
+  @extend .blocky_icon_link
+  background-color: #666
+  background-image: image_url('sansicons_16/edit.png')

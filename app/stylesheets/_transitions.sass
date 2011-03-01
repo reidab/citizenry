@@ -11,3 +11,8 @@
 #header h1
   a, img
     @extend .quick_ease
+
+#global_sign_in_form
+  +transition('height, opacity', 0.2s, ease-out)
+  &.open
+    height: 120px

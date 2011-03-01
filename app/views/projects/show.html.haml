@@ -1,0 +1,11 @@
+.single_record.project{:class => @project.logo.file? ? 'with_image' : 'without_image'}
+  = image_tag(@project.logo.url(:medium), :class => 'logo') if @project.logo.file?
+  %h1= @project.name
+  - if @project.description.present?
+    .description= simple_format @project.description
+  .links
+    - if @project.url.present?
+      =link_to normalize_url(@project.url), normalize_url(@project.url), :class => 'url'
+
+  = link_to 'Edit', edit_project_path(@project), :class => 'edit'
+

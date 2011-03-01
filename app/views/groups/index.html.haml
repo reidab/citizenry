@@ -5,9 +5,8 @@
 %ul{:class => 'resource_list groups'}
   - @groups.each do |group|
     %li
-      - if group.logo_url.present?
-        .avatar
-          %img{:src => normalize_url(group.logo_url)}
+      - if group.logo.file?
+        = link_to image_tag(group.logo.url(:thumb)), group_path(group), :class => 'avatar'
       %h3
         =link_to group.name, group_path(group)
       - if group.twitter.present?

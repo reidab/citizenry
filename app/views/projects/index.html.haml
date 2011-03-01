@@ -5,6 +5,8 @@
 %ul{:class => 'resource_list projects'}
   - @projects.each do |project|
     %li
+      - if project.logo.file?
+        = link_to image_tag(project.logo.url(:thumb)), project_path(project), :class => 'avatar'
       %h3
         =link_to project.name, project_path(project)
       - if project.twitter.present?
