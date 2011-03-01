@@ -1,3 +1,17 @@
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
-  = f.inputs :name, :email, :twitter, :url, :bio, :photo
+  = f.inputs do
+    = f.input :name
+    -# = f.input :email, :label => "Email address", :hint => "We'll keep this secret"
+    -# = f.input :twitter
+    = f.input :location, :hint => 'Neighborhood-level info preferred'
+    = f.input :url, :label => "Website"
+    = f.input :bio
+    = f.inputs :name => "Photo" do
+      - if photo_url = @person.photo_import_url || @person.photo.url(:medium)
+        %li
+          = image_tag photo_url, :size => '220x220'
+
+      = f.input :photo_import_url, :label => "Import a photo from the web…"
+      = f.input :photo, :label => "…or upload one from your computer."
+    -# = f.input :user_id
   = f.buttons

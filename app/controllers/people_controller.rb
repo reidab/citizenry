@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
   include Localness
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :assign_person, :except => [:index, :new, :create]
+  before_filter :pick_photo_input, :only => [:update, :create]
 
   # GET /people
   # GET /people.xml
@@ -110,5 +111,9 @@ class PeopleController < ApplicationController
 
   def assign_person
     @person = Person.find(params[:id])
+  end
+
+  def pick_photo_input
+    params.delete(:photo_import_label) if params[:photo].present?
   end
 end
