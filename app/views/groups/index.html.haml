@@ -1,6 +1,7 @@
-.section_header{:class => 'groups'}
-  %h1 Groups
-  = link_to "+ Add a Group", new_group_path, :class => 'new'
+- content_for(:section_header) do
+  .section_header{:class => 'groups'}
+    %h1 Groups
+    = link_to "+ Add a Group", new_group_path, :class => 'new'
 
 %ul{:class => 'resource_list groups'}
   - @groups.each do |group|

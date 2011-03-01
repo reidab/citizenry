@@ -56,9 +56,9 @@
       - if current_user.blank?
         #global_sign_in_form
           = render :partial => 'authentications/login_form'
-      - flash.each do |message_type, message|
-        %div{:class => [message_type, 'flash_message']}
-          =message
+
+      = yield(:section_header)
+      = render_flash
       = yield
 
     #footer

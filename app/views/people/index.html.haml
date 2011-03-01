@@ -1,5 +1,6 @@
-.section_header{:class => 'people'}
-  %h1 People
-  = link_to "+ Add Someone", new_person_path, :class => 'new'
+- content_for(:section_header) do
+  .section_header{:class => 'people'}
+    %h1 People
+    = link_to "+ Add Someone", new_person_path, :class => 'new'
 
 = render :partial => 'list', :object => @people

@@ -8,33 +8,22 @@ $urgent_color:  #DB8700 !default
   @extend mark
 
 div.message
-  padding: 0 1em 1em
-  &.with_label
-    padding-left: 7.5em
+  padding: 0
   margin: 1em 0
-  border: 1px solid
+  border: 3px solid
   position: relative
-  p + p
-    text-indent: 0
   a
     font-weight: bold
     text-decoration: underline
   .message_type
-    position: absolute
-    top: 0
-    left: 0
     display: block
-    height: 100%
-    width: 6em
-    padding-right: 0.8em
     color: white
-    text-transform: uppercase
-    line-height: 2.5em
-    text-align: right
+    padding: .5em
+    font-weight: bold
   .message_content
-    margin-top: 5px
+    margin: .5em
+    font-weight: bold
     p
-      top: 0
       margin-bottom: 5px
   &.notice
     border-color: $notice_color
@@ -55,7 +44,6 @@ div.message
     background: hsl(hue($warning_color), saturation($warning_color), 90)
     .message_type
       background: $warning_color
-      color: #222222
   &.error
     border-color: $error_color
     background: hsl(hue($error_color), saturation($error_color), 90)
