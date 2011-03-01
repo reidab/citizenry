@@ -76,7 +76,7 @@ class AuthenticationsController < ApplicationController
         sign_in(auth.user)
         redirect_to stored_location_for(:user) || welcome_users_path
       else
-        redirect_to login_path
+        redirect_to sign_in_path
       end
     end
   end
