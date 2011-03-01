@@ -20,6 +20,7 @@ common:
     linked_in:
       key:
       secret: seekrit!
+  google_analytics_id: <your id>
 development:
   auth_credentials:
     github:

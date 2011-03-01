@@ -27,6 +27,7 @@
                              'rails'
 
     = csrf_meta_tag
+    = render :partial => 'layouts/google_analytics'
   %body{:class => "#{controller_name} #{controller_name}_#{action_name}"}
     #header
       %h1
