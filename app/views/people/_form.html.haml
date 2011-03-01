@@ -7,7 +7,7 @@
     = f.input :url, :label => "Website"
     = f.input :bio
     = f.inputs :name => "Photo" do
-      - if photo_url = @person.photo_import_url || @person.photo.url(:medium)
+      - if photo_url = @person.photo_import_url || (@person.photo.file? && @person.photo.url(:medium))
         %li
           = image_tag photo_url, :size => '220'
 
