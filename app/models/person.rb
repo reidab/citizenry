@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   require 'open-uri'
-  has_attached_file :photo, :styles => { :medium => '220x220', :thumb => '48x48#' }
+  has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }
 
   attr_accessor :photo_import_url
   before_validation do
