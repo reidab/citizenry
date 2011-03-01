@@ -1,7 +1,8 @@
 class PeopleController < ApplicationController
   include Localness
-  before_filter :authenticate_user!, :except => [:index, :show, :photo]
   before_filter :assign_person, :except => [:index, :new, :create]
+  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
 
   # GET /people
@@ -108,6 +109,16 @@ class PeopleController < ApplicationController
   end
 
   private
+
+  def require_owner_or_admin!
+    authenticate_user! and return unless current_user
+
+    assign_person
+    unless current_user.admin? || current_user == @person.user
+      flash[:warning] = "You aren't allowed to edit this person."
+      redirect_to person_path(@person)
+    end
+  end
 
   def assign_person
     @person = Person.find(params[:id])
