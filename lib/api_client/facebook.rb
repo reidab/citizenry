@@ -25,9 +25,11 @@ module APIClient
                   :bio                    => fb_user.bio,
                   :photo_import_url       => photo_url,
                   :url                    => fb_user.website,
-                  :location               => fb_user.location.try(:name),
-                  :imported_from_provider => 'facebook',
-                  :imported_from_id       => fb_user.id)
+                  :location               => fb_user.location.try(:name) ) \
+                  .tap{|person|
+                    person.imported_from_provider = 'facebook'
+                    person.imported_from_id       = fb_user.id
+                  }
     end
   end
 end

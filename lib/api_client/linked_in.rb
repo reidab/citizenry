@@ -36,9 +36,11 @@ module APIClient
                   :bio                    => li_user.headline,
                   :photo_import_url       => picture_url_for(li_user),
                   :url                    => li_user.public_profile_url,
-                  :location               => li_user.location.try(:name),
-                  :imported_from_provider => 'linked_in',
-                  :imported_from_id       => li_user.id)
+                  :location               => li_user.location.try(:name) ) \
+                  .tap{|person|
+                    person.imported_from_provider = 'linked_in'
+                    person.imported_from_id       = li_user.id
+                  }
     end
   end
 end

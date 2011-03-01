@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  attr_protected :user_id, :imported_from_provider, :imported_from_id
   has_paper_trail
 
   require 'open-uri'

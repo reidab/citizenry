@@ -30,9 +30,11 @@ module APIClient
                   :bio                    => twitter_user.description,
                   :photo_import_url       => full_size_avatar,
                   :url                    => twitter_user.url,
-                  :location               => twitter_user.location,
-                  :imported_from_provider => 'twitter',
-                  :imported_from_id       => twitter_user.id)
+                  :location               => twitter_user.location ) \
+                  .tap{|person|
+                    person.imported_from_provider = 'twitter'
+                    person.imported_from_id       = twitter_user.id
+                  }
     end
   end
 end

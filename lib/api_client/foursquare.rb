@@ -29,9 +29,11 @@ module APIClient
 
       Person.new( :name                   => [fs_user.firstname, fs_user.lastname].join(' '),
                   :photo_import_url       => fs_user.photo,
-                  :location               => fs_user.homecity,
-                  :imported_from_provider => 'foursquare',
-                  :imported_from_id       => fs_user.id )
+                  :location               => fs_user.homecity ) \
+                  .tap{|person|
+                    person.imported_from_provider = 'foursquare'
+                    person.imported_from_id       = fs_user.id
+                  }
     end
   end
 end
