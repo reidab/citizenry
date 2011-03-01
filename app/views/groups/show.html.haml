@@ -7,9 +7,13 @@
     %h2 Meeting Info
     .description= simple_format @group.meeting_info
   .links
+    - if [@group.url, @group.mailing_list].any?{|link| link.present?}
+      %h2 Links
     - if @group.url.present?
       =link_to normalize_url(@group.url), normalize_url(@group.url), :class => 'url'
     - if @group.mailing_list.present?
       =link_to "Mailing List", normalize_url(@group.mailing_list), :class => 'mailing_list'
 
-  = link_to 'Edit', edit_group_path(@group), :class => 'edit'
+  .record_actions
+    = link_to 'Edit', edit_group_path(@group), :class => 'edit'
+    = link_to "Delete", group_path(@group), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'

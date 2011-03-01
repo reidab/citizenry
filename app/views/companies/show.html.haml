@@ -9,4 +9,6 @@
     - if @company.url.present?
       =link_to normalize_url(@company.url), normalize_url(@company.url), :class => 'url'
 
-  = link_to 'Edit', edit_company_path(@company), :class => 'edit'
+  .record_actions
+    = link_to 'Edit', edit_company_path(@company), :class => 'edit'
+    = link_to "Delete", company_path(@company), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'

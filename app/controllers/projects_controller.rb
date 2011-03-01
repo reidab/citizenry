@@ -76,6 +76,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
+    flash[:success] = "#{@project.name} is no more."
 
     respond_to do |format|
       format.html { redirect_to(projects_url) }

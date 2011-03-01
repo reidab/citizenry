@@ -71,6 +71,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource = Resource.find(params[:id])
     @resource.destroy
+    flash[:success] = "#{@resource.name} is no more."
 
     respond_to do |format|
       format.html { redirect_to(resources_url) }

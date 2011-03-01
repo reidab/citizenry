@@ -13,9 +13,11 @@
     - if @person.user.blank?
       - if current_person.nil?
         #claim_user
-          Is this you?
+          = "Are you #{@person.name}?"
           = link_to "Claim this person", claim_person_path(@person)
           -# TODO: Report duplicate if current_user.person.present?
 
-  - if current_user && (current_user.admin? || current_user.person == @person)
-    = link_to 'Edit', edit_person_path(@person), :class => 'edit'
+  .record_actions
+    - if current_user && (current_user.admin? || current_user.person == @person)
+      = link_to 'Edit', edit_person_path(@person), :class => 'edit'
+      = link_to "Delete", person_path(@person), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'

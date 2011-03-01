@@ -1,0 +1,6 @@
+%h1= "Editing #{@resource.name}"
+= render 'form'
+
+.record_actions
+  = link_to "Delete", resource_path(@resource), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+

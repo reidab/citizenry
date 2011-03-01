@@ -7,5 +7,6 @@
     - if @project.url.present?
       =link_to normalize_url(@project.url), normalize_url(@project.url), :class => 'url'
 
-  = link_to 'Edit', edit_project_path(@project), :class => 'edit'
-
+  .record_actions
+    = link_to 'Edit', edit_project_path(@project), :class => 'edit'
+    = link_to "Delete", project_path(@project), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'

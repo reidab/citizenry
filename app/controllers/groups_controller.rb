@@ -76,6 +76,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    flash[:success] = "#{@group.name} is no more."
 
     respond_to do |format|
       format.html { redirect_to(groups_url) }

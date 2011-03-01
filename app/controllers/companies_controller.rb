@@ -76,6 +76,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
+    flash[:success] = "#{@company.name} is no more."
 
     respond_to do |format|
       format.html { redirect_to(companies_url) }

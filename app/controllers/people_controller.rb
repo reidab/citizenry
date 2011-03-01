@@ -89,7 +89,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1.xml
   def destroy
     @person.destroy
-
+    flash[:success] = "#{@person.name} is no more."
     respond_to do |format|
       format.html { redirect_to(people_url) }
       format.xml  { head :ok }
