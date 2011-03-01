@@ -26,7 +26,21 @@ class Authentication < ActiveRecord::Base
   memoize :api_client
 
   def to_person
-    api_client.get(self.uid) if self.uid.present?
+    if self.api_client
+      if self.uid.present?
+        api_client.get(self.uid)
+      else
+        Person.new
+      end
+    else
+      Person.new(
+          :name => self.info[:name],
+          :location => self.info[:location],
+          :bio => self.info[:description],
+          :photo_import_url => self.info[:image],
+          :url => self.info[:urls].try(:values).try(:first)
+        )
+    end
   end
 
   #--[ Updating information at auth-time ]-------------------------------------
