@@ -1,6 +1,22 @@
 GIT
-  remote: https://github.com/igal/paper_trail_manager.git
-  revision: 3d680304b10fdb58f2d287a2d03568ffb84b3c37
+  remote: https://github.com/pengwynn/linkedin.git
+  revision: c5d59d7eac0cdab704bc83be7384b590e177e8c4
+  specs:
+    linkedin (0.1.7)
+      crack (~> 0.1.4)
+      nokogiri (~> 1.4.4)
+      oauth (~> 0.4.0)
+
+GIT
+  remote: https://github.com/reidab/mogli.git
+  revision: bf9cc73404b66c5812f07fd542af2f373b7a3e76
+  specs:
+    mogli (0.0.25)
+      httparty (>= 0.4.3)
+
+GIT
+  remote: https://github.com/reidab/paper_trail_manager.git
+  revision: be410067ad5353987df76f9e8e12b150a3d8d7ca
   specs:
     paper_trail_manager (0.0.0)
       capybara (>= 0.4.0)
@@ -15,22 +31,6 @@ GIT
       ruby-debug
       spork (~> 0.9.0.rc)
       sqlite3-ruby
-
-GIT
-  remote: https://github.com/pengwynn/linkedin.git
-  revision: 91e0a17dfa112a32ef5a0b66cab03371d7a4bb83
-  specs:
-    linkedin (0.1.7)
-      crack (~> 0.1.4)
-      nokogiri (~> 1.4.4)
-      oauth (~> 0.4.0)
-
-GIT
-  remote: https://github.com/reidab/mogli.git
-  revision: bf9cc73404b66c5812f07fd542af2f373b7a3e76
-  specs:
-    mogli (0.0.25)
-      httparty (>= 0.4.3)
 
 GIT
   remote: https://github.com/reidab/redfinger.git
@@ -150,7 +150,7 @@ GEM
       rails (~> 3.0)
       thor (~> 0.14.4)
     json (1.4.6)
-    json_pure (1.4.6)
+    json_pure (1.5.1)
     linecache (0.43)
     mail (2.2.15)
       activesupport (>= 2.3.6)

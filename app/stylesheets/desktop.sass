@@ -145,11 +145,32 @@ div.desktop-only
     td
       text-align: left
       vertical-align: text-top
-      .change_time
-        width: 0%
-      .change_detail_key
-        width: 15%
-      .odd
-        background-color: #ddd
-      .even
-        background-color: #eee
+    .change_time
+      width: 10%
+    .change_detail_key
+      width: 15%
+      padding: .25em
+    .change_detail_value
+      width: 40%
+      padding: .25em
+    .odd
+      background-color: #ddd
+    .even
+      background-color: #eee
+    .change_details
+      .change_details_description
+        .event
+          text-transform: uppercase
+          display: inline-block
+          padding: 0 4px
+          color: #fff
+          +border-radius(4px)
+  .create
+    .event
+      background: $events_color
+  .destroy
+    .event
+      background: $companies_color
+  .update
+    .event
+      background: $resources_color
