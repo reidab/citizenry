@@ -33,6 +33,7 @@ module ApplicationHelper
   end
 
   def render_message(type, content, label = true)
+    type = :notice if type.to_sym == :alert
     classes = ['message', type, (label ? 'with_label' : nil)]
     title = flash_type_title(type)
     content_tag("div", :class => classes.compact.join(' ')) do
