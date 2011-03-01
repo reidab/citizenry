@@ -153,18 +153,25 @@ div.desktop-only
     .change_detail_value
       width: 40%
       padding: .25em
+    .change_detail_separator
+      width: 5%
     .odd
       background-color: #ddd
     .even
       background-color: #eee
     .change_details
       .change_details_description
-        .event
-          text-transform: uppercase
+        .event, .rollback
           display: inline-block
           padding: 0 4px
           color: #fff
+          font-weight: bold
           +border-radius(4px)
+        .event
+          text-transform: uppercase
+        .rollback
+          float: right
+          background: #999
   .create
     .event
       background: $events_color
