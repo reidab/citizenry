@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   include Localness
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :photo]
   before_filter :assign_person, :except => [:index, :new, :create]
   before_filter :pick_photo_input, :only => [:update, :create]
 
