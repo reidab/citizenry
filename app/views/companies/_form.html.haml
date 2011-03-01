@@ -1,3 +1,12 @@
 = semantic_form_for(@company, :html => {:multipart => true}) do |f|
-  = f.inputs :name, :url, :twitter, :address, :description, :logo
+  = f.inputs do
+    = f.input :name
+    = f.input :url, :label => 'Website'
+    = f.input :address, :as => :string, :hint => "e.g. 115 NW 5th, Portland, OR"
+    = f.input :description
+    - if @company.logo.file?
+      %li
+        .faux_label Current logo
+        = image_tag @company.logo.url(:medium) if @company.logo.present?
+    = f.input :logo, :label => "Upload a logo", :hint => "Preferably 220px wide or larger"
   = f.buttons
