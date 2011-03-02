@@ -1,0 +1,12 @@
+- context ||= :general
+%li
+  - if list_item.logo.file?
+    = link_to image_tag(list_item.logo.url(:thumb)), project_path(list_item), :class => 'avatar'
+  %h3
+    =link_to list_item.name, project_path(list_item)
+  - if list_item.twitter.present?
+    %span{:class => 'twitter_link'}
+      %a{:href => "https://twitter.com/#{list_item.twitter}"}= "@#{list_item.twitter}"
+      on Twitter
+  -#%p{:class=>'location'}= person['location']
+  %p{:class=>'description'}= truncate(list_item.description, :length => 350)

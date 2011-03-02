@@ -3,16 +3,4 @@
     %h1 Projects<span class='desktop-only'> &amp; Products</span>
     = link_to "+ Add a Project", new_project_path, :class => 'new'
 
-%ul{:class => 'resource_list projects'}
-  - @projects.each do |project|
-    %li
-      - if project.logo.file?
-        = link_to image_tag(project.logo.url(:thumb)), project_path(project), :class => 'avatar'
-      %h3
-        =link_to project.name, project_path(project)
-      - if project.twitter.present?
-        %span{:class => 'twitter_link'}
-          %a{:href => "https://twitter.com/#{project.twitter}"}= "@#{project.twitter}"
-          on Twitter
-      -#%p{:class=>'location'}= person['location']
-      %p{:class=>'description'}= truncate(project.description, :length => 350)
+= render :partial => 'projects/list', :object => @projects

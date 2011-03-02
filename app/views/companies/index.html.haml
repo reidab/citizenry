@@ -3,16 +3,4 @@
     %h1 Companies
     = link_to "+ Add a Company", new_company_path, :class => 'new'
 
-%ul{:class => 'resource_list companies'}
-  - @companies.each do |company|
-    %li
-      - if company.logo.file?
-        = link_to image_tag(company.logo.url(:thumb)), company_path(company), :class => 'avatar'
-      %h3
-        =link_to company.name, company_path(company)
-      - if company.twitter.present?
-        %span{:class => 'twitter_link'}
-          %a{:href => "https://twitter.com/#{company.twitter}"}= "@#{company.twitter}"
-          on Twitter
-      -#%p{:class=>'location'}= person['location']
-      %p{:class=>'description'}= truncate(company.description, :length => 350)
+= render :partial => 'companies/list', :object => @companies
