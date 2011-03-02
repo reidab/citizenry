@@ -7,6 +7,6 @@
 
   = f.buttons do
     = f.commit_button
-    %li
-      = link_to "Delete", resource_path(@resource), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
-
+    - unless @resource.new_record?
+      %li
+        = link_to "Delete", resource_path(@resource), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
