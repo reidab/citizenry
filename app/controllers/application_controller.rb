@@ -23,4 +23,12 @@ class ApplicationController < ActionController::Base
     current_user && current_user.person
   end
   helper_method :current_person
+
+  def require_admin!
+    authenticate_user! and return unless current_user
+    unless current_user.admin?
+      flash[:error] = "Access denied."
+      redirect_to root_path and return
+    end
+  end
 end

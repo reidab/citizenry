@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :load_user, :only => [:show]
+  before_filter :load_user, :only => [:show, :destroy, :adminify]
   before_filter :authenticate_user!, :only => [:welcome]
+  before_filter :require_admin!, :only => [:index, :edit, :update, :destroy, :adminify]
 
   def show
     if @user.person
@@ -29,6 +30,27 @@ class UsersController < ApplicationController
         @possible_duplicates.uniq!
       end
     end
+  end
+
+  def index
+    @users = User.includes(:authentications).all
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = "#{@user.name} is no more."
+
+    respond_to do |format|
+      format.html { redirect_to(users_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  def adminify
+    @user.admin = !(@user.admin)
+    @user.save
+
+    redirect_to users_path
   end
 
   private

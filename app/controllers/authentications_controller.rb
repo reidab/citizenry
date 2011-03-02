@@ -1,6 +1,8 @@
 class AuthenticationsController < ApplicationController
   class SessionRequired < Exception; end
 
+  before_filter :authenticate_user!, :only => [:destroy]
+
   def index
     @authentications = current_user.authentications.all
   end
@@ -82,7 +84,11 @@ class AuthenticationsController < ApplicationController
   end
 
   def destroy
-    @authentication = Authentication.find(params[:id])
+    if current_user.admin?
+      @authentication = Authentication.find(params[:id])
+    else
+      @authentication = current_user.authentications.find(params[:id])
+    end
     @authentication.destroy
     flash[:success] = "Your #{OmniAuth::Utils.camelize(@authentication.provider)} account has been removed."
     redirect_to authentications_url

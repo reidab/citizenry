@@ -1,0 +1,18 @@
+#users_admin
+  %h1 Users
+  %ul
+    - @users.each do |user|
+      %li{:class => user.admin? ? 'admin' : nil}
+        - if user.admin?
+          %strong Admin
+        = "User #{user.id}: #{user.name}"
+        = link_to "Delete", user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+        = link_to ((user.admin? ? 'Un-' : '') + 'adminify').capitalize, adminify_user_path(user), :method => :post, :class => 'make_admin'
+        - unless user.authentications.blank?
+          %ul
+            - user.authentications.each do |auth|
+              %li
+                = "Authentication #{auth.id}: #{auth.info[:name]}"
+                = "(#{auth.info[:nickname]})" if auth.info[:nickname]
+                = "via #{provider_name(auth.provider)}"
+                = link_to "Delete", authentication_path(auth), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'

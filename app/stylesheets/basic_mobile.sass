@@ -42,6 +42,9 @@ h5, h6
 a.external
   @extend .external_link
   color: #fff
+a.delete
+  @extend .delete_link
+  color: #fff
 
 body.site_index
   .home_marker
@@ -354,6 +357,19 @@ body.events #content
     #add_yourself
       h2
         background: $people_color
+  #users_admin
+    li
+      margin-bottom: .5em
+      ul
+        margin-top:  .5em
+    li.admin
+      strong
+        color: $projects_color
+    a.make_admin
+      @extend .blocky_icon_link
+      background-color: $projects_color
+      background-image: image-url('sanscons_16/bigsmile.png')
+
 
 
 .changes_feed a

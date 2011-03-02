@@ -14,10 +14,13 @@ Citizenry::Application.routes.draw do
   end
   resources :projects
   resources :resources
-  resources :users, :only => [:show] do
+  resources :users, :only => [:show, :index, :destroy] do
     collection do
       get 'welcome'
       get 'home'
+    end
+    member do
+      post 'adminify'
     end
   end
   resources :user_sessions, :only => [:new], :controller => 'users/sessions'
