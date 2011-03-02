@@ -9,4 +9,13 @@ module AuthenticationsHelper
       provider_name
     end
   end
+
+  def auth_label(authentication)
+    if authentication.info[:nickname].present?
+      name = authentication.info[:nickname]
+    else
+      name = authentication.info[:name]
+    end
+     "#{name} on #{provider_name(authentication.provider)}"
+  end
 end

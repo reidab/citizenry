@@ -1,42 +1,53 @@
-%h1 Add someone to ePDX
-- if request.post?
-  = render 'form'
-  = link_to 'Back', people_path
--else
-  %h2 Search for a person to add
-  %p
-    :erb
-      We'll search Twitter.
-  = form_tag new_person_path, :method => :get do
-    = text_field_tag(:q, params[:q])
-    = submit_tag("Search")
+#new_person
+  %h1 Add someone to ePDX
+  - if request.post?
+    = render 'form'
+    = link_to 'Back', people_path
+  -else
+    .search
+      %h2 Search your networks to add someone
+      - if current_user.authentications.searchable.blank?
+        %p You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
+        %ul.auth_providers
+          - %w(twitter facebook linked_in).each do |provider|
+            %li= link_to "Add a #{OmniAuth::Utils.camelize(provider)} account", "/auth/#{provider}", :class => provider
+      - else
+        = form_tag new_person_path, :method => :get do
+          .networks
+            %strong Search using:
+            - current_user.authentications.searchable.each do |auth|
+              - check_box_name = "authentications[#{auth.id}]"
+              = check_box_tag check_box_name, '1', params[:authentications].present? ? params[:authentications][auth.id.to_s] : true
+              = label_tag check_box_name, auth_label(auth)
+          = text_field_tag(:q, params[:q])
+          = submit_tag("Search")
 
-  - if @found_people.present?
-    %ul{:id => 'people_search_results', :class => 'resource_list people'}
-      - @found_people.each do |person|
-        %li{:class => [person.new_record? ? person.imported_from_provider : 'existing']}
-          - if photo_url = person.photo_import_url || person.photo.url
-            .avatar
-              %img{:src => photo_url}
-          %h3= person.name
-          - if person.imported_from_provider == 'twitter'
-            %strong
-              %a{:href => "https://twitter.com/#{person.imported_from_id}"}= "@#{person.imported_from_id}"
-              on Twitter
-          %p{:class=>'location'}= person.location
-          %p{:class=>'bio'}= person.bio
-          - if !person.new_record?
-            .existing_user_label
-              ePDX already knows #{person.name}!
-          - else
-            = form_for person, :html => { :id => "#{person.imported_from_provider}_#{person.imported_from_id}_form"} do |f|
-              - [ :name,
-                  :bio,
-                  :location,
-                  :photo_import_url,
-                  :imported_from_provider,
-                  :imported_from_id,
-                  :url].each do |attribute|
-                = f.hidden_field attribute,
-                  :id => "#{person.imported_from_provider}_#{person.imported_from_id}_#{attribute}"
-              =submit_tag "Add #{person.name} to directory"
+      - if @found_people.present?
+        %ul{:id => 'people_search_results', :class => 'resource_list people'}
+          - @found_people.each do |person|
+            %li{:class => [person.new_record? ? person.imported_from_provider : 'existing']}
+              - if (photo_url = person.photo_import_url || person.photo.url).present?
+                .avatar
+                  %img{:src => photo_url}
+              %h3= person.name
+              - if person.imported_from_provider == 'twitter'
+                %strong
+                  %a{:href => "https://twitter.com/#{person.imported_from_id}"}= "@#{person.imported_from_id}"
+                  on Twitter
+              %p{:class=>'location'}= person.location
+              %p{:class=>'bio'}= person.bio
+              - if !person.new_record?
+                .existing_user_label
+                  ePDX already knows #{person.name}!
+              - else
+                = form_for person, :html => { :id => "#{person.imported_from_provider}_#{person.imported_from_id}_form"} do |f|
+                  - [ :name,
+                      :bio,
+                      :location,
+                      :photo_import_url,
+                      :imported_from_provider,
+                      :imported_from_id,
+                      :url].each do |attribute|
+                    = f.hidden_field attribute,
+                      :id => "#{person.imported_from_provider}_#{person.imported_from_id}_#{attribute}"
+                  =submit_tag "Add #{person.name} to directory"

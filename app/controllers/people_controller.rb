@@ -32,11 +32,12 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
 
-    if params[:q].present?
+    if params[:q].present? && params[:authentications].present?
       query = params[:q]
+      authentications = params[:authentications].keys
 
       @found_people = []
-      current_user.authentications.each do |auth|
+      current_user.authentications.find(authentications).each do |auth|
         if auth.api_client
           @found_people += auth.api_client.search(query)
         end
