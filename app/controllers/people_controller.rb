@@ -84,7 +84,10 @@ class PeopleController < ApplicationController
   # PUT /people/1.xml
   def update
     set_user_id = params[:person].delete(:user_id)
-    @person.update_attribute(:user_id, set_user_id) if set_user_id.present? && current_user.admin?
+
+    if set_user_id.present? && current_user.admin?
+      @person.user_id = set_user_id.to_i
+    end
 
     respond_to do |format|
       if @person.update_attributes(params[:person])

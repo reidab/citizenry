@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   attr_protected :user_id, :imported_from_provider, :imported_from_id
-  has_paper_trail
+  has_paper_trail :ignore => [:user_id]
 
   require 'open-uri'
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }
