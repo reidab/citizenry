@@ -30,9 +30,9 @@
                 .avatar
                   %img{:src => photo_url}
               %h3= person.name
-              - if person.imported_from_provider == 'twitter'
+              - if person.imported_from_provider == 'twitter' && person.imported_from_screen_name.present?
                 %strong
-                  %a{:href => "https://twitter.com/#{person.imported_from_id}"}= "@#{person.imported_from_id}"
+                  %a{:href => "https://twitter.com/#{person.imported_from_screen_name}"}= "@#{person.imported_from_screen_name}"
                   on Twitter
               %p{:class=>'location'}= person.location
               %p{:class=>'bio'}= person.bio
