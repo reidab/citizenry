@@ -59,7 +59,10 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.xml
   def create
+    set_user_id = params[:person].delete(:user_id)
     @person = Person.new(params[:person])
+    @person.user_id = set_user_id if set_user_id.present? && current_user.admin?
+
     if params[:form_context] == 'add_self'
       @person.user = current_user
       @person.imported_from_provider = current_user.authentications.first.provider
@@ -80,6 +83,9 @@ class PeopleController < ApplicationController
   # PUT /people/1
   # PUT /people/1.xml
   def update
+    set_user_id = params[:person].delete(:user_id)
+    @person.update_attribute(:user_id, set_user_id) if set_user_id.present? && current_user.admin?
+
     respond_to do |format|
       if @person.update_attributes(params[:person])
         format.html { redirect_to(@person, :notice => 'Person was successfully updated.') }

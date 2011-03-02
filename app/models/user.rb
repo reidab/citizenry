@@ -14,11 +14,15 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable
 
   def avatar_url
-    self.person.try(:photo).try(:url, :thumb) || self.authentications.first.info[:image]
+    self.person.try(:photo).try(:url, :thumb) || self.authentications.info_get(:image)
   end
 
   def name
-    self.person.try(:name) || self.authentications.info_get(:name)
+    self.person.try(:name) || self.authentications.info_get(:name) || "User #{self.id}"
+  end
+
+  def label_for_admin
+    "#{self.id}: #{self.name} #{self.person.present? ? '*' : ''}"
   end
 
   def default_authentication

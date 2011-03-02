@@ -15,6 +15,7 @@
       = f.input :photo_import_url, :label => "Import a photo from the web…"
       = f.input :photo, :label => "…or upload one from your computer.", :hint => "Preferably 220px wide or larger"
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
-    -# = f.input :user_id
+    - if current_user.admin?
+      = f.input :user, :include_blank => '-- none --', :label_method => :label_for_admin
     = hidden_field_tag :form_context, context
   = f.buttons
