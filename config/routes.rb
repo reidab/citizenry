@@ -4,15 +4,29 @@ Citizenry::Application.routes.draw do
   resources :authentications
   resources :companies do
     resources :employees, :controller => :employments, :only => [:new, :create]
+    member do
+      post 'join'
+      post 'leave'
+    end
   end
-  resources :groups
+  resources :groups do
+    member do
+      post 'join'
+      post 'leave'
+    end
+  end
   resources :people do
     member do
       get 'claim'
       get 'photo'
     end
   end
-  resources :projects
+  resources :projects do
+    member do
+      post 'join'
+      post 'leave'
+    end
+  end
   resources :resources
   resources :users, :only => [:show, :index, :destroy] do
     collection do

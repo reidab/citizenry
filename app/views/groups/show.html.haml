@@ -17,3 +17,12 @@
   .record_actions
     = link_to 'Edit', edit_group_path(@group), :class => 'edit'
     = link_to "Delete", group_path(@group), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+
+  .members
+    %h2 Members
+    - if current_person
+      - if @group.members.include?(current_person)
+        = link_to "Leave this group", leave_group_path(@group), :class => 'leave', :method => :post
+      - else
+        = link_to "Join this group", join_group_path(@group), :class => 'join', :method => :post
+    = render :partial => 'people/list', :object => @group.members, :locals => {:context => :member_list}

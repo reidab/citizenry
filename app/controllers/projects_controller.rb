@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :assign_project, :except => [:index, :new, :create]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /projects
@@ -15,8 +16,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }
@@ -36,7 +35,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
   end
 
   # POST /projects
@@ -58,8 +56,6 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
@@ -74,7 +70,6 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     flash[:success] = "#{@project.name} is no more."
 
@@ -82,5 +77,22 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+  def join
+    @project.people << current_person if current_person
+    redirect_to :action => :show
+  end
+
+  def leave
+    @project.people.delete(current_person) if current_person
+    redirect_to :action => :show
+  end
+
+  private
+
+  def assign_project
+    @project = Project.find(params[:id])
   end
 end

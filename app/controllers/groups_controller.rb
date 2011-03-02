@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :assign_group, :except => [:index, :new, :create]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /groups
@@ -15,8 +16,6 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
-    @group = Group.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @group }
@@ -36,7 +35,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
   end
 
   # POST /groups
@@ -58,8 +56,6 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.xml
   def update
-    @group = Group.find(params[:id])
-
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
@@ -74,7 +70,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.xml
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
     flash[:success] = "#{@group.name} is no more."
 
@@ -82,5 +77,22 @@ class GroupsController < ApplicationController
       format.html { redirect_to(groups_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+  def join
+    @group.members << current_person if current_person
+    redirect_to :action => :show
+  end
+
+  def leave
+    @group.members.delete(current_person) if current_person
+    redirect_to :action => :show
+  end
+
+  private
+
+  def assign_group
+    @group = Group.find(params[:id])
   end
 end

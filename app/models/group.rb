@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :projects
 
   has_many :group_memberships
-  has_many :people, :through => :group_memberships
+  has_many :members, :through => :group_memberships, :source => :person
 
   has_many :sponsorships
   has_many :companies, :through => :sponsorships

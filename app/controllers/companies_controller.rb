@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_filter :assign_company, :except => [:index, :new, :create]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /companies
@@ -82,5 +83,22 @@ class CompaniesController < ApplicationController
       format.html { redirect_to(companies_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+  def join
+    @company.employees << current_person if current_person
+    redirect_to :action => :show
+  end
+
+  def leave
+    @company.employees.delete(current_person) if current_person
+    redirect_to :action => :show
+  end
+
+  private
+
+  def assign_company
+    @company = Company.find(params[:id])
   end
 end

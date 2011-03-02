@@ -10,3 +10,12 @@
   .record_actions
     = link_to 'Edit', edit_project_path(@project), :class => 'edit'
     = link_to "Delete", project_path(@project), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+
+  .members
+    %h2 Collaborators
+    - if current_person
+      - if @project.people.include?(current_person)
+        = link_to "Leave this project", leave_project_path(@project), :class => 'leave', :method => :post
+      - else
+        = link_to "Join this project", join_project_path(@project), :class => 'join', :method => :post
+    = render :partial => 'people/list', :object => @project.people, :locals => {:context => :member_list}
