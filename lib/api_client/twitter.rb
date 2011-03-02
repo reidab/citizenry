@@ -36,8 +36,9 @@ module APIClient
                   :url                    => twitter_user.url,
                   :location               => twitter_user.location ) \
                   .tap{|person|
-                    person.imported_from_provider = 'twitter'
-                    person.imported_from_id       = twitter_user.id
+                    person.imported_from_provider    = 'twitter'
+                    person.imported_from_id          = twitter_user.id
+                    person.imported_from_screen_name = twitter_user.screen_name
                   }
     end
   end

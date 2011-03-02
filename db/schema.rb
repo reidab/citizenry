@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228031139) do
+ActiveRecord::Schema.define(:version => 20110302225217) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -100,7 +100,8 @@ ActiveRecord::Schema.define(:version => 20110228031139) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "reviewed",               :default => false
+    t.boolean  "reviewed",                  :default => false
+    t.string   "imported_from_screen_name"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
