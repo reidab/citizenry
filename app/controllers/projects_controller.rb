@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :assign_project, :except => [:index, :new, :create]
+  before_filter :assign_project, :except => [:index, :new, :create, :show]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /projects
@@ -16,6 +16,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
+    @project = Project.find(params[:id], :include => [:people])
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :assign_company, :except => [:index, :new, :create]
+  before_filter :assign_company, :except => [:index, :new, :create, :show]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /companies
@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.xml
   def show
-    @company = Company.find(params[:id])
+    @company = Company.find(params[:id], :include => [:employees])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +37,6 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
-    @company = Company.find(params[:id])
   end
 
   # POST /companies
@@ -59,8 +58,6 @@ class CompaniesController < ApplicationController
   # PUT /companies/1
   # PUT /companies/1.xml
   def update
-    @company = Company.find(params[:id])
-
     respond_to do |format|
       if @company.update_attributes(params[:company])
         format.html { redirect_to(@company, :notice => 'Company was successfully updated.') }
@@ -75,7 +72,6 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.xml
   def destroy
-    @company = Company.find(params[:id])
     @company.destroy
     flash[:success] = "#{@company.name} is no more."
 

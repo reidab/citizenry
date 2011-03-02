@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :assign_group, :except => [:index, :new, :create]
+  before_filter :assign_group, :except => [:index, :new, :create, :show]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /groups
@@ -16,6 +16,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
+    @group = Group.find(params[:id], :include => [:members])
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @group }
