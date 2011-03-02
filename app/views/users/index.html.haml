@@ -8,6 +8,7 @@
         = "User #{user.id}: #{user.name}"
         = link_to "Delete", user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
         = link_to ((user.admin? ? 'Un-' : '') + 'adminify').capitalize, adminify_user_path(user), :method => :post, :class => 'make_admin'
+        = image_tag(normalize_url(user.avatar_url), :size => '30x30', :align => 'right') if user.avatar_url
         %ul
           - if user.person.present?
             %li
