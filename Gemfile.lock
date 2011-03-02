@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/reidab/paper_trail_manager.git
-  revision: de050151b91c4991271021ca53dba9121b946d79
+  revision: 73d7b66688df0cf0b48f94308d90b731a59bb32b
   specs:
     paper_trail_manager (0.0.0)
       capybara (>= 0.4.0)
