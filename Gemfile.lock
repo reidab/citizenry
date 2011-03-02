@@ -139,6 +139,9 @@ GEM
     git (1.2.5)
     haml (3.0.25)
     hashie (1.0.0)
+    hoptoad_notifier (2.4.6)
+      activesupport
+      builder
     httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
@@ -306,6 +309,7 @@ DEPENDENCIES
   formtastic (~> 1.1.0)
   foursquare (~> 0.3.4)
   haml (~> 3.0.18)
+  hoptoad_notifier
   httparty (~> 0.7.4)
   jquery-rails (>= 0.2.6)
   json (~> 1.4.6)
