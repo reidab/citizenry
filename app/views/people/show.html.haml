@@ -15,6 +15,21 @@
     - if @person.url.present?
       = link_to( normalize_url(@person.url), normalize_url(@person.url), :class => 'url') if @person.url.present?
 
+  - if @person.companies.present?
+    .section.companies
+      %h2 Companies
+      = render :partial => 'companies/list', :object => @person.companies
+
+  - if @person.groups.present?
+    .section.groups
+      %h2 Groups
+      = render :partial => 'groups/list', :object => @person.groups
+
+  - if @person.projects.present?
+    .section.projects
+      %h2 Projects
+      = render :partial => 'projects/list', :object => @person.projects
+
   .record_actions
     - if current_user && (current_user.admin? || current_user.person == @person)
       = link_to 'Edit', edit_person_path(@person), :class => 'edit'

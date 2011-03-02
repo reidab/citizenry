@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   include Localness
-  before_filter :assign_person, :except => [:index, :new, :create]
+  before_filter :assign_person, :except => [:index, :new, :create, :show]
   before_filter :authenticate_user!, :only => [:new, :create]
   before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
@@ -19,6 +19,8 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.xml
   def show
+    @person = Person.find(params[:id], :include => [:companies, :groups, :projects])
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
