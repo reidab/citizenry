@@ -21,6 +21,7 @@ common:
       key:
       secret: seekrit!
   google_analytics_id: <your id>
+  hoptoad: seekrit!
 development:
   auth_credentials:
     github:

@@ -33,6 +33,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'addressable', '~> 2.2.4'
 gem "paperclip", "~> 2.3"
 
+gem 'hoptoad_notifier'
 
 gem 'paper_trail', '~> 2'
 
