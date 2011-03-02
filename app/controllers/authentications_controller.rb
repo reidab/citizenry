@@ -59,7 +59,7 @@ class AuthenticationsController < ApplicationController
       # Logged in user => give them a new authentication
       Authentication.create_from_omniauth!(omniauth, :user => current_user)
       flash[:success] = "Your #{OmniAuth::Utils.camelize(omniauth['provider'])} account has been added."
-      redirect_to authentications_url
+      redirect_to home_users_path
     else
       # Entirely new user
 
@@ -91,6 +91,6 @@ class AuthenticationsController < ApplicationController
     end
     @authentication.destroy
     flash[:success] = "Your #{OmniAuth::Utils.camelize(@authentication.provider)} account has been removed."
-    redirect_to authentications_url
+    redirect_to home_users_path
   end
 end

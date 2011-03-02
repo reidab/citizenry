@@ -369,6 +369,47 @@ body.events #content
     #add_yourself
       h2
         background: $people_color
+  #user_home
+    h1
+      margin-bottom: .5em
+    #authentications
+      form
+        fieldset
+          margin: 0
+          display: inline-block
+          &.buttons
+            input
+              position: relative
+              top: .6em
+          li
+            padding: 0
+            float: left
+            display: inline-block
+            label
+              font-weight: bold
+              abbr
+                display: none
+      ul
+        +no-bullets
+        margin: 0
+        border-top: 1px solid #ccc
+        margin-top: .5em
+        padding-top: .5em
+        li
+          line-height: 32px
+          margin-bottom: .5em
+          img
+            float: left
+        .delete
+          height: 20px
+          width: 20px
+          padding: 0
+          overflow: hidden
+          text-indent: -1000px
+          background-position: center
+          float: right
+          position: relative
+          top: 4px
   #users_admin
     li
       margin-bottom: .5em

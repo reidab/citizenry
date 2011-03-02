@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :load_user, :only => [:show, :destroy, :adminify]
-  before_filter :authenticate_user!, :only => [:welcome]
+  before_filter :authenticate_user!, :only => [:welcome, :home]
   before_filter :require_admin!, :only => [:index, :edit, :update, :destroy, :adminify]
 
   def show
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def home
-    redirect_to person_path(current_user.person) # temporary
+    redirect_to :action => :welcome and return unless current_user.person.try(:reviewed)
   end
 
   def welcome
