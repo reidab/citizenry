@@ -21,6 +21,10 @@
               = label_tag check_box_name, auth_label(auth)
           = text_field_tag(:q, params[:q])
           = submit_tag("Search")
+        - if @rate_limit_status.present?
+          == You have #{pluralize(@rate_limit_status.remaining_hits.to_i, 'Twitter API call')} remaining;
+          == limit resets in #{distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status.reset_time))}.
+
 
       - if @found_people.present?
         %ul{:id => 'people_search_results', :class => 'resource_list people'}
