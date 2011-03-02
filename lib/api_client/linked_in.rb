@@ -27,7 +27,7 @@ module APIClient
       if li_user.picture_url.present?
         li_user.picture_url
       else
-        # @client.profile(:id => li_user.id, :fields => ['picture_url']).picture_url
+        @client.profile(:id => li_user.id, :fields => ['picture_url']).picture_url
       end
     end
 
