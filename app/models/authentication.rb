@@ -94,8 +94,6 @@ class Authentication < ActiveRecord::Base
     self.build_user unless self.user.present?
   end
 
-  private
-
   def matching_person
     @matching_person ||= Person.where(:imported_from_provider => self.provider,
                                       :imported_from_id => self.uid).first

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.includes(:authentications).all
+    @users = User.includes(:authentications, :person).all
   end
 
   def destroy
