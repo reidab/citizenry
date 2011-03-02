@@ -1,0 +1,7 @@
+%ul
+  - list.each do |authentication|
+    %li
+      =provider_icon(authentication.provider)
+      =auth_label(authentication)
+      - if list.size > 1
+        = link_to "Remove", authentication_path(authentication), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
