@@ -5,7 +5,7 @@ class Authentication < ActiveRecord::Base
   serialize :info
 
   before_validation(:initialize_user_if_absent, :on => :create)
-  after_create :attach_matching_person_to_user
+  after_save :attach_matching_person_to_user
 
   validates_presence_of :user
 
