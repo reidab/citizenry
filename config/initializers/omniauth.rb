@@ -1,4 +1,7 @@
+require 'openid'
 require 'openid/store/filesystem'
+
+OpenID.fetcher.timeout = 6
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   SETTINGS['auth_credentials'].each do |provider_name, opts|
@@ -21,6 +24,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   provider :google_apps, OpenID::Store::Filesystem.new('/tmp')
 end
+
 
 
 consumers = {}
