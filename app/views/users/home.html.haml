@@ -11,7 +11,7 @@
         %li= link_to "Add your company", new_company_path
   #authentications
     %h2 Linked Accounts
-    = semantic_form_for(SignInData.new(:email => current_user.email), :url => login_router_path) do |f| 
+    = semantic_form_for(SignInData.new(:email => current_user.email), :url => user_sessions_path) do |f|
       = f.inputs do
         = f.input :email, :as => :hidden
         = f.input :provider, :collection => Authentication::PROVIDER_OPTIONS, :prompt => 'Pick a service…', :label => 'Add an account'

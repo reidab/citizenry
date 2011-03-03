@@ -47,7 +47,7 @@ Citizenry::Application.routes.draw do
   get '/welcome' => 'users#welcome', :as => 'welcome_users'
   get '/home' => 'users#home', :as => 'home_users'
 
-  resources :user_sessions, :only => [:new], :controller => 'users/sessions'
+  resources :user_sessions, :only => [:new, :create], :controller => 'users/sessions'
 
   devise_for :users do
     get "/sign_out" => "devise/sessions#destroy"
@@ -56,7 +56,6 @@ Citizenry::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/auto' => 'authentications#auto'
-  match '/route_login' => 'authentications#route_login', :as => 'login_router'
 
   resources :changes, :controller => 'paper_trail_manager/changes'
 

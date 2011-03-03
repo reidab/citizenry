@@ -7,19 +7,6 @@ class AuthenticationsController < ApplicationController
     @authentications = current_user.authentications.all
   end
 
-  def route_login
-    @signin_data = SignInData.new(params[:sign_in_data])
-    render(:action => :login) and return unless @signin_data.valid?
-
-    session[:login_email] = @signin_data.email
-
-    if @signin_data.provider == 'auto'
-      redirect_to :action => :auto, :email => @signin_data.email
-    else
-      redirect_to "/auth/#{@signin_data.provider}"
-    end
-  end
-
   def auto
     @email = params[:email]
     session[:login_email] = @email
