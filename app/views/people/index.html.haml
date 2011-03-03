@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'people'}
-    %h1 People
+    %h1= "#{@tag} people".strip.titleize
     = link_to "+ Add Someone", new_person_path, :class => 'new'
 
 = render :partial => 'list', :object => @people

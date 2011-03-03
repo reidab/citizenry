@@ -5,6 +5,8 @@
     = f.input :mailing_list, :hint => "URL to list information"
     = f.input :description
     = f.input :meeting_info
+    = f.input :tag_list, :as => :text, :label => 'Tags', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     - if @group.logo.file?
       %li
         .faux_label Current logo

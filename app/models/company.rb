@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   has_paper_trail
+  acts_as_taggable_on :tags, :technologies
 
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }
 

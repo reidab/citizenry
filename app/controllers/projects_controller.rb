@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :assign_project, :except => [:index, :new, :create, :show]
+  before_filter :assign_project, :except => [:index, :new, :create, :show, :tag]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /projects
@@ -11,6 +11,13 @@ class ProjectsController < ApplicationController
       format.html # index.html.haml
       format.xml  { render :xml => @projects }
     end
+  end
+
+  def tag
+    @tag = params[:tag]
+    @projects = Project.tagged_with(@tag)
+
+    render :action => :index
   end
 
   # GET /projects/1

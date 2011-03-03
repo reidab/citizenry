@@ -13,7 +13,17 @@
     = link_to 'Edit', edit_company_path(@company), :class => 'edit'
     = link_to "Delete", company_path(@company), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
 
-  .members
+  - if @company.tags.present?
+    .section.tags
+      %h2 Tags
+      = render :partial => 'tags/list', :object => @company.tags, :locals => {:type => :group}
+
+  - if @company.technologies.present?
+    .section.technologies
+      %h2 Technologies
+      = render :partial => 'tags/list', :object => @company.technologies, :locals => {:type => :group}
+
+  .section.members
     %h2 Employees
     - if current_person
       - if @company.employees.include?(current_person)

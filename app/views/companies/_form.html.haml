@@ -4,6 +4,8 @@
     = f.input :url, :label => 'Website'
     = f.input :address, :as => :string, :hint => "e.g. 115 NW 5th, Portland, OR"
     = f.input :description
+    = f.input :tag_list, :as => :text, :label => 'Tags (industries, topics, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => 'Technologies used (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     - if @company.logo.file?
       %li
         .faux_label Current logo

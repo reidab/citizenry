@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'companies'}
-    %h1 Companies
+    %h1= "#{@tag} companies".strip.titleize
     = link_to "+ Add a Company", new_company_path, :class => 'new'
 
 = render :partial => 'companies/list', :object => @companies

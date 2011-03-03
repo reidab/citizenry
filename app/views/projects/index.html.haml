@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'projects'}
-    %h1 Projects<span class='desktop-only'> &amp; Products</span>
+    %h1= "#{@tag} projects<span class='desktop-only'> & products</span>".html_safe.strip.titleize
     = link_to "+ Add a Project", new_project_path, :class => 'new'
 
 = render :partial => 'projects/list', :object => @projects

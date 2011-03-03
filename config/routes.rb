@@ -9,24 +9,32 @@ Citizenry::Application.routes.draw do
       post 'leave'
     end
   end
+  get '/companies/tag/:tag' => 'companies#tag', :as => 'companies_tagged'
+
   resources :groups do
     member do
       post 'join'
       post 'leave'
     end
   end
+  get '/groups/tag/:tag' => 'groups#tag', :as => 'groups_tagged'
+
   resources :people do
     member do
       get 'claim'
       get 'photo'
     end
   end
+  get '/people/tag/:tag' => 'people#tag', :as => 'people_tagged'
+
   resources :projects do
     member do
       post 'join'
       post 'leave'
     end
   end
+  get '/projects/tag/:tag' => 'projects#tag', :as => 'projects_tagged'
+
   resources :resources
   resources :users, :only => [:show, :index, :destroy] do
     member do

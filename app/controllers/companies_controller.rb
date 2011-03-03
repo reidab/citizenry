@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :assign_company, :except => [:index, :new, :create, :show]
+  before_filter :assign_company, :except => [:index, :new, :create, :show, :tag]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /companies
@@ -11,6 +11,13 @@ class CompaniesController < ApplicationController
       format.html # index.html.haml
       format.xml  { render :xml => @companies }
     end
+  end
+
+  def tag
+    @tag = params[:tag]
+    @companies = Company.tagged_with(@tag)
+
+    render :action => :index
   end
 
   # GET /companies/1

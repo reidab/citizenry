@@ -7,6 +7,8 @@
     = f.input :location, :hint => 'Neighborhood-level info preferred'
     = f.input :url, :label => "Website"
     = f.input :bio
+    = f.input :tag_list, :as => :text, :label => 'Tags (interests, titles, personal descriptors)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     = f.inputs :name => "Photo" do
       - if photo_url = @person.photo_import_url || (@person.photo.file? && @person.photo.url(:medium))
         %li

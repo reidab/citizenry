@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   include Localness
-  before_filter :assign_person, :except => [:index, :new, :create, :show]
+  before_filter :assign_person, :except => [:index, :new, :create, :show, :tag]
   before_filter :authenticate_user!, :only => [:new, :create]
   before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
@@ -14,6 +14,13 @@ class PeopleController < ApplicationController
       format.html # index.html.haml
       format.xml  { render :xml => @people }
     end
+  end
+
+  def tag
+    @tag = params[:tag]
+    @people = Person.tagged_with(@tag)
+
+    render :action => :index
   end
 
   # GET /people/1

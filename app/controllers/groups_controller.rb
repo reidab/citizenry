@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :assign_group, :except => [:index, :new, :create, :show]
+  before_filter :assign_group, :except => [:index, :new, :create, :show, :tag]
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /groups
@@ -11,6 +11,13 @@ class GroupsController < ApplicationController
       format.html # index.html.haml
       format.xml  { render :xml => @groups }
     end
+  end
+
+  def tag
+    @tag = params[:tag]
+    @groups = Group.tagged_with(@tag)
+
+    render :action => :index
   end
 
   # GET /groups/1

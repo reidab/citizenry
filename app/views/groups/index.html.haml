@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'groups'}
-    %h1 Groups
+    %h1= "#{@tag} groups".strip.titleize
     = link_to "+ Add a Group", new_group_path, :class => 'new'
 
 = render :partial => 'groups/list', :object => @groups

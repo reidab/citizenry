@@ -18,7 +18,17 @@
     = link_to 'Edit', edit_group_path(@group), :class => 'edit'
     = link_to "Delete", group_path(@group), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
 
-  .members
+  - if @group.tags.present?
+    .section.tags
+      %h2 Tags
+      = render :partial => 'tags/list', :object => @group.tags, :locals => {:type => :company}
+
+  - if @group.technologies.present?
+    .section.technologies
+      %h2 Technologies
+      = render :partial => 'tags/list', :object => @group.technologies, :locals => {:type => :company}
+
+  .section.members
     %h2 Members
     - if current_person
       - if @group.members.include?(current_person)

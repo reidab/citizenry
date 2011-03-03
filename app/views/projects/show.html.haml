@@ -11,7 +11,17 @@
     = link_to 'Edit', edit_project_path(@project), :class => 'edit'
     = link_to "Delete", project_path(@project), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
 
-  .members
+  - if @project.tags.present?
+    .section.tags
+      %h2 Tags
+      = render :partial => 'tags/list', :object => @project.tags, :locals => {:type => :project}
+
+  - if @project.technologies.present?
+    .section.technologies
+      %h2 Technologies
+      = render :partial => 'tags/list', :object => @project.technologies, :locals => {:type => :project}
+
+  .section.members
     %h2 Collaborators
     - if current_person
       - if @project.people.include?(current_person)

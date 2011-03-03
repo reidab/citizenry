@@ -1,0 +1,5 @@
+- type ||= :all
+- list = list.map{|tag| link_to(tag, send("#{type.to_s.pluralize}_tagged_path", tag.to_s)) }
+= list.join(", ").html_safe
+
+      

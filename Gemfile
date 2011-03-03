@@ -33,10 +33,11 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'addressable', '~> 2.2.4'
 gem "paperclip", "~> 2.3"
 
+gem 'acts-as-taggable-on', "~> 2.0.6"
+
 gem 'hoptoad_notifier'
 
 gem 'paper_trail', '~> 2'
-
 gem 'paper_trail_manager', :git => 'https://github.com/reidab/paper_trail_manager.git'
 # gem 'paper_trail_manager', :path => '../paper_trail_manager'
 
