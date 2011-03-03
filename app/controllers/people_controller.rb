@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.xml
   def index
-    @people = Person.all(:order => 'created_at DESC')
+    @people = Person.all(:order => 'RAND()')
     @view = :grid if params[:grid]
 
     respond_to do |format|
