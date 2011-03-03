@@ -30,7 +30,7 @@ class Person < ActiveRecord::Base
 
   validates_presence_of :name
 
-  before_create :attach_to_matching_user
+  before_save :attach_to_matching_user
 
   scope :claimed, where('user_id IS NOT null')
   scope :unclaimed, where('user_id IS null')
