@@ -25,6 +25,8 @@
                              'lib/backbone.js',
                              'citizenry.js',
                              'rails'
+    %script
+      $(function() { $('#flash .message.success, #flash .message.notice').delay(4000).hide('blind'); });
 
     = csrf_meta_tag
     = render :partial => 'layouts/google_analytics'
