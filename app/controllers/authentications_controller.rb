@@ -2,6 +2,7 @@ class AuthenticationsController < ApplicationController
   class SessionRequired < Exception; end
 
   before_filter :authenticate_user!, :only => [:destroy]
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   def index
     @authentications = current_user.authentications.all
