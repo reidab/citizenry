@@ -30,6 +30,7 @@ div.desktop-only
     +horizontal-list
     @extend .league_gothic
     +grid(11,16)
+    z-index: 80
     li
       margin-right: 2em
       margin-top: 6px
@@ -76,13 +77,15 @@ div.desktop-only
       float: right
 
 #global_sign_in_form
-  width: 250px
-  position: absolute
-  margin: -10px 10px 0 0
-  top: 0
-  right: 0
-  z-index: 99
+  // position: absolute
+  // margin: -10px 10px 0 0
+  background: transparent
+  +grid-container
   +opacity(0)
+  form
+    background: #666
+    width: 250px
+    float: right
   &.open
     height: 110px
     +opacity(1)
@@ -107,6 +110,7 @@ div.desktop-only
 
 #content
   +clearfix
+  margin-top: .5em
   .section_header
     #view_options
       display: inline

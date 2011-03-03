@@ -53,11 +53,11 @@
         %li= link_to "Resources", resources_path, :class => 'resources'
         /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
+    - if current_user.blank?
+      #global_sign_in_form
+        = render :partial => 'authentications/login_form'
 
     #content
-      - if current_user.blank?
-        #global_sign_in_form
-          = render :partial => 'authentications/login_form'
 
       = yield(:section_header)
       = render_flash
