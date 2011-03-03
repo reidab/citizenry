@@ -10,6 +10,7 @@ class SignInData
   validates :email, :presence => true
 
   def initialize(params = {})
+    params ||= {}
     self.email = params[:email]
     self.provider = params[:provider]
   end
