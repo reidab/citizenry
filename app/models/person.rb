@@ -16,7 +16,7 @@ class Person < ActiveRecord::Base
     end
   end
 
-  default_scope order('created_at DESC')
+  default_scope order('people.created_at DESC')
 
   belongs_to :user
 
