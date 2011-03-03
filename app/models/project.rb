@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }
 
+  default_scope order('created_at DESC')
+
   has_and_belongs_to_many :people
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :companies

@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.xml
   def index
-    @people = Person.all(:order => 'RAND()')
+    @people = Person.all.shuffle
     @view = :grid if params[:grid]
 
     respond_to do |format|
