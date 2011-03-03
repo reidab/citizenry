@@ -2,5 +2,13 @@
   .section_header{:class => 'people'}
     %h1= "#{@tag} people".strip.titleize
     = link_to "+ Add Someone", new_person_path, :class => 'new'
+    #view_options
+      %strong View as:
+      = link_to_unless_current "List", people_path
+      = "|"
+      = link_to_unless_current "Grid", grid_people_path
 
-= render :partial => 'list', :object => @people
+- if @view == :grid
+  = render :partial => 'grid', :object => @people
+- else
+  = render :partial => 'list', :object => @people

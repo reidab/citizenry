@@ -107,6 +107,9 @@ div.desktop-only
 
 #content
   +clearfix
+  .section_header
+    #view_options
+      display: inline
   #people_search_results
     li
       width: 600px
@@ -116,6 +119,9 @@ div.desktop-only
       h3
         display: inline
         margin-right: .5em
+  .resource_grid
+    li
+      +grid(4,16)
   .single_record
     position: relative
     &.with_image

@@ -9,6 +9,7 @@ class PeopleController < ApplicationController
   # GET /people.xml
   def index
     @people = Person.all(:order => 'created_at DESC')
+    @view = :grid if params[:grid]
 
     respond_to do |format|
       format.html # index.html.haml

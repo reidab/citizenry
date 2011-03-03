@@ -226,6 +226,11 @@ body.events #content
   .section_header
     margin: -10px -10px 0
     color: #fff
+    #view_options
+      margin-left: 1em
+      a
+        background: transparent
+        color: #fff
     &.people
       @extend .people-bg
       a
@@ -303,6 +308,14 @@ body.events #content
         color: #777
       a.claim
         @extend .claim_link
+  .resource_grid
+    +no-bullets
+    margin: 0
+    li
+      background: #fff
+      margin-top: 10px
+    h3
+      margin: 0 0 .5em .5em
   #people_search_results
     li
       background: darken($background_color, 5)

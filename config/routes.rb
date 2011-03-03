@@ -20,6 +20,9 @@ Citizenry::Application.routes.draw do
   get '/groups/tag/:tag' => 'groups#tag', :as => 'groups_tagged'
 
   resources :people do
+    collection do
+      get 'grid', :action => :index, :grid => '1'
+    end
     member do
       get 'claim'
       get 'photo'
