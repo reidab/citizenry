@@ -3,8 +3,8 @@
   %span{:class => 'awesome'} awesome tech community
   of Portland, Oregon
 
-%h2#home_to Home to
 %ul#front_nav
+  %h2#home_to Home to
   %li.people= link_to semantic_pluralize(Person.count, "Person"), people_path
   %li.companies= link_to semantic_pluralize(Company.count, "Company"), companies_path
   %li.groups= link_to semantic_pluralize(Group.count, "Group"), groups_path
