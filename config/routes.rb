@@ -9,7 +9,7 @@ Citizenry::Application.routes.draw do
       post 'leave'
     end
   end
-  get '/companies/tag/:tag' => 'companies#tag', :as => 'companies_tagged'
+  get '/companies/tag/:tag' => 'companies#tag', :as => 'companies_tagged', :constraints => {:tag => /.*/}
 
   resources :groups do
     member do
@@ -17,7 +17,7 @@ Citizenry::Application.routes.draw do
       post 'leave'
     end
   end
-  get '/groups/tag/:tag' => 'groups#tag', :as => 'groups_tagged'
+  get '/groups/tag/:tag' => 'groups#tag', :as => 'groups_tagged', :constraints => {:tag=> /.*/}
 
   resources :people do
     collection do
@@ -28,7 +28,7 @@ Citizenry::Application.routes.draw do
       get 'photo'
     end
   end
-  get '/people/tag/:tag' => 'people#tag', :as => 'people_tagged'
+  get '/people/tag/:tag' => 'people#tag', :as => 'people_tagged', :constraints => {:tag => /.*/}
 
   resources :projects do
     member do
@@ -36,7 +36,7 @@ Citizenry::Application.routes.draw do
       post 'leave'
     end
   end
-  get '/projects/tag/:tag' => 'projects#tag', :as => 'projects_tagged'
+  get '/projects/tag/:tag' => 'projects#tag', :as => 'projects_tagged', :constraints => {:tag => /.*/}
 
   resources :resources
   resources :users, :only => [:show, :index, :destroy] do
