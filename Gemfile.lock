@@ -337,4 +337,5 @@ DEPENDENCIES
   twitter (~> 1.1.1)
   utility_belt
   webrat
+  will_paginate (~> 3.0.pre2)
   wirble
