@@ -2,7 +2,7 @@
   %h1 Users
   %ul
     - @users.each do |user|
-      %li{:class => user.admin? ? 'admin' : nil}
+      %li{:id => "user_#{user.id}", :class => user.admin? ? 'admin' : nil}
         - if user.admin?
           %strong Admin
         = "User #{user.id}: #{user.name}"
@@ -11,11 +11,11 @@
         = image_tag(normalize_url(user.avatar_url), :size => '30x30', :align => 'right') if user.avatar_url
         %ul
           - if user.person.present?
-            %li
-              = "Person #{user.id}:"
+            %li{:id => "person_#{user.person.id}"}
+              = "Person #{user.person.id}:"
               = link_to user.person.name, person_path(user.person)
           - user.authentications.each do |auth|
-            %li
+            %li{:id => "authentication_#{auth.id}"}
               = "Authentication #{auth.id}: #{auth.info[:name]}"
               = "(#{auth.info[:nickname]})" if auth.info[:nickname]
               = "via #{provider_name(auth.provider)}"

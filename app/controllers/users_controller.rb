@@ -6,6 +6,12 @@ class UsersController < ApplicationController
   def show
     if @user.person
       redirect_to person_path(@user.person)
+    else
+      if current_user && current_user.admin?
+        redirect_to users_path(:anchor => "user_#{@user.id}")
+      else
+        raise ActiveRecord::RecordNotFound
+      end
     end
   end
 
