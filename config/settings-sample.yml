@@ -22,6 +22,7 @@ common:
       secret: seekrit!
   google_analytics_id: <your id>
   hoptoad: seekrit!
+  secret_token: c63463de2c67e13400b5ee30329a12e6d95df8e7a24112c4420ceb0b540829cdcfa48cd1d54d9dff3cc89c552013cf9f5aab7dd2539291d9355bc2069367bafe
 development:
   auth_credentials:
     github:
