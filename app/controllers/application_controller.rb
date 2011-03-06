@@ -31,4 +31,31 @@ class ApplicationController < ActionController::Base
       redirect_to root_path and return
     end
   end
+
+  def page_title(value=nil)
+    @page_title = value unless value.nil?
+
+    if @page_title.nil?
+      @page_title ||=
+        case action_name.to_sym
+        when :index
+          controller_name.titleize
+        when :new, :create
+          "New " + controller_name.singularize.humanize.downcase
+        when :edit, :update
+          "Edit " + controller_name.singularize.humanize.downcase
+        when :destroy
+          "Destroy " + controller_name.singularize.humanize.downcase
+        else
+          begin
+            get_resource_ivar.name
+          rescue Exception => e
+            controller_name.singularize.humanize.titleize
+          end
+        end
+    else
+      @page_title
+    end
+  end
+  helper_method :page_title
 end

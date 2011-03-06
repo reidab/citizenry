@@ -1,7 +1,11 @@
 !!! 5
 %html
   %head
-    %title= SETTINGS['organization']['name']
+    %title
+      - if page_title
+        = page_title
+        &raquo;
+      SETTINGS['organization']['name']
     %meta{:name=>"viewport", :content=>"width=device-width"}
     - force_mobile = params[:force_mobile].present?
     -#
