@@ -357,6 +357,7 @@ DEPENDENCIES
   rails (= 3.0.5)
   rcov
   redfinger (~> 0.1.0)!
+  responders (~> 0.6.2)
   rspec-rails (>= 2.0.0.beta.22)
   ruby-debug
   ruby-openid (~> 2.1.8)

@@ -30,6 +30,7 @@ gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"
 gem "inherited_resources", "~> 1.2.1"
+gem "responders", "~> 0.6.2"
 
 gem 'acts-as-taggable-on', "~> 2.0.6"
 gem 'will_paginate', '~> 3.0.pre2'
