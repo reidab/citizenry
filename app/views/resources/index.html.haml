@@ -1,7 +1,7 @@
 - content_for(:section_header) do
   .section_header{:class => 'resources'}
     %h1 Resources
-    = link_to "+ Add a Link", new_resource_path, :class => 'new'
+    = link_to "+ Add a Link", url_for(:action => :new), :class => 'new'
 
 - @resources.keys.sort.each do |category|
   %h2 #{category}
