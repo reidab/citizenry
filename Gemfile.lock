@@ -143,6 +143,7 @@ GEM
       hashie (~> 1.0.0)
     git (1.2.5)
     haml (3.0.25)
+    has_scope (0.5.0)
     hashie (1.0.0)
     hoptoad_notifier (2.4.6)
       activesupport
@@ -150,6 +151,9 @@ GEM
     httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
+    inherited_resources (1.2.1)
+      has_scope (~> 0.5.0)
+      responders (~> 0.6.0)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
@@ -249,6 +253,7 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rcov (0.9.9)
+    responders (0.6.2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.5.0)
@@ -335,6 +340,7 @@ DEPENDENCIES
   haml (~> 3.0.18)
   hoptoad_notifier
   httparty (~> 0.7.4)
+  inherited_resources (~> 1.2.1)
   jquery-rails (>= 0.2.6)
   json (~> 1.4.6)
   launchy
