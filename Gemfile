@@ -30,6 +30,7 @@ gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"
 gem 'acts-as-taggable-on', "~> 2.0.6"
+gem 'will_paginate', '~> 3.0.pre2'
 
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager', :git => 'https://github.com/reidab/paper_trail_manager.git'
@@ -52,13 +53,18 @@ gem 'will_paginate', '~> 3.0.pre2'
 group :development, :test do
   # -- [ Testing ] -------------------------------------------------------------
   gem 'rspec-rails', '>= 2.0.0.beta.22'
-  gem 'webrat'
-  gem 'cucumber'
   gem "mocha"
+  gem "fakeweb"
   gem "factory_girl_rails"
   gem 'faker'
   gem 'uuid'
-  
+  gem 'steak'
+  gem 'capybara'
+  gem 'capybara-envjs'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'spork'
 
   # -- [ IRB ] -----------------------------------------------------------------
   gem 'awesome_print'
@@ -67,6 +73,7 @@ group :development, :test do
   gem 'utility_belt'
 
   # -- [ Tools ] ---------------------------------------------------------------
+  gem 'rcov'
   gem 'ruby-debug'
   gem 'annotate'
   gem "nifty-generators"

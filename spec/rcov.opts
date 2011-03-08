@@ -1,0 +1,1 @@
+--rails --exclude osx\/objc,gems\/,spec\/,features\/

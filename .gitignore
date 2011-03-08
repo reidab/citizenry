@@ -8,3 +8,4 @@ config/settings.yml
 .sass-cache/
 public/system/
 tmp
+coverage
