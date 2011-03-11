@@ -18,13 +18,13 @@ namespace :db do
   namespace :local do
     desc "Restore downloaded database on local server"
     task :restore, :roles => :db, :only => {:primary => true} do
-      sh "rake db:raw:dump FILE=database~old.sql && rake db:raw:restore FILE=database.sql"
+      system "rake db:raw:dump FILE=database~old.sql && rake db:raw:restore FILE=database.sql"
     end
   end
 
   desc "Download database from remote server"
   task :download, :roles => :db, :only => {:primary => true} do
-    sh "rsync -uvax #{user}@#{host}:#{shared_path}/db/database.sql ."
+    system "rsync -uvax #{user}@#{domain}:#{shared_path}/db/database.sql ."
   end
 
   desc "Use: dump and download remote database and restore it locally"

@@ -47,7 +47,6 @@ namespace :db do
         raise ArgumentError, "Unknown database adapter: #{adapter}"
       end
 
-      Rake::Task['clear'].invoke
       Rake::Task['db:migrate'].invoke
     end
   end
