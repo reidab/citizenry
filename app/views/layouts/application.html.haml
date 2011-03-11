@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title ePDX
+    %title= SETTINGS['organization']['name']
     %meta{:name=>"viewport", :content=>"width=device-width"}
     - force_mobile = params[:force_mobile].present?
     -#
@@ -34,7 +34,7 @@
     #header
       %h1
         %a{:href => root_path}
-          ="<span>e</span>PDX".html_safe
+          ="#{SETTINGS['organization']['logotype']}".html_safe
           %img{:class => 'home_marker', :src => '/images/home_12x12.png',
             :height => 12, :width => 12}
       #account_box{:class => current_user.try(:admin?) ? 'admin' : nil}
@@ -71,11 +71,11 @@
         = link_to("Citizenry", "http://github.com/reidab/citizenry/") + '.'
       #hosting_credit
         Hosting thanks to
-        = link_to("Network Redux", "http://www.networkredux.com/") + '.'
+        = link_to("#{SETTINGS['organization']['host']}", "#{SETTINGS['organization']['host_url']}/") + '.'
       #contact_link
         Questions? Comments? Desires? Email
-        = mail_to 'admin@epdx.org'
+        = mail_to "#{SETTINGS['organization']['email']}"
       #twitter_link
         Follow
-        = link_to("@e_pdx", "http://twitter.com/e_pdx")
+        = link_to("@#{SETTINGS['organization']['twitter']}", "http://twitter.com/#{SETTINGS['organization']['twitter']}")
         on Twitter
