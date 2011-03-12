@@ -4,12 +4,12 @@
     #possible_duplicates
       %h2 Might this be you?
       %p.hint
-        It looks like someone may have already added you to ePDX.
+        == It looks like someone may have already added you to #{SETTINGS['organization']['name']}.
         = @possible_duplicates.size == 1 ? 'Is this you?' : 'Are you any of these people?'
       = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}
   #add_yourself
     - if @person.new_record?
-      %h2 Add yourself to ePDX
+      %h2== Add yourself to #{SETTINGS['organization']['name']}
       %p= "We imported as much info as we could from your #{provider_name(current_user.authentications.first.provider)} account. Look it over and hit the big button to get started."
     - else
       %h2 Review your details
