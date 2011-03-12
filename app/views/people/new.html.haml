@@ -1,5 +1,5 @@
 #new_person
-  %h1 Add someone to ePDX
+  %h1== Add someone to #{SETTINGS['organization']['name']}
   - if request.post?
     = render 'form'
     = link_to 'Back', people_path
@@ -42,7 +42,7 @@
               %p{:class=>'bio'}= person.bio
               - if !person.new_record?
                 .existing_user_label
-                  ePDX already knows #{person.name}!
+                  == #{SETTINGS['organization']['name']} already knows #{person.name}!
               - else
                 = form_for person, :html => { :id => "#{person.imported_from_provider}_#{person.imported_from_id}_form"} do |f|
                   - [ :name,
