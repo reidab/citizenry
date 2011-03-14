@@ -55,6 +55,10 @@ group :development, :test do
   gem 'webrat'
   gem 'cucumber'
   gem "mocha"
+  gem "factory_girl_rails"
+  gem 'faker'
+  gem 'uuid'
+  
 
   # -- [ IRB ] -----------------------------------------------------------------
   gem 'awesome_print'
