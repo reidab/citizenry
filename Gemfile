@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql'
 gem 'formtastic', '~>1.1.0'
@@ -21,8 +18,7 @@ gem 'net-dns', '~> 0.6.1', :require => 'net/dns/resolver'
 gem 'twitter', '~> 1.1.1'
 gem 'linkedin', '~> 0.1.7', :git => "https://github.com/pengwynn/linkedin.git"
 gem 'mogli', '~>0.0.25', :git => "https://github.com/reidab/mogli.git"
-gem 'foursquare2', '~>0.9.0'
-# https://gist.github.com/419219 <- github oauth!
+gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth docs!
 
 gem "haml", "~> 3.0.18"
 gem "compass", "~> 0.10.5"
@@ -37,25 +33,11 @@ gem 'acts-as-taggable-on', "~> 2.0.6"
 
 gem 'hoptoad_notifier'
 
+gem 'will_paginate', '~> 3.0.pre2'
+
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager', :git => 'https://github.com/reidab/paper_trail_manager.git'
-gem 'will_paginate', '~> 3.0.pre2'
 # gem 'paper_trail_manager', :path => '../paper_trail_manager'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
