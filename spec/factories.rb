@@ -1,7 +1,7 @@
 #--[ Authentication ]-----------------------------------------------------------
 Factory.define :authentication do |a|
-  a.provider 'test'
-  a.uid UUID.generate(:compact)
+  a.provider 'open_id'
+  a.uid { UUID.generate(:compact) }
   a.info :name => 'Test Auth'
 end
 
@@ -55,7 +55,7 @@ end
 
 #--[ User ]---------------------------------------------------------------------
 Factory.define :user do |u|
-  u.email 'test@example.com'
+  u.email { Faker::Internet.email }
   u.admin false
   u.after_build do |user|
     user.authentications = [ Factory.build(:authentication, :user => user) ]
@@ -64,5 +64,13 @@ end
 
 Factory.define :admin_user, :parent => :user do |u|
   u.admin true
+end
+
+Factory.define :user_with_new_person, :parent => :user do |u|
+  u.association :person
+end
+
+Factory.define :user_with_person, :parent => :user do |u|
+  u.person {|u| u.association(:person, :reviewed => true) }
 end
 
