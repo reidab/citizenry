@@ -9,3 +9,5 @@ config/settings.yml
 public/system/
 tmp
 coverage
+database.sql
+database~old.sql
