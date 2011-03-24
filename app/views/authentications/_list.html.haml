@@ -1,6 +1,6 @@
-%ul
+%ul.authentications
   - list.each do |authentication|
-    %li
+    %li{:class => [authentication.provider], :id => "#{authentication.provider}_#{authentication.uid}"}
       =provider_icon(authentication.provider)
       =auth_label(authentication)
       - if list.size > 1
