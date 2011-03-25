@@ -3,7 +3,6 @@ Citizenry::Application.routes.draw do
 
   resources :authentications
   resources :companies do
-    resources :employees, :controller => :employments, :only => [:new, :create]
     member do
       post 'join'
       post 'leave'
