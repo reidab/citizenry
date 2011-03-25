@@ -20,6 +20,16 @@ feature "The company index" do
       page.should have_content company.name
     end
   end
+
+  scenario "should list companies by tag" do
+    @first.tag_list = "veryuniquetag"
+    @first.save!
+
+    visit company_path(@first)
+    click_link(@first.tags.first.name)
+    page.find(".companies.section_header").should have_content @first.tags.first.name.capitalize
+    page.should have_content @first.name
+  end
 end
 
 feature "The company show page" do

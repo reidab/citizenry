@@ -20,6 +20,16 @@ feature "The project index" do
       page.should have_content project.name
     end
   end
+
+  scenario "should list projects by tag" do
+    @first.tag_list = "veryuniquetag"
+    @first.save!
+
+    visit project_path(@first)
+    click_link(@first.tags.first.name)
+    page.find(".projects.section_header").should have_content @first.tags.first.name.capitalize
+    page.should have_content @first.name
+  end
 end
 
 feature "The project show page" do

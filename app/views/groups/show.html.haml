@@ -21,7 +21,7 @@
   - if @group.tags.present?
     .section.tags
       %h2 Tags
-      = render :partial => 'tags/list', :object => @group.tags, :locals => {:type => :company}
+      = render :partial => 'tags/list', :object => @group.tags, :locals => {:type => :group}
 
   - if @group.technologies.present?
     .section.technologies

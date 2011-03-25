@@ -21,6 +21,16 @@ feature "The person index" do
     end
   end
 
+  scenario "should list people by tag" do
+    @first_person.tag_list = "veryuniquetag"
+    @first_person.save!
+
+    visit person_path(@first_person)
+    click_link(@first_person.tags.first.name)
+    page.find(".people.section_header").should have_content @first_person.tags.first.name.capitalize
+    page.should have_content @first_person.name
+  end
+
   scenario "should show the person grid" do
     visit grid_people_path
     page.should have_css "ul.people.resource_grid li", :count => 3

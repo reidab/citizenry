@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :assign_group, :except => [:index, :new, :create, :show, :tag]
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :tag]
 
   # GET /groups
   # GET /groups.xml
