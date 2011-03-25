@@ -95,3 +95,25 @@ feature "Users:" do
     end
   end
 end
+
+
+feature "The user admin page" do
+  scenario "should not be accessible to anonymous users" do
+    visit users_path
+    current_path.should == new_user_session_path
+  end
+
+  scenario "should not be accessible to normal users" do
+    signed_in_as(:user) do
+      visit users_path
+      current_path.should == root_path
+    end
+  end
+
+  scenario "should be accessible to admins" do
+    signed_in_as(:admin_user) do
+      visit users_path
+      current_path.should == users_path
+    end
+  end
+end
