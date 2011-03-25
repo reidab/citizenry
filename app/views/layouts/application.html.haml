@@ -77,5 +77,5 @@
         = mail_to "#{SETTINGS['organization']['email']}"
       #twitter_link
         Follow
-        = link_to("@#{SETTINGS['organization']['twitter']}", "http://twitter.com/#{SETTINGS['organization']['twitter']}")
+        = twitter_link SETTINGS['organization']['twitter']
         on Twitter
