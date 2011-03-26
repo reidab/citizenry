@@ -6,7 +6,8 @@ class Company < ActiveRecord::Base
 
   default_scope order('companies.created_at DESC')
 
-  has_and_belongs_to_many :projects
+  has_many :company_projects
+  has_many :projects, :through => :company_projects
 
   has_many :sponsorships
   has_many :groups, :through => :sponsorships

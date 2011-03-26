@@ -9,8 +9,11 @@ class Project < ActiveRecord::Base
   has_many :project_memberships
   has_many :people, :through => :project_memberships
 
-  has_and_belongs_to_many :groups
-  has_and_belongs_to_many :companies
+  has_many :company_projects
+  has_many :companies, :through => :company_projects
+
+  has_many :group_projects
+  has_many :groups, :through => :group_projects
 
   validates_presence_of :name
 end

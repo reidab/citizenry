@@ -6,7 +6,8 @@ class Group < ActiveRecord::Base
 
   default_scope order('groups.created_at DESC')
 
-  has_and_belongs_to_many :projects
+  has_many :group_projects
+  has_many :projects, :through => :group_projects
 
   has_many :group_memberships
   has_many :members, :through => :group_memberships, :source => :person
