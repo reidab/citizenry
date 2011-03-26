@@ -6,7 +6,9 @@ class Project < ActiveRecord::Base
 
   default_scope order('projects.created_at DESC')
 
-  has_and_belongs_to_many :people
+  has_many :project_memberships
+  has_many :people, :through => :project_memberships
+
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :companies
 

@@ -20,7 +20,8 @@ class Person < ActiveRecord::Base
 
   belongs_to :user
 
-  has_and_belongs_to_many :projects
+  has_many :project_memberships
+  has_many :projects, :through => :project_memberships
 
   has_many :group_memberships
   has_many :groups, :through => :group_memberships

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110302233129) do
+ActiveRecord::Schema.define(:version => 20110325045952) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20110302233129) do
     t.string   "imported_from_screen_name"
   end
 
-  create_table "people_projects", :id => false, :force => true do |t|
+  create_table "project_memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "project_id"
     t.datetime "created_at"
