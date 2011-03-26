@@ -2,7 +2,7 @@ class Group < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable_on :tags, :technologies
 
-  has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }
+  has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, :url => "/system/:attachment/:id/:style/:safe_filename"
 
   default_scope order('groups.created_at DESC')
 
