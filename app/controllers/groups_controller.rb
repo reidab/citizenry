@@ -11,12 +11,12 @@ class GroupsController < InheritedResources::Base
   end
 
   def join
-    @group.members << current_person if current_person
+    resource.members << current_person if current_person
     redirect_to :action => :show
   end
 
   def leave
-    @group.members.delete(current_person) if current_person
+    resource.members.delete(current_person) if current_person
     redirect_to :action => :show
   end
 end

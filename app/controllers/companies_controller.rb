@@ -17,12 +17,12 @@ class CompaniesController < InheritedResources::Base
   end
 
   def join
-    @company.employees << current_person if current_person
+    resource.employees << current_person if current_person
     redirect_to :action => :show
   end
 
   def leave
-    @company.employees.delete(current_person) if current_person
+    resource.employees.delete(current_person) if current_person
     redirect_to :action => :show
   end
 end

@@ -15,12 +15,12 @@ class ProjectsController < InheritedResources::Base
   end
 
   def join
-    @project.people << current_person if current_person
+    resource.people << current_person if current_person
     redirect_to :action => :show
   end
 
   def leave
-    @project.people.delete(current_person) if current_person
+    resource.people.delete(current_person) if current_person
     redirect_to :action => :show
   end
 end
