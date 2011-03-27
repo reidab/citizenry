@@ -10,6 +10,6 @@
   %li.companies= link_to semantic_pluralize(Company.count, "Company"), companies_path
   %li.groups= link_to semantic_pluralize(Group.count, "Group"), groups_path
   %li.projects= link_to semantic_pluralize(Project.count, "Project or Product", "Projects & Products"), projects_path
-  %li.resources= link_to semantic_pluralize(Resource.count, "Resource"), '/resources'
+  %li.resources= link_to semantic_pluralize(ResourceLink.count, "Resource"), resource_links_path
   - if @events_count
     %li.events= link_to semantic_pluralize(@events_count, "Upcoming event") + " on Calagator", 'http://calagator.org/events'

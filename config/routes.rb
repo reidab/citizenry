@@ -37,7 +37,8 @@ Citizenry::Application.routes.draw do
   end
   get '/projects/tag/:tag' => 'projects#tag', :as => 'projects_tagged', :constraints => {:tag => /.*/}
 
-  resources :resources
+  resources :resources, :as => :resource_links, :controller => :resource_links
+
   resources :users, :only => [:show, :index, :destroy] do
     member do
       post 'adminify'

@@ -45,8 +45,8 @@ Factory.define :project do |p|
   p.description {|p| "We're building #{p.name.split(' ')[1..-2].join(' ')} for #{Faker::Company.catch_phrase}!".capitalize }
 end
 
-#--[ Resource ]-----------------------------------------------------------------
-Factory.define :resource do |r|
+#--[ Resource Links ]-----------------------------------------------------------
+Factory.define :resource_link do |r|
   r.name { Faker::Company.bs.split(' ')[1..2].join(' ') }
   r.url { Faker::Internet.domain_name }
   r.description {|r| "A site that #{ Faker::Company.bs.split(' ').first } #{r.name}" }

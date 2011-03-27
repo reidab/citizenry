@@ -5,7 +5,7 @@
       - if page_title
         = page_title
         &raquo;
-      SETTINGS['organization']['name']
+      = SETTINGS['organization']['name']
     %meta{:name=>"viewport", :content=>"width=device-width"}
     - force_mobile = params[:force_mobile].present?
     -#
@@ -56,7 +56,7 @@
         %li= link_to "Companies", companies_path, :class => 'companies'
         %li= link_to "Groups", groups_path, :class => 'groups'
         %li= link_to "Projects & Products", projects_path, :class => 'projects'
-        %li= link_to "Resources", resources_path, :class => 'resources'
+        %li= link_to "Resources", resource_links_path, :class => 'resources'
         /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
     - if current_user.blank?
