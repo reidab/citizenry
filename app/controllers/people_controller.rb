@@ -52,6 +52,7 @@ class PeopleController < InheritedResources::Base
 
   def create
     if params[:form_context] == 'add_self'
+      @person = Person.new(params[:person])
       @person.user = current_user
       @person.imported_from_provider = current_user.authentications.first.provider
       @person.imported_from_id = current_user.authentications.first.uid
@@ -75,7 +76,7 @@ class PeopleController < InheritedResources::Base
   def require_owner_or_admin!
     authenticate_user! and return unless current_user
 
-    unless current_user.admin? || current_user == @person.user
+    unless current_user.admin? || current_user == resource.user
       flash[:warning] = "You aren't allowed to edit this person."
       redirect_to person_path(@person)
     end
