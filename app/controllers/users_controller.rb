@@ -40,7 +40,7 @@ class UsersController < InheritedResources::Base
   end
 
   def index
-    @users = Users.includes(:authentications, :person).all
+    @users = User.includes(:authentications, :person).all
   end
 
   # def destroy
