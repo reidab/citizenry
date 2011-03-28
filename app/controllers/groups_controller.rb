@@ -1,5 +1,7 @@
 class GroupsController < InheritedResources::Base
   respond_to :html, :xml, :json
+  custom_actions  :collection => :tag,
+                  :resource => [:join, :leave]
 
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
 
@@ -7,16 +9,18 @@ class GroupsController < InheritedResources::Base
     @tag = params[:tag]
     @groups = Group.tagged_with(@tag)
 
-    render :action => :index
+    tag! do |format|
+      format.html { render :action => :index }
+    end
   end
 
   def join
     resource.members << current_person if current_person
-    redirect_to :action => :show
+    join!{ {:action => :show} }
   end
 
   def leave
     resource.members.delete(current_person) if current_person
-    redirect_to :action => :show
+    leave!{ {:action => :show} }
   end
 end

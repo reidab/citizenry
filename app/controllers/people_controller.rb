@@ -1,5 +1,7 @@
 class PeopleController < InheritedResources::Base
   respond_to :html, :xml, :json
+  custom_actions  :collection => :tag,
+                  :resource => [:claim, :photo]
 
   include Localness
   before_filter :authenticate_user!, :only => [:new, :create]
@@ -11,20 +13,21 @@ class PeopleController < InheritedResources::Base
     @view = :grid if params[:grid]
     @people ||= Person.all.shuffle
 
-    super
+    index!
   end
 
   def tag
     @tag = params[:tag]
     @people = Person.tagged_with(@tag)
 
-    render :action => :index
+    tag! do |format|
+      format.html { render :action => :index }
+    end
   end
 
   def show
     @person = Person.includes(:companies, :groups, :projects).find(params[:id])
-
-    super
+    show!
   end
 
   def new
@@ -47,7 +50,7 @@ class PeopleController < InheritedResources::Base
 
     end
 
-    super
+    new!
   end
 
   def create
@@ -58,11 +61,11 @@ class PeopleController < InheritedResources::Base
       @person.imported_from_id = current_user.authentications.first.uid
     end
 
-    super
+    create!
   end
 
   def claim
-    if @person.user.present?
+    if resource.user.present?
       flash[:error] = "This person has already been claimed."
       redirect_to(:action => 'show') and return
     end

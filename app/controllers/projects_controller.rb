@@ -1,5 +1,7 @@
 class ProjectsController < InheritedResources::Base
   respond_to :html, :xml, :json
+  custom_actions  :collection => :tag,
+                  :resource => [:join, :leave]
 
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
 
@@ -7,20 +9,23 @@ class ProjectsController < InheritedResources::Base
     @tag = params[:tag]
     @projects = Project.tagged_with(@tag)
 
-    render :action => :index
+    tag! do |format|
+      format.html { render :action => :index }
+    end
   end
 
   def show
     @project = Project.includes(:people).find(params[:id])
+    show!
   end
 
   def join
     resource.people << current_person if current_person
-    redirect_to :action => :show
+    join!{ {:action => :show} }
   end
 
   def leave
     resource.people.delete(current_person) if current_person
-    redirect_to :action => :show
+    leave!{ {:action => :show} }
   end
 end

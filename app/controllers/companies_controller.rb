@@ -1,5 +1,7 @@
 class CompaniesController < InheritedResources::Base
   respond_to :html, :xml, :json
+  custom_actions  :collection => :tag,
+                  :resource => [:join, :leave]
 
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
 
@@ -7,22 +9,23 @@ class CompaniesController < InheritedResources::Base
     @tag = params[:tag]
     @companies = Company.tagged_with(@tag)
 
-    render :action => :index
+    tag! do |format|
+      format.html { render :action => :index }
+    end
   end
 
   def show
     @company = Company.includes(:employees).find(params[:id])
-
-    super
+    show!
   end
 
   def join
     resource.employees << current_person if current_person
-    redirect_to :action => :show
+    join!{ {:action => :show} }
   end
 
   def leave
     resource.employees.delete(current_person) if current_person
-    redirect_to :action => :show
+    leave!{ {:action => :show} }
   end
 end

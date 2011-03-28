@@ -6,6 +6,8 @@ class ResourceLinksController < InheritedResources::Base
   end
 
   def show
-    redirect_to resource_links_path(:anchor => params[:id])
+    show! do |format|
+      format.html { redirect_to resource_links_path(:anchor => params[:id]) }
+    end
   end
 end
