@@ -1,14 +1,15 @@
-class UsersController < ApplicationController
-  before_filter :load_user, :only => [:show, :destroy, :adminify]
+class UsersController < InheritedResources::Base
+  respond_to :html, :xml, :json
+
   before_filter :authenticate_user!, :only => [:welcome, :home]
-  before_filter :require_admin!, :only => [:index, :edit, :update, :destroy, :adminify]
+  before_filter :require_admin!, :except => [:show, :home, :welcome]
 
   def show
-    if @user.person
-      redirect_to person_path(@user.person)
+    if resource.person
+      redirect_to person_path(resource.person)
     else
       if current_user && current_user.admin?
-        redirect_to users_path(:anchor => "user_#{@user.id}")
+        redirect_to users_path(:anchor => "user_#{resource.id}")
       else
         raise ActiveRecord::RecordNotFound
       end
@@ -42,26 +43,13 @@ class UsersController < ApplicationController
     @users = User.includes(:authentications, :person).all
   end
 
-  def destroy
-    @user.destroy
-    flash[:success] = "#{@user.name} is no more."
-
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
-    end
-  end
+  # def destroy
 
   def adminify
     @user.admin = !(@user.admin)
     @user.save
 
     redirect_to users_path
-  end
-
-  private
-  def load_user
-    @user = User.find(params[:id])
   end
 end
 

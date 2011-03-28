@@ -1,10 +1,11 @@
-class Resource < ActiveRecord::Base
+class ResourceLink < ActiveRecord::Base
   has_paper_trail
 end
 
+
 # == Schema Information
 #
-# Table name: resources
+# Table name: resource_links
 #
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)

@@ -1,107 +1,26 @@
-class GroupsController < ApplicationController
-  before_filter :assign_group, :except => [:index, :new, :create, :show, :tag]
+class GroupsController < InheritedResources::Base
+  respond_to :html, :xml, :json
+  custom_actions  :collection => :tag,
+                  :resource => [:join, :leave]
+
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
-
-  # GET /groups
-  # GET /groups.xml
-  def index
-    @groups = Group.all
-
-    respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @groups }
-    end
-  end
 
   def tag
     @tag = params[:tag]
     @groups = Group.tagged_with(@tag)
 
-    render :action => :index
-  end
-
-  # GET /groups/1
-  # GET /groups/1.xml
-  def show
-    @group = Group.find(params[:id], :include => [:members])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @group }
+    tag! do |format|
+      format.html { render :action => :index }
     end
   end
-
-  # GET /groups/new
-  # GET /groups/new.xml
-  def new
-    @group = Group.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @group }
-    end
-  end
-
-  # GET /groups/1/edit
-  def edit
-  end
-
-  # POST /groups
-  # POST /groups.xml
-  def create
-    @group = Group.new(params[:group])
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to(@group, :notice => 'Group was successfully created.') }
-        format.xml  { render :xml => @group, :status => :created, :location => @group }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /groups/1
-  # PUT /groups/1.xml
-  def update
-    respond_to do |format|
-      if @group.update_attributes(params[:group])
-        format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /groups/1
-  # DELETE /groups/1.xml
-  def destroy
-    @group.destroy
-    flash[:success] = "#{@group.name} is no more."
-
-    respond_to do |format|
-      format.html { redirect_to(groups_url) }
-      format.xml  { head :ok }
-    end
-  end
-
 
   def join
-    @group.members << current_person if current_person
-    redirect_to :action => :show
+    resource.members << current_person if current_person
+    join!{ {:action => :show} }
   end
 
   def leave
-    @group.members.delete(current_person) if current_person
-    redirect_to :action => :show
-  end
-
-  private
-
-  def assign_group
-    @group = Group.find(params[:id])
+    resource.members.delete(current_person) if current_person
+    leave!{ {:action => :show} }
   end
 end
