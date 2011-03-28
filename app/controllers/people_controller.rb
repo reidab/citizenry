@@ -71,9 +71,6 @@ class PeopleController < InheritedResources::Base
     end
   end
 
-  def photo
-  end
-
   private
 
   def require_owner_or_admin!
