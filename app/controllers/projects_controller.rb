@@ -28,4 +28,10 @@ class ProjectsController < InheritedResources::Base
     resource.people.delete(current_person) if current_person
     leave!{ {:action => :show} }
   end
+
+  protected
+
+  def collection
+    @projects ||= filter_sort_and_paginate(end_of_association_chain)
+  end
 end

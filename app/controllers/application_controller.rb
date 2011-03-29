@@ -19,6 +19,31 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def random_sort_clause
+    seed = session["#{controller_name}_random_sort_seed"] ||= rand(2147483647)
+    direction = %w(asc desc).include?(params[:order]) ? params[:order].upcase : ''
+
+    "RAND(#{seed}) #{direction}"
+  end
+
+  def clear_random_sort_seed
+    session["#{controller_name}_random_sort_seed"] = nil
+  end
+
+  def filter_sort_and_paginate(collection, default_order_random = false)
+    collection = collection.tagged_with(params[:tag]) if params[:tag].present?
+
+    if params[:column].eql?('random') || (params[:column].nil? && default_order_random)
+      collection = collection.order(random_sort_clause)
+    else
+      clear_random_sort_seed
+      collection = collection.sorty(params)
+    end
+
+    collection.paginate(:page => params[:page])
+  end
+
+
   def current_person
     current_user && current_user.person
   end

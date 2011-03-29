@@ -231,36 +231,48 @@ body.events #content
     #view_options
       margin-left: 1em
       a
-        background: transparent
         color: #fff
+      .sorting
+        a
+          margin-left: 3px
+          &.current
+            // font-style: italic
+            &.asc, &.desc
+              padding-right: 16px
+              background-position: right center
+              background-repeat: no-repeat
+            &.asc
+              background-image: image-url('sanscons_16/arrow2_s.png')
+            &.desc
+              background-image: image-url('sanscons_16/arrow2_n.png')
     &.people
       @extend .people-bg
-      a
+      a.new
         @extend .people-text
         background: #fff
     &.companies
       @extend .companies-bg
-      a
+      a.new
         @extend .companies-text
         background: #fff
     &.groups
       @extend .groups-bg
-      a
+      a.new
         @extend .groups-text
         background: #fff
     &.projects
       @extend .projects-bg
-      a
+      a.new
         @extend .projects-text
         background: #fff
     &.resources
       @extend .resources-bg
-      a
+      a.new
         @extend .resources-text
         background: #fff
     &.events
       @extend .events-bg
-      a
+      a.new
         @extend .events-text
         background: #fff
 
@@ -318,6 +330,23 @@ body.events #content
       margin-top: 10px
     h3
       margin: 0 0 .5em .5em
+  .pagination
+    font-weight: bold
+    color: #999
+    margin-top: 1em
+    span.disabled, em, a
+      display: inline-block
+      padding: .25em .75em
+      border: 1px solid #999
+      border-right-width: 0
+      &.next_page
+        border-right-width: 1px
+    span.separator
+      display: none
+    em
+      font-style: normal
+      background: #fff
+      color: #000
   #people_search_results
     li
       background: darken($background_color, 5)

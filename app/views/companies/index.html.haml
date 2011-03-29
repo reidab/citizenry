@@ -2,5 +2,11 @@
   .section_header{:class => 'companies'}
     %h1= "#{@tag} companies".strip.titleize
     = link_to "+ Add a Company", new_company_path, :class => 'new'
+    #view_options
+      %span.sorting
+        %strong Sort by:
+        = sort_link(:name) + ","
+        = sort_link(:created_at, :label => "Date added", :default_order => :desc, :is_default => :desc) + ","
+        = sort_link(:random)
 
 = render :partial => 'companies/list', :object => @companies

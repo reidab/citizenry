@@ -11,14 +11,11 @@ class PeopleController < InheritedResources::Base
 
   def index
     @view = :grid if params[:grid]
-    @people ||= Person.all.shuffle
-
     index!
   end
 
   def tag
     @tag = params[:tag]
-    @people = Person.tagged_with(@tag)
 
     tag! do |format|
       format.html { render :action => :index }
@@ -71,7 +68,11 @@ class PeopleController < InheritedResources::Base
     end
   end
 
-  private
+  protected
+
+  def collection
+    @people ||= filter_sort_and_paginate(end_of_association_chain, true)
+  end
 
   def require_owner_or_admin!
     authenticate_user! and return unless current_user

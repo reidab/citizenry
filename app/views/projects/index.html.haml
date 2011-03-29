@@ -2,5 +2,11 @@
   .section_header{:class => 'projects'}
     %h1= "#{@tag} projects<span class='desktop-only'> & products</span>".html_safe.strip.titleize
     = link_to "+ Add a Project", new_project_path, :class => 'new'
+    #view_options
+      %span.sorting
+        %strong Sort by:
+        = sort_link(:name) + ","
+        = sort_link(:created_at, :label => "Date added", :default_order => :desc, :is_default => :desc) + ","
+        = sort_link(:random)
 
 = render :partial => 'projects/list', :object => @projects

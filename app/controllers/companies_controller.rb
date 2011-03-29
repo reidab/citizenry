@@ -7,7 +7,6 @@ class CompaniesController < InheritedResources::Base
 
   def tag
     @tag = params[:tag]
-    @companies = Company.tagged_with(@tag)
 
     tag! do |format|
       format.html { render :action => :index }
@@ -27,5 +26,11 @@ class CompaniesController < InheritedResources::Base
   def leave
     resource.employees.delete(current_person) if current_person
     leave!{ {:action => :show} }
+  end
+
+  protected
+
+  def collection
+    @companies ||= filter_sort_and_paginate(end_of_association_chain)
   end
 end

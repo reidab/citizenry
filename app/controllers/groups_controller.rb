@@ -7,7 +7,6 @@ class GroupsController < InheritedResources::Base
 
   def tag
     @tag = params[:tag]
-    @groups = Group.tagged_with(@tag)
 
     tag! do |format|
       format.html { render :action => :index }
@@ -22,5 +21,11 @@ class GroupsController < InheritedResources::Base
   def leave
     resource.members.delete(current_person) if current_person
     leave!{ {:action => :show} }
+  end
+
+  protected
+
+  def collection
+    @groups ||= filter_sort_and_paginate(end_of_association_chain)
   end
 end

@@ -3,6 +3,8 @@ class Person < ActiveRecord::Base
   has_paper_trail :ignore => [:user_id]
   acts_as_taggable_on :tags, :technologies
 
+  sortable
+
   require 'open-uri'
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
 
@@ -15,8 +17,6 @@ class Person < ActiveRecord::Base
       self.photo = io if io.original_filename.present?
     end
   end
-
-  default_scope order('people.created_at DESC')
 
   belongs_to :user
 
