@@ -10,9 +10,9 @@
         = sort_link(:random, :is_default => :asc)
       %span.view
         %strong View as:
-        = link_to_unless_current "List", people_path
+        = link_to_unless_current "List", people_path(:page => params[:page], :column => params[:column], :order => params[:order])
         = "|"
-        = link_to_unless_current "Grid", grid_people_path
+        = link_to_unless_current "Grid", grid_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
 
 - if @view == :grid
   = render :partial => 'grid', :object => @people
