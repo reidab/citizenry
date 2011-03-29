@@ -5,7 +5,7 @@
       - if page_title
         = page_title
         &raquo;
-      = SETTINGS['organization']['name']
+      = "#{SETTINGS['organization']['name']}: #{SETTINGS['organization']['city']}'s Tech Directory"
     %meta{:name=>"viewport", :content=>"width=device-width"}
     - force_mobile = params[:force_mobile].present?
     -#
