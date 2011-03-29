@@ -93,6 +93,14 @@ describe Moonshine::Manifest::Rails do
         /rubygems.org/
       )
     end
+    
+    it "should be valid gemrc syntax (i.e. no leading symbols)" do
+      @manifest.rails_gems
+
+      @manifest.should have_file('/etc/gemrc').with_content(
+        /^gem:/
+      )
+    end
 
     it "loads gems from config" do
       @manifest.configure(:gems => [ { :name => 'jnewland-pulse', :source => 'http://rubygems.org' } ])
@@ -167,7 +175,7 @@ describe Moonshine::Manifest::Rails do
         /PassengerUseGlobalQueue On/
       )
       @manifest.should exec_command('/usr/sbin/a2enmod passenger')
-      @manifest.should exec_command('/usr/bin/ruby -S rake clean apache2')
+      @manifest.should exec_command('sudo /usr/bin/ruby -S rake clean apache2')
     end
 
     it "allows setting booleans configurations to false" do
@@ -188,7 +196,7 @@ describe Moonshine::Manifest::Rails do
 
         vhost_conf_path = "/etc/apache2/sites-available/#{@manifest.configuration[:application]}"
         @manifest.should have_file(vhost_conf_path).with_content(
-          /RailsAllowModRewrite On/
+          /RailsAllowModRewrite is deprecated/
         )
 
         @manifest.should exec_command('/usr/sbin/a2dissite 000-default')
@@ -218,6 +226,18 @@ describe Moonshine::Manifest::Rails do
 
         @manifest.should have_file("/etc/apache2/sites-available/#{@manifest.configuration[:application]}").with_content(
           /AddOutputFilterByType DEFLATE text\/css application\/javascript/
+        )
+      end
+
+      it "supports configuring FileETag" do
+        @manifest.passenger_configure_gem_path
+        @manifest.configure(:apache => { :file_etag => "MTime Size" })
+        
+        @manifest.passenger_site
+
+        vhost_conf_path = "/etc/apache2/sites-available/#{@manifest.configuration[:application]}"
+        @manifest.should have_file(vhost_conf_path).with_content(
+          /FileETag MTime Size/
         )
       end
 

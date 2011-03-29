@@ -2,11 +2,17 @@ module Moonshine::Manifest::Rails::Passenger
   # Install the passenger gem
   def passenger_gem
     configure(:passenger => {})
-    package "passenger",
-      :ensure => (configuration[:passenger][:version] || :latest),
-      :provider => :gem,
-      :require => [ package('libcurl4-gnutls-dev') ]
-    package 'libcurl4-gnutls-dev', :ensure => :installed
+    if configuration[:passenger][:version] && configuration[:passenger][:version] < "3.0"
+      package "passenger",
+        :ensure => configuration[:passenger][:version],
+        :provider => :gem
+    else
+      package "passenger",
+        :ensure => (configuration[:passenger][:version] || '3.0.4'),
+        :provider => :gem,
+        :require => [ package('libcurl4-openssl-dev') ]
+      package 'libcurl4-openssl-dev', :ensure => :installed
+    end
   end
 
   # Build, install, and enable the passenger apache module. Please see the
@@ -31,14 +37,16 @@ module Moonshine::Manifest::Rails::Passenger
       :command => 'sudo /usr/bin/ruby -S rake clean apache2',
       :unless => [
         "ls `passenger-config --root`/ext/apache2/mod_passenger.so",
-        "ls `passenger-config --root`/ext/ruby/ruby-*/passenger_native_support.so"
+        "ls `passenger-config --root`/ext/ruby/ruby-*/passenger_native_support.so",
+        "ls `passenger-config --root`/agents/PassengerLoggingAgent"
         ].join(" && "),
       :require => [
         package("passenger"),
         package("apache2-mpm-worker"),
         package("apache2-threaded-dev"),
         exec('symlink_passenger')
-      ]
+      ],
+      :timeout => 108000
 
     load_template = "LoadModule passenger_module #{configuration[:passenger][:path]}/ext/apache2/mod_passenger.so"
 

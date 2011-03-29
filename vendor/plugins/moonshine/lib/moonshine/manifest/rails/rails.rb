@@ -18,7 +18,7 @@ module Moonshine::Manifest::Rails::Rails
   #   rake moonshine:app:bootstrap
   #
   # The <tt>moonshine:app:bootstrap</tt> task does nothing by default. If
-  # you'd like to have your application preform any logic on it's first deploy,
+  # you'd like to have your application perform any logic on its first deploy,
   # overwrite this task in your <tt>Rakefile</tt>:
   #
   #   namespace :moonshine do
@@ -30,9 +30,9 @@ module Moonshine::Manifest::Rails::Rails
   #     end
   #   end
   #
-  # All of this assumes one things. That your application can run 'rake
-  # environment' with an empty database. Please ensure your application can do
-  # so!
+  # All of this assumes one thing: that your application can run <tt>rake
+  # environment</tt> with an empty database. Please ensure your application can
+  # do so!
   def rails_bootstrap
     rake 'moonshine:bootstrap',
       :alias => 'rails_bootstrap',
@@ -86,7 +86,7 @@ module Moonshine::Manifest::Rails::Rails
   # <tt>config/gems.yml</tt>, which can be generated from by running
   # <tt>rake moonshine:gems</tt> locally.
   def rails_gems
-    gemrc = {
+    gemrc = HashWithIndifferentAccess.new({
       :verbose => true,
       :gem => '--no-ri --no-rdoc',
       :update_sources => true,
@@ -94,14 +94,14 @@ module Moonshine::Manifest::Rails::Rails
         'http://rubygems.org',
         'http://gems.github.com'
       ]
-     }
+     })
      gemrc.merge!(configuration[:rubygems]) if configuration[:rubygems]
      file '/etc/gemrc',
       :ensure   => :present,
       :mode     => '744',
       :owner    => 'root',
       :group    => 'root',
-      :content  => gemrc.to_yaml
+      :content  => gemrc.to_hash.to_yaml
 
     # stub for puppet dependencies
     exec 'rails_gems', :command => 'true'
@@ -140,7 +140,7 @@ module Moonshine::Manifest::Rails::Rails
         :before => exec('rails_gems'),
         :require => file('/etc/gemrc'),
         :user => configuration[:user],
-        :timeout => -1,
+        :timeout => 108000,
         :logoutput => true
 
     else
@@ -219,6 +219,7 @@ module Moonshine::Manifest::Rails::Rails
       :require  => file('/etc/gemrc')
     }
     hash.merge!(:source => options[:source]) if options[:source]
+    hash.merge!(:alias => options[:alias]) if options[:alias]
     #fixup the version required
     exact_dep = Gem::Dependency.new(name, options[:version] || '>0')
     matches = Gem.source_index.search(exact_dep)
@@ -275,7 +276,7 @@ module Moonshine::Manifest::Rails::Rails
       :environment => "RAILS_ENV=#{ENV['RAILS_ENV']}",
       :require => exec('rake tasks'),
       :logoutput => true,
-      :timeout => -1
+      :timeout => 108000
     }.merge(options)
   )
   end

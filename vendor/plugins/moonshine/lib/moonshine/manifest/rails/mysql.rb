@@ -7,8 +7,7 @@ module Moonshine::Manifest::Rails::Mysql
   def mysql_server
     package 'mysql-server', :ensure => :installed
     service 'mysql', :ensure => :running, :require => [
-      package('mysql-server'),
-      package('mysql')
+      package('mysql-server')
     ]
 
     # ensure the mysql key is present on the configuration hash
@@ -34,7 +33,7 @@ module Moonshine::Manifest::Rails::Mysql
 
   # Install the <tt>mysql</tt> rubygem and dependencies
   def mysql_gem
-    gem('mysql')
+    gem(mysql_gem_name, :alias => 'mysql')
   end
 
   # GRANT the database user specified in the current <tt>database_environment</tt>
@@ -84,5 +83,10 @@ private
 
   def mysql_version
     ubuntu_lucid? ? 5.1 : 5
+  end
+
+  def mysql_gem_name
+    # Assume the gem name is the same as the adapter name
+    database_environment[:adapter]
   end
 end

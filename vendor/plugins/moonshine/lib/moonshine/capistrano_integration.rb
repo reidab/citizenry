@@ -17,9 +17,10 @@ module Moonshine
         ssh_options[:paranoid] = false
         ssh_options[:forward_agent] = true
         default_run_options[:pty] = true
+        set :noop, false
 
         # fix common svn error
-        set :scm, :svn if !! repository =~ /^svn/
+        set :scm, :subversion if !! repository =~ /^svn/
 
         # set some default values, so we don't have to fetch(:var, :some_default) in multiple places
         set :local_config, []
@@ -56,7 +57,9 @@ module Moonshine
     def self.load_callbacks_into(capistrano_config)
       capistrano_config.load do
         on :start, 'moonshine:configure'
-        after 'deploy:restart', 'deploy:cleanup'
+        unless fetch(:noop)
+          after 'deploy:restart', 'deploy:cleanup'
+        end
         after 'multistage:ensure', 'moonshine:configure_stage'
       end
     end
@@ -92,8 +95,8 @@ module Moonshine
           end
 
           desc <<-DESC
-  Bootstrap a barebones Ubuntu system with Git/Subversion, Ruby, RubyGems, and Moonshine
-  dependencies. Called by deploy:setup.
+  Bootstrap a barebones Ubuntu system with Git/Subversion, Ruby, RubyGems, and \
+  Moonshine dependencies. Called by deploy:setup.
           DESC
           task :bootstrap do
             ruby.install
@@ -103,7 +106,7 @@ module Moonshine
           end
 
           desc <<-DESC
-  Applies the lib/moonshine_setup_manifest.rb manifest, which replicates the old
+  Applies the lib/moonshine_setup_manifest.rb manifest, which replicates the old \
   capistrano deploy:setup behavior.
           DESC
           task :setup_directories do
@@ -117,8 +120,12 @@ module Moonshine
 
           desc 'Apply the Moonshine manifest for this application'
           task :apply, :except => { :no_release => true } do
-            aptget.update
             sudo "RAILS_ROOT=#{latest_release} DEPLOY_STAGE=#{ENV['DEPLOY_STAGE'] || fetch(:stage)} RAILS_ENV=#{fetch(:rails_env)} shadow_puppet #{latest_release}/app/manifests/#{fetch(:moonshine_manifest)}.rb"
+          end
+
+          desc 'No-op apply the Moonshine manifest for this application'
+          task :noop_apply, :except => { :no_release => true } do
+            sudo "RAILS_ROOT=#{latest_release} DEPLOY_STAGE=#{ENV['DEPLOY_STAGE'] || fetch(:stage)} RAILS_ENV=#{fetch(:rails_env)} shadow_puppet --noop #{latest_release}/app/manifests/#{fetch(:moonshine_manifest)}.rb"
           end
 
           desc 'Update code and then run a console. Useful for debugging deployment.'
@@ -143,7 +150,15 @@ module Moonshine
           end
 
           before 'deploy:symlink' do
-            apply if fetch(:moonshine_apply, true) == true
+            if fetch(:noop)
+              noop_apply
+            else
+              apply if fetch(:moonshine_apply, true) == true
+            end
+          end
+
+          after 'deploy' do
+            deploy.rollback.default if fetch(:noop)
           end
 
         end
@@ -165,10 +180,17 @@ module Moonshine
           desc 'Run script/console on the first application server'
           task :console, :roles => :app, :except => {:no_symlink => true} do
             input = ''
-            run "cd #{current_path} && ./script/console #{fetch(:rails_env)}" do |channel, stream, data|
+            if capture("test -f #{current_path}/script/console; echo $?").strip == "0"
+              command = "cd #{current_path} && ./script/console #{fetch(:rails_env)}"
+              prompt = /^(>|\?)>/
+            else
+              command = "cd #{current_path} && ./script/rails console #{fetch(:rails_env)}"
+              prompt = /:\d{3}:\d+(\*|>)/
+            end
+            run command do |channel, stream, data|
               next if data.chomp == input.chomp || data.chomp == ''
               print data
-              channel.send_data(input = $stdin.gets) if data =~ /^(>|\?)>/
+              channel.send_data(input = $stdin.gets) if data =~ prompt
             end
           end
 
@@ -209,7 +231,7 @@ module Moonshine
         namespace :local_config do
 
           desc <<-DESC
-  Uploads local configuration files to the application's shared directory for
+  Uploads local configuration files to the application's shared directory for \
   later symlinking (if necessary). Called if local_config is set.
           DESC
           task :upload do
@@ -240,7 +262,7 @@ module Moonshine
         namespace :shared_config do
 
           desc <<-DESC
-  Uploads local configuration files to the application's shared directory for
+  Uploads local configuration files to the application's shared directory for \
   later symlinking (if necessary). Called if shared_config is set.
           DESC
           task :upload do
@@ -256,7 +278,7 @@ module Moonshine
           end
 
           desc <<-DESC
-  Downloads remote configuration from the application's shared directory for
+  Downloads remote configuration from the application's shared directory for \
   local use.
           DESC
           task :download do
@@ -291,7 +313,9 @@ module Moonshine
         namespace :deploy do
           desc 'Restart the Passenger processes on the app server by touching tmp/restart.txt.'
           task :restart, :roles => :app, :except => { :no_release => true } do
-            run "touch #{current_path}/tmp/restart.txt"
+            unless fetch(:noop)
+              run "touch #{current_path}/tmp/restart.txt"
+            end
           end
 
           [:start, :stop].each do |t|
@@ -314,6 +338,11 @@ module Moonshine
           task :setup, :except => { :no_release => true } do
             moonshine.bootstrap
           end
+        end
+
+        desc "does a no-op deploy. great for testing a potential deploy before running it!"
+        task :noop do
+          set :noop, true
         end
 
         namespace :ruby do
@@ -362,11 +391,11 @@ module Moonshine
             remove_ruby_from_apt
             run [
               'cd /tmp',
-              'sudo rm -rf ruby-enterprise-1.8.7-2010.02* || true',
+              'sudo rm -rf ruby-enterprise-1.8.7-2011.02* || true',
               'sudo mkdir -p /usr/lib/ruby/gems/1.8/gems || true',
-              'wget -q http://rubyforge.org/frs/download.php/71096/ruby-enterprise-1.8.7-2010.02.tar.gz',
-              'tar xzf ruby-enterprise-1.8.7-2010.02.tar.gz',
-              'sudo /tmp/ruby-enterprise-1.8.7-2010.02/installer --dont-install-useful-gems --no-dev-docs -a /usr'
+              'wget -q http://rubyenterpriseedition.googlecode.com/files/ruby-enterprise-1.8.7-2011.02.tar.gz',
+              'tar xzf ruby-enterprise-1.8.7-2011.02.tar.gz',
+              'sudo /tmp/ruby-enterprise-1.8.7-2011.02/installer --dont-install-useful-gems --no-dev-docs -a /usr'
             ].join(' && ')
           end
 
@@ -386,7 +415,7 @@ module Moonshine
           end
 
           task :install_rubygems do
-            version = fetch(:rubygems_version, '1.3.7')
+            version = fetch(:rubygems_version, '1.4.2')
             run [
               'cd /tmp',
               "sudo rm -rf rubygems-#{version}* || true",
@@ -394,8 +423,7 @@ module Moonshine
               "tar xfz rubygems-#{version}.tgz",
               "cd /tmp/rubygems-#{version}",
               'sudo ruby setup.rb',
-                'sudo ln -s /usr/bin/gem1.8 /usr/bin/gem || true',
-                'sudo gem update --system'
+              'sudo ln -s /usr/bin/gem1.8 /usr/bin/gem || true',
             ].join(' && ')
           end
 
@@ -406,9 +434,11 @@ module Moonshine
 
           task :install_moonshine_deps do
             sudo 'gem install rake --no-rdoc --no-ri'
+            sudo 'gem install i18n --no-rdoc --no-ri' # workaround for missing activesupport-3.0.2 dep on i18n
             sudo 'gem install shadow_puppet --no-rdoc --no-ri'
             if rails_root.join('Gemfile').exist?
-              sudo 'gem install bundler --no-rdoc --no-ri'
+              bundler_version = fetch(:bundler_version, '1.0.9')
+              sudo "gem install bundler --no-rdoc --no-ri --version='#{bundler_version}'"
             end
           end
         end
