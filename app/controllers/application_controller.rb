@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
       collection = collection.sorty(params)
     end
 
-    collection.paginate(:page => params[:page])
+    collection.paginate(:page => params[:page], :per_page => params[:per_page] || params[:grid] ? 28 : 30)
   end
 
 
