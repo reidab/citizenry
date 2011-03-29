@@ -1,7 +1,6 @@
 - context ||= :general
 %li
-  - if list_item.photo.file?
-    = link_to image_tag(list_item.photo.url(:thumb)), person_path(list_item), :class => 'avatar'
+  = link_to image_tag(list_item.photo_url(:thumb)), person_path(list_item), :class => 'avatar'
   %h3
     =link_to list_item.name, person_path(list_item)
   - if list_item.twitter.present?

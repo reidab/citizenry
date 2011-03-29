@@ -1,12 +1,15 @@
 class Person < ActiveRecord::Base
+  require 'open-uri'
+  require 'digest/md5'
+
   attr_protected :user_id
   has_paper_trail :ignore => [:user_id]
   acts_as_taggable_on :tags, :technologies
 
   sortable
 
-  require 'open-uri'
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
+  PHOTO_SIZES = {:medium => 220, :thumb => 48} # for gravatar
 
   attr_accessor :photo_import_url
   before_validation do
@@ -35,6 +38,12 @@ class Person < ActiveRecord::Base
 
   scope :claimed, where('user_id IS NOT null')
   scope :unclaimed, where('user_id IS null')
+
+  # returns a photo url, with fallback to a unique-within-epdx generated avatar from gravatar
+  def photo_url(size)
+    size ||= :medium
+    self.photo.file? ? self.photo.url(size) : "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.id.to_s)}?d=retro&f=y&s=#{PHOTO_SIZES[size]}"
+  end
 
   private
 
