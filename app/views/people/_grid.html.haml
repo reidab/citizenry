@@ -1,3 +1,4 @@
 - context ||= :general
 %ul{:class => 'resource_grid people'}
   = render :partial => 'people/grid_item', :collection => grid, :locals => {:context => context}
+= render :partial => 'shared/list_pagination', :object => grid

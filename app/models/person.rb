@@ -5,8 +5,8 @@ class Person < ActiveRecord::Base
   attr_protected :user_id
   has_paper_trail :ignore => [:user_id]
   acts_as_taggable_on :tags, :technologies
-
   sortable
+  self.per_page = 28
 
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
   PHOTO_SIZES = {:medium => 220, :thumb => 48} # for gravatar
