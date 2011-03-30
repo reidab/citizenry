@@ -42,6 +42,17 @@ class Person < ActiveRecord::Base
   scope :claimed, where('user_id IS NOT null')
   scope :unclaimed, where('user_id IS null')
 
+  define_index do
+    indexes :name, :sortable => true
+    indexes :bio
+    indexes :url
+    indexes :location
+    indexes technology_taggings.tag.name, :as => :technologies
+    indexes tag_taggings.tag.name, :as => :tags
+
+    has :created_at, :updated_at
+  end
+
   # returns a photo url, with fallback to a unique-within-epdx generated avatar from gravatar
   def photo_url(size)
     size ||= :medium
