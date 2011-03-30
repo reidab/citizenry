@@ -33,6 +33,7 @@ gem "inherited_resources", "~> 1.2.1"
 gem "responders", "~> 0.6.2"
 
 gem 'acts-as-taggable-on', "~> 2.0.6"
+gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager', :git => 'https://github.com/reidab/paper_trail_manager.git'

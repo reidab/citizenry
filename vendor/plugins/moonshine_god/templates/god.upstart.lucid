@@ -1,0 +1,10 @@
+# god - process monitoring framework in ruby
+
+description "process monitoring framework in ruby"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+
+exec /usr/bin/god -c /etc/god/god.conf -D

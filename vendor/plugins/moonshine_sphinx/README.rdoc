@@ -1,0 +1,37 @@
+= Moonshine_Sphinx
+
+=== A plugin for Moonshine[http://github.com/railsmachine/moonshine]
+
+A plugin for installing and managing sphinx for a Rails application using thinking_sphinx. It handles:
+
+* Ensuring sphinx is installed
+* Generating a sane sphinx.yml for you
+* Using God managing and monitoring searchd
+* Adding capistrano hooks to restart searchd on deploy
+* Optionally adding a cron job for running the indexer
+
+moonshine_sphinx requires:
+
+* At least revision cf2c44881e49633a8507149024e1f2dcbf63335e[http://github.com/railsmachine/moonshine/commit/cf2c44881e49633a8507149024e1f2dcbf63335e] of moonshine
+* moonshine_god to be installed as a plugin
+* thinking_sphinx installed and configured
+
+=== Instructions
+
+* <tt>script/plugin install git://github.com/railsmachine/moonshine_sphinx.git</tt>
+* <tt>script/plugin install git://github.com/railsmachine/moonshine_god.git</tt>
+* <tt>rake moonshine:gems</tt> if you <tt>config/gems.yml</tt> if you're using thinking_sphinx as a gem
+
+* Configure settings as needed:
+    # in config/moonshine.yml
+    :sphinx:
+      :version: 0.9.8.1
+      # index every hour at 9
+      :index_cron:
+        :minute: 9
+        :extra:
+          # these settings are loaded as if they were in your sphinx.yml
+          :address: 127.0.0.1
+          :mem_limit: 256M
+* Include the recipe in your Moonshine manifest:
+    recipe :sphinx

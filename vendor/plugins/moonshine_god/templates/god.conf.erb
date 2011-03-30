@@ -1,0 +1,5 @@
+God.log_file = '<%= options[:log_file] || '/var/log/god.log' %>'
+God.log_level = :<%= options[:log_level] || 'warn' %>
+RAILS_ENV = ENV['RAILS_ENV'] = '<%= ENV['RAILS_ENV'] || 'production' %>'
+RAILS_ROOT = ENV['RAILS_ROOT'] = '<%= configuration[:deploy_to] %>/current'
+God.load '/etc/god/*.god'
