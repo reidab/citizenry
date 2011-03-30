@@ -1,0 +1,28 @@
+= Moonshine No-www
+
+=== A plugin for Moonshine[http://github.com/railsmachine/moonshine]
+
+A plugin for enabled redirect from www subdomain to top domain!
+
+=== Instructions
+
+* <tt>script/plugin install git://github.com/railsmachine/moonshine_no_www.git</tt>
+
+* Make sure configuration[:domain] is set to what you really want!
+
+* Invoke the recipe(s) in your Moonshine manifest
+    recipe :no_www
+
+=== Example
+
+Say you have foo.com, and you're tired of those pesky w's in your URLs.
+
+First, open up your config/moonshine.yml (or your config/moonshine/production.yml) and make sure that the domain is set to foo.com:
+
+    :domain: foo.com
+
+Next, open up your application manifest and add the recipe:
+
+    recipe :no_www
+
+You should be all good to go now!
