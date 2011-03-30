@@ -28,6 +28,7 @@ class Company < ActiveRecord::Base
     indexes tag_taggings.tag.name, :as => :tags
 
     has :created_at, :updated_at
+    set_property :delta => true
   end
 end
 

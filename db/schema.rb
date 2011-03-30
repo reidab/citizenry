@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327224952) do
+ActiveRecord::Schema.define(:version => 20110330071457) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110327224952) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "delta",             :default => true, :null => false
   end
 
   create_table "company_projects", :force => true do |t|
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110327224952) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "delta",             :default => true, :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20110327224952) do
     t.datetime "photo_updated_at"
     t.boolean  "reviewed",                  :default => false
     t.string   "imported_from_screen_name"
+    t.boolean  "delta",                     :default => true,  :null => false
   end
 
   create_table "project_memberships", :force => true do |t|
@@ -122,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20110327224952) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "delta",             :default => true, :null => false
   end
 
   create_table "resource_links", :force => true do |t|
@@ -131,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20110327224952) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "delta",       :default => true, :null => false
   end
 
   create_table "sponsorships", :force => true do |t|

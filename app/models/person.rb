@@ -51,6 +51,7 @@ class Person < ActiveRecord::Base
     indexes tag_taggings.tag.name, :as => :tags
 
     has :created_at, :updated_at
+    set_property :delta => true
   end
 
   # returns a photo url, with fallback to a unique-within-epdx generated avatar from gravatar
