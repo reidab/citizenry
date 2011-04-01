@@ -32,7 +32,7 @@
     %script
       $(function() { $('#flash .message.success, #flash .message.notice').delay(4000).hide('blind'); });
 
-    - if (Date.today.month == 4 && Date.today.day == 1) || params[:mustaches]
+    - if (Date.today.month == 4 && Date.today.day == 1 && request.headers["HTTP_DNF"] != "1") || params[:mustaches]
       :javascript
         $(function() {
           var grid_avatars = $('ul.resource_grid.people li');
