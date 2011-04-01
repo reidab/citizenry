@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# Uncomment if you're using sqlite
+# gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql'
 
 gem 'hoptoad_notifier'
@@ -27,13 +28,15 @@ gem 'linkedin', '~> 0.2.2', :git => "https://github.com/pengwynn/linkedin.git", 
 gem 'mogli', '~>0.0.25', :git => "https://github.com/reidab/mogli.git" # facebook
 gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth docs!
 
+#--[ Search ]-------------------------------------------------------------------
+gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
+
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"
 gem "inherited_resources", "~> 1.2.1"
 gem "responders", "~> 0.6.2"
 
 gem 'acts-as-taggable-on', "~> 2.0.6"
-gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager', :git => 'https://github.com/reidab/paper_trail_manager.git'

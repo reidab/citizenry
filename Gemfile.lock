@@ -369,7 +369,6 @@ DEPENDENCIES
   ruby-debug
   ruby-openid (~> 2.1.8)
   spork
-  sqlite3-ruby
   steak
   thinking-sphinx (~> 2.0.1)
   twitter (~> 1.1.1)
