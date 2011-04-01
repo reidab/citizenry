@@ -32,6 +32,25 @@
     %script
       $(function() { $('#flash .message.success, #flash .message.notice').delay(4000).hide('blind'); });
 
+    - if (Date.today.month == 4 && Date.today.day == 1) || params[:mustaches]
+      :javascript
+        $(function() {
+          var grid_avatars = $('ul.resource_grid.people li');
+          grid_avatars.css({position: 'relative'});
+          grid_avatars.each(function() {
+            $("<img src='/images/mustaches/medium/" + Math.ceil(Math.random() * 8) + ".png' />")
+              .appendTo(this)
+              .css({position: 'absolute', top: 0, left: 0, zIndex: 999});
+          });
+
+          var list_avatars = $('ul.resource_list.people li a.avatar');
+          list_avatars.each(function() {
+            $("<img src='/images/mustaches/thumb/" + Math.ceil(Math.random() * 8) + ".png' />")
+              .appendTo(this)
+              .css({position: 'absolute', top: 0, left: 0, zIndex: 999});
+          });
+        });
+
     = csrf_meta_tag
     = render :partial => 'layouts/google_analytics'
   %body{:class => "#{controller_name} #{controller_name}_#{action_name}"}
