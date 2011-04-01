@@ -43,6 +43,11 @@
               .css({position: 'absolute', top: 0, left: 0, zIndex: 999});
           });
 
+          var single_record = $('div.single_record.with_image');
+          $("<img src='/images/mustaches/medium/" + Math.ceil(Math.random() * 8) + ".png' />")
+            .appendTo(single_record)
+            .css({position: 'absolute', top: 0, left: 0, zIndex: 999});
+
           var list_avatars = $('ul.resource_list.people li a.avatar');
           list_avatars.each(function() {
             $("<img src='/images/mustaches/thumb/" + Math.ceil(Math.random() * 8) + ".png' />")
