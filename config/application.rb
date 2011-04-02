@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'rack/jsonp'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -45,5 +46,8 @@ module Citizenry
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Middleware!
+    config.middleware.use Rack::JSONP
   end
 end
