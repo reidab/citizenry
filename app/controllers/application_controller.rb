@@ -6,14 +6,16 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    respond_to do |format|
-      format.html {
-        flash.now[:error] = 'Record not found'
-        render :template => 'site/404', :status => 404
-      }
-      format.xml  { head 404 }
-      format.json { head 404 }
+  unless Rails.env.development?
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+      respond_to do |format|
+        format.html {
+          flash.now[:error] = 'Record not found'
+          render :template => 'site/404', :status => 404
+        }
+        format.xml  { head 404 }
+        format.json { head 404 }
+      end
     end
   end
 
