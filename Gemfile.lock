@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/reidab/redfinger.git
-  revision: 54ae948ca4cb8ac908b19779a02d27e58dbfbc11
+  revision: 4c24a69a3542aea6f3b96fa49135ddcc8c2f67a1
   specs:
     redfinger (0.1.0)
       hashie
