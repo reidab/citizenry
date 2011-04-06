@@ -47,7 +47,11 @@ class AuthProbe
         resolver = Net::DNS::Resolver.new(:nameservers => "8.8.8.8")
         dns = resolver.search(host, Net::DNS::MX)
         if dns.each_address.any?{|answer| answer.exchange.include?("google")}
-          [:google_apps, { :domain => host }]
+          if host.include?('gmail') || host.include?('google')
+            [:google, nil]
+          else
+            [:google_apps, { :domain => host }]
+          end
         else
           nil
         end
