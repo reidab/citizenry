@@ -1,15 +1,6 @@
 class ResourceLink < ActiveRecord::Base
   include SearchEngine
   has_paper_trail
-
-  define_index do
-    indexes :name, :sortable => true
-    indexes :description
-    indexes :url
-
-    has :created_at, :updated_at
-    set_property :delta => true
-  end
 end
 
 

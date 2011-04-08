@@ -18,18 +18,6 @@ class Company < ActiveRecord::Base
   has_many :employees, :through => :employments, :source => :person
 
   validates_presence_of :name
-
-  define_index do
-    indexes :name, :sortable => true
-    indexes :description
-    indexes :url
-    indexes :address
-    indexes technology_taggings.tag.name, :as => :technologies
-    indexes tag_taggings.tag.name, :as => :tags
-
-    has :created_at, :updated_at
-    set_property :delta => true
-  end
 end
 
 
