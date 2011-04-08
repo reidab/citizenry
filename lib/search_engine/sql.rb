@@ -17,14 +17,21 @@ class SearchEngine::Sql < SearchEngine::Base
       define_method(:search) do |query, *opts|
         opts = opts.first
         opts ||= {}
-        limit = opts[:limit] || 50
+        limit = opts[:limit]
 
         order = opts[:order] || "LOWER(#{self.table_name}.name) ASC"
+
+        pagination_options = {}
+        pagination_options[:page] = opts.delete(:page) if opts[:page].present?
+        pagination_options[:per_page] = opts.delete(:per_page) if opts[:per_page].present?
 
         conditions_text = fields.map{|field| "LOWER(#{self.table_name}.#{field}) LIKE :like_query"}.join(" OR ")
         conditions = [conditions_text, {:like_query => "%#{query.downcase}%"}]
 
-        return self.all(:conditions => conditions, :order => order, :limit => limit)
+        results = self.all(:conditions => conditions, :order => order, :limit => limit)
+        results = results.paginate(pagination_options) unless pagination_options.empty?
+
+        return results
       end
     end
   end
