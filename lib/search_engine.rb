@@ -39,10 +39,12 @@
 # specifies, loads and configures any libraries it requires.
 module SearchEngine
   @@kind = :sql
+  @@searchable_models = Set.new
 
   # Add searching to the ActiveRecord +model+ class, e.g. Event.
   def self.included(model)
     if ActiveRecord::Base.connection.tables.include?(model.table_name)
+      @@searchable_models << model.name.to_sym
       return implementation.add_searching_to(model)
     end
   end
@@ -64,6 +66,10 @@ module SearchEngine
     return @@kind
   end
 
+  def self.searchable_models
+    return @@searchable_models
+  end
+
   # Return class to use as search engine.
   def self.implementation
     begin
@@ -76,5 +82,9 @@ module SearchEngine
   # Does the current search engine provide a score?
   def self.score?
     return self.implementation.score?
+  end
+
+  def self.search(query, options = {})
+    return self.implementation.search(query, options)
   end
 end

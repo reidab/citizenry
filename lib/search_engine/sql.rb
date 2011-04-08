@@ -39,4 +39,10 @@ class SearchEngine::Sql < SearchEngine::Base
       raise TypeError, "Unknown model class: #{model.name}"
     end
   end
+
+  def self.search(query, options = {})
+    SearchEngine.searchable_models.map {|model|
+      model.to_s.constantize.search(query, options)
+    }.flatten
+  end
 end
