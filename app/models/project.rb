@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include SearchEngine
   has_paper_trail
   acts_as_taggable_on :tags, :technologies
   sortable :created_at, :desc

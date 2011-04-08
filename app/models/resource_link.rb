@@ -1,4 +1,5 @@
 class ResourceLink < ActiveRecord::Base
+  include SearchEngine
   has_paper_trail
 end
 
