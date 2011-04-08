@@ -73,3 +73,15 @@
 # - vendor/plugins/moonshine/lib/moonshine/manifest/rails/templates/moonshine.cnf.erb 
 :mysql:
   :innodb_buffer_pool_size: 128M
+
+# in config/moonshine.yml
+:sphinx:
+  :version: 0.9.9
+  # index every hour at 9
+  :index_cron:
+    :minute: 9
+  :extra:
+    # these settings are loaded as if they were in your sphinx.yml
+    :address: 127.0.0.1
+    :mem_limit: 256M
+

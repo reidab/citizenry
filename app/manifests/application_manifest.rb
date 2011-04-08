@@ -23,6 +23,7 @@ class ApplicationManifest < Moonshine::Manifest::Rails
   recipe :default_stack
   recipe :no_www
   recipe :astrails_safe
+  recipe :sphinx
 
   # Add your application's custom requirements here
   def application_packages
