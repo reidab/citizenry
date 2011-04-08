@@ -33,6 +33,7 @@ common:
     host: host
     host_url: host@domain.com
     logotype: <span>e</span>Logo
+  search: sql
 development:
   auth_credentials:
     github:
