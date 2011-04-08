@@ -38,6 +38,8 @@
 # The `config/environment.rb` activates a search engine implementation, and
 # specifies, loads and configures any libraries it requires.
 module SearchEngine
+  @@kind = :sql
+
   # Add searching to the ActiveRecord +model+ class, e.g. Event.
   def self.included(model)
     if ActiveRecord::Base.connection.tables.include?(model.table_name)
