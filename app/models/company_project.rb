@@ -1,4 +1,4 @@
-class CompanyProjects < ActiveRecord::Base
+class CompanyProject < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :project
