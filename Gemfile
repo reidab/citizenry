@@ -29,6 +29,7 @@ gem 'mogli', '~>0.0.25', :git => "https://github.com/reidab/mogli.git" # faceboo
 gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth docs!
 
 #--[ Search ]-------------------------------------------------------------------
+# If you're using the default sql-based search, you can comment this out.
 gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 #--[ Model ]--------------------------------------------------------------------
