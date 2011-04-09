@@ -4,6 +4,7 @@ class ResourceLink < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: resource_links
@@ -15,5 +16,6 @@ end
 #  category    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  delta       :boolean(1)      default(TRUE), not null
 #
 

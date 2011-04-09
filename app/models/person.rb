@@ -66,6 +66,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: people
@@ -88,5 +89,6 @@ end
 #  photo_updated_at          :datetime
 #  reviewed                  :boolean(1)      default(FALSE)
 #  imported_from_screen_name :string(255)
+#  delta                     :boolean(1)      default(TRUE), not null
 #
 

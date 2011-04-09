@@ -22,6 +22,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: projects
@@ -37,5 +38,6 @@ end
 #  logo_content_type :string(255)
 #  logo_file_size    :integer(4)
 #  logo_updated_at   :datetime
+#  delta             :boolean(1)      default(TRUE), not null
 #
 
