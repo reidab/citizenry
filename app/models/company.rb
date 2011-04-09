@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
   include SearchEngine
-  has_paper_trail
+  has_paper_trail :ignore => [:delta]
   acts_as_taggable_on :tags, :technologies
   sortable :created_at, :desc
 

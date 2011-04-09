@@ -1,6 +1,6 @@
 class ResourceLink < ActiveRecord::Base
   include SearchEngine
-  has_paper_trail
+  has_paper_trail :ignore => [:delta]
 end
 
 
