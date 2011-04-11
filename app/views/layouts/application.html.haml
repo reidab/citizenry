@@ -6,7 +6,7 @@
         = page_title
         &raquo;
       = "#{SETTINGS['organization']['name']}: #{SETTINGS['organization']['city']}'s Tech Directory"
-    %meta{:name=>"viewport", :content=>"width=device-width"}
+    %meta{:name=>"viewport", :content=>"width=device-width, user-scalable=no"}
     - force_mobile = params[:force_mobile].present?
     -#
       Level 1: All browsers, evar.
