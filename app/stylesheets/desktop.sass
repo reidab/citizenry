@@ -13,11 +13,24 @@
 div.desktop-only
   display: block
 
-#header, #content, #footer
+#header .inner_container, #content, #footer
   +grid-container
 
+body
+  background: $background_color image-url('background.png') repeat-x
+  &.site_index
+    background-position: 0 -25px
+    #content
+      background: transparent
+      margin-top: 1.5em
+
 #header
-  +clearfix
+  .inner_container
+    +clearfix
+  background-color: transparent
+  background-image: image-url('rainbow.png')
+  background-repeat: repeat-x
+  +background-size(100% 3px)
   h1
     +grid(2,16)
     +alpha
@@ -77,18 +90,20 @@ div.desktop-only
       float: right
 
 #global_sign_in_form
-  // position: absolute
-  // margin: -10px 10px 0 0
-  background: transparent
-  +grid-container
+  position: absolute
+  top: 3.45em
+  left: 50%
+  z-index: 99
+  width: 250px
+  margin-left: 210px
   +opacity(0)
-  form
-    background: #666
-    width: 250px
-    float: right
+  +border-radius(.25em)
+  +box-shadow
   &.open
+    border-width: 2px
     height: 110px
     +opacity(1)
+    padding-bottom: 5px
 
 
 #site_intro
@@ -110,7 +125,7 @@ div.desktop-only
 
 #content
   +clearfix
-  margin-top: .5em
+  background: $background_color
   .section_header
     #view_options
       display: inline

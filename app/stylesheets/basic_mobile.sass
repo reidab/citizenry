@@ -61,6 +61,7 @@ body.site_index
     display: none
 
 #header
+  background-color: $header_background
   position: relative
   padding: 10px
   h1
@@ -94,29 +95,26 @@ body.site_index
         color: #000
     #global_sign_in
       width: 100px
-      background: #666
+      background: $events_color
       #sign_in_link
         display: block
         font-weight: bold
         color: #fff
         padding: .5em
+        text-align: center
       .sign_in_form
         position: static
         left: 0
         height: 0
         overflow: hidden
         width: 85%
-      &.open
-        .sign_in_form
-          display: block
-          height: auto
   #main_nav
     display: none
 
 #global_sign_in_form
-  background: #666
+  background: #fff
   padding: 0 10px
-  margin: -10px -10px 0
+  margin: 0 -10px
   height: 0
   overflow: hidden
   form
@@ -124,8 +122,10 @@ body.site_index
   &.open
     height: auto
     padding-bottom: 1em
+    border: 1px solid #d5d5d5
+    border-width: 1px 0
+    margin-bottom: -10px
   label
-    color: #fff
     font-weight: bold
   .required label abbr
     display: none
@@ -137,6 +137,10 @@ body.site_index
   #sign_in_data_provider_input, li.commit
     display: inline-block
     padding: 0
+
+body.site_index
+  #content
+    padding: 0 10px 10px
 
 #content, #footer
   padding: 10px
@@ -418,8 +422,7 @@ body.events #content
       h2
         background: $people_color
   #user_home
-    h1
-      margin-bottom: .5em
+    margin-top: .5em
     #authentications
       form
         fieldset
