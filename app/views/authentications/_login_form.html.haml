@@ -1,5 +1,5 @@
 .sign_in_form
   = semantic_form_for((@signin_data || SignInData.new), :url => user_sessions_path) do |f|
-    = f.input :email, :label => "Email address", :input_html => {:size => nil}
+    = f.input :email, :label => "Email address", :input_html => {:size => nil, :autocorrect => "off", :autocapitalize => "off"}
     = f.input :provider, :collection => Authentication::PROVIDER_OPTIONS, :include_blank => false
     = f.commit_button "Sign in!"
