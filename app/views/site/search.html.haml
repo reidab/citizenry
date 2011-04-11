@@ -12,3 +12,4 @@
   %ul.resource_list.search_results
     - @results.each do |result|
       = render :partial => "#{result.class.name.tableize}/list_item", :object => result
+  = render :partial => 'shared/list_pagination', :object => @results
