@@ -1,4 +1,4 @@
-- if list_pagination.respond_to?(:total_pages)
+- if list_pagination.respond_to?(:total_pages) && list_pagination.total_pages > 1
   .pagination
     = will_paginate list_pagination
     = link_to "Show all", params.merge('page' => 'all'), :class => 'all'
