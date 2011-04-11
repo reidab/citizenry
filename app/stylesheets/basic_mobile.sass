@@ -63,7 +63,7 @@ body.site_index
 #header
   background-color: $header_background
   position: relative
-  padding: 10px
+  padding: 10px 10px 0
   h1
     +behead
     font-size: 28px
@@ -77,6 +77,13 @@ body.site_index
       &:hover
         text-decoration: none
         color: lighten($text_color, 20)
+  #global_search
+    margin: 5px -10px 0
+    padding: 5px 10px
+    background: #bbb
+    border-top: 1px solid #999
+    input
+      width: 100%
   #account_box
     position: absolute
     right: 10px
@@ -124,7 +131,6 @@ body.site_index
     padding-bottom: 1em
     border: 1px solid #d5d5d5
     border-width: 1px 0
-    margin-bottom: -10px
   label
     font-weight: bold
   .required label abbr
