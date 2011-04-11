@@ -1,0 +1,14 @@
+- content_for(:section_header) do
+  .section_header
+    %h1= "Search results for &#8220;#{params[:query]}&#8221;".html_safe
+
+- if @results.blank?
+  %h2 Nothing here!
+  %p
+    = "We couldn't find anything that matched your search for <strong>#{params[:query]}</strong>.".html_safe 
+    You might want to try again.
+    
+- else
+  %ul.resource_list.search_results
+    - @results.each do |result|
+      = render :partial => "#{result.class.name.tableize}/list_item", :object => result

@@ -230,6 +230,7 @@ body.events #content
     +behead
     margin-bottom: 0.1em
   .section_header
+    background: #555
     margin: -10px -10px 0
     color: #fff
     #view_options
@@ -299,6 +300,21 @@ body.events #content
   .resource_list
     +no-bullets
     margin: 0
+    &.search_results
+      li
+        border-left: 3px solid
+        margin-bottom: 3px
+        border-bottom: none
+        &.person
+          border-left-color: $people_color
+        &.company
+          border-left-color: $companies_color
+        &.group
+          border-left-color: $groups_color
+        &.project
+          border-left-color: $projects_color
+        &.resource_link
+          border-left-color: $resources_color
     li
       margin: 0
       position: relative
@@ -532,6 +548,7 @@ body.events #content
   
 
 #footer
+  margin-top: 3em
   color: #555
 
 .auth_backgrounded
