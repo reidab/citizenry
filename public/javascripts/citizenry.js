@@ -15,14 +15,20 @@ Citizenry.Controllers.AppController = Backbone.Controller.extend({
     'sign_in/:provider': 'showSignInForm'
   },
   initialize: function(options) {
+    _.bindAll('showSignInForm', 'focusSearchField', this);
     if($('#global_sign_in').length > 0) {
       this.signInForm = new Citizenry.Views.SignInForm({el: $('#global_sign_in')});
     }
+    $(document).bind('keydown', '/', this.focusSearchField);
   },
   showSignInForm: function(provider) {
     if(this.signInForm) {
       this.signInForm.toggleForm(true, provider);
     }
+  },
+  focusSearchField: function() {
+    $('#global_search input').select();
+    return false
   }
 });
 
@@ -31,6 +37,8 @@ Citizenry.Views.SignInForm = Backbone.View.extend({
     'click  #sign_in_link': 'signInLinkClicked'
   },
   initialize: function(options) {
+    _.bindAll('signInLinkClicked', 'toggleForm', this);
+
     this.formDiv = $('#global_sign_in_form');
     this.form = this.formDiv.find('form');
     this.emailInput = this.form.find('#sign_in_data_email');

@@ -23,14 +23,24 @@ body
     #content
       background: transparent
       margin-top: 1.5em
+  &.signed_in
+    #header
+      #global_search
+        right: 170px
 
 #header
   .inner_container
     +clearfix
+    position: relative
   background-color: transparent
   background-image: image-url('rainbow.png')
   background-repeat: repeat-x
   +background-size(100% 3px)
+  #global_search
+    position: absolute
+    top: 8px
+    right: 110px
+    z-index: 85
   h1
     +grid(2,16)
     +alpha
@@ -100,7 +110,7 @@ body
   +border-radius(.25em)
   +box-shadow
   &.open
-    border-width: 2px
+    border-width: 3px
     height: 110px
     +opacity(1)
     padding-bottom: 5px
