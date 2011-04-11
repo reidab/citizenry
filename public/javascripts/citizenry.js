@@ -20,6 +20,7 @@ Citizenry.Controllers.AppController = Backbone.Controller.extend({
       this.signInForm = new Citizenry.Views.SignInForm({el: $('#global_sign_in')});
     }
     $(document).bind('keydown', '/', this.focusSearchField);
+    $('input, textarea').placeholder();
   },
   showSignInForm: function(provider) {
     if(this.signInForm) {
