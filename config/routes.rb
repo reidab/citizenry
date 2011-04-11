@@ -2,6 +2,7 @@ Citizenry::Application.routes.draw do
   root :to => "site#index"
 
   get '/search(/:query)' => 'site#search', :as => :search
+  get '/s(/:query)' => 'site#search', :as => :short_search
 
   resources :authentications
   resources :companies do
