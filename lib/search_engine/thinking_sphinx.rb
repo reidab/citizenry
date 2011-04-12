@@ -12,8 +12,7 @@ class SearchEngine::ThinkingSphinx < SearchEngine::Base
           indexes :bio
           indexes :url
           indexes :location
-          indexes technology_taggings.tag.name, :as => :technologies
-          indexes tag_taggings.tag.name, :as => :tags
+          indexes taggings.tag.name, :as => :tags
 
           has :created_at, :updated_at
           set_property :delta => true
@@ -26,8 +25,7 @@ class SearchEngine::ThinkingSphinx < SearchEngine::Base
           indexes :description
           indexes :url
           indexes :address
-          indexes technology_taggings.tag.name, :as => :technologies
-          indexes tag_taggings.tag.name, :as => :tags
+          indexes taggings.tag.name, :as => :tags
 
           has :created_at, :updated_at
           set_property :delta => true
@@ -39,8 +37,7 @@ class SearchEngine::ThinkingSphinx < SearchEngine::Base
           indexes :name, :sortable => true
           indexes :description
           indexes :url
-          indexes technology_taggings.tag.name, :as => :technologies
-          indexes tag_taggings.tag.name, :as => :tags
+          indexes taggings.tag.name, :as => :tags
 
           has :created_at, :updated_at
           set_property :delta => true
