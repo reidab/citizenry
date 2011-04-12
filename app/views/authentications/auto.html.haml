@@ -1,5 +1,4 @@
 %h1 Eep! We couldn't find a way to log you in!
-%h2 Please pick a login provider below
-%ul.auth_providers
-  - SETTINGS['providers'].each do |provider|
-    %li= link_to OmniAuth::Utils.camelize(provider), "/auth/#{provider}", :class => provider
+%p We tried to automatically pick a login provider for you based on your email address, but didn't find one.
+%h2 Please pick a login provider to continue:
+= render :partial => 'provider_list'

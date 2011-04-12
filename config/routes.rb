@@ -59,6 +59,7 @@ Citizenry::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/auto' => 'authentications#auto'
+  match '/auth/failure' => 'authentications#auth_failure'
 
   resources :changes, :controller => 'paper_trail_manager/changes'
 

@@ -1,0 +1,3 @@
+%ul.auth_providers
+  - SETTINGS['providers'].each do |provider|
+    %li= link_to OmniAuth::Utils.camelize(provider), "/auth/#{provider}", :class => provider

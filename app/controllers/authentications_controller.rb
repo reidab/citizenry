@@ -34,6 +34,10 @@ class AuthenticationsController < ApplicationController
     end
   end
 
+  def auth_failure
+    # just render the failure view
+  end
+
   def create
     omniauth = request.env["omniauth.auth"]
 
