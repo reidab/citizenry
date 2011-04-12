@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header
-    %h1= semantic_pluralize(@results.total_entries, "search result") + " for &#8220;#{params[:query]}&#8221;".html_safe
+    %h1= semantic_pluralize(@results.present? ? @results.total_entries : 0, "search result") + " for &#8220;#{params[:query]}&#8221;".html_safe
 
 - if @results.blank?
   %h2 Nothing here!
