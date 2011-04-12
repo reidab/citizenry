@@ -12,7 +12,9 @@ class SiteController < ApplicationController
     redirect_to search_path(:query => params[:q]) and return if params[:q].present?
 
     if params[:query]
-      pagination_options = params[:page] == 'all' ? {:per_page => 9999999} : { :per_page => params[:per_page] || 30 }
+      pagination_options = params[:page] == 'all' \
+                            ? {:page => 1, :per_page => 9999999} \
+                            : { :page => params[:page], :per_page => params[:per_page] || 30 }
       @results = SearchEngine.search(params[:query], {:match_mode => :extended}.merge(pagination_options))
       if @results.length == 1
         flash[:notice] = "This is the one result we found when searching for <em>#{params[:query]}</em>. Enjoy!".html_safe
