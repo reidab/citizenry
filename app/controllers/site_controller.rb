@@ -1,4 +1,6 @@
 class SiteController < ApplicationController
+  respond_to :html, :xml, :json, :only => [:search]
+
   def index
     page_title false
 
@@ -16,10 +18,13 @@ class SiteController < ApplicationController
                             ? {:page => 1, :per_page => 9999999} \
                             : { :page => params[:page], :per_page => params[:per_page] || 30 }
       @results = SearchEngine.search(params[:query], {:match_mode => :extended}.merge(pagination_options))
+
       if @results.length == 1
         flash[:notice] = "This is the one result we found when searching for <em>#{params[:query]}</em>. Enjoy!".html_safe
         redirect_to @results.first
       end
+
+      respond_with(@results)
     end
   end
 end
