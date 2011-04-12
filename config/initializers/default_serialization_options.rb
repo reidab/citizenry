@@ -5,6 +5,11 @@ module DefaultSerializationOptions
   end
   
   module ClassMethods
+    def default_serialization_options(options)
+      self.default_json_options(options)
+      self.default_xml_options(options)
+    end
+
     def default_json_options(options)
       cattr_accessor :default_json_options
       self.default_json_options = options

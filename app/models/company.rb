@@ -6,8 +6,11 @@ class Company < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, :url => "/system/:attachment/:id/:style/:safe_filename"
 
-  default_json_options :include => [:projects, :groups, :employees, :tags, :technologies]
-  default_xml_options :include => [:projects, :groups, :employees, :tags, :technologies]
+  default_serialization_options :include => { :projects => {:include => [:tags, :technologies]}, 
+                                              :groups => {:include => [:tags, :technologies]},
+                                              :employees  => {:include => [:tags, :technologies]},
+                                              :tags => {},
+                                              :technologies => {}}
 
   has_many :company_projects
   has_many :projects, :through => :company_projects
