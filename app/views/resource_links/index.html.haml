@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'resources'}
-    %h1 Resources
+    %h1= semantic_pluralize(ResourceLink.count, "#{@tag} resource".strip.titleize)
     = link_to "+ Add a Link", url_for(:action => :new), :class => 'new'
 
 - @resource_links.keys.sort.each do |category|

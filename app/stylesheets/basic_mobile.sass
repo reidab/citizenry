@@ -166,7 +166,7 @@ body.groups #content
   border-top: 3px solid $groups_color
 body.projects #content
   border-top: 3px solid $projects_color
-body.resources #content
+body.resource_links #content
   border-top: 3px solid $resources_color
 body.events #content
   border-top: 3px solid $events_color
@@ -189,6 +189,28 @@ body.events #content
 
 #home_to
   text-transform: uppercase
+
+.section_header
+  .count
+    padding: 0 5px
+    line-height: 1
+    display: inline-block
+    margin: 0 5px 0 -5px
+    text-align: right
+    background: #383838
+  &.people h1
+    +section_count_color($people_color)
+  &.companies h1
+    +section_count_color($companies_color)
+  &.groups h1
+    +section_count_color($groups_color)
+  &.projects h1
+    +section_count_color($projects_color)
+  &.resources h1
+    +section_count_color($resources_color)
+  &.events h1
+    +section_count_color($events_color)
+
 #front_nav
   +no-bullets
   margin: 0

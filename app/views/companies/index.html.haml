@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'companies'}
-    %h1= "#{@tag} companies".strip.titleize
+    %h1= semantic_pluralize(@companies.respond_to?(:total_entries) ? @companies.total_entries : @companies.size, "#{@tag} company".strip.titleize)
     = link_to "+ Add a Company", new_company_path, :class => 'new'
     #view_options
       %span.sorting

@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'projects'}
-    %h1= "#{@tag} projects<span class='desktop-only'> & products</span>".html_safe.strip.titleize
+    %h1= semantic_pluralize(@projects.respond_to?(:total_entries) ? @projects.total_entries : @projects.size, "#{@tag} project<span class='desktop-only'> or product</span>".html_safe.strip.titleize, "#{@tag} projects<span class='desktop-only'> & products</span>".html_safe.strip.titleize)
     = link_to "+ Add a Project", new_project_path, :class => 'new'
     #view_options
       %span.sorting

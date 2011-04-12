@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'groups'}
-    %h1= "#{@tag} groups".strip.titleize
+    %h1= semantic_pluralize(@groups.respond_to?(:total_entries) ? @groups.total_entries : @groups.size, "#{@tag} group".strip.titleize)
     = link_to "+ Add a Group", new_group_path, :class => 'new'
     #view_options
       %span.sorting
