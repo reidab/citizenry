@@ -5,7 +5,8 @@
       %li{:id => "user_#{user.id}", :class => user.admin? ? 'admin' : nil}
         - if user.admin?
           %strong Admin
-        = "User #{user.id}: #{user.name}"
+        = "User #{user.id}: #{user.name} -"
+        = mail_to user.email
         = link_to "Delete", user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
         = link_to ((user.admin? ? 'Un-' : '') + 'adminify').capitalize, adminify_user_path(user), :method => :post, :class => 'make_admin'
         = image_tag(normalize_url(user.avatar_url), :size => '30x30', :align => 'right') if user.avatar_url
