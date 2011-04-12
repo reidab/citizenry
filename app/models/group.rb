@@ -6,7 +6,8 @@ class Group < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, :url => "/system/:attachment/:id/:style/:safe_filename"
 
-  default_json_options :include => [:projects, :members, :companies]
+  default_json_options :include => [:projects, :members, :companies, :tags, :technologies]
+  default_xml_options :include => [:projects, :members, :companies, :tags, :technologies]
 
   has_many :group_projects
   has_many :projects, :through => :group_projects

@@ -9,7 +9,8 @@ class Person < ActiveRecord::Base
   acts_as_taggable_on :tags, :technologies
   sortable
 
-  default_json_options :include => [:projects, :groups, :companies]
+  default_json_options :include => [:projects, :groups, :companies, :tags, :technologies]
+  default_xml_options :include => [:projects, :groups, :companies, :tags, :technologies]
 
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
   PHOTO_SIZES = {:medium => 220, :thumb => 48} # for gravatar
