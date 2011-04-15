@@ -33,9 +33,11 @@ body
         right: 170px
 
 #header
+  z-index: 50
   .inner_container
     +clearfix
     position: relative
+    z-index: 60
   background-color: transparent
   background-image: image-url('rainbow.png')
   background-repeat: repeat-x
@@ -123,8 +125,12 @@ body
   &.open
     border-width: 3px
     height: 110px
+    // Hack to make the sign in form show up correctly in IE7
+    *height: 160px
     +opacity(1)
     padding-bottom: 5px
+    li
+      +no-bullets
 
 
 #site_intro
