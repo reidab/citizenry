@@ -9,4 +9,4 @@
       %a{:href => "https://twitter.com/#{list_item.twitter}"}= "@#{list_item.twitter}"
       on Twitter
   -#%p{:class=>'location'}= person['location']
-  %p{:class=>'description'}= truncate(list_item.description, :length => 350)
+  %p{:class=>'description'}= truncate(strip_links(list_item.description), :length => 350)

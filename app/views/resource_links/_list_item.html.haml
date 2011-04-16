@@ -2,5 +2,5 @@
 %li.resource_link
   %h3
     =link_to "#{list_item.category}: #{list_item.name}", normalize_url(list_item.url)
-  %p{:class=>'description'}= truncate(list_item.description, :length => 350)
+  %p{:class=>'description'}= truncate(strip_links(list_item.description), :length => 350)
 
