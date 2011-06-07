@@ -9,7 +9,17 @@ Portland, Oregon.
 
 Requirements & Technical Details
 --------------------------------
-Citizenry is written in Ruby, using Rails 3.
+Citizenry is written in Ruby 1.8.7, using Rails 3.
+
+Using homebrew to install dependencies:
+> brew install mysql
+> brew install sphinx
+> brew install mysql-connector-c
+
+Create YML Files
+----------------
+> mv config/settings-sample.yml to settings.yml
+> mv config/database.sample.yml to database.yml
 
 
 Colophon
