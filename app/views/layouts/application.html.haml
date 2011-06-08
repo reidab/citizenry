@@ -11,20 +11,20 @@
     -#
       Level 1: All browsers, evar.
       Provides basic mobile layout
-    = stylesheet_link_tag 'compiled/basic_mobile', :media => 'all'
+    = stylesheet_link_tag 'basic_mobile', :media => 'all'
 
     -#
       Level 2: Nicer mobile browsers
       Narrow devices that support @media queries get this one
-    = stylesheet_link_tag('compiled/advanced_mobile',
+    = stylesheet_link_tag('advanced_mobile',
         :media => force_mobile ? 'all' : 'only screen and (max-device-width: 960px)')
 
     -# Level 3: Desktop browsers only
 
-    = stylesheet_link_tag('compiled/desktop',
+    = stylesheet_link_tag('desktop',
         :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
     /[if lt IE 9]
-      = stylesheet_link_tag('compiled/desktop', :media => 'all')
+      = stylesheet_link_tag('desktop', :media => 'all')
 
     = javascript_include_tag 'lib/jquery-1.5.js',
                              'lib/jquery.hotkeys.js',
