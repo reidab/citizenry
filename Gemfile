@@ -3,10 +3,12 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.5'
 
 # Uncomment if you're using sqlite
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mysql'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'mysql' 
 
-gem 'hoptoad_notifier'
+gem 'aws-s3'
+
+# gem 'hoptoad_notifier'
 
 #--[ Utility ]------------------------------------------------------------------
 gem 'httparty', '~> 0.7.4'

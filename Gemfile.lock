@@ -144,9 +144,6 @@ GEM
     haml (3.0.25)
     has_scope (0.5.0)
     hashie (1.0.0)
-    hoptoad_notifier (2.4.11)
-      activesupport
-      builder
     httparty (0.7.8)
       crack (= 0.1.8)
     i18n (0.6.0)
@@ -179,7 +176,6 @@ GEM
     multi_json (0.0.5)
     multi_xml (0.2.2)
     multipart-post (1.1.2)
-    mysql (2.8.1)
     net-dns (0.6.1)
     net-ldap (0.1.1)
     nifty-generators (0.4.6)
@@ -330,6 +326,7 @@ DEPENDENCIES
   addressable (~> 2.2.4)
   annotate
   awesome_print
+  aws-s3
   capybara
   capybara-envjs
   compass (~> 0.10.5)
@@ -343,7 +340,6 @@ DEPENDENCIES
   formtastic (~> 1.1.0)
   foursquare2 (~> 0.9.0)
   haml (~> 3.0.18)
-  hoptoad_notifier
   httparty (~> 0.7.4)
   inherited_resources (~> 1.2.1)
   jquery-rails (>= 0.2.6)
@@ -352,7 +348,6 @@ DEPENDENCIES
   linkedin (~> 0.2.2)!
   mocha
   mogli (~> 0.0.25)!
-  mysql
   net-dns (~> 0.6.1)
   nifty-generators
   omniauth (~> 0.2.0)
@@ -368,6 +363,7 @@ DEPENDENCIES
   ruby-debug
   ruby-openid (~> 2.1.8)
   spork
+  sqlite3-ruby
   steak
   thinking-sphinx (~> 2.0.1)
   twitter (~> 1.1.1)

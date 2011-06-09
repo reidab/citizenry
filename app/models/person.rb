@@ -15,7 +15,13 @@ class Person < ActiveRecord::Base
                                               :tags => {},
                                               :technologies => {}}
 
-  has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
+  has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' },
+  :storage => :s3,
+  :bucket => 'weworkinphilly',
+  :s3_credentials => {
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+  }
   PHOTO_SIZES = {:medium => 220, :thumb => 48} # for gravatar
 
   attr_accessor :photo_import_url
