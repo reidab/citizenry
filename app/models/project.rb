@@ -4,7 +4,13 @@ class Project < ActiveRecord::Base
   acts_as_taggable_on :tags, :technologies
   sortable :created_at, :desc
 
-  has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, :url => "/system/:attachment/:id/:style/:safe_filename"
+  has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, 
+  :storage => :s3,
+  :bucket => 'weworkinphilly',
+  :s3_credentials => {
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+  }
 
   default_serialization_options :include => { :people => {:include => [:tags, :technologies]}, 
                                               :companies => {:include => [:tags, :technologies]},
