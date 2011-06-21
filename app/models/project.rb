@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   include SearchEngine
   has_paper_trail :ignore => [:delta]
   acts_as_taggable_on :tags, :technologies
-  sortable :created_at, :desc
+  # sortable :created_at, :desc
 
   has_attached_file :logo, :styles => { :medium => '220x220', :thumb => '48x48' }, 
   :storage => :s3,
