@@ -32,7 +32,7 @@ gem 'foursquare2', '~>0.9.0'   # https://gist.github.com/419219 <- github oauth 
 
 #--[ Search ]-------------------------------------------------------------------
 # If you're using the default sql-based search, you can comment this out.
-gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
+# gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"

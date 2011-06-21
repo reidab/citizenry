@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
   attr_protected :user_id
   has_paper_trail :ignore => [:user_id, :delta]
   acts_as_taggable_on :tags, :technologies
-  # sortable
+  sortable
 
   default_serialization_options :include => { :projects => {:include => [:tags, :technologies]}, 
                                               :groups => {:include => [:tags, :technologies]},
