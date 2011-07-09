@@ -8,10 +8,9 @@ class PeopleController < InheritedResources::Base
   before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
   before_filter :set_user_id_if_admin, :only => [:update, :create]
-
+  before_filter :set_people_collection, :only => :index
+  
   def index
-    @people = Person.mentor if params[:mentors]
-    @people = Person.mentee if params[:mentees]
     @view = :grid if params[:grid]
     index!
   end
@@ -72,6 +71,16 @@ class PeopleController < InheritedResources::Base
 
   protected
 
+  def set_people_collection
+    if params[:mentors]
+      @people = Person.mentor
+    elsif params[:mentees]
+      @people = Person.mentee
+    end
+
+  end
+  
+  
   def collection
     @people ||= filter_sort_and_paginate(end_of_association_chain, true)
   end
