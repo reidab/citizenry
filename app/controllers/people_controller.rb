@@ -11,6 +11,7 @@ class PeopleController < InheritedResources::Base
 
   def index
     @people = Person.mentor if params[:mentors]
+    @people = Person.mentee if params[:mentees]
     @view = :grid if params[:grid]
     index!
   end
