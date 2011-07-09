@@ -10,7 +10,7 @@
   - if @person.location.present?
     .location= @person.location
   - if @person.bio.present?
-  .bio= simple_format @person.bio
+    .bio= simple_format @person.bio
   .links
     - if @person.url.present?
       = link_to( normalize_url(@person.url), normalize_url(@person.url), :class => 'url') if @person.url.present?
