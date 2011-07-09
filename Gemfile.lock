@@ -174,7 +174,7 @@ GEM
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.2)
-    mysql (2.8.1)
+    mysql2 (0.2.11)
     net-dns (0.6.1)
     net-ldap (0.2.2)
     nifty-generators (0.4.6)
@@ -353,7 +353,7 @@ DEPENDENCIES
   linkedin (~> 0.2.2)!
   mocha
   mogli (~> 0.0.25)!
-  mysql
+  mysql2 (~> 0.2.0)
   net-dns (~> 0.6.1)
   nifty-generators
   omniauth (~> 0.2.6)
