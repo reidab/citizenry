@@ -4,7 +4,7 @@ gem 'rails', '3.0.9'
 
 # Uncomment if you're using sqlite
 # gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mysql'
+gem 'mysql2', '~> 0.2.0'
 
 gem 'hoptoad_notifier'
 

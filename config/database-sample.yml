@@ -30,7 +30,7 @@
 #         # Use "utf8" as the database character encoding, don't change this line:
 #         encoding: utf8
 #         # Use a MySQL database, don't change this line:
-#         adapter: mysql
+#         adapter: mysql2
 #
 # Environments
 # ------------
@@ -45,7 +45,7 @@ production:
   username: root
   password:
   encoding: utf8
-  adapter: mysql
+  adapter: mysql2
 
 # The "development" environment is optimized for those developing the
 # software and reloads code as it's modified. It is used when:
@@ -57,7 +57,7 @@ development:
   username: root
   password:
   encoding: utf8
-  adapter: mysql
+  adapter: mysql2
 
 # The "test" environment is used for running tests. WARNING: The database
 # defined for this will be erased and re-generated from your development
@@ -68,4 +68,4 @@ test:
   username: root
   password:
   encoding: utf8
-  adapter: mysql
+  adapter: mysql2
