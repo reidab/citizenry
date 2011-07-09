@@ -2,9 +2,16 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
 
+# You may need to add the following to your .bash_profile (or
+# similar):
+#
+#     export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+#
+# Note: the exact path to your MySQL lib/ directory may vary.
+gem 'mysql2', '~> 0.2.0'
 # Uncomment if you're using sqlite
 # gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mysql2', '~> 0.2.0'
+
 
 gem 'hoptoad_notifier'
 
