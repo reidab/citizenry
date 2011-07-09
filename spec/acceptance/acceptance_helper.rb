@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 require "steak"
-require 'capybara/envjs'
-Capybara.javascript_driver = :envjs
+# require 'capybara/envjs'
+# Capybara.javascript_driver = :envjs
 
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation

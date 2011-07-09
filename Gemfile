@@ -76,9 +76,9 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'faker'
   gem 'uuid'
-  gem 'steak'
-  gem 'capybara'
-  gem 'capybara-envjs'
+  gem 'steak', '1.1.0'
+  gem 'capybara', '~> 0.4.0'
+  # gem 'capybara-envjs'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'faker'
