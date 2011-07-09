@@ -40,6 +40,16 @@
       %h2 Projects
       = render :partial => 'projects/list', :object => @person.projects
 
+  - if @person.interested_mentor
+    .section.mentor
+      %h2 Topics I Can Mentor
+      %p= @person.mentor_topics
+
+  - if @person.interested_mentee
+    .section.mentee
+      %h2 Topics I Would Like Mentoring In
+      %p= @person.mentee_topics
+
   .record_actions
     - if current_user && (current_user.admin? || current_user.person == @person)
       = link_to 'Edit', edit_person_path(@person), :class => 'edit'
