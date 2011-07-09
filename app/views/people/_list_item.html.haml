@@ -9,6 +9,8 @@
       on Twitter
   - if params[:mentors]
     %p{:class => 'bio'}= list_item.mentor_topics
+  - elsif params[:mentees]
+    %p{:class => 'bio'}= list_item.mentee_topics
   - else
     %p{:class=>'bio'}= strip_links(list_item.bio)
   - if context == :claim
