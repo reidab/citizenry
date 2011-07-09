@@ -62,7 +62,7 @@ gem 'formtastic', '~>1.1.0'
 gem 'will_paginate', '~> 3.0.beta'
 
 #--[ Middleware ]---------------------------------------------------------------
-gem 'rack-jsonp', '~> 1.1.0'
+gem 'rack-jsonp', '~> 1.2.0'
 
 
 # Bundle gems for the local environment. Make sure to
