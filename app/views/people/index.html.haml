@@ -15,6 +15,12 @@
         = link_to_unless_current t('list.view_as.list'), people_path(:page => params[:page], :column => params[:column], :order => params[:order])
         = "|"
         = link_to_unless_current t('list.view_as.grid'), grid_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+      %span.view
+        %strong Show:
+        = link_to_unless_current "All", people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+        = "|"
+        = link_to_unless_current "Mentors", mentors_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+
 
 - if @view == :grid
   = render :partial => 'grid', :object => @people
