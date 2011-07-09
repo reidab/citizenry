@@ -17,3 +17,4 @@ log/searchd.development.pid
 *~
 \#*
 .\#*
+.rvmrc
