@@ -26,6 +26,7 @@ Citizenry::Application.routes.draw do
     collection do
       get 'grid', :action => :index, :grid => '1'
       get 'mentors', :action => :index, :mentors => '1'
+      get 'mentees', :action => :index, :mentees => '1'
     end
     member do
       get 'claim'
