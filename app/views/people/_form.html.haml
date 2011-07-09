@@ -9,6 +9,11 @@
     = f.input :bio
     = f.input :tag_list, :as => :text, :label => 'Tags (interests, titles, personal descriptors)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.inputs :name => "Mentoring" do
+      = f.input :interested_mentor, :label => "I am interested in mentoring", :hint => "Explanation Here"
+      = f.input :mentor_topics, :label => "I am interested in mentoring these topics", :hint => "Comma separated, please"
+      = f.input :interested_mentee, :label => "I am interested in being mentored", :hint => "Explanation Here"
+      = f.input :mentee_topics, :label => "I am interested in being mentored in these topics", :hint => "Comma separated, please"
     = f.inputs :name => "Photo" do
       - if photo_url = @person.photo_import_url || (@person.photo.file? && @person.photo.url(:medium))
         %li
