@@ -6,6 +6,9 @@ module HeySorty
   
     module ClassMethods
       def sortable(column = :id, order = :asc)
+        # Quit if table doesn't exist so that migrations can be run.
+        return false unless connection.table_exists?(self.name.tableize)
+
         # Defaults
         @options = { :column => column.to_s, :order => order.to_s }
         
