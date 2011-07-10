@@ -41,6 +41,12 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env["omniauth.auth"]
 
+    if self.login_as_sample_user?
+      user = User.find_or_create_sample
+      sign_in :user, user
+      return redirect_to(stored_location_for(:user) || welcome_users_path)
+    end
+
     if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
       # Existing user, existing authentication, login!
       auth.update_from_omniauth(omniauth)
@@ -84,5 +90,11 @@ class AuthenticationsController < ApplicationController
     @authentication.destroy
     flash[:success] = "Your #{OmniAuth::Utils.camelize(@authentication.provider)} account has been removed."
     redirect_to home_users_path
+  end
+
+  protected
+
+  def login_as_sample_user?
+    Rails.env == "development" && params["username"] == "sample" && request.env["omniauth.auth"].nil?
   end
 end

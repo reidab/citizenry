@@ -64,6 +64,32 @@ class Person < ActiveRecord::Base
       self.user = matching_user
     end
   end
+
+  SAMPLE_PERSON = {
+    :email => "sample@sample.org",
+    :url => "http://sample.org/~sample",
+    :twitter => "sample",
+    :bio => "I am a sample person's profile.",
+    :name => "Sample Person",
+    :location => "Portland, Oregon",
+    :reviewed => true,
+  }
+
+  def self.find_sample
+    return self.where(:email => User::SAMPLE_USER[:email]).first
+  end
+
+  def self.find_or_create_sample(create_backreference=true)
+    person = self.find_sample
+    unless person
+      person = self.create!(SAMPLE_PERSON)
+    end
+    if create_backreference && ! person.user
+      User.find_or_create_sample(false)
+      person.reload!
+    end
+    return person
+  end
 end
 
 
