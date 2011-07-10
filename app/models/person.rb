@@ -42,9 +42,12 @@ class Person < ActiveRecord::Base
   validates_presence_of :name
 
   before_save :attach_to_matching_user
-
+    
   scope :claimed, where('user_id IS NOT null')
   scope :unclaimed, where('user_id IS null')
+  scope :mentor, where('interested_mentor IS true')
+  scope :mentee, where('interested_mentee IS true')
+  
 
   # returns a photo url, with fallback to a unique-within-epdx generated avatar from gravatar
   def photo_url(size)

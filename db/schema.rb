@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330071457) do
+ActiveRecord::Schema.define(:version => 20110709205814) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -105,6 +105,10 @@ ActiveRecord::Schema.define(:version => 20110330071457) do
     t.boolean  "reviewed",                  :default => false
     t.string   "imported_from_screen_name"
     t.boolean  "delta",                     :default => true,  :null => false
+    t.boolean  "interested_mentor"
+    t.boolean  "interested_mentee"
+    t.text     "mentor_topics"
+    t.text     "mentee_topics"
   end
 
   create_table "project_memberships", :force => true do |t|
