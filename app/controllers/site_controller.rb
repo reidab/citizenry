@@ -27,4 +27,10 @@ class SiteController < ApplicationController
       respond_with(@results)
     end
   end
+
+  def opensearch
+    respond_to do |format|
+      format.xml { render }
+    end
+  end
 end
