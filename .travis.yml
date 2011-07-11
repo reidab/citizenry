@@ -1,0 +1,1 @@
+script: "bundle exec rake ci:setup db:drop db:create db:migrate spec"
