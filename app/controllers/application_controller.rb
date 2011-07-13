@@ -24,8 +24,11 @@ class ApplicationController < ActionController::Base
   def random_sort_clause
     seed = session["#{controller_name}_random_sort_seed"] ||= rand(2147483647)
     direction = %w(asc desc).include?(params[:order]) ? params[:order].upcase : ''
-
-    "RANDOM() #{direction}"
+    if ActiveRecord::Base.configurations[Rails.env]['adapter'] == 'sqlite3'
+      "RANDOM() #{direction}"
+    else
+      "RAND(#{seed}) #{direction}"
+    end
   end
 
   def clear_random_sort_seed

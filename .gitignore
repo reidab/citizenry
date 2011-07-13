@@ -12,3 +12,6 @@ database~old.sql
 config/development.sphinx.conf
 db/sphinx/
 log/searchd.development.pid
+*~
+\#*
+.\#*

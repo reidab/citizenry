@@ -6,6 +6,7 @@ the people, companies, groups, and projects that make them great.
 It was built to power http://epdx.org/, a guide to the awesome tech community of
 Portland, Oregon.
 
+[![Build Status](http://travis-ci.org/reidab/citizenry.png)](http://travis-ci.org/reidab/citizenry)
 
 Requirements & Technical Details
 --------------------------------

@@ -7,6 +7,7 @@
         &raquo;
       = "#{SETTINGS['organization']['name']}: #{SETTINGS['organization']['city']}'s Tech Directory"
     %meta{:name=>"viewport", :content=>"width=device-width, user-scalable=no"}
+    %link{:rel => 'search', :type => 'application/opensearchdescription+xml', :href => '/opensearch.xml', :title => SETTINGS['organization']['name']}
     - force_mobile = params[:force_mobile].present?
     -#
       Level 1: All browsers, evar.

@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable
 
   def avatar_url
-    self.person.try(:photo).try(:url, :thumb) || self.authentications.info_get(:image)
+    if self.person.try(:photo_file_name).present?
+      self.person.try(:photo).try(:url, :thumb) || self.authentications.info_get(:image)
+    end
   end
 
   def name
@@ -31,6 +33,28 @@ class User < ActiveRecord::Base
 
   def has_auth_from?(provider)
     self.authentications.via(provider).present?
+  end
+
+  SAMPLE_USER = {
+    :email => "sample@sample.org",
+    :admin => true,
+  }
+
+  def self.find_sample
+    return self.where(:email => User::SAMPLE_USER[:email]).first
+  end
+
+  def self.find_or_create_sample(create_backreference=true)
+    user = self.find_sample
+    unless user
+      user = self.create!(SAMPLE_USER)
+    end
+    if create_backreference && ! user.person
+      person = Person.find_or_create_sample(false)
+      user.person = person
+      user.save!
+    end
+    return user
   end
 end
 

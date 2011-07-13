@@ -3,6 +3,7 @@ Citizenry::Application.routes.draw do
 
   get '/search(/:query)' => 'site#search', :as => :search
   get '/s(/:query)' => 'site#search', :as => :short_search
+  get '/opensearch(.:format)' => 'site#opensearch', :as => :opensearch
 
   resources :authentications
   resources :companies do

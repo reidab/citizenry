@@ -18,4 +18,8 @@ module AuthenticationsHelper
     end
      "#{name} on #{provider_name(authentication.provider)}"
   end
+
+  def display_sign_in_as_sample?
+    Rails.env == "development"
+  end
 end
