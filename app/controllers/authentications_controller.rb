@@ -47,7 +47,7 @@ class AuthenticationsController < ApplicationController
       return redirect_to(stored_location_for(:user) || welcome_users_path)
     end
 
-    if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'].to_s)
       # Existing user, existing authentication, login!
       auth.update_from_omniauth(omniauth)
       auth.save
