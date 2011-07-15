@@ -5,3 +5,10 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Citizenry::Application.load_tasks
+
+desc "Run specs"
+task :spec do
+  sh "bundle exec rspec spec"
+end
+
+task :default => :spec
