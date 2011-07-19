@@ -265,6 +265,14 @@ fr:
       title:
         one: "personne taggée %{tag}"
         other: "personnes taggées %{tag}"
+      # TODO review translation
+      mentor_title:
+        one: "mentor intéressés"
+        other: "mentors intéressés"
+      # TODO review translation
+      mentee_title:
+        one: "mentoré intéressés"
+        other: "mentorés intéressés"
     show:
       are_you_this_person: Etes-vous %{name}?
   alert:

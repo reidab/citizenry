@@ -262,6 +262,13 @@ en:
       title:
         one: "%{tag} person"
         other: "%{tag} people"
+      mentor_title:
+        one: "interested mentor"
+        other: "interested mentors"
+      mentee_title:
+        one: "interested mentee"
+        other: "interested mentees"
+
   alert:
     are_you_sure: Are you sure?
   user:
