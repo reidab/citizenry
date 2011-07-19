@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def mentoring_enabled?
+    SETTINGS['mentoring']
+  end
+  helper_method :mentoring_enabled?
+
   def random_sort_clause
     seed = session["#{controller_name}_random_sort_seed"] ||= rand(2147483647)
     direction = %w(asc desc).include?(params[:order]) ? params[:order].upcase : ''
