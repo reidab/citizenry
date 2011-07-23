@@ -12,14 +12,14 @@ module APIClient
       @client.search_users(:name => query).results.map{|fs_user|
         self.person_from(fs_user)
       }
-    rescue ::Foursquare::Unauthorized => e
+    rescue Error => e
       raise APIAuthenticationError, e.inspect
     end
 
     def get(id)
       fs_user = @client.user(id)
       self.person_from(fs_user) if fs_user.present?
-    rescue ::Foursquare::Unauthorized => e
+    rescue Error => e
       raise APIAuthenticationError, e.inspect
     end
 
