@@ -21,7 +21,10 @@ class Person < ActiveRecord::Base
   attr_accessor :photo_import_url
   before_validation do
     if self.photo_import_url.present?
-      io = open(URI.parse(self.photo_import_url))
+      url = self.photo_import_url.downcase
+      url = "http://#{url}" unless url.include?("http")
+
+      io = open(URI.parse(url))
       def io.original_filename; base_uri.path.split('/').last; end
 
       self.photo = io if io.original_filename.present?
