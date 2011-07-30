@@ -94,7 +94,7 @@ class Person < ActiveRecord::Base
   def import_photo
     if self.photo_import_url.present?
       # Normalize
-      url = self.photo_import_url.downcase
+      url = self.photo_import_url
       url = "http://#{url}" unless url.include?("http")
 
       # Validate URL
