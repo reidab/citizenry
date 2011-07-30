@@ -17,19 +17,15 @@ class Person < ActiveRecord::Base
 
   has_attached_file :photo, :styles => { :medium => '220x220#', :thumb => '48x48#' }, :url => "/system/:attachment/:id/:style/:safe_filename"
   PHOTO_SIZES = {:medium => 220, :thumb => 48} # for gravatar
+  MAX_PHOTO_BYTES = 500.kilobytes
+  PHOTO_TIMEOUT_SECONDS = 10
+  validates_attachment_size :photo, :less_than => MAX_PHOTO_BYTES
+  # TODO Add content_type validation. The trouble is that PaperClip thinks the content_type of an uploaded image is always "text/html; charset=iso-8859-1" and ignores any attempt to override it.
+  ### validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/pjpeg', 'image/x-png']
 
+  # Import photo on validation if available from this accessor
   attr_accessor :photo_import_url
-  before_validation do
-    if self.photo_import_url.present?
-      url = self.photo_import_url.downcase
-      url = "http://#{url}" unless url.include?("http")
-
-      io = open(URI.parse(url))
-      def io.original_filename; base_uri.path.split('/').last; end
-
-      self.photo = io if io.original_filename.present?
-    end
-  end
+  validate :import_photo, :if => "photo_import_url.present?"
 
   belongs_to :user
 
@@ -92,6 +88,58 @@ class Person < ActiveRecord::Base
       person.reload!
     end
     return person
+  end
+
+  # Import photo if URL is provided and report errors.
+  def import_photo
+    if self.photo_import_url.present?
+      # Normalize
+      url = self.photo_import_url.downcase
+      url = "http://#{url}" unless url.include?("http")
+
+      # Validate URL
+      begin
+        uri = URI.parse(url)
+      rescue URI::InvalidURIError
+        self.errors.add(:photo_import_url, "Invalid photo URL")
+        return false
+      end
+
+      # Download
+      io = nil
+      begin
+        Timeout::timeout(PHOTO_TIMEOUT_SECONDS) do
+          io = uri.open
+        end
+      rescue OpenURI::HTTPError => e
+        self.errors.add(:photo_import_url, "Unable to import photo URL: #{e}")
+        return false
+      rescue Timeout::Error => e
+        self.errors.add(:photo_import_url, "Unable to import photo URL, timed-out after #{PHOTO_TIMEOUT_SECONDS} seconds")
+        return false
+      end
+
+      # Validate status
+      unless io.status.first.to_i == 200
+        self.errors.add(:photo_import_url, "Unable to import photo URL: HTTP status code #{io.status.first} -- #{io.status.last}")
+        return false
+      end
+
+      # Validate size
+      if io.size == 0
+        self.errors.add(:photo_import_url, "Couldn't import photo from URL, file size is 0 bytes")
+        return false
+      elsif io.size > MAX_PHOTO_BYTES
+        self.errors.add(:photo_import_url, "Couldn't import photo from URL, size must be smaller than #{MAX_PHOTO_BYTES} bytes, but was #{io.size} bytes")
+        return false
+      end
+
+      # Provide a way to get the filename from the 'open-uri' result
+      def io.original_filename; base_uri.path.split('/').last; end
+
+      self.photo = io
+      return true
+    end
   end
 end
 
