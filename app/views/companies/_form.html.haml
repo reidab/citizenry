@@ -1,4 +1,5 @@
 = semantic_form_for(@company, :html => {:multipart => true}) do |f|
+  = display_semantic_errors_for(f, @company)
   = f.inputs do
     = f.input :name
     = f.input :url, :label => 'Website'

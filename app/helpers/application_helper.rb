@@ -85,4 +85,11 @@ module ApplicationHelper
       return type.to_s.titleize
     end
   end
+
+  # Display all errors related to the +record+ for the +formtastic_form+.
+  #
+  # This is a workaround because Formtastic's default #sementic_errors behavior is crazy: it only displays errors for the record's "base", but not its fields. This is bad because if there's a validation error on a field that's far down on the screen or not included in the form, Formtastic will reject the user's attempt to submit the form, but display no errors. This is particularly bad with PaperClip, which uses validation on fields that are never listed in the form, and would otherwise not be displayed.
+  def display_semantic_errors_for(formtastic_form, record)
+    formtastic_form.semantic_errors *record.errors.keys
+  end
 end
