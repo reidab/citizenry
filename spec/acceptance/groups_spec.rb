@@ -35,6 +35,11 @@ feature "The group index" do
     visit groups_path(:page => "asdf")
     page.find("#flash .error").should have_content "paginate"
   end
+
+  scenario "should display warning when told to sort by invalid parameters" do
+    visit groups_path(:order => "asdf")
+    page.find("#flash .error").should have_content "sort"
+  end
 end
 
 feature "The group show page" do
