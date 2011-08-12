@@ -4,8 +4,14 @@ require 'openid/store/filesystem'
 OpenID.fetcher.timeout = 6
 
 Rails.application.config.middleware.use OmniAuth::Builder do
+  ssl_client_options = {}
+
+  if SETTINGS['ssl_ca_path'].present?
+    ssl_client_options = {:client_options => {:ssl => {:ca_path => SETTINGS['ssl_ca_path']}}}
+  end
+
   SETTINGS['auth_credentials'].each do |provider_name, opts|
-    provider  provider_name.to_sym, opts['key'], opts['secret']
+    provider  provider_name.to_sym, opts['key'], opts['secret'], ssl_client_options
   end
 
 
