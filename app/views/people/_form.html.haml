@@ -14,9 +14,9 @@
     = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
 	- if mentoring_enabled?
       = f.inputs :name => "Mentoring" do
-        = f.input :interested_mentor, :label => "I am interested in mentoring", :hint => "Explanation Here"
+        = f.input :interested_mentor, :label => "I am interested in mentoring", :hint => "Would you like to mentor other people?"
         = f.input :mentor_topics, :label => "I am interested in mentoring these topics", :hint => "Comma separated, please"
-        = f.input :interested_mentee, :label => "I am interested in being mentored", :hint => "Explanation Here"
+        = f.input :interested_mentee, :label => "I am interested in being mentored", :hint => "Would you like to be mentored?"
         = f.input :mentee_topics, :label => "I am interested in being mentored in these topics", :hint => "Comma separated, please"
     = import_image_from_url_tags_for f, @person, :photo
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
