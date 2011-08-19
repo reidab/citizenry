@@ -8,9 +8,9 @@ gem 'rails', '3.0.9'
 #     export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 #
 # Note: the exact path to your MySQL lib/ directory may vary.
-gem 'mysql2', '~> 0.2.0'
+# gem 'mysql2', '~> 0.2.0'
 # Uncomment if you're using sqlite
-# gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 
 gem 'hoptoad_notifier'
@@ -19,6 +19,7 @@ gem 'hoptoad_notifier'
 gem 'httparty', '~> 0.7.4'
 gem "json", "~> 1.4.6"
 gem 'addressable', '~> 2.2.4'
+gem "friendly_id4", "4.0.0.beta3", :require => "friendly_id"
 
 #--[ Authentication ]-----------------------------------------------------------
 gem 'devise', "~> 1.1.5"
@@ -37,7 +38,7 @@ gem 'foursquare2', '~>1.1.0'   # https://gist.github.com/419219 <- github oauth 
 
 #--[ Search ]-------------------------------------------------------------------
 # If you're using the default sql-based search, you can comment this out.
-gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
+# gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"

@@ -4,6 +4,9 @@ class Person < ActiveRecord::Base
 
   include SearchEngine
 
+	extend FriendlyId
+  friendly_id :name, :use => :slugged
+
   attr_protected :user_id
   has_paper_trail :ignore => [:user_id, :delta]
   acts_as_taggable_on :tags, :technologies
