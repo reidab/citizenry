@@ -5,8 +5,8 @@
     #view_options
       %span.sorting
         %strong = t('list.sort_by'):
-        = sort_link(:name) + ","
+        = sort_link(:name, :label => t('field.name.label')) + ","
         = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc, :is_default => :desc) + ","
-        = sort_link(:random)
+        = sort_link(:random, :label => t('field.random.label'))
 
 = render :partial => 'companies/list', :object => @companies

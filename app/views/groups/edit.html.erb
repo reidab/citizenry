@@ -1,6 +1,6 @@
-<h1>Editing group</h1>
+<h1><%= t('group.edit.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to t('button.show'), @group %> |
+<%= link_to t('button.back'), groups_path %>

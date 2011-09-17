@@ -1,20 +1,27 @@
 --- 
 en: 
-  company: 
+  group: 
     button: 
-      join: Join this company
-      leave: Leave this company
-      add: + Add a Company
+      add: + Add a Group
+    edit: 
+      title: Editing group
+    index: 
+      title: "%{tag} group"
+  company: 
     new: 
       title: New company
+    button: 
+      add: + Add a Company
+      leave: Leave this company
+      join: Join this company
     edit: 
       title: Editing company
     index: 
       title: "%{tag} company"
   button: 
-    sign_in: sign_in
-    login_as_sample_user: Login as sample user
     back: Back
+    login_as_sample_user: Login as sample user
+    sign_in: sign_in
     edit: Edit
     delete: Delete
     remove: Remove
@@ -25,31 +32,31 @@ en:
     sort_by: Sort by
   flowery: 
     success7: Yeah
-    warning1: Beware
     success8: Yay
-    warning2: Warning
+    warning1: Beware
     error1: Egads
-    warning3: Watch out
+    warning2: Warning
     error2: Balderdash
+    warning3: Watch out
     error3: Fiddlesticks
-    notice1: Heads up
-    success1: Yippee
     error4: Holy Toledo
-    notice2: Avast
-    success2: Hooray
+    success1: Yippee
+    notice1: Heads up
     error5: Tarnation
-    notice3: Notice
-    success3: Awesome
-    error10: Uh oh
+    success2: Hooray
+    notice2: Avast
     error6: Damnation
-    success4: Yeehaw
-    error11: Great Scott
+    error10: Uh oh
+    success3: Awesome
+    notice3: Notice
     error7: Fooey
-    success5: Hoorah
-    error12: Blisterin' barnacles
+    error11: Great Scott
+    success4: Yeehaw
     error8: Boo
-    success6: Huzzah
+    error12: Blisterin' barnacles
+    success5: Hoorah
     error9: Aw shucks
+    success6: Huzzah
   auth: 
     failure: 
       actions: "Please pick a login provider to continue:"
@@ -74,6 +81,8 @@ en:
       faux_label: Current logo
     url: 
       label: Website
+    random: 
+      label: "Aléatoire"
     meeting_info: 
       label: Meeting info
     mailing_list: 
