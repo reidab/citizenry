@@ -72,11 +72,11 @@ module ApplicationHelper
 
   def flash_type_title(type)
     flowery_vocabulary = {
-      :error   => [ 'Egads', 'Balderdash', 'Fiddlesticks', 'Holy Toledo', 'Tarnation', 'Damnation', 'Fooey',
-                    'Boo', 'Aw shucks', 'Uh oh', 'Great Scott', "Blisterin' barnacles" ],
-      :success => [ 'Yippee', 'Hooray', 'Awesome', 'Yeehaw', 'Hoorah', 'Huzzah', 'Yeah', 'Yay' ],
-      :notice  => [ 'Heads up', 'Avast', 'Notice' ],
-      :warning => [ 'Beware', 'Warning', 'Watch out' ]
+      :error   => [ t('flowery.error1'), t('flowery.error2'), t('flowery.error3'), t('flowery.error4'), t('flowery.error5'), t('flowery.error6'), t('flowery.error7'),
+                    t('flowery.error8'), t('flowery.error9'), t('flowery.error10'), t('flowery.error11'), t('flowery.error12') ],
+      :success => [ t('flowery.success1'), t('flowery.success2'), t('flowery.success3'), t('flowery.success4'), t('flowery.success5'), t('flowery.success6'), t('flowery.success7'), t('flowery.success8') ],
+      :notice  => [ t('flowery.notice1'), t('flowery.notice2'), t('flowery.notice3') ],
+      :warning => [ t('flowery.warning1'), t('flowery.warning2'), t('flowery.warning3') ]
     }
 
     if flowery_vocabulary[type]

@@ -4,4 +4,4 @@
       =provider_icon(authentication.provider)
       =auth_label(authentication)
       - if list.size > 1
-        = link_to "Remove", authentication_path(authentication), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+        = link_to t('button.remove'), authentication_path(authentication), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'

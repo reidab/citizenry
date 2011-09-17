@@ -1,15 +1,15 @@
 = semantic_form_for(@group, :html => {:multipart => true}) do |f|
   = f.inputs do
     = f.input :name
-    = f.input :url, :label => 'Website'
-    = f.input :mailing_list, :hint => "URL to list information"
-    = f.input :description
-    = f.input :meeting_info
-    = f.input :tag_list, :as => :text, :label => 'Tags', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :url, :label => t('field.url.label')
+    = f.input :mailing_list, :label => t('field.mailing_list.label'), :hint => t('field.mailing_list.hint')
+    = f.input :description, :label => t('field.description.label')
+    = f.input :meeting_info, :label => t('field.meeting_info.label')
+    = f.input :tag_list, :as => :text, :label => t('field.tag_list.label'), :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
     - if @group.logo.file?
       %li
-        .faux_label Current logo
+        .faux_label = t('field.logo.faux_label')
         = image_tag @group.logo.url(:medium) if @group.logo.present?
-    = f.input :logo, :label => "Upload a logo", :hint => "Preferably 220px wide or larger"
+    = f.input :logo, :label => t('field.logo.label'), :hint => t('field.logo.hint', {:size => 220})
   = f.buttons

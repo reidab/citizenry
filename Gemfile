@@ -10,7 +10,7 @@ gem 'rails', '3.0.9'
 # Note: the exact path to your MySQL lib/ directory may vary.
 gem 'mysql2', '~> 0.2.0'
 # Uncomment if you're using sqlite
-# gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 
 gem 'hoptoad_notifier'

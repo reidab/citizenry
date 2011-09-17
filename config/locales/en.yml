@@ -1,5 +1,90 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
-en:
-  hello: "Hello world"
+--- 
+en: 
+  company: 
+    button: 
+      join: Join this company
+      leave: Leave this company
+      add: + Add a Company
+    new: 
+      title: New company
+    edit: 
+      title: Editing company
+    index: 
+      title: "%{tag} company"
+  button: 
+    sign_in: sign_in
+    login_as_sample_user: Login as sample user
+    back: Back
+    edit: Edit
+    delete: Delete
+    remove: Remove
+    show: Show
+  list: 
+    sort_by: Sort by
+  flowery: 
+    success7: Yeah
+    warning1: Beware
+    success8: Yay
+    warning2: Warning
+    error1: Egads
+    warning3: Watch out
+    error2: Balderdash
+    error3: Fiddlesticks
+    notice1: Heads up
+    success1: Yippee
+    error4: Holy Toledo
+    notice2: Avast
+    success2: Hooray
+    error5: Tarnation
+    notice3: Notice
+    success3: Awesome
+    error10: Uh oh
+    error6: Damnation
+    success4: Yeehaw
+    error11: Great Scott
+    error7: Fooey
+    success5: Hoorah
+    error12: Blisterin' barnacles
+    error8: Boo
+    success6: Huzzah
+    error9: Aw shucks
+  auth: 
+    failure: 
+      actions: "Please pick a login provider to continue:"
+      title: Ack! Something went wrong!
+      description: We received an error of some kind back from your login provider. You can try again with the same login provider or choose another service.
+  title: 
+    technologies: Technologies
+    tags: Tags
+    employees: Employees
+  field: 
+    address: 
+      label: Address
+      hint: e.g. 115 NW 5th, Portland, OR
+    created_at: 
+      label: Date added
+    logo: 
+      label: Upload a logo
+      hin: Preferably %{size}px wide or larger
+      hint: Preferably %{size}px wide or larger
+      faux_label: Current logo
+    url: 
+      label: Website
+    meeting_info: 
+      label: Meeting info
+    mailing_list: 
+      label: Mailing list
+      hint: URL to list information
+    tag_list: 
+      label: Tags
+      hint: Comma separated, please
+    description: 
+      label: Description
+    technology_list: 
+      label: Technologies (languages, frameworks, etc)
+      hint: Comma separated, please
+    email_address: 
+      label: Email address
+  hello: Hello world
+  alert: 
+    are_you_sure: Are you sure?

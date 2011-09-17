@@ -1,9 +1,9 @@
 .sign_in_form
   = semantic_form_for((@signin_data || SignInData.new), :url => user_sessions_path) do |f|
-    = f.input :email, :label => "Email address", :input_html => {:size => nil, :autocorrect => "off", :autocapitalize => "off"}
+    = f.input :email, :label => t('field.email_address.label'), :input_html => {:size => nil, :autocorrect => "off", :autocapitalize => "off"}
     = f.input :provider, :collection => Authentication::PROVIDER_OPTIONS, :include_blank => false
-    = f.commit_button "Sign in!"
+    = f.commit_button t('button.sign_in')
     - if display_sign_in_as_sample?
       %p.development_only
         DEV:
-        = link_to "Login as sample user", authentications_path(:username => "sample"), :method => :post
+        = link_to t('auth.login_as_sample_user'), authentications_path(:username => "sample"), :method => :post

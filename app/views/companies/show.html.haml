@@ -10,24 +10,24 @@
       =link_to normalize_url(@company.url), normalize_url(@company.url), :class => 'url'
 
   .record_actions
-    = link_to 'Edit', edit_company_path(@company), :class => 'edit'
-    = link_to "Delete", company_path(@company), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+    = link_to t('button.edit'), edit_company_path(@company), :class => 'edit'
+    = link_to t('button.delete'), company_path(@company), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'
 
   - if @company.tags.present?
     .section.tags
-      %h2 Tags
+      %h2 = t('title.tags')
       = render :partial => 'tags/list', :object => @company.tags, :locals => {:type => :company}
 
   - if @company.technologies.present?
     .section.technologies
-      %h2 Technologies
+      %h2 = t('title.technologies')
       = render :partial => 'tags/list', :object => @company.technologies, :locals => {:type => :company}
 
   .section.members
-    %h2 Employees
+    %h2 = t('title.employees')
     - if current_person
       - if @company.employees.include?(current_person)
-        = link_to "Leave this company", leave_company_path(@company), :class => 'leave', :method => :post
+        = link_to t('company.button.leave'), leave_company_path(@company), :class => 'leave', :method => :post
       - else
-        = link_to "Join this company", join_company_path(@company), :class => 'join', :method => :post
+        = link_to t('company.button.join'), join_company_path(@company), :class => 'join', :method => :post
     = render :partial => 'people/list', :object => @company.employees, :locals => {:context => :member_list}
