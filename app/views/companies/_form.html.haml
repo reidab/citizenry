@@ -1,6 +1,6 @@
 = semantic_form_for(@company, :html => {:multipart => true}) do |f|
   = f.inputs do
-    = f.input :name
+    = f.input :name, :label => t('field.name.label')
     = f.input :url, :label => t('field.url.label')
     = f.input :address, :as => :string, :hint => t('field.address.hint'), :label => t('field.address.label')
     = f.input :description
