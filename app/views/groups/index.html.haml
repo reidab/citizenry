@@ -1,12 +1,12 @@
 - content_for(:section_header) do
   .section_header{:class => 'groups'}
-    %h1= semantic_pluralize(@groups.respond_to?(:total_entries) ? @groups.total_entries : @groups.size, "#{@tag} group".strip.titleize)
-    = link_to "+ Add a Group", new_group_path, :class => 'new'
+    %h1= semantic_pluralize(@groups.respond_to?(:total_entries) ? @groups.total_entries : @groups.size, t('group.index.title',{:tag => @tag}).strip.titleize)
+    = link_to t('group.button.add'), new_group_path, :class => 'new'
     #view_options
       %span.sorting
-        %strong Sort by:
-        = sort_link(:name) + ","
-        = sort_link(:created_at, :label => "Date added", :default_order => :desc, :is_default => :desc) + ","
-        = sort_link(:random)
+        %strong t('list.sort_by'):
+        = sort_link(:name, :label => t('field.name.label')) + ","
+        = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc, :is_default => :desc) + ","
+        = sort_link(:random, :label => t('field.random.label'))
 
 = render :partial => 'groups/list', :object => @groups
