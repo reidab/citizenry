@@ -57,7 +57,7 @@ en:
     technologies: Technologies
     tags: Tags
     employees: Employees
-  field: 
+  field:
     address: 
       label: Address
       hint: e.g. 115 NW 5th, Portland, OR
@@ -75,6 +75,8 @@ en:
     mailing_list: 
       label: Mailing list
       hint: URL to list information
+    name:
+      label: Name
     tag_list: 
       label: Tags
       hint: Comma separated, please
