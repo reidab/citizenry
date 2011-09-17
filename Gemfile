@@ -89,13 +89,12 @@ group :test do
   gem "mocha"
   gem "fakeweb"
   gem "factory_girl_rails"
-  gem 'faker'
+  gem 'faker', '>= 1.0'
   gem 'uuid'
   gem 'steak', '1.1.0'
   gem 'capybara', '~> 0.4.0'
   # gem 'capybara-envjs'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'spork'
 end

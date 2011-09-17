@@ -1,13 +1,13 @@
 = semantic_form_for(@project, :html => {:multipart => true}) do |f|
   = f.inputs do
-    = f.input :name
-    = f.input :url, :label => 'Website'
-    = f.input :description
-    = f.input :tag_list, :as => :text, :label => 'Tags', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => 'Technologies used (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :name, :label => t('field.name.label')
+    = f.input :url, :label => t('field.url.label')
+    = f.input :description, :label => t('field.description.label')
+    = f.input :tag_list, :as => :text, :label => t('field.tag_list.label'), :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
     - if @project.logo.file?
       %li
-        .faux_label Current logo
+        .faux_label = t('field.logo.faux_label')
         = image_tag @project.logo.url(:medium) if @project.logo.present?
-    = f.input :logo, :label => "Upload a logo", :hint => "Preferably 220px wide or larger"
+    = f.input :logo, :label => t('field.logo.label'), :hint => t('field.logo.hint', :size =>220)
   = f.buttons

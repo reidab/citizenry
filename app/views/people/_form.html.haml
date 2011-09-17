@@ -1,23 +1,23 @@
 - context ||= :general
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
   = f.inputs do
-    = f.input :name
-    -# = f.input :email, :label => "Email address", :hint => "We'll keep this secret"
+    = f.input :name, :label => t('field.name.label')
+    -# = f.input :email, :label => t('field.email.label'), :hint => t('field.email.hint')
     -# = f.input :twitter
-    = f.input :location, :hint => 'Neighborhood-level info preferred'
-    = f.input :url, :label => "Website"
-    = f.input :bio
-    = f.input :tag_list, :as => :text, :label => 'Tags (interests, titles, personal descriptors)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.inputs :name => "Photo" do
+    = f.input :location, :label => t('field.location.label'), :hint => t('field.location.hint')
+    = f.input :url, :label => t('field.url.label')
+    = f.input :bio, :label => t('field.bio.label')
+    = f.input :tag_list, :as => :text, :label => t('people.field.tag_list.label'), :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
+    = f.inputs :name => t('field.photo.label') do
       - if photo_url = @person.photo_import_url || (@person.photo.file? && @person.photo.url(:medium))
         %li
           = image_tag photo_url, :size => '220'
 
-      = f.input :photo_import_url, :label => "Import a photo from the web…"
-      = f.input :photo, :label => "…or upload one from your computer.", :hint => "Preferably 220px wide or larger"
+      = f.input :photo_import_url, :label => t('field.photo_import_url.label')
+      = f.input :photo, :label => t('field.photo_upload.label'), :hint => t('field.logo.hint', :size => 220)
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
     - if current_user.admin?
-      = f.input :user, :include_blank => '-- none --', :label_method => :label_for_admin
+      = f.input :user, :include_blank => '-- '+t('field.user.blankoption')+' --', :label_method => :label_for_admin
     = hidden_field_tag :form_context, context
   = f.buttons

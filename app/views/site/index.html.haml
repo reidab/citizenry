@@ -1,15 +1,12 @@
 #site_intro
-  A community-edited guide to the
-  %span{:class => 'awesome'} awesome tech community
-  of
-  = SETTINGS['organization']['city']+ ', ' + SETTINGS['organization']['state']
+  = t('site.index.title', :organization => SETTINGS['organization']['city']+ ', ' + SETTINGS['organization']['state'])
 
 %ul#front_nav
-  %h2#home_to Home to
-  %li.people= link_to semantic_pluralize(Person.count, "Person"), people_path
-  %li.companies= link_to semantic_pluralize(Company.count, "Company"), companies_path
-  %li.groups= link_to semantic_pluralize(Group.count, "Group"), groups_path
-  %li.projects= link_to semantic_pluralize(Project.count, "Project or Product", "Projects & Products"), projects_path
-  %li.resources= link_to semantic_pluralize(ResourceLink.count, "Resource"), resource_links_path
+  %h2#home_to = t('site.index.home_to')
+  %li.people= link_to semantic_pluralize(Person.count, t('site.index.person')), people_path
+  %li.companies= link_to semantic_pluralize(Company.count, t('site.index.company')), companies_path
+  %li.groups= link_to semantic_pluralize(Group.count, t('site.index.group')), groups_path
+  %li.projects= link_to semantic_pluralize(Project.count, t('site.index.project_or_product'), t('site.index.projects_and_products')), projects_path
+  %li.resources= link_to semantic_pluralize(ResourceLink.count, t('site.index.resource')), resource_links_path
   - if @events_count
-    %li.events= link_to semantic_pluralize(@events_count, "Upcoming event") + " on Calagator", 'http://calagator.org/events'
+    %li.events= link_to semantic_pluralize(@events_count, t('site.index.upcoming_event')) + t('site.index.on_calagator'), 'http://calagator.org/events'

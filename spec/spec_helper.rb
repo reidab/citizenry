@@ -30,4 +30,6 @@ RSpec.configure do |config|
 
   require 'fakeweb'
   FakeWeb.allow_net_connect = false
+  require 'faker'
+  Faker::Config.locale = :en
 end

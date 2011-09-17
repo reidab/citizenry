@@ -1,12 +1,12 @@
 = semantic_form_for(@resource_link) do |f|
   = f.inputs do
-    = f.input :name
-    = f.input :url, :label => "URL"
-    = f.input :description, :label => "Brief description"
+    = f.input :name, :label => t('field.name.label')
+    = f.input :url, :label => t('resource_links.field.url.label')
+    = f.input :description, :label => t('resource_links.field.url.description')
     = f.input :category
 
   = f.buttons do
     = f.commit_button
     - unless @resource_link.new_record?
       %li
-        = link_to "Delete", resource_link_path(@resource), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+        = link_to t('button.delete'), resource_link_path(@resource), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'

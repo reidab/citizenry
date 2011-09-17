@@ -4,35 +4,35 @@
   - if @group.description.present?
     .description= simple_format @group.description
   - if @group.meeting_info.present?
-    %h2 Meeting Info
+    %h2 = t('field.meeting_info.title')
     .description= simple_format @group.meeting_info
   .links
     - if [@group.url, @group.mailing_list].any?{|link| link.present?}
-      %h2 Links
+      %h2 = t('field.url.title')
     - if @group.url.present?
       =link_to normalize_url(@group.url), normalize_url(@group.url), :class => 'url'
     - if @group.mailing_list.present?
       =link_to "Mailing List", normalize_url(@group.mailing_list), :class => 'mailing_list'
 
   .record_actions
-    = link_to 'Edit', edit_group_path(@group), :class => 'edit'
-    = link_to "Delete", group_path(@group), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+    = link_to t('button.edit'), edit_group_path(@group), :class => 'edit'
+    = link_to t('button.delete'), group_path(@group), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'
 
   - if @group.tags.present?
     .section.tags
-      %h2 Tags
+      %h2 = t('field.tag_list.title')
       = render :partial => 'tags/list', :object => @group.tags, :locals => {:type => :group}
 
   - if @group.technologies.present?
     .section.technologies
-      %h2 Technologies
+      %h2 = t('field.technology_list.title')
       = render :partial => 'tags/list', :object => @group.technologies, :locals => {:type => :group}
 
   .section.members
-    %h2 Members
+    %h2 = t('field.members.title')
     - if current_person
       - if @group.members.include?(current_person)
-        = link_to "Leave this group", leave_group_path(@group), :class => 'leave', :method => :post
+        = link_to t('group.button.leave'), leave_group_path(@group), :class => 'leave', :method => :post
       - else
-        = link_to "Join this group", join_group_path(@group), :class => 'join', :method => :post
+        = link_to t('group.button.join'), join_group_path(@group), :class => 'join', :method => :post
     = render :partial => 'people/list', :object => @group.members, :locals => {:context => :member_list}

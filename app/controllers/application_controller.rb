@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound do |exception|
       respond_to do |format|
         format.html {
-          flash.now[:error] = 'Record not found'
+          flash.now[:error] = t('error.record_not_found')
           render :template => 'site/404', :status => 404
         }
         format.xml  { head 404 }
@@ -46,13 +46,13 @@ class ApplicationController < ActionController::Base
       begin
         collection = collection.sorty(params)
       rescue HeySorty::ArgumentError => e
-        flash[:error] = "Couldn't sort results by invalid sorting parameters."
+        flash[:error] = t('error.invalid_sort_params')
       end
     end
 
     if params[:page] && params[:page].to_i.to_s != params[:page]
       params.delete(:page)
-      flash[:error]  = "Couldn't paginate results by invalid page number."
+      flash[:error]  = t('error.invalid_page_number')
     end
 
     if params[:page] == 'all'
@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
   def require_admin!
     authenticate_user! and return unless current_user
     unless current_user.admin?
-      flash[:error] = "Access denied."
+      flash[:error] = t('error.access_denied')
       redirect_to root_path and return
     end
   end

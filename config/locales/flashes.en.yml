@@ -1,0 +1,18 @@
+--- 
+en: 
+  notice: 
+    search_one_result: This is the one result we found when searching for <em>%{term}</em>. Enjoy!
+    signed_in_successful: Signed in successfully.
+  success: 
+    account_removed: Your %{account} account has been removed.
+    omniauth_account_added: Your %{account} account has been added.
+  warning: 
+    person_edit_not_allowed: You aren't allowed to edit this person.
+  error: 
+    invalid_sort_params: Couldn't sort results by invalid sorting parameters.
+    person_already_claimed: This person has already been claimed.
+    cookies_disabled: It looks like you might have cookies disabled. Please re-enable cookies and try again.
+    record_not_found: Record not found
+    email_exists: A user already exists for %{email}, but you're using a different login method than we've seen for them. Please try again with with the 'choose automatically' option selected.
+    access_denied: Access denied.
+    invalid_page_number: Couldn't paginate results by invalid page number.

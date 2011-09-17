@@ -16,7 +16,7 @@ module AuthenticationsHelper
     else
       name = authentication.info[:name]
     end
-     "#{name} on #{provider_name(authentication.provider)}"
+     t('misc.name_on_provider',{:name => name, :provider => provider_name(authentication.provider)})
   end
 
   def display_sign_in_as_sample?

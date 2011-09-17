@@ -1,5 +1,5 @@
 #users_admin
-  %h1 Users
+  %h1 = t('user.index.title')
   %ul
     - @users.each do |user|
       %li{:id => "user_#{user.id}", :class => user.admin? ? 'admin' : nil}
@@ -7,22 +7,22 @@
           %strong Admin
         = "User #{user.id}: #{user.name} -"
         = mail_to user.email
-        = link_to "Delete", user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+        = link_to t('button.delete'), user_path(user), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'
         = link_to ((user.admin? ? 'Un-' : '') + 'adminify').capitalize, adminify_user_path(user), :method => :post, :class => 'make_admin'
         = image_tag(normalize_url(user.avatar_url), :size => '30x30', :align => 'right') if user.avatar_url
         %ul
           - if user.person.present?
             %li{:id => "person_#{user.person.id}"}
-              = "Person #{user.person.id}:"
+              = t('user.index.person_id', :id => user.person.id)
               = link_to user.person.name, person_path(user.person)
           - user.authentications.each do |auth|
             %li{:id => "authentication_#{auth.id}"}
               = "Authentication #{auth.id}: #{auth.info[:name]}"
               = "(#{auth.info[:nickname]})" if auth.info[:nickname]
               = "via #{provider_name(auth.provider)}"
-              = link_to "Delete", authentication_path(auth), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+              = link_to t('button.delete'), authentication_path(auth), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'
               - if auth.matching_person && auth.matching_person != user.person
                 %ul
                   %li
-                    = "Person #{user.id}:"
+                    = t('user.index.person_id', :id => user.id)
                     = link_to auth.matching_person.name, person_path(auth.matching_person)

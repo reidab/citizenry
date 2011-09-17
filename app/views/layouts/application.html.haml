@@ -5,7 +5,7 @@
       - if page_title
         = page_title
         &raquo;
-      = "#{SETTINGS['organization']['name']}: #{SETTINGS['organization']['city']}'s Tech Directory"
+      = t('layout.title', {:name => SETTINGS['organization']['name'], :city => SETTINGS['organization']['city']})
     %meta{:name=>"viewport", :content=>"width=device-width, user-scalable=no"}
     %link{:rel => 'search', :type => 'application/opensearchdescription+xml', :href => '/opensearch.xml', :title => SETTINGS['organization']['name']}
     - force_mobile = params[:force_mobile].present?
@@ -59,11 +59,11 @@
             #global_sign_in
               = link_to "Sign In / Join", sign_in_path, :id => 'sign_in_link'
         %ul{:id=>'main_nav'}
-          %li= link_to "People", people_path, :class => 'people'
-          %li= link_to "Companies", companies_path, :class => 'companies'
-          %li= link_to "Groups", groups_path, :class => 'groups'
-          %li= link_to "Projects & Products", projects_path, :class => 'projects'
-          %li= link_to "Resources", resource_links_path, :class => 'resources'
+          %li= link_to t('main_nav.people.link'), people_path, :class => 'people'
+          %li= link_to t('main_nav.companies.link'), companies_path, :class => 'companies'
+          %li= link_to t('main_nav.groups.link'), groups_path, :class => 'groups'
+          %li= link_to t('main_nav.projects_products.link'), projects_path, :class => 'projects'
+          %li= link_to t('main_nav.resources.link'), resource_links_path, :class => 'resources'
           /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
         %form{:action => search_path, :method => :get, :id => 'global_search'}
@@ -82,15 +82,11 @@
 
     #footer
       #citizenry_credit
-        Powered by
-        = link_to("Citizenry", "http://github.com/reidab/citizenry/") + '.'
+        = t('layout.powered_by', :powered_by => link_to("Citizenry", "http://github.com/reidab/citizenry/"))
       #hosting_credit
-        Hosting thanks to
-        = link_to("#{SETTINGS['organization']['host']}", "#{SETTINGS['organization']['host_url']}") + '.'
+        = t('layout.hosting_credit', :host => link_to("#{SETTINGS['organization']['host']}", "#{SETTINGS['organization']['host_url']}"))
       #contact_link
-        Questions? Comments? Desires? Email
-        = mail_to "#{SETTINGS['organization']['email']}"
+        = t('layout.contact_link', :email => mail_to("#{SETTINGS['organization']['email']}"))
       #twitter_link
-        Follow
-        = twitter_link SETTINGS['organization']['twitter']
-        on Twitter
+        = t('layout.follow_link', :link => twitter_link("#{SETTINGS['organization']['twitter']}"))
+

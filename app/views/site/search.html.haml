@@ -1,12 +1,12 @@
 - content_for(:section_header) do
   .section_header
-    %h1= semantic_pluralize(@results.present? ? @results.total_entries : 0, "search result") + " for &#8220;#{params[:query]}&#8221;".html_safe
+    %h1= semantic_pluralize(@results.present? ? @results.total_entries : 0, t('site.search.search_result')) + t('site.search.for', :query => params[:query]).html_safe
 
 - if @results.blank?
-  %h2 Nothing here!
+  %h2 t('site.search.no_result')
   %p
-    = "We couldn't find anything that matched your search for <strong>#{params[:query]}</strong>.".html_safe 
-    You might want to try again.
+    = t('site.search.no_result_text', :query => params[:query]).html_safe 
+    = t('site.search.no_result_try_again')
     
 - else
   %ul.resource_list.search_results

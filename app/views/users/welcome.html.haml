@@ -1,17 +1,17 @@
 #welcome
-  %h1= "Hi #{@name.split(' ').first}!"
+  %h1= t('user.welcome.hi', :name => @name.split(' ').first)
   - if @possible_duplicates.present?
     #possible_duplicates
-      %h2 Might this be you?
+      %h2 = t('user.welcome.is_this_you')
       %p.hint
-        == It looks like someone may have already added you to #{SETTINGS['organization']['name']}.
-        = @possible_duplicates.size == 1 ? 'Is this you?' : 'Are you any of these people?'
+        == t('user.welcome.is_this_you_hint', :organization => SETTINGS['organization']['name'])
+        = @possible_duplicates.size == 1 ? t('user.welcome.is_this_you_q') : t('user.welcome.are_you_any')
       = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}
   #add_yourself
     - if @person.new_record?
-      %h2== Add yourself to #{SETTINGS['organization']['name']}
-      %p= "We imported as much info as we could from your #{provider_name(current_user.authentications.first.provider)} account. Look it over and hit the big button to get started."
+      %h2== t('user.welcome.add_yourself', :organization => SETTINGS['organization']['name'])
+      %p= t('user.welcome.provider', :provider => provider_name(current_user.authentications.first.provider))
     - else
-      %h2 Review your details
-      %p= "You were already in the directory! Please review your details and let us know they're right."
+      %h2 = t('user.welcome.review_details')
+      %p= = t('user.welcome.already_in_directory')
     = render :partial => 'people/form', :locals => {:context => @person.new_record? ? :add_self : :review}

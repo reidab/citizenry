@@ -6,7 +6,6 @@
     =link_to list_item.name, company_path(list_item)
   - if list_item.twitter.present?
     %span{:class => 'twitter_link'}
-      %a{:href => "https://twitter.com/#{list_item.twitter}"}= "@#{list_item.twitter}"
-      = t('misc.on_twitter')
+      = t('people.list.on_twitter', :link => link_to("@#{list_item.twitter}", "https://twitter.com/#{list_item.twitter}"))
   -#%p{:class=>'location'}= person['location']
   %p{:class=>'description'}= truncate(strip_links(list_item.description), :length => 350)
