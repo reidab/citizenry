@@ -104,7 +104,7 @@ feature "The new company form" do
         fill_in 'company_description', :with => @from_factory.description
         fill_in 'company_url', :with => @from_factory.url
         attach_file('company_logo', Rails.root.join('spec', 'acceptance', 'support', 'test_photo.png'))
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
 
       page.should have_selector '.single_record.company'
@@ -153,7 +153,7 @@ feature "The company edit form" do
         fill_in 'company_address', :with => @first.address.reverse
         fill_in 'company_description', :with => @first.description.reverse
         fill_in 'company_url', :with => @first.url.reverse
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
 
       current_path.should == company_path(@first)
@@ -170,7 +170,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         fill_in 'company_tag_list', :with => "newtag"
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.tags").should have_content "newtag"
 
@@ -181,7 +181,7 @@ feature "The company edit form" do
       # Change 'newtag' to 'newertag'
       within 'form.company' do
         fill_in 'company_tag_list', :with => "newertag"
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.tags").should_not have_content "newtag"
       page.find(".section.tags").should have_content "newertag"
@@ -190,7 +190,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         fill_in 'company_tag_list', :with => ""
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.should_not have_selector ".section.tags"
     end
@@ -202,7 +202,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         fill_in 'company_technology_list', :with => "newtechnology"
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.technologies").should have_content "newtechnology"
 
@@ -213,7 +213,7 @@ feature "The company edit form" do
       # Change 'newtechnology' to 'newertechnology'
       within 'form.company' do
         fill_in 'company_technology_list', :with => "newertechnology"
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.technologies").should_not have_content "newtechnology"
       page.find(".section.technologies").should have_content "newertechnology"
@@ -222,7 +222,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         fill_in 'company_technology_list', :with => ""
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       page.should_not have_selector ".section.technologies"
     end
@@ -236,7 +236,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         attach_file('company_logo', Rails.root.join('spec', 'acceptance', 'support', 'test_photo.png'))
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       
       page.should have_selector('img.logo')
@@ -254,7 +254,7 @@ feature "The company edit form" do
       visit edit_company_path(@first)
       within 'form.company' do
         fill_in 'company_logo_import_url', :with => "http://example.com/photo.png"
-        click_button 'company_submit'
+        find("input[name='commit']").click
       end
       
       page.should have_selector('img.logo')
