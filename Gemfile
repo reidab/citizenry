@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0'
 
 # You may need to add the following to your .bash_profile (or
 # similar):
@@ -21,7 +21,7 @@ gem "json", "~> 1.4.6"
 gem 'addressable', '~> 2.2.4'
 
 #--[ Authentication ]-----------------------------------------------------------
-gem 'devise', "~> 1.1.5"
+gem 'devise', "~> 1.4.5"
 gem 'omniauth', "~> 0.2.6"
 
 # Automatic login provider selection
