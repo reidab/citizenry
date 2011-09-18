@@ -54,10 +54,10 @@
               %img.avatar{:src => normalize_url(current_user.avatar_url), :align => 'left'}
             .name
               = link_to current_user.name, home_users_path
-            = link_to 'sign out', sign_out_path
+            = link_to t('sign_out'), sign_out_path
           - else
             #global_sign_in
-              = link_to "Sign In / Join", sign_in_path, :id => 'sign_in_link'
+              = link_to t('sign_in_join'), sign_in_path, :id => 'sign_in_link'
         %ul{:id=>'main_nav'}
           %li= link_to t('main_nav.people.link'), people_path, :class => 'people'
           %li= link_to t('main_nav.companies.link'), companies_path, :class => 'companies'
@@ -82,11 +82,11 @@
 
     #footer
       #citizenry_credit
-        = t('layout.powered_by', :powered_by => link_to("Citizenry", "http://github.com/reidab/citizenry/"))
+        = t('layout.powered_by', :powered_by => link_to("Citizenry", "http://github.com/reidab/citizenry/")).html_safe
       #hosting_credit
-        = t('layout.hosting_credit', :host => link_to("#{SETTINGS['organization']['host']}", "#{SETTINGS['organization']['host_url']}"))
+        = t('layout.hosting_credit', :host => link_to("#{SETTINGS['organization']['host']}", "#{SETTINGS['organization']['host_url']}")).html_safe
       #contact_link
-        = t('layout.contact_link', :email => mail_to("#{SETTINGS['organization']['email']}"))
+        = t('layout.contact_link', :email => mail_to("#{SETTINGS['organization']['email']}")).html_safe
       #twitter_link
-        = t('layout.follow_link', :link => twitter_link("#{SETTINGS['organization']['twitter']}"))
+        = t('layout.follow_link', :link => twitter_link("#{SETTINGS['organization']['twitter']}")).html_safe
 

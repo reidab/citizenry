@@ -24,7 +24,7 @@ en:
     edit: 
       title: Editing company
     index: 
-      title:
+      title: 
         one: "%{tag} company"
         other: "%{tag} companies"
   button: 
@@ -52,10 +52,9 @@ en:
         label: URL
         description: Brief description
     index: 
-      title:
+      title: 
         one: "{%tag} resource"
-        other: "{%tag} resources"        
-        
+        other: "{%tag} resources"
   layout: 
     follow_link: Follow %{link} on Twitter
     title: "%{name}: %{city}'s Tech Directory"
@@ -106,6 +105,8 @@ en:
     technologies: Technologies
     tags: Tags
     employees: Employees
+  sign_out: sign out
+  sign_in_join: Sign In / Join
   pager: 
     show_all: Show all
   project: 
@@ -118,9 +119,9 @@ en:
     edit: 
       title: Editing project
     index: 
-      title:
-        one: "%{tag} project<span class='desktop-only'> or product</span>"      
-        other: "%{tag} projects<span class='desktop-only'> & products</span>"        
+      title: 
+        one: "%{tag} project<span class='desktop-only'> or product</span>"
+        other: "%{tag} projects<span class='desktop-only'> & products</span>"
   field: 
     address: 
       label: Address
@@ -238,7 +239,7 @@ en:
     index: 
       title: 
         one: "%{tag} person"
-        other: "%{tag} people"      
+        other: "%{tag} people"
     show: 
       are_you_this_person: Are you %{name}?
   alert: 

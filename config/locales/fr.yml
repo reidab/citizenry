@@ -1,5 +1,5 @@
 --- 
-en: 
+fr: 
   sign_in: Connexion
   group: 
     new: 
@@ -105,6 +105,8 @@ en:
     technologies: Technologies
     tags: Tags
     employees: Employés
+  sign_out: Déconnexion
+  sign_in_join: Connexion    
   pager: 
     show_all: Tout montrer
   project: 
@@ -196,7 +198,7 @@ en:
       resource: Ressource
       upcoming_event: Evénement à venir
       on_calagator: " sur Calagator"
-      home_to: Le site de
+      home_to: Le site de...
       project_or_product: Projet ou Produit
       projects_and_products: Projets & Produits
     search: 

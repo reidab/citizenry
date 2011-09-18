@@ -89,7 +89,7 @@ feature "The resource edit form" do
     visit edit_resource_link_path(@first)
 
     current_path.should == new_user_session_path
-    page.should have_content "sign in"
+    page.should have_content I18n::t("sign_in")
   end
 
   scenario "should be accessible to users" do
