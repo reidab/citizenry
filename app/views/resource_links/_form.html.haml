@@ -1,4 +1,5 @@
 = semantic_form_for(@resource_link) do |f|
+  = display_errors_for @resource_link
   = f.inputs do
     = f.input :name
     = f.input :url, :label => "URL"

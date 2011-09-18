@@ -1,5 +1,6 @@
 - context ||= :general
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
+  = display_errors_for @person
   = f.inputs do
     = f.input :name
     -# = f.input :email, :label => "Email address", :hint => "We'll keep this secret"
