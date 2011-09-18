@@ -85,4 +85,9 @@ module ApplicationHelper
       return type.to_s.titleize
     end
   end
+
+  # Display error messages for a +record+. If record has no errors, none are displayed.
+  def display_errors_for(record)
+    render :partial => "site/display_errors_for", :locals => {:record => record}
+  end
 end
