@@ -182,7 +182,7 @@ feature "The person edit form" do
         fill_in 'person_location', :with => @person.location.reverse
         fill_in 'person_bio', :with => @person.bio.reverse
         fill_in 'person_url', :with => @person.url.reverse
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
 
       current_path.should == person_path(@person)
@@ -201,7 +201,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         fill_in 'person_tag_list', :with => "newtag"
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.tags").should have_content "newtag"
 
@@ -212,7 +212,7 @@ feature "The person edit form" do
       # Change 'newtag' to 'newertag'
       within 'form.person' do
         fill_in 'person_tag_list', :with => "newertag"
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.tags").should_not have_content "newtag"
       page.find(".section.tags").should have_content "newertag"
@@ -221,7 +221,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         fill_in 'person_tag_list', :with => ""
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.should_not have_selector ".section.tags"
     end
@@ -235,7 +235,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         fill_in 'person_technology_list', :with => "newtechnology"
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.technologies").should have_content "newtechnology"
 
@@ -246,7 +246,7 @@ feature "The person edit form" do
       # Change 'newtechnology' to 'newertechnology'
       within 'form.person' do
         fill_in 'person_technology_list', :with => "newertechnology"
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.find(".section.technologies").should_not have_content "newtechnology"
       page.find(".section.technologies").should have_content "newertechnology"
@@ -255,7 +255,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         fill_in 'person_technology_list', :with => ""
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       page.should_not have_selector ".section.technologies"
     end
@@ -271,7 +271,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         attach_file('person_photo', Rails.root.join('spec', 'acceptance', 'support', 'test_photo.png'))
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       
       page.should have_selector('img.person_photo')
@@ -291,7 +291,7 @@ feature "The person edit form" do
       visit edit_person_path(@person)
       within 'form.person' do
         fill_in 'person_photo_import_url', :with => "http://example.com/photo.png"
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
       
       page.should have_selector('img.person_photo')

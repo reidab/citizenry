@@ -64,7 +64,7 @@ feature "The new resource form" do
         fill_in 'resource_link_category', :with => @from_factory.category
         fill_in 'resource_link_description', :with => @from_factory.description
         fill_in 'resource_link_url', :with => @from_factory.url
-        click_button 'resource_link_submit'
+        find("input[name='commit']").click
       end
 
       page.should have_selector 'ul.resources'
@@ -111,7 +111,7 @@ feature "The resource edit form" do
         fill_in 'resource_link_category', :with => @first.category.reverse
         fill_in 'resource_link_description', :with => @first.description.reverse
         fill_in 'resource_link_url', :with => @first.url.reverse
-        click_button 'resource_link_submit'
+        find("input[name='commit']").click
       end
 
       current_path.should == resource_links_path
