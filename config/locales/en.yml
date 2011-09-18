@@ -3,3 +3,23 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      company:
+        logo_content_type: "Logo content-type"
+        logo_url: "Logo URL"
+        url: "URL"
+      group:
+        logo_content_type: "Logo content-type"
+        logo_url: "Logo URL"
+        url: "URL"
+      person:
+        photo_import_url: "Photo import URL"
+        photo_content_type: "Photo content-type"
+        url: "URL"
+      project:
+        logo_content_type: "Logo content-type"
+        logo_url: "Logo URL"
+        url: "URL"
+      resource_link:
+        url: "URL"
