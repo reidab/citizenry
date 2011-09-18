@@ -1,6 +1,6 @@
 - content_for(:section_header) do
   .section_header{:class => 'people'}
-    %h1= semantic_pluralize(@people.respond_to?(:total_entries) ? @people.total_entries : @people.size, t('people.index.title', :tag => @tag).strip.titleize)
+    %h1= semantic_pluralize(@people.respond_to?(:total_entries) ? @people.total_entries : @people.size, t('people.index.title.one', :tag => @tag).strip.titleize, t('people.index.title.other', :tag => @tag).strip.titleize)
     = link_to t('people.button.add'), new_person_path, :class => 'new', :id => 'new_person'
     #view_options
       %span.sorting

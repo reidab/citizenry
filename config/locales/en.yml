@@ -11,7 +11,9 @@ en:
     edit: 
       title: Editing group
     index: 
-      title: "%{tag} group"
+      title: 
+        one: "%{tag} group"
+        other: "%{tag} groups"
   company: 
     button: 
       join: Join this company
@@ -50,7 +52,10 @@ en:
         label: URL
         description: Brief description
     index: 
-      title: "{%tag} resource"
+      title:
+        one: "{%tag} resource"
+        other: "{%tag} resources"        
+        
   layout: 
     follow_link: Follow %{link} on Twitter
     title: "%{name}: %{city}'s Tech Directory"
@@ -113,7 +118,9 @@ en:
     edit: 
       title: Editing project
     index: 
-      title: "%{tag} projects<span class='desktop-only'> & products</span>"
+      title:
+        one: "%{tag} project<span class='desktop-only'> or product</span>"      
+        other: "%{tag} projects<span class='desktop-only'> & products</span>"        
   field: 
     address: 
       label: Address
@@ -229,7 +236,9 @@ en:
       tag_list: 
         label: Tags (interests, titles, personal descriptors)
     index: 
-      title: "%{tag} person"
+      title: 
+        one: "%{tag} person"
+        other: "%{tag} people"      
     show: 
       are_you_this_person: Are you %{name}?
   alert: 

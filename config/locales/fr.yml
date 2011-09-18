@@ -117,7 +117,9 @@ en:
     edit: 
       title: Modifier le project
     index: 
-      title: "%{tag} projet<span class='desktop-only'> & produits</span>"
+      title:
+        one: "%{tag} projet<span class='desktop-only'> ou produit</span>"      
+        other: "%{tag} projets<span class='desktop-only'> & produits</span>"        
   field: 
     address: 
       label: Adresse
@@ -232,7 +234,9 @@ en:
       tag_list: 
         label: Tags (centre d'intérêts, particularités, compétences)
     index: 
-      title: "%{tag} personne"
+      title: 
+        one: "personne taggée %{tag}"
+        other: "personnes taggées %{tag}"      
     show: 
       are_you_this_person: Etes-vous %{name}?
   alert: 

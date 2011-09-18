@@ -81,7 +81,7 @@ feature "The group delete button" do
       page.should have_content @first.name
 
       visit group_path(@first)
-      click_link "Delete"
+      click_link I18n::t("button.delete")
 
       visit groups_path
       page.should_not have_content @first.name
@@ -93,7 +93,7 @@ feature "The group delete button" do
     page.should have_content @first.name
 
     visit group_path(@first)
-    click_link "Delete"
+    click_link I18n::t("button.delete")
 
     current_path.should == new_user_session_path
 

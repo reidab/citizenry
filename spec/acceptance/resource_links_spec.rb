@@ -44,7 +44,7 @@ feature "The resource delete button" do
       page.should have_content @first.name
 
       visit edit_resource_link_path(@first)
-      click_link "Delete"
+      click_link I18n::t("button.delete")
 
       visit resource_links_path
       page.should_not have_content @first.name

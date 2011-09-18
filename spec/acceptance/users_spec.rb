@@ -53,7 +53,7 @@ feature "Users:" do
   scenario "An existing user with an unreviewed person should be asked to review their entry" do
     signed_in_as(:user_with_new_person) do
       current_path.should == "/welcome"
-      page.should have_content "Review your details"
+      page.should have_content I18n::t('user.welcome.review_details')
       page.find('form.person #person_name').value.should == @user.person.name
     end
   end
@@ -88,7 +88,7 @@ feature "Users:" do
       page.should have_selector "#twitter_the_twitterer"
 
       within "#twitter_the_twitterer" do
-        click_link "Remove"
+        click_link I18n.t('button.remove')
       end
 
       page.should_not have_selector "#twitter_the_twitterer"
