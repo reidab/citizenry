@@ -53,8 +53,8 @@ fr:
         description: Brève description
     index: 
       title: 
-        one: "ressource taggée {%tag}"
-        other: "ressources taggées {%tag}"        
+        one: "ressource taggée %{tag}"
+        other: "ressources taggées %{tag}"        
   layout: 
     follow_link: Suivre %{link} sur Twitter
     title: "%{name}: L'annuaire Tech de %{city}"
