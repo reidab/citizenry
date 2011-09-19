@@ -259,8 +259,6 @@ feature "The group edit form" do
   end
 
   scenario "should allow a user to import a logo from the web" do
-    pending "not yet implemented"
-
     FakeWeb.register_uri(:get, "http://example.com/photo.png", 
                          :body => File.read(Rails.root.join('spec', 'acceptance', 'support', 'test_photo.png')))
 
