@@ -4,12 +4,14 @@
     = link_to t('people.button.add'), new_person_path, :class => 'new', :id => 'new_person'
     #view_options
       %span.sorting
-        %strong = t('list.sort_by'):
+        %strong
+          = t('list.sort_by') + ':'
         = sort_link(:name) + ","
         = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc) + ","
         = sort_link(:random, :is_default => :asc)
       %span.view
-        %strong = t('list.view_as.title'):
+        %strong
+          = t('list.view_as.title') + ':'
         = link_to_unless_current t('list.view_as.list'), people_path(:page => params[:page], :column => params[:column], :order => params[:order])
         = "|"
         = link_to_unless_current t('list.view_as.grid'), grid_people_path(:page => params[:page], :column => params[:column], :order => params[:order])

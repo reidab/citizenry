@@ -1,0 +1,47 @@
+.league_gothic
+  font-family: 'Comfortaa', cursive
+  font-weight: normal
+  -webkit-font-smoothing: antialiased
+
+h1, h2, #site_intro, #front_nav
+  font-family: 'Comfortaa', cursive
+
+#header h1
+  font-size: 35px
+  margin: 0
+  letter-spacing: 0.1em
+#site_intro
+  font-size: 28px
+  .awesome
+    font-size: 30px
+#content h1
+  font-size: 35px
+  letter-spacing: 0.2em
+
+#home_to
+  text-transform: none
+
+#front_nav
+  li
+    a
+      position: relative
+      letter-spacing: 0.2em
+      display: block
+      padding: 5px
+      color: #fff
+      .count
+        padding: 5px
+        display: inline-block
+        margin-right: 5px
+        text-align: right
+      &:hover
+        text-decoration: none
+
+#header
+  #main_nav
+    li
+      a
+        color: black
+        text-transform: none
+        font-size: 16px
+        line-height: 20px
