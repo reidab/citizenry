@@ -227,7 +227,7 @@ en:
     edit: 
       title: Editing person
     list: 
-      on_twitter: "{%link} on Twitter"
+      on_twitter: "%{link} on Twitter"
     claim: 
       title: Claiming %{name}
       imported_from: This person was imported from %{provider}
