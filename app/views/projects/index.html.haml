@@ -4,7 +4,8 @@
     = link_to t('project.button.add'), new_project_path, :class => 'new'
     #view_options
       %span.sorting
-        %strong = t('list.sort_by')
+        %strong
+          = t('list.sort_by') + ':'
         = sort_link(:name) + ","
         = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc, :is_default => :desc) + ","
         = sort_link(:random)
