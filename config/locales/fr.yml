@@ -194,7 +194,7 @@ fr:
       company: Société
       group: Groupe
       person: Personne
-      title: Un guide collaboratif de la <span class="awesome">fabuleuse communauté tech</span> de %{organization}
+      title: Guide collaboratif de la <span class="awesome">fabuleuse communauté technologique</span> de %{organization}
       resource: Ressource
       upcoming_event: Evénement à venir
       on_calagator: " sur Calagator"
@@ -226,7 +226,7 @@ fr:
     edit: 
       title: Modifier une personne
     list: 
-      on_twitter: "{%link} sur Twitter"
+      on_twitter: "%{link} sur Twitter"
     claim: 
       title: Réclamer %{name}
       imported_from: Cette personne a été importée de %{provider}
