@@ -1,0 +1,5 @@
+- if record.errors.any?
+  %ul{:class => 'record_errors errors'}
+    - for error in record.errors.full_messages
+      %li
+        = error

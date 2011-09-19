@@ -1,4 +1,6 @@
 class ResourceLink < ActiveRecord::Base
+  validates_presence_of :name, :url
+
   include SearchEngine
   has_paper_trail :ignore => [:delta]
 end

@@ -85,4 +85,18 @@ module ApplicationHelper
       return type.to_s.titleize
     end
   end
+
+  # Display error messages for a +record+. If record has no errors, none are displayed.
+  def display_errors_for(record)
+    render :partial => "site/display_errors_for", :locals => {:record => record}
+  end
+
+  # Render HTML form tags for importing an image from a URL into a +record+'s
+  # +field+ attribute.
+  #
+  # @example Render HTML for tags for importing an image from a URL into an +@person+ record's +#photo+ attribute:
+  #   <%= import_image_from_url_tags_for @person, :photo %>
+  def import_image_from_url_tags_for(form, record, field)
+    render :partial => "site/import_image_from_url_tags", :locals => {:form => form, :record => record, :field => field}
+  end
 end

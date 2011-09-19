@@ -1,5 +1,6 @@
 - context ||= :general
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
+  = display_errors_for @person
   = f.inputs do
     = f.input :name
     -# = f.input :email, :label => "Email address", :hint => "We'll keep this secret"
@@ -9,13 +10,7 @@
     = f.input :bio
     = f.input :tag_list, :as => :text, :label => 'Tags (interests, titles, personal descriptors)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.inputs :name => "Photo" do
-      - if photo_url = @person.photo_import_url || (@person.photo.file? && @person.photo.url(:medium))
-        %li
-          = image_tag photo_url, :size => '220'
-
-      = f.input :photo_import_url, :label => "Import a photo from the web…"
-      = f.input :photo, :label => "…or upload one from your computer.", :hint => "Preferably 220px wide or larger"
+    = import_image_from_url_tags_for f, @person, :photo
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
     - if current_user.admin?
       = f.input :user, :include_blank => '-- none --', :label_method => :label_for_admin

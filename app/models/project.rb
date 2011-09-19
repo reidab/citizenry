@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
                                               :tags => {},
                                               :technologies => {}}
 
+  import_image_from_url_as :logo
+
   has_many :project_memberships
   has_many :people, :through => :project_memberships
 
