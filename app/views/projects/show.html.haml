@@ -13,16 +13,16 @@
 
   - if @project.tags.present?
     .section.tags
-      %h2 = t('field.tag_list.title')
+      %h2= t('field.tag_list.title')
       = render :partial => 'tags/list', :object => @project.tags, :locals => {:type => :project}
 
   - if @project.technologies.present?
     .section.technologies
-      %h2 = t('field.technology_list.title')
+      %h2= t('field.technology_list.title')
       = render :partial => 'tags/list', :object => @project.technologies, :locals => {:type => :project}
 
   .section.members
-    %h2 = t('field.collaborators.title')
+    %h2= t('field.collaborators.title')
     - if current_person
       - if @project.people.include?(current_person)
         = link_to t('project.button.leave'), leave_project_path(@project), :class => 'leave', :method => :post

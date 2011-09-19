@@ -33,12 +33,12 @@ feature "The group index" do
 
   scenario "should display warning when told to paginate by invalid page number" do
     visit groups_path(:page => "asdf")
-    page.find("#flash .error").should have_content "paginate"
+    page.find("#flash .error").should have_content I18n.t('error.invalid_page_number')
   end
 
   scenario "should display warning when told to sort by invalid parameters" do
     visit groups_path(:order => "asdf")
-    page.find("#flash .error").should have_content "sort"
+    page.find("#flash .error").should have_content I18n.t('error.invalid_sort_params')
   end
 end
 

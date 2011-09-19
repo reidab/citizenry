@@ -4,11 +4,11 @@
   - if @group.description.present?
     .description= simple_format @group.description
   - if @group.meeting_info.present?
-    %h2 = t('field.meeting_info.title')
+    %h2= t('field.meeting_info.title')
     .description= simple_format @group.meeting_info
   .links
     - if [@group.url, @group.mailing_list].any?{|link| link.present?}
-      %h2 = t('field.url.title')
+      %h2= t('field.url.title')
     - if @group.url.present?
       =link_to normalize_url(@group.url), normalize_url(@group.url), :class => 'url'
     - if @group.mailing_list.present?
@@ -20,16 +20,16 @@
 
   - if @group.tags.present?
     .section.tags
-      %h2 = t('field.tag_list.title')
+      %h2= t('field.tag_list.title')
       = render :partial => 'tags/list', :object => @group.tags, :locals => {:type => :group}
 
   - if @group.technologies.present?
     .section.technologies
-      %h2 = t('field.technology_list.title')
+      %h2= t('field.technology_list.title')
       = render :partial => 'tags/list', :object => @group.technologies, :locals => {:type => :group}
 
   .section.members
-    %h2 = t('field.members.title')
+    %h2= t('field.members.title')
     - if current_person
       - if @group.members.include?(current_person)
         = link_to t('group.button.leave'), leave_group_path(@group), :class => 'leave', :method => :post

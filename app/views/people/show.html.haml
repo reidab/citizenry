@@ -17,27 +17,27 @@
 
   - if @person.tags.present?
     .section.tags
-      %h2 = t('field.tag_list.title')
+      %h2= t('field.tag_list.title')
       = render :partial => 'tags/list', :object => @person.tags, :locals => {:type => :person}
 
   - if @person.technologies.present?
     .section.technologies
-      %h2 = t('field.technology_list.title')
+      %h2= t('field.technology_list.title')
       = render :partial => 'tags/list', :object => @person.technologies, :locals => {:type => :person}
 
   - if @person.companies.present?
     .section.companies
-      %h2 = t('field.company_list.title')
+      %h2= t('field.company_list.title')
       = render :partial => 'companies/list', :object => @person.companies
 
   - if @person.groups.present?
     .section.groups
-      %h2 = t('field.group_list.title')
+      %h2= t('field.group_list.title')
       = render :partial => 'groups/list', :object => @person.groups
 
   - if @person.projects.present?
     .section.projects
-      %h2 = t('field.project_list.title')
+      %h2= t('field.project_list.title')
       = render :partial => 'projects/list', :object => @person.projects
 
   .record_actions

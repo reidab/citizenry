@@ -5,16 +5,16 @@
     = link_to t('button.back'), people_path
   -else
     .search
-      %h2 = t('people.new.search_network')
+      %h2= t('people.new.search_network')
       - if current_user.authentications.searchable.blank?
-        %p = t('people.new.no_service_linked')
+        %p= t('people.new.no_service_linked')
         %ul.auth_providers
           - %w(twitter facebook linked_in).each do |provider|
             %li= link_to t('people.new.add_provider', :provider => OmniAuth::Utils.camelize(provider)), "/auth/#{provider}", :class => provider
       - else
         = form_tag new_person_path, :method => :get do
           .networks
-            %strong = t('people.new.search_using')
+            %strong= t('people.new.search_using')
             - current_user.authentications.searchable.each do |auth|
               - check_box_name = "authentications[#{auth.id}]"
               = check_box_tag check_box_name, '1', params[:authentications].present? ? params[:authentications][auth.id.to_s] : true

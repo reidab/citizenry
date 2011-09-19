@@ -15,16 +15,16 @@
 
   - if @company.tags.present?
     .section.tags
-      %h2 = t('title.tags')
+      %h2= t('title.tags')
       = render :partial => 'tags/list', :object => @company.tags, :locals => {:type => :company}
 
   - if @company.technologies.present?
     .section.technologies
-      %h2 = t('title.technologies')
+      %h2= t('title.technologies')
       = render :partial => 'tags/list', :object => @company.technologies, :locals => {:type => :company}
 
   .section.members
-    %h2 = t('title.employees')
+    %h2= t('title.employees')
     - if current_person
       - if @company.employees.include?(current_person)
         = link_to t('company.button.leave'), leave_company_path(@company), :class => 'leave', :method => :post

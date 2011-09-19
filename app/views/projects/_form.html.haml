@@ -7,7 +7,7 @@
     = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
     - if @project.logo.file?
       %li
-        .faux_label = t('field.logo.faux_label')
+        .faux_label= t('field.logo.faux_label')
         = image_tag @project.logo.url(:medium) if @project.logo.present?
     = f.input :logo, :label => t('field.logo.label'), :hint => t('field.logo.hint', :size =>220)
   = f.buttons

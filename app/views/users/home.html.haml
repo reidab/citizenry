@@ -1,10 +1,10 @@
 - content_for(:section_header) do
   .section_header{:class => 'events'}
-    %h1 = t('user.home.title')
+    %h1= t('user.home.title')
 
 #user_home
   #profile
-    %h2 = t('user.home.what_to_do')
+    %h2= t('user.home.what_to_do')
     %ul
       %li= link_to t('button.view_profile'), person_path(current_person)
       %li= link_to t('button.edit_profile'), edit_person_path(current_person)
@@ -12,7 +12,7 @@
       - if current_person.companies.blank?
         %li= link_to t('button.add_company'), new_company_path
   #authentications
-    %h2 = t('user.home.linked_accounts')
+    %h2= t('user.home.linked_accounts')
     = semantic_form_for(SignInData.new(:email => current_user.email), :url => user_sessions_path) do |f|
       = f.inputs do
         = f.input :email, :as => :hidden

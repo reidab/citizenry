@@ -24,7 +24,7 @@
 
     = stylesheet_link_tag('compiled/desktop',
         :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
-    = render :partial => 'layouts/custom_css_includes', :locals => {:force_mobile => force_mobile}
+    = render :partial => 'layouts/custom_css_includes', :locals => {:force_mobile => force_mobile} rescue nil
     /[if lt IE 9]
       = stylesheet_link_tag('compiled/desktop', :media => 'all')
 

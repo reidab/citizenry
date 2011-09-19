@@ -1,5 +1,5 @@
 #users_admin
-  %h1 = t('user.index.title')
+  %h1= t('user.index.title')
   %ul
     - @users.each do |user|
       %li{:id => "user_#{user.id}", :class => user.admin? ? 'admin' : nil}

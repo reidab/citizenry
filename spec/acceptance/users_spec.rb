@@ -9,7 +9,7 @@ feature "Users:" do
     visit sign_in_path
     click_button 'sign_in_data_submit'
 
-    page.should have_content "can't be blank"
+    page.should have_content I18n.t('errors.messages.blank')
   end
 
   scenario "A new user should be able to sign in (and out)" do
@@ -53,7 +53,7 @@ feature "Users:" do
   scenario "An existing user with an unreviewed person should be asked to review their entry" do
     signed_in_as(:user_with_new_person) do
       current_path.should == "/welcome"
-      page.should have_content I18n::t('user.welcome.review_details')
+      page.should have_content I18n.t('user.welcome.review_details')
       page.find('form.person #person_name').value.should == @user.person.name
     end
   end

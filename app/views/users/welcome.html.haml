@@ -2,7 +2,7 @@
   %h1= t('user.welcome.hi', :name => @name.split(' ').first)
   - if @possible_duplicates.present?
     #possible_duplicates
-      %h2 = t('user.welcome.is_this_you')
+      %h2= t('user.welcome.is_this_you')
       %p.hint
         = t('user.welcome.is_this_you_hint', :organization => SETTINGS['organization']['name'])
         = @possible_duplicates.size == 1 ? t('user.welcome.is_this_you_q') : t('user.welcome.are_you_any')
@@ -12,6 +12,6 @@
       %h2= t('user.welcome.add_yourself', :organization => SETTINGS['organization']['name'])
       %p= t('user.welcome.provider', :provider => provider_name(current_user.authentications.first.provider))
     - else
-      %h2 = t('user.welcome.review_details')
-      %p= = t('user.welcome.already_in_directory')
+      %h2= t('user.welcome.review_details')
+      %p= t('user.welcome.already_in_directory')
     = render :partial => 'people/form', :locals => {:context => @person.new_record? ? :add_self : :review}
