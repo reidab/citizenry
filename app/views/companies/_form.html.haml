@@ -7,9 +7,5 @@
     = f.input :description
     = f.input :tag_list, :as => :text, :label => 'Tags (industries, topics, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
     = f.input :technology_list, :as => :text, :label => 'Technologies used (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    - if @company.logo.file?
-      %li
-        .faux_label Current logo
-        = image_tag @company.logo.url(:medium) if @company.logo.present?
-    = f.input :logo, :label => "Upload a logo", :hint => "Preferably 220px wide or larger"
+    = import_image_from_url_tags_for f, @company, :logo
   = f.buttons

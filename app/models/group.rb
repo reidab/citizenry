@@ -12,6 +12,8 @@ class Group < ActiveRecord::Base
                                               :tags => {},
                                               :technologies => {}}
 
+  import_image_from_url_as :logo
+
   has_many :group_projects
   has_many :projects, :through => :group_projects
 
