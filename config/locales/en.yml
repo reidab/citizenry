@@ -2,12 +2,12 @@
 en: 
   sign_in: Sign In
   group: 
+    button: 
+      join: Join this group
+      leave: Leave this group
+      add: + Add a Group
     new: 
       title: New group
-    button: 
-      add: + Add a Group
-      leave: Leave this group
-      join: Join this group
     edit: 
       title: Editing group
     index: 
@@ -15,12 +15,12 @@ en:
         one: "%{tag} group"
         other: "%{tag} groups"
   company: 
-    button: 
-      join: Join this company
-      leave: Leave this company
-      add: + Add a Company
     new: 
       title: New company
+    button: 
+      add: + Add a Company
+      leave: Leave this company
+      join: Join this company
     edit: 
       title: Editing company
     index: 
@@ -28,23 +28,25 @@ en:
         one: "%{tag} company"
         other: "%{tag} companies"
   button: 
-    claim_people: Claim this person
-    sign_in: sign_in
-    login_as_sample_user: Login as sample user
     back: Back
+    login_as_sample_user: Login as sample user
+    sign_in: sign_in
+    claim_people: Claim this person
     edit: edit
-    edit_profile: Edit your profile
-    view_profile: View your profile
     delete: Delete
-    add_friend: Add a friend to the directory
+    view_profile: View your profile
+    edit_profile: Edit your profile
     remove: Remove
+    add_friend: Add a friend to the directory
     show: Show
     add_company: Add your company
+  authentication_method: 
+    choose_automatically: Choose automatically
   resource_links: 
-    new: 
-      title: Add a link
     button: 
       add: + Add a Link
+    new: 
+      title: Add a link
     edit: 
       title: Editing %{name}
     field: 
@@ -71,31 +73,31 @@ en:
     sort_by: Sort by
   flowery: 
     success7: Yeah
-    warning1: Beware
     success8: Yay
-    warning2: Warning
+    warning1: Beware
     error1: Egads
-    warning3: Watch out
+    warning2: Warning
     error2: Balderdash
+    warning3: Watch out
     error3: Fiddlesticks
-    notice1: Heads up
-    success1: Yippee
     error4: Holy Toledo
-    notice2: Avast
-    success2: Hooray
+    success1: Yippee
+    notice1: Heads up
     error5: Tarnation
-    notice3: Notice
-    success3: Awesome
-    error10: Uh oh
+    success2: Hooray
+    notice2: Avast
     error6: Damnation
-    success4: Yeehaw
-    error11: Great Scott
+    error10: Uh oh
+    success3: Awesome
+    notice3: Notice
     error7: Fooey
-    success5: Hoorah
-    error12: Blisterin' barnacles
+    error11: Great Scott
+    success4: Yeehaw
     error8: Boo
-    success6: Huzzah
+    error12: Blisterin' barnacles
+    success5: Hoorah
     error9: Aw shucks
+    success6: Huzzah
   auth: 
     failure: 
       actions: "Please pick a login provider to continue:"
@@ -110,12 +112,12 @@ en:
   pager: 
     show_all: Show all
   project: 
-    button: 
-      join: Join this project
-      leave: Leave this project
-      add: + Add a Project
     new: 
       title: New project
+    button: 
+      add: + Add a Project
+      leave: Leave this project
+      join: Join this project
     edit: 
       title: Editing project
     index: 
@@ -123,81 +125,81 @@ en:
         one: "%{tag} project<span class='desktop-only'> or product</span>"
         other: "%{tag} projects<span class='desktop-only'> & products</span>"
   field: 
+    photo: 
+      label: Photo
+    name: 
+      label: Name
     address: 
       label: Address
       hint: e.g. 115 NW 5th, Portland, OR
-    name: 
-      label: Name
-    photo: 
-      label: Photo
+    created_at: 
+      label: Date added
     location: 
       label: Location
       hint: Neighborhood-level info preferred
-    created_at: 
-      label: Date added
-    collaborators: 
-      title: Collaborators
     company_list: 
       title: Companies
+    collaborators: 
+      title: Collaborators
+    url: 
+      label: Website
+      title: Links
     logo: 
       label: Upload a logo
       hint: Preferably %{size}px wide or larger
       faux_label: Current logo
-    url: 
-      label: Website
-      title: Links
     photo_import_url: 
       label: "Import a photo from the web…"
-    members: 
-      title: Members
-    random: 
-      label: Random
-    meeting_info: 
-      label: Meeting info
-      title: Meeting Info
-    mailing_list: 
-      label: Mailing list
-      hint: URL to list information
+    photo_upload: 
+      label: "…or upload one from your computer."
     tag_list: 
       label: Tags
       title: Tags
       hint: Comma separated, please
-    photo_upload: 
-      label: "…or upload one from your computer."
-    description: 
-      label: Description
+    mailing_list: 
+      label: Mailing list
+      hint: URL to list information
+    meeting_info: 
+      label: Meeting info
+      title: Meeting Info
+    random: 
+      label: Random
+    members: 
+      title: Members
+    project_list: 
+      title: Projects
+    bio: 
+      label: Bio
+    email_address: 
+      label: Email address
     technology_list: 
       label: Technologies used (languages, frameworks, etc)
       title: Technologies
       hint: Comma separated, please
-    email_address: 
-      label: Email address
-    bio: 
-      label: Bio
-    project_list: 
-      title: Projects
+    description: 
+      label: Description
     user: 
       blankoption: none
+    group_list: 
+      title: Groups
+    email: 
+      label: Email address
+      hint: We'll keep this secret
     provider: 
       label: Add an account
       add: Add it!
       prompt: "Pick a service…"
-    email: 
-      label: Email address
-      hint: We'll keep this secret
-    group_list: 
-      title: Groups
   site: 
     err404: 
       text: "The record you requested doesn't exist. Are you sure you asked for the right item? Maybe it was deleted? Maybe it was abducted by aliens? So sorry. Here's a creepy baby sloth to make you feel better:"
     index: 
-      company: Company
       group: Group
+      company: Company
       person: Person
       title: A community-edited guide to the <span class="awesome">awesome tech community</span> of %{organization}
-      resource: Resource
-      upcoming_event: Upcoming event
       on_calagator: " on Calagator"
+      upcoming_event: Upcoming event
+      resource: Resource
       home_to: Home to
       project_or_product: Project or Product
       projects_and_products: Projects & Products
@@ -205,43 +207,43 @@ en:
       no_result_try_again: You might want to try again.
       no_result: Nothing here!
       no_result_text: We couldn't find anything that matched your search for <strong>%{query}</strong>.
-      for: " for &#8220;%{query}&#8221;"
       search_result: search result
+      for: " for &#8220;%{query}&#8221;"
   hello: Hello world
   people: 
-    new: 
-      limit_reset_time: limit resets in %{time}.
-      search_network: Search your networks to add someone
-      submit: Add %{name} to directory
-      name_knows_known: "%{name} already knows %{known}!"
-      search_using: "Search using:"
-      title: Add someone to %{organization}
-      calls_remaining: 
-        one: You have one Twitter API call remaining;
-        other: You have %{count} Twitter API calls remaining;
-      no_service_linked: You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
-      add_provider: Add a %{provider} account
     button: 
       add: + Add Someone
       claim: That's me!
-    edit: 
-      title: Editing person
+    new: 
+      search_network: Search your networks to add someone
+      limit_reset_time: limit resets in %{time}.
+      title: Add someone to %{organization}
+      search_using: "Search using:"
+      name_knows_known: "%{name} already knows %{known}!"
+      submit: Add %{name} to directory
+      no_service_linked: You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
+      calls_remaining: 
+        one: You have one Twitter API call remaining;
+        other: You have %{count} Twitter API calls remaining;
+      add_provider: Add a %{provider} account
     list: 
       on_twitter: "%{link} on Twitter"
-    claim: 
-      title: Claiming %{name}
-      imported_from: This person was imported from %{provider}
-      sign_in_to_provider: Sign in to %{provider} to continue
-      provider_not_logged_in: but you aren't logged in using your %{provider} account.
+    edit: 
+      title: Editing person
     field: 
       tag_list: 
         label: Tags (interests, titles, personal descriptors)
+    claim: 
+      title: Claiming %{name}
+      sign_in_to_provider: Sign in to %{provider} to continue
+      imported_from: This person was imported from %{provider}
+      provider_not_logged_in: but you aren't logged in using your %{provider} account.
+    show: 
+      are_you_this_person: Are you %{name}?
     index: 
       title: 
         one: "%{tag} person"
         other: "%{tag} people"
-    show: 
-      are_you_this_person: Are you %{name}?
   alert: 
     are_you_sure: Are you sure?
   user: 
@@ -249,12 +251,12 @@ en:
       hi: Hi %name!
       are_you_any: Are you any of these people?
       already_in_directory: You were already in the directory! Please review your details and let us know they're right.
-      review_details: Review your details
       add_yourself: Add yourself to %{organization}
+      review_details: Review your details
       is_this_you: Might this be you?
       is_this_you_q: Is this you?
-      provider: We imported as much info as we could from your %{provider} account. Look it over and hit the big button to get started.
       is_this_you_hint: It looks like someone may have already added you to %{organization}.
+      provider: We imported as much info as we could from your %{provider} account. Look it over and hit the big button to get started.
     index: 
       title: Users
       person_id: "Person %{id}:"
@@ -263,13 +265,13 @@ en:
       title: Hey there!
       linked_accounts: Linked Accounts
   main_nav: 
-    groups: 
-      link: Groups
     projects_products: 
       link: Projects & Products
-    companies: 
-      link: Companies
+    groups: 
+      link: Groups
     resources: 
       link: Resources
+    companies: 
+      link: Companies
     people: 
       link: People

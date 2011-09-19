@@ -63,6 +63,8 @@ fr:
     hosting_credit: Hébergé par %{host}.
   misc: 
     name_on_provider: "%{name} sur %{provider}"
+  authentication_method: 
+    choose_automatically: Automatique
   list: 
     view_as: 
       list: Liste

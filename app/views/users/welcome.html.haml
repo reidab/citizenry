@@ -4,12 +4,12 @@
     #possible_duplicates
       %h2 = t('user.welcome.is_this_you')
       %p.hint
-        == t('user.welcome.is_this_you_hint', :organization => SETTINGS['organization']['name'])
+        = t('user.welcome.is_this_you_hint', :organization => SETTINGS['organization']['name'])
         = @possible_duplicates.size == 1 ? t('user.welcome.is_this_you_q') : t('user.welcome.are_you_any')
       = render :partial => 'people/list', :object => @possible_duplicates, :locals => {:context => :claim}
   #add_yourself
     - if @person.new_record?
-      %h2== t('user.welcome.add_yourself', :organization => SETTINGS['organization']['name'])
+      %h2= t('user.welcome.add_yourself', :organization => SETTINGS['organization']['name'])
       %p= t('user.welcome.provider', :provider => provider_name(current_user.authentications.first.provider))
     - else
       %h2 = t('user.welcome.review_details')

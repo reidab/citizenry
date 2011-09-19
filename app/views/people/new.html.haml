@@ -1,5 +1,5 @@
 #new_person
-  %h1==  t('people.new.title', :organization => SETTINGS['organization']['name'] ) 
+  %h1= t('people.new.title', :organization => SETTINGS['organization']['name'] ) 
   - if request.post?
     = render 'form'
     = link_to t('button.back'), people_path
@@ -22,8 +22,8 @@
           = text_field_tag(:q, params[:q])
           = submit_tag("Search")
         - if @rate_limit_status.present?
-          == t('people.new.calls_remaining', :count => @rate_limit_status.remaining_hits.to_i)
-          == t('people.new.limit_reset_time', :time => distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status.reset_time)))
+          = t('people.new.calls_remaining', :count => @rate_limit_status.remaining_hits.to_i)
+          = t('people.new.limit_reset_time', :time => distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status.reset_time)))
 
 
       - if @found_people.present?
@@ -36,12 +36,12 @@
               %h3= person.name
               - if person.imported_from_provider == 'twitter' && person.imported_from_screen_name.present?
                 %strong
-                  = t('people.list.on_twitter', :link => link_to("@#{person.imported_from_screen_name}", "https://twitter.com/#{person.imported_from_screen_name}"))
+                  = t('people.list.on_twitter', :link => twitter_link(person.imported_from_screen_name)).html_safe
               %p{:class=>'location'}= person.location
               %p{:class=>'bio'}= person.bio
               - if !person.new_record?
                 .existing_user_label
-                  == t('people.new.name_knows_known', :name => SETTINGS['organization']['name'], :known => person.name)
+                  = t('people.new.name_knows_known', :name => SETTINGS['organization']['name'], :known => person.name)
               - else
                 = form_for person, :html => { :id => "#{person.imported_from_provider}_#{person.imported_from_id}_form"} do |f|
                   - [ :name,

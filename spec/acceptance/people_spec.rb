@@ -140,7 +140,7 @@ feature "The person edit form" do
     visit edit_person_path(@first_person)
 
     current_path.should == new_user_session_path
-    page.should have_content I18n::t("sign_in")
+    page.should have_content "sign in"
   end
 
   scenario "should be accessible by the person's owner" do
