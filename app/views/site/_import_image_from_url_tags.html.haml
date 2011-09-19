@@ -1,0 +1,7 @@
+= form.inputs :name => record.class.human_attribute_name(field) do
+  - if image_url = record.send("#{field}_import_url") || (record.send(field).file? && record.send(field).url(:medium))
+    %li
+      = image_tag image_url, :size => '220'
+
+  = form.input "#{field}_import_url".to_sym, :label => "Import a #{record.class.human_attribute_name(field)} from a URL…"
+  = form.input "#{field}".to_sym, :label => "…or upload one from your computer.", :hint => "Preferably 220px wide or larger"
