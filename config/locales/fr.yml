@@ -16,17 +16,17 @@ fr:
         other: "groupes %{tag}"        
   company: 
     button: 
-      join: Rejoindre cette société
-      leave: Quitter cette société
-      add: + Ajouter une société
+      join: Rejoindre cette entreprise
+      leave: Quitter cette entreprise
+      add: + Ajouter une entreprise
     new: 
-      title: Nouvelle société
+      title: Nouvelle entreprise
     edit: 
-      title: Modification de la société
+      title: Modification de la entreprise
     index: 
       title: 
-        one: "Société taggée %{tag}"
-        other: "Sociétés taggées %{tag}"
+        one: "entreprise taggée %{tag}"
+        other: "entreprises taggées %{tag}"
   button: 
     claim_people: Réclamer cette personne
     sign_in: Connexion
@@ -39,7 +39,7 @@ fr:
     add_friend: Ajouter un ami à l'annuaire
     remove: Retirer
     show: Détail
-    add_company: Ajoutez votre société
+    add_company: Ajoutez votre entreprise
   resource_links: 
     new: 
       title: Ajouter un lien
@@ -140,7 +140,7 @@ fr:
     collaborators: 
       title: Collaborateurs
     company_list: 
-      title: Sociétés
+      title: entreprises
     logo: 
       label: Uploader un logo
       hint: De préférence %{size}px de large ou plus
@@ -193,7 +193,7 @@ fr:
     err404: 
       text: "L'enregistrement que vous avez demandé n'existe pas. Etes-vous bien certain de votre demande? Il a été peut-être supprimé? Ou alors enlevé par les extraterrestres? Désolé. Voilà un bébé paresseux tout mimi pour vous consoler:"
     index: 
-      company: Société
+      company: Entreprise
       group: Groupe
       person: Personne
       title: Guide collaboratif de la <span class="awesome">fabuleuse communauté technologique</span> de %{organization}
@@ -269,7 +269,7 @@ fr:
     projects_products: 
       link: Projets & Produits
     companies: 
-      link: Sociétés
+      link: Entreprises
     resources: 
       link: Ressources
     people: 
