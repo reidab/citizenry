@@ -53,8 +53,8 @@ en:
         description: Brief description
     index: 
       title: 
-        one: "{%tag} resource"
-        other: "{%tag} resources"
+        one: "%{tag} resource"
+        other: "%{tag} resources"
   layout: 
     follow_link: Follow %{link} on Twitter
     title: "%{name}: %{city}'s Tech Directory"
