@@ -23,7 +23,7 @@ file "/etc/profile.d/rubygems1.8.sh" do
 end
 
 # Install packages
-for name in %w[nfs-common screen tmux elinks build-essential ruby-dev irb libcurl4-openssl-dev libsqlite3-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev]
+for name in %w[nfs-common git-core screen tmux elinks build-essential ruby-dev irb libcurl4-openssl-dev libsqlite3-dev mysql-server libmysqlclient-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev sphinxsearch imagemagick]
   package name
 end
 
@@ -38,16 +38,27 @@ if File.exist?(local_recipe)
   eval File.read(local_recipe)
 end
 
+# Copy in sample YML files, if needed:
+for name in %w[settings database]
+  source = "#{APPDIR}/config/#{name}-sample.yml"
+  target = "#{APPDIR}/config/#{name}.yml"
+
+  execute "cp -a #{source} #{target}" do
+    not_if "test -e #{target}"
+  end
+end
+
+# Fix permissions on homedir
+execute "chown -R #{USER}:#{USER} ~#{USER}"
+
 # Install bundle
 execute "install-bundle" do
   cwd APPDIR
-  command "bundle --local || bundle update"
-  not_if "bundle check"
+  command "su #{USER} -c 'bundle check || bundle --local || bundle'"
 end
 
 # Setup database
 execute "setup-db" do
-  user USER
   cwd APPDIR
-  command "bundle exec rake db:create:all db:migrate db:test:prepare"
+  command "su #{USER} -c 'bundle exec rake db:create:all db:migrate db:test:prepare'"
 end

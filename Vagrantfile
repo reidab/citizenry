@@ -10,17 +10,17 @@ Vagrant::Config.run do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "calagator"
-
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box"
+  config.vm.box_url = "lucid32"
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "citizenry"
 
   # Assign this VM to a host only network IP, allowing you to access it
   # via the IP.
   if (defined?(NFS) && NFS) || defined?(ADDRESS)
-    config.vm.network defined?(ADDRESS) ? ADDRESS : "33.33.31.13"
+    config.vm.network defined?(ADDRESS) ? ADDRESS : "33.33.39.20"
   end
 
   # Forward a port from the guest to the host, which allows for outside
@@ -32,6 +32,11 @@ Vagrant::Config.run do |config|
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
   config.vm.share_folder "vagrant", "/vagrant", ".", :nfs => defined?(NFS) ? NFS : false
+
+  # Use more memory so badly-designed programs like Bundler can work.
+  config.vm.customize do |vm|
+    vm.memory_size = 512
+  end
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
