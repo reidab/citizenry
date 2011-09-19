@@ -181,7 +181,7 @@ fr:
     user: 
       blankoption: aucun
     provider: 
-      label: Ajouter un compte
+      label: Service d'authentification
       add: Ajouter!
       prompt: "Choisissez un service…"
     email: 
