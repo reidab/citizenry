@@ -1,5 +1,9 @@
 class Project < ActiveRecord::Base
   include SearchEngine
+  
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+  
   has_paper_trail :ignore => [:delta]
   acts_as_taggable_on :tags, :technologies
   sortable :created_at, :desc
