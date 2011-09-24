@@ -279,6 +279,44 @@ feature "The person edit form" do
     end
   end
 
+  scenario "show allow editing of slug" do
+    signed_in_as(:user_with_person) do
+      person = @user.person
+
+      visit edit_person_path(person)
+      within "form.person" do
+        fill_in "person_custom_slug_or_friendly_id", :with => "Foo Bar"
+        find("input[name='commit']").click
+      end
+
+      current_path.should == person_path("foo-bar")
+
+      person.reload
+      person.slug.should == "foo-bar"
+    end
+  end
+
+  scenario "should not allow duplicate slug" do
+    Factory.create(:person, :name => "Foo Bar", :custom_slug => "foo-bar")
+
+    signed_in_as(:user_with_person) do
+      person = @user.person
+      original_slug = person.slug
+
+      visit edit_person_path(person)
+      within "form.person" do
+        fill_in "person_custom_slug_or_friendly_id", :with => "Foo Bar"
+        find("input[name='commit']").click
+      end
+
+      page.find(".record_errors").should have_content "Custom slug is not unique"
+      current_path.should == person_path(original_slug)
+
+      person.reload
+      person.slug.should_not == "foo-bar"
+    end
+  end
+
   scenario "should allow the user to upload a photo" do
     signed_in_as(:user_with_person) do
       @person = @user.person

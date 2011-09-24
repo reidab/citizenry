@@ -83,4 +83,37 @@ describe Person do
       person.should be_valid
     end
   end
+
+  describe "when using slugs" do
+    before :each do
+      DatabaseCleaner.clean
+    end
+
+    it "should create a slug when saving a new record" do
+      person = Factory.build(:person, :name => "Bob Smith")
+      person.slug.should be_nil
+
+      person.save!
+      person.slug.should == "bob-smith"
+    end
+
+    it "should allow the slug to be overriden" do
+      person = Factory.create(:person)
+
+      person.custom_slug = "Bubba Jack"
+      person.save!
+      person.slug == "bubba-jack"
+    end
+
+    it "should not allow duplicate slugs" do
+      bob = Factory.create(:person, :name => "Bob Smith")
+      bubba = Factory.create(:person, :name => "Bubba Jack")
+
+      bubba.custom_slug = "bob-smith"
+      bob.slug.should == bubba.custom_slug
+
+      bubba.should_not be_valid
+      bubba.errors[:custom_slug].should_not be_nil
+    end
+  end
 end
