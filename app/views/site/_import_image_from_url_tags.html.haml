@@ -1,5 +1,11 @@
+-# Display the form fields for adding or importing a photo, and display a photo if associated.
+-#
+-# ARGUMENTS:
+-# * form: The Rails HTML form instance.
+-# * record: The ActiveRecord model instance.
+-# * field: The String or Symbol name of the field containing the image, e.g. :logo.
 = form.inputs :name => record.class.human_attribute_name(field) do
-  - if image_url = record.send("#{field}_import_url") || (record.send(field).file? && record.send(field).url(:medium))
+  - if image_url = record.send("#{field}_import_url").presence || (record.send(field).file? && record.send(field).url(:medium))
     %li
       = image_tag image_url, :size => '220'
 
