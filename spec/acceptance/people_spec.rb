@@ -285,7 +285,7 @@ feature "The person edit form" do
 
       visit edit_person_path(person)
       within "form.person" do
-        fill_in "person_custom_slug_or_friendly_id", :with => "Foo Bar"
+        fill_in "person_custom_slug", :with => "Foo Bar"
         find("input[name='commit']").click
       end
 
@@ -305,7 +305,7 @@ feature "The person edit form" do
 
       visit edit_person_path(person)
       within "form.person" do
-        fill_in "person_custom_slug_or_friendly_id", :with => "Foo Bar"
+        fill_in "person_custom_slug", :with => "Foo Bar"
         find("input[name='commit']").click
       end
 

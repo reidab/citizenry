@@ -29,40 +29,42 @@ module CustomizableSlug
   end
 
   def self.included(base)
-    base.send(:extend, ClassMethods)
+    base.send(:extend, ::CustomizableSlug::ClassMethods)
   end
 
   module ClassMethods
+    # Add logic for managing a customizable custom slug on the +attribute+, e.g. :name.
     def customizable_slug_from(attribute)
       # The models' attribute which contains the source value to use for generating a friendly id, e.g. :name.
       cattr_accessor :friendly_id_source_attribute
       self.friendly_id_source_attribute = attribute
 
-      # The user-specified custom slug that will override the friendly id.
-      attr_accessor :custom_slug
-
       # Accessor used by internals of "friendly_id" plugin.
       attr_accessor :generate_new_slug
 
       extend FriendlyId
-      friendly_id :custom_slug_or_source, :use => :slugged, :slug_generator_class => CustomizableSlug::CustomizableSlugGenerator
+      friendly_id :custom_slug_or_source, :use => :slugged, :slug_generator_class => ::CustomizableSlug::CustomizableSlugGenerator
     end
   end
 
-  def custom_slug_or_friendly_id
-    self.custom_slug.present? ? self.custom_slug : self.friendly_id
+  # Return the user-specified custom slug or the friendly id for this record.
+  def custom_slug
+    @custom_slug.presence || self.friendly_id
   end
 
-  def custom_slug_or_friendly_id=(value)
-    self.custom_slug = value
+  # Set the custom slug to +value+.
+  def custom_slug=(value)
+    @custom_slug = value
   end
 
+  # Return the custom slug or the value of the attribute that contains the source value.
   def custom_slug_or_source
-    self.custom_slug.present? ? self.custom_slug : "#{self.send(self.class.friendly_id_source_attribute)}"
+    @custom_slug.presence || "#{self.send(self.class.friendly_id_source_attribute)}"
   end
 
+  # Method used by internals of "friendly_id" plugin.
   def should_generate_new_friendly_id?
-    if self.custom_slug.present? || self.generate_new_slug == "1"
+    if @custom_slug.present? || self.generate_new_slug == "1"
       super
     else
       ! self.slug
