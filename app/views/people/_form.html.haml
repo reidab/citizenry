@@ -3,8 +3,9 @@
   = display_errors_for @person
   = f.inputs do
     = f.input :name
-    -# = f.input :email, :label => "Email address", :hint => "We'll keep this secret"
-    -# = f.input :twitter
+    - unless @person.new_record?
+      = f.semantic_fields_for :user do |u|
+        = u.input :email, :label => "Email address", :hint => "Used to sign in; we'll keep this secret"
     = f.input :location, :hint => 'Neighborhood-level info preferred'
     = f.input :url, :label => "Website"
     = f.input :bio

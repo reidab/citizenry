@@ -193,6 +193,24 @@ feature "The person edit form" do
     end
   end
 
+  scenario "should allow editing of a user's email address" do
+    signed_in_as(:user_with_person) do
+      @person = @user.person
+
+      visit edit_person_path(@person)
+
+      within('form.person') do
+        fill_in 'person_user_attributes_email', :with => "unique_email@example.com"
+        find("input[name='commit']").click
+      end
+
+      current_path.should == person_path(@person)
+      visit edit_person_path(@person)
+
+      find("#person_user_attributes_email").value.should == "unique_email@example.com"
+    end
+  end
+
   scenario "should allow editing of tags" do
     signed_in_as(:user_with_person) do
       @person = @user.person

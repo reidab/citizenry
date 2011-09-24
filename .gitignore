@@ -18,3 +18,7 @@ log/searchd.development.pid
 \#*
 .\#*
 .rvmrc
+.vagrant
+Vagrantfile.local
+vagrant/cookbooks/vagrant/recipes/local.rb
+tags
