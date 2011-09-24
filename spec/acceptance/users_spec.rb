@@ -7,7 +7,7 @@ feature "Users:" do
 
   scenario "Trying to sign in without an email address should fail usefully" do
     visit sign_in_path
-    click_button 'sign_in_data_submit'
+    find("input[name='commit']").click
 
     page.should have_content "can't be blank"
   end
@@ -36,7 +36,7 @@ feature "Users:" do
         fill_in 'person_url', :with => @url
         fill_in 'person_tag_list', :with => @tags
         fill_in 'person_technology_list', :with => @technology
-        click_button 'person_submit'
+        find("input[name='commit']").click
       end
 
       within '.person.single_record' do
@@ -82,7 +82,7 @@ feature "Users:" do
 
       within '#authentications #new_sign_in_data' do
         select 'Twitter', :from => 'sign_in_data_provider'
-        click_button 'sign_in_data_submit'
+        find("input[name='commit']").click
       end
       
       page.should have_selector "#twitter_the_twitterer"

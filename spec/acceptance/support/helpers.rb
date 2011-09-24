@@ -23,7 +23,7 @@ module HelperMethods
     within '#new_sign_in_data' do
       fill_in 'sign_in_data_email', :with => @user.email
       select 'OpenID', :from => 'sign_in_data_provider'
-      click_button 'sign_in_data_submit'
+      find("input[name='commit']").click
     end
   end
 
