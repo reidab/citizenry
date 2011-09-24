@@ -48,6 +48,8 @@ gem "responders", "~> 0.6.2"
 
 gem 'acts-as-taggable-on', "~> 2.1.1"
 
+gem 'friendly_id', '4.0.0.beta14'
+
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager'
 # gem 'paper_trail_manager', :git => 'https://github.com/igal/paper_trail_manager.git'
