@@ -42,8 +42,12 @@ module CustomizableSlug
       # Accessor used by internals of "friendly_id" plugin.
       attr_accessor :generate_new_slug
 
+      # Activate "friendly_id" plugin.
       extend FriendlyId
       friendly_id :custom_slug_or_source, :use => :slugged, :slug_generator_class => ::CustomizableSlug::CustomizableSlugGenerator
+
+      # Add validation for "custom_slug" field.
+      validate :validate_custom_slug
     end
   end
 
@@ -68,6 +72,12 @@ module CustomizableSlug
       super
     else
       ! self.slug
+    end
+  end
+
+  def validate_custom_slug
+    if @custom_slug.present? && @custom_slug !~ /\D/
+      self.errors.add(:custom_slug, "must contain a non-digit character")
     end
   end
 end

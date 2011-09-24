@@ -113,7 +113,14 @@ describe Person do
       bob.slug.should == bubba.custom_slug
 
       bubba.should_not be_valid
-      bubba.errors[:custom_slug].should_not be_nil
+      bubba.errors[:custom_slug].should be_present
+    end
+
+    it "should not allow custom slugs without non-digits" do
+      person = Factory.build(:person, :custom_slug => "99")
+
+      person.should_not be_valid
+      person.errors[:custom_slug].should be_present
     end
   end
 end
