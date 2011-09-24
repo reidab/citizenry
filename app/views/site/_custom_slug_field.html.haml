@@ -1,0 +1,5 @@
+-# Display the form field for a custom slug.
+-#
+-# ARGUMENTS:
+-# * form: The Rails form instance.
+= form.input :custom_slug_or_friendly_id, :label => 'URL slug', :hint => "e.g. #{SETTINGS.organization.url}/#{controller_path}/<em><b>my-#{controller.class.name.sub(/Controller/, '').singularize.downcase.singularize}</b></em>".html_safe

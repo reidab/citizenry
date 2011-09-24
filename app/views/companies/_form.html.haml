@@ -2,6 +2,7 @@
   = display_errors_for @company
   = f.inputs do
     = f.input :name
+    = render 'site/custom_slug_field', :form => f
     = f.input :url, :label => 'Website'
     = f.input :address, :as => :string, :hint => "e.g. 115 NW 5th, Portland, OR"
     = f.input :description

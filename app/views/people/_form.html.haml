@@ -3,6 +3,7 @@
   = display_errors_for @person
   = f.inputs do
     = f.input :name
+    = render 'site/custom_slug_field', :form => f
     - unless @person.new_record?
       = f.semantic_fields_for :user do |u|
         = u.input :email, :label => "Email address", :hint => "Used to sign in; we'll keep this secret"

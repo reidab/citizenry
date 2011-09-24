@@ -2,6 +2,7 @@
   = display_errors_for @group
   = f.inputs do
     = f.input :name
+    = render 'site/custom_slug_field', :form => f
     = f.input :url, :label => 'Website'
     = f.input :mailing_list, :hint => "URL to list information"
     = f.input :description

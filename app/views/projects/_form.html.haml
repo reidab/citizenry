@@ -2,6 +2,7 @@
   = display_errors_for @project
   = f.inputs do
     = f.input :name
+    = render 'site/custom_slug_field', :form => f
     = f.input :url, :label => 'Website'
     = f.input :description
     = f.input :tag_list, :as => :text, :label => 'Tags', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
