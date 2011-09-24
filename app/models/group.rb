@@ -14,6 +14,8 @@ class Group < ActiveRecord::Base
 
   import_image_from_url_as :logo
 
+  customizable_slug_from :name
+
   has_many :group_projects
   has_many :projects, :through => :group_projects
 

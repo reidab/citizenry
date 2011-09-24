@@ -5,6 +5,7 @@ fr:
     address: "Adresse"
     category: "Catégorie"
     created_at: "Créé le"
+    custom_slug: "Sobriquet de l'URL" # TODO review translation
     description: "Description"
     email: "Adresse email ou identifiant"
     location: "Adresse"
@@ -40,6 +41,8 @@ fr:
       person:
         bio: "Bio"
         location: "Localisation"
+    errors:
+      must_start_with_non_digit: "doit commencer par un non-chiffres" # TODO review translation
 
   sign_in: Connexion
   group:
@@ -179,6 +182,8 @@ fr:
       label: "Date de création" # people#index
     email_address:
       label: "Adresse email ou identifiant" # authentications#_login
+    example:
+      fragment: "pour exemple" # site#_custom_slug_field # TODO review translation
     group_list:
       title: "Groupes" # people#show
     import_file:
@@ -192,6 +197,8 @@ fr:
       title: "Infos réunion" # groups#show
     members:
       title: "Membres" # groups#show
+    my:
+      fragment: "mon" # site#_custom_slug_field # TODO review translation
     name:
       label: "Nom" # people#index
     project_list:

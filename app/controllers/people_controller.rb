@@ -8,6 +8,7 @@ class PeopleController < InheritedResources::Base
   before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
   before_filter :set_user_id_if_admin, :only => [:update, :create]
+  before_filter :redirect_historical_slugs
 
   def index
     @view = :grid if params[:grid]
