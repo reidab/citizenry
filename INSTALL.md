@@ -11,7 +11,8 @@ You will need to:
   1. [Install git](http://git-scm.com/), a distributed version control system. Read the [Github Git Guides](http://github.com/guides/home) to learn how to use *git*.
   2. [Install Ruby](http://www.ruby-lang.org/), a programming language. You can use MRI Ruby 1.8.7, or [Phusion REE (Ruby Enterprise Edition)](http://rubyenterpriseedition.com/). Your operating system may already have it installed or offer it as a pre-built package.
   3. [Install RubyGems](http://rubyforge.org/projects/rubygems/) 1.3.x or newer, a tool for managing software packages for Ruby.
-  4. Checkout the source code. Run `git clone git://github.com/reidab/citizenry.git`, which will create a `citizenry` directory with the source code. Go into this directory and run the remaining commands from there.
+  4. [Install ImageMagick](http://www.imagemagick.org/) a tool for manipulating images
+  5. Checkout the source code. Run `git clone git://github.com/reidab/citizenry.git`, which will create a `citizenry` directory with the source code. Go into this directory and run the remaining commands from there.
 
 Development
 -----------
@@ -51,6 +52,6 @@ You will need to install more software to do development on your local machine:
 
 Running the Citizenry application:
 
-  * Start the *Ruby on Rails* web application by running `./script/server` (UNIX) or `ruby script/server` (Windows).
+  * Start the *Ruby on Rails* web application by running `rails server` (UNIX) or `ruby script/rails server` (Windows).
   * Open a web browser to <http://localhost:3000/> to use the `development` server.
   * When done, stop the *Ruby on Rails* server `script/server` by pressing `CTRL-C`.
