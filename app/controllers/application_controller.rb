@@ -107,4 +107,13 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :page_title
+
+  # Preserve old links to resources by redirecting to their current location.
+  #
+  # The "friendly_id" slug history tracks the resource's slug over time. If a resource is available under a newer slug name, redirect its "show" action to the current name. E.g. "/request/old-name" will redirect to "/request/new-name" if the slug was changed from "old-name" to "new-name".
+  def redirect_historical_slugs
+    if self.action_name == "show" && request.path != resource_path(resource)
+      return redirect_to resource, :status => :moved_permanently
+    end
+  end
 end

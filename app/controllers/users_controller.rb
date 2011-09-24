@@ -35,6 +35,8 @@ class UsersController < InheritedResources::Base
         @possible_duplicates += Person.unclaimed.where(name_part_query, *name_parts.map{|p| "%#{p}%"}).take(10)
 
         @possible_duplicates.uniq!
+
+        @person.send(:set_slug)
       end
     end
   end

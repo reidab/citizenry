@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709205814) do
+ActiveRecord::Schema.define(:version => 20110924171945) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -37,7 +38,10 @@ ActiveRecord::Schema.define(:version => 20110709205814) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "delta",             :default => true, :null => false
+    t.string   "slug"
   end
+
+  add_index "companies", ["slug"], :name => "index_companies_on_slug", :unique => true
 
   create_table "company_projects", :force => true do |t|
     t.integer  "company_id"
@@ -53,6 +57,17 @@ ActiveRecord::Schema.define(:version => 20110709205814) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "group_id"
@@ -84,7 +99,10 @@ ActiveRecord::Schema.define(:version => 20110709205814) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "delta",             :default => true, :null => false
+    t.string   "slug"
   end
+
+  add_index "groups", ["slug"], :name => "index_groups_on_slug", :unique => true
 
   create_table "people", :force => true do |t|
     t.string   "email"
@@ -109,7 +127,10 @@ ActiveRecord::Schema.define(:version => 20110709205814) do
     t.boolean  "interested_mentee"
     t.text     "mentor_topics"
     t.text     "mentee_topics"
+    t.string   "slug"
   end
+
+  add_index "people", ["slug"], :name => "index_people_on_slug", :unique => true
 
   create_table "project_memberships", :force => true do |t|
     t.integer  "person_id"
@@ -130,7 +151,10 @@ ActiveRecord::Schema.define(:version => 20110709205814) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "delta",             :default => true, :null => false
+    t.string   "slug"
   end
+
+  add_index "projects", ["slug"], :name => "index_projects_on_slug", :unique => true
 
   create_table "resource_links", :force => true do |t|
     t.string   "name"
