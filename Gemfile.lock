@@ -118,6 +118,7 @@ GEM
       faraday (>= 0.6, < 0.8)
       faraday_middleware (>= 0.6, < 0.8)
       hashie (~> 1.0)
+    friendly_id (4.0.0.beta14)
     fssm (0.2.7)
     haml (3.1.3)
     has_scope (0.5.1)
@@ -355,6 +356,7 @@ DEPENDENCIES
   fakeweb
   formtastic (~> 1.2.4)
   foursquare2 (~> 1.1.0)
+  friendly_id (= 4.0.0.beta14)
   haml (~> 3.1.2)
   hoptoad_notifier
   httparty (~> 0.8.0)
