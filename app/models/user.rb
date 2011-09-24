@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   end
 
   devise :rememberable, :trackable
+  validates_uniqueness_of :email, :message => "address is already in use."
 
   def avatar_url
     if self.person.try(:photo_file_name).present?
