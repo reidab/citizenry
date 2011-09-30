@@ -18,24 +18,25 @@ gem 'mysql2', '~> 0.3.2'
 gem 'hoptoad_notifier'
 
 #--[ Utility ]------------------------------------------------------------------
-gem 'httparty', '~> 0.8.0'
-gem "json", "~> 1.6.1"
-gem 'addressable', '~> 2.2.4'
+gem 'httparty', '~> 0.7.4'
+gem "json", "~> 1.4.6"
+gem 'addressable', '~> 2.2.6'
 
 #--[ Authentication ]-----------------------------------------------------------
-gem 'devise', "~> 1.4.5"
-gem 'omniauth', "~> 0.2.6"
+gem 'devise', "~> 1.4.7"
+gem 'omniauth', "~> 0.3.0"
 
 # Automatic login provider selection
-gem 'redfinger', '~> 0.1.0', :git => "git://github.com/reidab/redfinger.git"
+gem 'redfinger', '~> 0.1.0'
 gem 'ruby-openid', '~> 2.1.8'
 gem 'net-dns', '~> 0.6.1', :require => 'net/dns/resolver'
 
 # Client libraries for authenticated services
-# TODO: Upgrade these to newer versions after omniauth 0.3 upgrade
-gem 'twitter', '~> 1.6.0'
-gem 'linkedin', '~> 0.2.2', :git => "git://github.com/pengwynn/linkedin.git", :tag => 'v0.2.2'
-gem 'mogli', '~>0.0.25', :git => "git://github.com/reidab/mogli.git" # facebook
+# depenency that couldn't get resolved by bundle 
+gem 'hashie', '~> 1.1.0'
+gem 'twitter', '~> 1.7.2'
+gem 'linkedin', '~> 0.3.2'
+gem 'mogli', '~> 0.0.34' # facebook
 gem 'foursquare2', '~>1.1.0'   # https://gist.github.com/419219 <- github oauth docs!
 
 #--[ Search ]-------------------------------------------------------------------
@@ -52,8 +53,7 @@ gem 'acts-as-taggable-on', "~> 2.1.1"
 gem 'friendly_id', '4.0.0.beta14'
 
 gem 'paper_trail', '~> 2'
-gem 'paper_trail_manager'
-# gem 'paper_trail_manager', :git => 'git://github.com/igal/paper_trail_manager.git'
+gem 'paper_trail_manager', '~> 0.1.3'
 # gem 'paper_trail_manager', :path => '../paper_trail_manager'
 
 #--[ View ]---------------------------------------------------------------------
@@ -65,7 +65,7 @@ gem 'jquery-rails', '>= 1.0.14'
 gem 'formtastic', '~>1.2.4'
 
 #--[ Controller ]---------------------------------------------------------------
-gem 'will_paginate', '~> 3.0.1'
+gem 'will_paginate', '~> 3.0.2'
 
 #--[ Middleware ]---------------------------------------------------------------
 gem 'rack-jsonp', '~> 1.2.0'
@@ -82,12 +82,8 @@ group :development, :test do
   gem 'utility_belt'
 
   # -- [ Tools ] ---------------------------------------------------------------
-  gem 'rcov', :platform => :mri_18, :require => false
-  gem 'simplecov', :platform => :mri_19, :require => false
-
-  gem 'ruby-debug', :platform => :mri_18
-  gem 'ruby-debug19', :platform => :mri_19
-
+  gem 'rcov'
+  gem 'ruby-debug19'
   gem 'annotate'
   gem "nifty-generators"
 end
