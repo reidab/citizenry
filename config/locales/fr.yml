@@ -1,33 +1,33 @@
---- 
-fr: 
+---
+fr:
   sign_in: Connexion
-  group: 
-    new: 
+  group:
+    new:
       title: Nouveau groupe
-    button: 
+    button:
       add: + Ajouter un groupe
       leave: Quitter ce groupe
       join: Rejoindre ce groupe
-    edit: 
+    edit:
       title: Modification du groupe
-    index: 
-      title: 
+    index:
+      title:
         one: "groupe %{tag}"
-        other: "groupes %{tag}"        
-  company: 
-    button: 
+        other: "groupes %{tag}"
+  company:
+    button:
       join: Rejoindre cette entreprise
       leave: Quitter cette entreprise
       add: + Ajouter une entreprise
-    new: 
+    new:
       title: Nouvelle entreprise
-    edit: 
+    edit:
       title: Modification de la entreprise
-    index: 
-      title: 
+    index:
+      title:
         one: "entreprise taggée %{tag}"
         other: "entreprises taggées %{tag}"
-  button: 
+  button:
     claim_people: Réclamer cette personne
     sign_in: Connexion
     login_as_sample_user: Se connecter en tant qu'utilisateur exemple
@@ -40,38 +40,38 @@ fr:
     remove: Retirer
     show: Détail
     add_company: Ajoutez votre entreprise
-  resource_links: 
-    new: 
+  resource_links:
+    new:
       title: Ajouter un lien
-    button: 
+    button:
       add: + Ajouter un lien
-    edit: 
+    edit:
       title: Modification de %{name}
-    field: 
-      url: 
+    field:
+      url:
         label: URL
         description: Brève description
-    index: 
-      title: 
+    index:
+      title:
         one: "ressource taggée %{tag}"
-        other: "ressources taggées %{tag}"        
-  layout: 
+        other: "ressources taggées %{tag}"
+  layout:
     follow_link: Suivre %{link} sur Twitter
     title: "%{name}: L'annuaire Tech de %{city}"
     contact_link: Questions? Commentaires? Envies? Ecrivez à %{email}
     powered_by: Propulsé par %{powered_by}.
     hosting_credit: Hébergé par %{host}.
-  misc: 
+  misc:
     name_on_provider: "%{name} sur %{provider}"
-  authentication_method: 
+  authentication_method:
     choose_automatically: Automatique
-  list: 
-    view_as: 
+  list:
+    view_as:
       list: Liste
       title: Affichage
       grid: Grille
     sort_by: Tri par
-  flowery: 
+  flowery:
     success7: Yeah
     warning1: Attention
     success8: Excellent
@@ -98,101 +98,105 @@ fr:
     error8: Me**e alors
     success6: Dla balle
     error9: Zut
-  auth: 
-    failure: 
+  auth:
+    failure:
       actions: "Choisissez une méthode d'authentification pour continuer:"
       title: Oups, ça s'est pas passé comme prévu
       description: Nous avons reçu une erreur de la part de votre service d'authentification. Vous pouvez réessayer avec le même ou en utiliser un autre.
-  title: 
+  title:
     technologies: Technologies
     tags: Tags
     employees: Employés
+    model:
+      new: Nouveau %{modelname}
+      edit: Modifier %{modelname}
+      destroy: Supprimer %{modelname}
   sign_out: Déconnexion
-  sign_in_join: Connexion    
-  pager: 
+  sign_in_join: Connexion
+  pager:
     show_all: Tout montrer
-  project: 
-    button: 
+  project:
+    button:
       join: Rejoindre ce projet
       leave: Quitter ce projet
       add: + Ajouter un projet
-    new: 
+    new:
       title: Nouveau projet
-    edit: 
+    edit:
       title: Modifier le project
-    index: 
+    index:
       title:
-        one: "%{tag} projet<span class='desktop-only'> ou produit</span>"      
-        other: "%{tag} projets<span class='desktop-only'> & produits</span>"        
-  field: 
-    address: 
+        one: "%{tag} projet<span class='desktop-only'> ou produit</span>"
+        other: "%{tag} projets<span class='desktop-only'> & produits</span>"
+  field:
+    address:
       label: Adresse
       hint: ex. 35 rue Gambetta, 31000 Toulouse
-    name: 
+    name:
       label: Nom
-    photo: 
+    photo:
       label: Photo
-    location: 
+    location:
       label: Localisation
       hint: De préférence le nom de votre quartier
-    created_at: 
+    created_at:
       label: Date de création
-    collaborators: 
+    collaborators:
       title: Collaborateurs
-    company_list: 
+    company_list:
       title: entreprises
-    logo: 
+    logo:
       label: Uploader un logo
       hint: De préférence %{size}px de large ou plus
       faux_label: Logo actuel
-    url: 
+    url:
       label: Site web
       title: Liens
-    photo_import_url: 
+    photo_import_url:
       label: "importer une photo depuis le web…"
-    members: 
+    members:
       title: Membres
-    random: 
+    random:
       label: Aléatoire
-    meeting_info: 
+    meeting_info:
       label: Infos réunion
       title: Infos réunion
-    mailing_list: 
+    mailing_list:
       label: Mailing list
       hint: URL d'inscription à votre list
-    tag_list: 
+    tag_list:
       label: Tags
       title: Tags
       hint: Séparés par des virgules SVP
-    photo_upload: 
+    photo_upload:
       label: "…ou choisissez sur votre disque dur."
-    description: 
+    description:
       label: Description
-    technology_list: 
+    technology_list:
       label: Technologies utilisées (langages, frameworks, etc)
       title: Technologies
       hint: Séparés par des virgules SVP
-    email_address: 
+    email_address:
       label: Adresse email
-    bio: 
+    bio:
       label: Bio
-    project_list: 
+    project_list:
       title: Projets
-    user: 
+    user:
       blankoption: aucun
-    provider: 
+    provider:
       label: Service d'authentification
       add: Ajouter!
       prompt: "Choisissez un service…"
-    email: 
+    email:
       label: Adresse email
       hint: Elle ne sera pas communiquée
-    group_list: 
+    group_list:
       title: Groupes
-  site: 
-    err404: 
+  site:
+    err404:
       text: "L'enregistrement que vous avez demandé n'existe pas. Etes-vous bien certain de votre demande? Il a été peut-être supprimé? Ou alors enlevé par les extraterrestres? Désolé. Voilà un bébé paresseux tout mimi pour vous consoler:"
-    index: 
+    index:
       company: Entreprise
       group: Groupe
       person: Personne
@@ -203,50 +207,50 @@ fr:
       home_to: Berceau de...
       project_or_product: Projet ou Produit
       projects_and_products: Projets & Produits
-    search: 
+    search:
       no_result_try_again: Veuillez réessayer.
       no_result: Rien à voir!
       no_result_text: Nous n'avons rien trouvé qui corresponde à <strong>%{query}</strong>.
       for: " pour &#8220;%{query}&#8221;"
       search_result: résultats de la recherche
-  people: 
-    new: 
+  people:
+    new:
       limit_reset_time: la limite est réinitialisée dans %{time}.
       search_network: Recherchez quelqu'un dans votre réseau
       submit: Ajouter %{name} à l'annuaire
       name_knows_known: "%{name} connait déjà %{known}!"
       search_using: "Recherche avec:"
       title: Ajouter une personne à %{organization}
-      calls_remaining: 
+      calls_remaining:
         one: il ne vous reste qu'un appel disponbile à l'API twitter
         other: Vous avez %{count} appels disponibles pour l'API Twitter
       no_service_linked: Vous n'avez actuellement aucun service relié à votre compte. Nous recommandons fortement d'associer des gens par le biais de leur réseau plutôt que de les ajouter directement, afin qu'ils puissent ensuite réclamer leur compte.
       add_provider: Ajouter un compte %{provider}
-    button: 
+    button:
       add: + Ajouter une personne
       claim: C'est moi!
-    edit: 
+    edit:
       title: Modifier une personne
-    list: 
+    list:
       on_twitter: "%{link} sur Twitter"
-    claim: 
+    claim:
       title: Réclamer %{name}
       imported_from: Cette personne a été importée de %{provider}
       sign_in_to_provider: Connectez-vous sur %{provider} pour continuer
       provider_not_logged_in: mais vous n'êtes pas connecté avec votre compte %{provider}.
-    field: 
-      tag_list: 
+    field:
+      tag_list:
         label: Tags (centre d'intérêts, particularités, compétences)
-    index: 
-      title: 
+    index:
+      title:
         one: "personne taggée %{tag}"
-        other: "personnes taggées %{tag}"      
-    show: 
+        other: "personnes taggées %{tag}"
+    show:
       are_you_this_person: Etes-vous %{name}?
-  alert: 
+  alert:
     are_you_sure: Etes-vous sur?
-  user: 
-    welcome: 
+  user:
+    welcome:
       hi: Bonjour %name!
       are_you_any: Etes-vous l'une de ces personnes ?
       already_in_directory: Vous étiez déjà inscrit dans le répertoire! Merci de vérifier vos informations et d'en valier l'exactitude.
@@ -256,21 +260,21 @@ fr:
       is_this_you_q: Est-ce vous?
       provider: Nous avons récupéré autant d'information que possible sur votre compte %{provider}. Jetez-y un oeil et cliquez sur le gros bouton pour démarrer.
       is_this_you_hint: Il semble que quelqu'un vous ait déjà ajouté à %{organization}.
-    index: 
+    index:
       title: Utilisateurs
       person_id: "Personne %{id}:"
-    home: 
+    home:
       what_to_do: Que souhaitez-vous faire?
       title: Bonjour vous!
       linked_accounts: Comptes liés
-  main_nav: 
-    groups: 
+  main_nav:
+    groups:
       link: Groupes
-    projects_products: 
+    projects_products:
       link: Projets & Produits
-    companies: 
+    companies:
       link: Entreprises
-    resources: 
+    resources:
       link: Ressources
-    people: 
+    people:
       link: Personnes
