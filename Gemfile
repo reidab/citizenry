@@ -19,7 +19,7 @@ gem 'hoptoad_notifier'
 
 #--[ Utility ]------------------------------------------------------------------
 gem 'httparty', '~> 0.7.4'
-gem "json", "~> 1.4.6"
+gem "json", "~> 1.6.1"
 gem 'addressable', '~> 2.2.6'
 
 #--[ Authentication ]-----------------------------------------------------------
@@ -96,9 +96,10 @@ group :test do
   gem "fakeweb"
   gem "factory_girl_rails"
   gem 'faker', '>= 1.0'
-  gem 'uuid'
-  gem 'steak', '2.0.0'
-  gem 'capybara', '~> 1.1.1'
+	gem "systemu", "~> 2.4.0"
+	gem "uuid", "~> 2.3.4"
+  gem 'steak', '1.1.0'
+  gem 'capybara', '~> 0.4.0'
   # gem 'capybara-envjs'
   gem 'launchy'
   gem 'database_cleaner'
