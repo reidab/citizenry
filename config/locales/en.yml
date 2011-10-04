@@ -1,33 +1,33 @@
---- 
-en: 
+---
+en:
   sign_in: Sign In
-  group: 
-    button: 
+  group:
+    button:
       join: Join this group
       leave: Leave this group
       add: + Add a Group
-    new: 
+    new:
       title: New group
-    edit: 
+    edit:
       title: Editing group
-    index: 
-      title: 
+    index:
+      title:
         one: "%{tag} group"
         other: "%{tag} groups"
-  company: 
-    new: 
+  company:
+    new:
       title: New company
-    button: 
+    button:
       add: + Add a Company
       leave: Leave this company
       join: Join this company
-    edit: 
+    edit:
       title: Editing company
-    index: 
-      title: 
+    index:
+      title:
         one: "%{tag} company"
         other: "%{tag} companies"
-  button: 
+  button:
     back: Back
     login_as_sample_user: Login as sample user
     sign_in: sign_in
@@ -40,38 +40,38 @@ en:
     add_friend: Add a friend to the directory
     show: Show
     add_company: Add your company
-  authentication_method: 
+  authentication_method:
     choose_automatically: Choose automatically
-  resource_links: 
-    button: 
+  resource_links:
+    button:
       add: + Add a Link
-    new: 
+    new:
       title: Add a link
-    edit: 
+    edit:
       title: Editing %{name}
-    field: 
-      url: 
+    field:
+      url:
         label: URL
         description: Brief description
-    index: 
-      title: 
+    index:
+      title:
         one: "%{tag} resource"
         other: "%{tag} resources"
-  layout: 
+  layout:
     follow_link: Follow %{link} on Twitter
     title: "%{name}: %{city}'s Tech Directory"
     contact_link: Questions? Comments? Desires? Email %{email}
     powered_by: Powered by %{powered_by}.
     hosting_credit: Hosting thanks to %{host}.
-  misc: 
+  misc:
     name_on_provider: "%{name} on %{provider}"
-  list: 
-    view_as: 
+  list:
+    view_as:
       list: List
       title: View as
       grid: Grid
     sort_by: Sort by
-  flowery: 
+  flowery:
     success7: Yeah
     success8: Yay
     warning1: Beware
@@ -98,101 +98,105 @@ en:
     success5: Hoorah
     error9: Aw shucks
     success6: Huzzah
-  auth: 
-    failure: 
+  auth:
+    failure:
       actions: "Please pick a login provider to continue:"
       title: Ack! Something went wrong!
       description: We received an error of some kind back from your login provider. You can try again with the same login provider or choose another service.
-  title: 
+  title:
     technologies: Technologies
     tags: Tags
     employees: Employees
+    model:
+      new: New %{modelname}
+      edit: Edit %{modelname}
+      destroy: Destroy %{modelname}
   sign_out: sign out
   sign_in_join: Sign In / Join
-  pager: 
+  pager:
     show_all: Show all
-  project: 
-    new: 
+  project:
+    new:
       title: New project
-    button: 
+    button:
       add: + Add a Project
       leave: Leave this project
       join: Join this project
-    edit: 
+    edit:
       title: Editing project
-    index: 
-      title: 
+    index:
+      title:
         one: "%{tag} project<span class='desktop-only'> or product</span>"
         other: "%{tag} projects<span class='desktop-only'> & products</span>"
-  field: 
-    photo: 
+  field:
+    photo:
       label: Photo
-    name: 
+    name:
       label: Name
-    address: 
+    address:
       label: Address
       hint: e.g. 115 NW 5th, Portland, OR
-    created_at: 
+    created_at:
       label: Date added
-    location: 
+    location:
       label: Location
       hint: Neighborhood-level info preferred
-    company_list: 
+    company_list:
       title: Companies
-    collaborators: 
+    collaborators:
       title: Collaborators
-    url: 
+    url:
       label: Website
       title: Links
-    logo: 
+    logo:
       label: Upload a logo
       hint: Preferably %{size}px wide or larger
       faux_label: Current logo
-    photo_import_url: 
+    photo_import_url:
       label: "Import a photo from the web…"
-    photo_upload: 
+    photo_upload:
       label: "…or upload one from your computer."
-    tag_list: 
+    tag_list:
       label: Tags
       title: Tags
       hint: Comma separated, please
-    mailing_list: 
+    mailing_list:
       label: Mailing list
       hint: URL to list information
-    meeting_info: 
+    meeting_info:
       label: Meeting info
       title: Meeting Info
-    random: 
+    random:
       label: Random
-    members: 
+    members:
       title: Members
-    project_list: 
+    project_list:
       title: Projects
-    bio: 
+    bio:
       label: Bio
-    email_address: 
+    email_address:
       label: Email address
-    technology_list: 
+    technology_list:
       label: Technologies used (languages, frameworks, etc)
       title: Technologies
       hint: Comma separated, please
-    description: 
+    description:
       label: Description
-    user: 
+    user:
       blankoption: none
-    group_list: 
+    group_list:
       title: Groups
-    email: 
+    email:
       label: Email address
       hint: We'll keep this secret
-    provider: 
+    provider:
       label: Add an account
       add: Add it!
       prompt: "Pick a service…"
-  site: 
-    err404: 
+  site:
+    err404:
       text: "The record you requested doesn't exist. Are you sure you asked for the right item? Maybe it was deleted? Maybe it was abducted by aliens? So sorry. Here's a creepy baby sloth to make you feel better:"
-    index: 
+    index:
       group: Group
       company: Company
       person: Person
@@ -203,18 +207,18 @@ en:
       home_to: Home to
       project_or_product: Project or Product
       projects_and_products: Projects & Products
-    search: 
+    search:
       no_result_try_again: You might want to try again.
       no_result: Nothing here!
       no_result_text: We couldn't find anything that matched your search for <strong>%{query}</strong>.
       search_result: search result
       for: " for &#8220;%{query}&#8221;"
   hello: Hello world
-  people: 
-    button: 
+  people:
+    button:
       add: + Add Someone
       claim: That's me!
-    new: 
+    new:
       search_network: Search your networks to add someone
       limit_reset_time: limit resets in %{time}.
       title: Add someone to %{organization}
@@ -222,32 +226,32 @@ en:
       name_knows_known: "%{name} already knows %{known}!"
       submit: Add %{name} to directory
       no_service_linked: You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
-      calls_remaining: 
+      calls_remaining:
         one: You have one Twitter API call remaining;
         other: You have %{count} Twitter API calls remaining;
       add_provider: Add a %{provider} account
-    list: 
+    list:
       on_twitter: "%{link} on Twitter"
-    edit: 
+    edit:
       title: Editing person
-    field: 
-      tag_list: 
+    field:
+      tag_list:
         label: Tags (interests, titles, personal descriptors)
-    claim: 
+    claim:
       title: Claiming %{name}
       sign_in_to_provider: Sign in to %{provider} to continue
       imported_from: This person was imported from %{provider}
       provider_not_logged_in: but you aren't logged in using your %{provider} account.
-    show: 
+    show:
       are_you_this_person: Are you %{name}?
-    index: 
-      title: 
+    index:
+      title:
         one: "%{tag} person"
         other: "%{tag} people"
-  alert: 
+  alert:
     are_you_sure: Are you sure?
-  user: 
-    welcome: 
+  user:
+    welcome:
       hi: Hi %name!
       are_you_any: Are you any of these people?
       already_in_directory: You were already in the directory! Please review your details and let us know they're right.
@@ -257,21 +261,21 @@ en:
       is_this_you_q: Is this you?
       is_this_you_hint: It looks like someone may have already added you to %{organization}.
       provider: We imported as much info as we could from your %{provider} account. Look it over and hit the big button to get started.
-    index: 
+    index:
       title: Users
       person_id: "Person %{id}:"
-    home: 
+    home:
       what_to_do: What would you like to do?
       title: Hey there!
       linked_accounts: Linked Accounts
-  main_nav: 
-    projects_products: 
+  main_nav:
+    projects_products:
       link: Projects & Products
-    groups: 
+    groups:
       link: Groups
-    resources: 
+    resources:
       link: Resources
-    companies: 
+    companies:
       link: Companies
-    people: 
+    people:
       link: People
