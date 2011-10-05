@@ -1,6 +1,6 @@
 module ImportImageFromURL
   def self.included(base)
-    base.send(:extend, ClassMethods)
+    base.extend(ClassMethods)
   end
 
   module ClassMethods
@@ -42,10 +42,10 @@ module ImportImageFromURL
       }
 
       # Activate PaperClip attachment on field
-      self.send(:has_attached_file, field, :styles => leaf[:thumbnail_styles])
+      self.has_attached_file(field, :styles => leaf[:thumbnail_styles])
 
       # Validate size of attachment
-      self.send(:validates_attachment_size, field, :less_than => leaf[:maximum_size])
+      self.validates_attachment_size(field, :less_than => leaf[:maximum_size])
 
       # Setup attribute containing the URL to import from
       field_import_url = "#{field}_import_url"
@@ -124,7 +124,9 @@ module ImportImageFromURL
           end
 
           # Provide a way to get the filename from the 'open-uri' result
-          def io.original_filename; base_uri.path.split('/').last; end
+          def io.original_filename
+            base_uri.path.split('/').last
+          end
 
           # Assert thumbnail creation
           begin
