@@ -17,20 +17,34 @@ execute "update-apt" do
   end
 end
 
-# Add gems to PATH
+# Remove obsolete file
 file "/etc/profile.d/rubygems1.8.sh" do
-  content "PATH=/usr/lib/ruby/gems/1.8/bin:$PATH"
+  action :delete
+end
+
+# Add gems to PATH, use "zz-" prefix to ensure this runs after box's "vagrantruby.sh".
+file "/etc/profile.d/zz-rubygems1.8.sh" do
+  content "export PATH=`gem env path`:$PATH"
+end
+
+# Remove conflicting packages
+for name in %w[irb ruby-dev]
+  package name do
+    action :remove
+  end
 end
 
 # Install packages
-for name in %w[nfs-common git-core screen tmux elinks build-essential ruby-dev irb libcurl4-openssl-dev libsqlite3-dev mysql-server libmysqlclient-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev sphinxsearch imagemagick]
+for name in %w[nfs-common git-core screen tmux elinks build-essential libcurl4-openssl-dev libsqlite3-dev mysql-server libmysqlclient-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev sphinxsearch imagemagick]
   package name
 end
 
 # Install gems
-for name in %w[bundler]
-  gem_package name
-end
+gem_package "bundler"
+gem_package "rake"
+
+# Fix permissions on homedir
+execute "chown -R #{USER}:#{USER} ~#{USER}"
 
 # Run the contents of the "vagrant/cookbooks/vagrant/recipes/local.rb" file if present. This optional file can contain additional provisioning logic that shouldn't be part of the global setup. For example, if you're using the "Gemfile.local" to install special gems, you'd use this "local.rb" to install their dependencies.
 local_recipe = File.join(File.dirname(__FILE__), "local.rb")
@@ -54,11 +68,11 @@ execute "chown -R #{USER}:#{USER} ~#{USER}"
 # Install bundle
 execute "install-bundle" do
   cwd APPDIR
-  command "su #{USER} -c 'bundle check || bundle --local || bundle'"
+  command "su vagrant -l -c 'bundle check || bundle --local || bundle'"
 end
 
 # Setup database
 execute "setup-db" do
   cwd APPDIR
-  command "su #{USER} -c 'bundle exec rake db:create:all db:migrate db:test:prepare'"
+  command "su vagrant -l -c 'bundle exec rake db:create:all db:migrate db:test:prepare'"
 end
