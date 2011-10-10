@@ -3,7 +3,7 @@
     %h1= semantic_pluralize(@results.present? ? @results.total_entries : 0, t('site.search.search_result')) + t('site.search.for', :query => params[:query]).html_safe
 
 - if @results.blank?
-  %h2 t('site.search.no_result')
+  %h2= t('site.search.no_result')
   %p
     = t('site.search.no_result_text', :query => params[:query]).html_safe 
     = t('site.search.no_result_try_again')
