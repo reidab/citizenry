@@ -253,7 +253,7 @@ en:
     are_you_sure: Are you sure?
   user:
     welcome:
-      hi: Hi %name!
+      hi: Hi %{name}!
       are_you_any: Are you any of these people?
       already_in_directory: You were already in the directory! Please review your details and let us know they're right.
       add_yourself: Add yourself to %{organization}
