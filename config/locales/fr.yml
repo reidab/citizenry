@@ -177,7 +177,7 @@ fr:
       title: Technologies
       hint: Séparés par des virgules SVP
     email_address:
-      label: Adresse email
+      label: Adresse email ou nom de compte
     bio:
       label: Bio
     project_list:
@@ -200,7 +200,7 @@ fr:
       company: Entreprise
       group: Groupe
       person: Personne
-      title: Guide collaboratif de la <span class="awesome">fabuleuse communauté technologique</span> de %{organization}
+      title: Un guide collaboratif de la <span class="awesome">fabuleuse communauté technologique</span> de %{organization}
       resource: Ressource
       upcoming_event: Evénement à venir
       on_calagator: " sur Calagator"
