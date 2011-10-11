@@ -6,6 +6,7 @@ en:
       join: Join this group
       leave: Leave this group
       add: + Add a Group
+      addit: Add this Group      
     new:
       title: New group
     edit:

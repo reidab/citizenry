@@ -12,4 +12,4 @@
         .faux_label= t('field.logo.faux_label')
         = image_tag @group.logo.url(:medium) if @group.logo.present?
     = f.input :logo, :label => t('field.logo.label'), :hint => t('field.logo.hint', {:size => 220})
-  = f.buttons
+  = f.commit_button :label => t('group.button.addit')

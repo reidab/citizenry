@@ -1,11 +1,24 @@
 ---
 fr:
+  models:
+    group: Groupe
+    groups: Groupes
+    people: Personnes
+    person: Personne
+    company: Entreprise
+    companies: Entreprises
+    project: Projet
+    projects: Projets
+    resource: Ressource
+    resources: Ressources
+    
   sign_in: Connexion
   group:
     new:
       title: Nouveau groupe
     button:
       add: + Ajouter un groupe
+      addit: Ajouter ce groupe
       leave: Quitter ce groupe
       join: Rejoindre ce groupe
     edit:
@@ -108,7 +121,7 @@ fr:
     tags: Tags
     employees: Employés
     model:
-      new: Nouveau %{modelname}
+      new: Ajouter %{modelname}
       edit: Modifier %{modelname}
       destroy: Supprimer %{modelname}
   sign_out: Déconnexion
@@ -278,3 +291,10 @@ fr:
       link: Ressources
     people:
       link: Personnes
+  formtastic:
+    :yes: 'Oui'
+    :no: 'Non'
+    :create: 'Créer %{model}'
+    :update: 'Modifier %{model}'
+    :submit: 'Envoyer %{model}'
+    :required: 'requis'
