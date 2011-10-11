@@ -9,8 +9,8 @@ fr:
     companies: Entreprises
     project: Projet
     projects: Projets
-    resource: Ressource
-    resources: Ressources
+    resource_link: Ressource
+    resources_links: Ressources
     
   sign_in: Connexion
   group:
