@@ -63,4 +63,4 @@ Running the Citizenry application:
 
   * Start the *Ruby on Rails* web application by running `rails server` (UNIX) or `ruby script/rails server` (Windows).
   * Open a web browser to <http://localhost:3000/> to use the `development` server.
-  * When done, stop the *Ruby on Rails* server `script/server` by pressing `CTRL-C`.
+  * To stop the server, go to the terminal that you ran `rails server` in and press `CTRL-C`.
