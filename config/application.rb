@@ -16,9 +16,11 @@ module Citizenry
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    config.eager_load_paths = ['app/mixins', 'app/models', 'app/controllers', 'app/helpers']
+    config.eager_load_paths = %w[mixins models controllers helpers].map do |name|
+      "#{config.root}/app/#{name}"
+    end
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
