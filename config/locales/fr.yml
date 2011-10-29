@@ -265,6 +265,7 @@ fr:
     button:
       add: + Ajouter une personne
       claim: C'est moi!
+      search: Recherche
     edit:
       title: Modifier une personne
     list:

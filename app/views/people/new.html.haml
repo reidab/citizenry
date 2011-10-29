@@ -20,7 +20,7 @@
               = check_box_tag check_box_name, '1', params[:authentications].present? ? params[:authentications][auth.id.to_s] : true
               = label_tag check_box_name, auth_label(auth)
           = text_field_tag(:q, params[:q])
-          = submit_tag("Search")
+          = submit_tag(t('people.button.search'))
         - if @rate_limit_status.present?
           = t('people.new.calls_remaining', :count => @rate_limit_status.remaining_hits.to_i)
           = t('people.new.limit_reset_time', :time => distance_of_time_in_words(Time.now, Time.parse(@rate_limit_status.reset_time)))

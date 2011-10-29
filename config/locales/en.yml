@@ -241,6 +241,7 @@ en:
     button:
       add: + Add Someone
       claim: That's me!
+      search: Search
     new:
       search_network: Search your networks to add someone
       limit_reset_time: limit resets in %{time}.
