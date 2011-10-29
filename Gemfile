@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
+gem 'rake', :require => false
 
 # You may need to add the following to your .bash_profile (or
 # similar):
