@@ -33,22 +33,31 @@ To learn how to use Vagrant with this project, please read the `VAGRANT.md` file
 You will need to install more software to do development on your local machine:
 
   1. [Install MySQL](http://www.mysql.org/), a database engine. Your operating system may already have it installed or offer it as a pre-built package.
-  2. [Install Bundler](http://gembundler.com/), a Ruby dependency management tool. You should run `gem install bundler` as root or an administrator after installing Ruby and RubyGems.
-  3. Install Bundler-managed gems, the actual libraries that this application uses, like Ruby on Rails. You should run `bundle`, which may take a long time to complete. This may fail because your computer is missing development libraries. Please read the error messages you get because they'll tell you what you're missing, and use a web search engine with the error message if you need help figuring out how to install that library. For example, on a modern Ubuntu distribution, you will need to install these packages:
+
+  1. If you're using RVM and Ruby 1.9, you *must* install some libraries manually because Bundler can't:
+
+    gem install linecache19 -- --with-ruby-include=$rvm_path/src/${RUBY_VERSION?}
+    gem install ruby-debug19 -- --with-ruby-include=$rvm_path/src/${RUBY_VERSION?}
+
+  1. [Install Bundler](http://gembundler.com/), a Ruby dependency management tool. You should run `gem install bundler` as root or an administrator after installing Ruby and RubyGems.
+
+  1. Install Bundler-managed gems, the actual libraries that this application uses, like Ruby on Rails. You should run `bundle`, which may take a long time to complete. This may fail because your computer is missing development libraries. Please read the error messages you get because they'll tell you what you're missing, and use a web search engine with the error message if you need help figuring out how to install that library. For example, on a modern Ubuntu distribution, you will need to install these packages:
 
         sudo apt-get install -y build-essential ruby ruby-dev irb libcurl4-openssl-dev libsqlite3-dev mysql-server libmysqlclient-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev sphinxsearch
 
-  4. Copy the sample database settings into place:
+  1. Copy the sample database settings into place:
 
         cp config/database-sample.yml config/databse.yml
 
-  5. Configure the database settings in the `config/database.yml` file as needed, see the instructions in the `config/database-sample.yml` file for details.
-  6. Copy the sample application settings into place:
+  1. Configure the database settings in the `config/database.yml` file as needed, see the instructions in the `config/database-sample.yml` file for details.
+
+  1. Copy the sample application settings into place:
 
         cp config/settings-sample.yml config/settings.yml
 
-  7. Configure the application settings in the `config/settings.yml` file as needed, see the instructions in the `config/settings-sample.yml` file for details.
-  8. Initialize your database, run `bundle exec rake db:create:all db:migrate db:test:prepare`
+  1. Configure the application settings in the `config/settings.yml` file as needed, see the instructions in the `config/settings-sample.yml` file for details.
+
+  1. Initialize your database, run `bundle exec rake db:create:all db:migrate db:test:prepare`
 
 Running the Citizenry application:
 
