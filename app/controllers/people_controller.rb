@@ -68,7 +68,7 @@ class PeopleController < InheritedResources::Base
 
   def claim
     if resource.user.present?
-      flash[:error] = "This person has already been claimed."
+      flash[:error] = t('error.person_already_claimed')
       redirect_to(:action => 'show') and return
     end
   end
@@ -83,7 +83,7 @@ class PeopleController < InheritedResources::Base
     authenticate_user! and return unless current_user
 
     unless current_user.admin? || current_user == resource.user
-      flash[:warning] = "You aren't allowed to edit this person."
+      flash[:warning] = t('warning.person_edit_not_allowed')
       redirect_to person_path(@person)
     end
   end

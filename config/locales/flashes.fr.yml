@@ -1,0 +1,18 @@
+--- 
+fr: 
+  notice: 
+    search_one_result: Voilà le seul résultat que nous ayons trouvé contenant <em>%{term}</em>. Profitez-en!
+    signed_in_successful: Connexion réussie.
+  success: 
+    account_removed: Votre compte %{account} a été retiré.
+    omniauth_account_added: Votre compte %{account} a été ajouté.
+  warning: 
+    person_edit_not_allowed: Vous n'êtes pas autorisé à modifier cette personne.
+  error: 
+    invalid_sort_params: Le tri n'a pu être réalisé car le paramètre de tri est invalide.
+    person_already_claimed: Cette personne a déjà été réclamée.
+    cookies_disabled: Il semble que votre navigateur soit configuré pour ne pas accepter les cookies. Veuillez les autoriser et réessayer.
+    record_not_found: Enregistrement non trouvé
+    email_exists: Un utilisateur avec l'email %{email} existe déjà, mais avec un service d'authentification différent. Essayez à nouveau avec l'option "Automatique".
+    access_denied: Accès refusé.
+    invalid_page_number: Impossible de paginer le résultat avec numéro de page invalide.

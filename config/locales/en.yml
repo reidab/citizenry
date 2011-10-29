@@ -1,8 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+---
 en:
-  hello: "Hello world"
   activerecord:
     attributes:
       company:
@@ -23,3 +22,279 @@ en:
         url: "URL"
       resource_link:
         url: "URL"
+
+  sign_in: Sign In
+  group:
+    button:
+      join: Join this group
+      leave: Leave this group
+      add: + Add a Group
+      addit: Add this Group      
+    new:
+      title: New group
+    edit:
+      title: Editing group
+    index:
+      title:
+        one: "%{tag} group"
+        other: "%{tag} groups"
+  company:
+    new:
+      title: New company
+    button:
+      add: + Add a Company
+      leave: Leave this company
+      join: Join this company
+    edit:
+      title: Editing company
+    index:
+      title:
+        one: "%{tag} company"
+        other: "%{tag} companies"
+  button:
+    back: Back
+    login_as_sample_user: Login as sample user
+    sign_in: sign_in
+    claim_people: Claim this person
+    edit: edit
+    delete: Delete
+    view_profile: View your profile
+    edit_profile: Edit your profile
+    remove: Remove
+    add_friend: Add a friend to the directory
+    show: Show
+    add_company: Add your company
+  authentication_method:
+    choose_automatically: Choose automatically
+  resource_links:
+    button:
+      add: + Add a Link
+    new:
+      title: Add a link
+    edit:
+      title: Editing %{name}
+    field:
+      url:
+        label: URL
+        description: Brief description
+    index:
+      title:
+        one: "%{tag} resource"
+        other: "%{tag} resources"
+  layout:
+    follow_link: Follow %{link} on Twitter
+    title: "%{name}: %{city}'s Tech Directory"
+    contact_link: Questions? Comments? Desires? Email %{email}
+    powered_by: Powered by %{powered_by}.
+    hosting_credit: Hosting thanks to %{host}.
+  misc:
+    name_on_provider: "%{name} on %{provider}"
+  list:
+    view_as:
+      list: List
+      title: View as
+      grid: Grid
+    sort_by: Sort by
+  flowery:
+    success7: Yeah
+    success8: Yay
+    warning1: Beware
+    error1: Egads
+    warning2: Warning
+    error2: Balderdash
+    warning3: Watch out
+    error3: Fiddlesticks
+    error4: Holy Toledo
+    success1: Yippee
+    notice1: Heads up
+    error5: Tarnation
+    success2: Hooray
+    notice2: Avast
+    error6: Damnation
+    error10: Uh oh
+    success3: Awesome
+    notice3: Notice
+    error7: Fooey
+    error11: Great Scott
+    success4: Yeehaw
+    error8: Boo
+    error12: Blisterin' barnacles
+    success5: Hoorah
+    error9: Aw shucks
+    success6: Huzzah
+  auth:
+    failure:
+      actions: "Please pick a login provider to continue:"
+      title: Ack! Something went wrong!
+      description: We received an error of some kind back from your login provider. You can try again with the same login provider or choose another service.
+  title:
+    technologies: Technologies
+    tags: Tags
+    employees: Employees
+    model:
+      new: New %{modelname}
+      edit: Edit %{modelname}
+      destroy: Destroy %{modelname}
+  sign_out: sign out
+  sign_in_join: Sign In / Join
+  pager:
+    show_all: Show all
+  project:
+    new:
+      title: New project
+    button:
+      add: + Add a Project
+      leave: Leave this project
+      join: Join this project
+    edit:
+      title: Editing project
+    index:
+      title:
+        one: "%{tag} project<span class='desktop-only'> or product</span>"
+        other: "%{tag} projects<span class='desktop-only'> & products</span>"
+  field:
+    name:
+      label: Name
+    address:
+      label: Address
+      hint: e.g. 115 NW 5th, Portland, OR
+    created_at:
+      label: Date added
+    location:
+      label: Location
+      hint: Neighborhood-level info preferred
+    company_list:
+      title: Companies
+    collaborators:
+      title: Collaborators
+    url:
+      label: Website
+      title: Links
+    tag_list:
+      label: Tags
+      title: Tags
+      hint: Comma separated, please
+    mailing_list:
+      label: Mailing list
+      hint: URL to list information
+    meeting_info:
+      label: Meeting info
+      title: Meeting Info
+    random:
+      label: Random
+    members:
+      title: Members
+    project_list:
+      title: Projects
+    bio:
+      label: Bio
+    email_address:
+      label: Email address
+    technology_list:
+      label: Technologies used (languages, frameworks, etc)
+      title: Technologies
+      hint: Comma separated, please
+    description:
+      label: Description
+    user:
+      blankoption: none
+    group_list:
+      title: Groups
+    email:
+      label: Email address
+      hint: We'll keep this secret
+    provider:
+      label: Add an account
+      add: Add it!
+      prompt: "Pick a service…"
+    import_url:
+      label: "Import a %{thing} from a URL…"
+    import_file:
+      label: "…or upload one from your computer."
+      hint: "Preferably %{size}px wide or larger"
+  site:
+    err404:
+      text: "The record you requested doesn't exist. Are you sure you asked for the right item? Maybe it was deleted? Maybe it was abducted by aliens? So sorry. Here's a creepy baby sloth to make you feel better:"
+    index:
+      group: Group
+      company: Company
+      person: Person
+      title: A community-edited guide to the <span class="awesome">awesome tech community</span> of %{organization}
+      on_calagator: " on Calagator"
+      upcoming_event: Upcoming event
+      resource: Resource
+      home_to: Home to
+      project_or_product: Project or Product
+      projects_and_products: Projects & Products
+    search:
+      no_result_try_again: You might want to try again.
+      no_result: Nothing here!
+      no_result_text: We couldn't find anything that matched your search for <strong>%{query}</strong>.
+      search_result: search result
+      for: " for &#8220;%{query}&#8221;"
+  hello: Hello world
+  people:
+    button:
+      add: + Add Someone
+      claim: That's me!
+    new:
+      search_network: Search your networks to add someone
+      limit_reset_time: limit resets in %{time}.
+      title: Add someone to %{organization}
+      search_using: "Search using:"
+      name_knows_known: "%{name} already knows %{known}!"
+      submit: Add %{name} to directory
+      no_service_linked: You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
+      calls_remaining:
+        one: You have one Twitter API call remaining;
+        other: You have %{count} Twitter API calls remaining;
+      add_provider: Add a %{provider} account
+    list:
+      on_twitter: "%{link} on Twitter"
+    edit:
+      title: Editing person
+    field:
+      tag_list:
+        label: Tags (interests, titles, personal descriptors)
+    claim:
+      title: Claiming %{name}
+      sign_in_to_provider: Sign in to %{provider} to continue
+      imported_from: This person was imported from %{provider}
+      provider_not_logged_in: but you aren't logged in using your %{provider} account.
+    show:
+      are_you_this_person: Are you %{name}?
+    index:
+      title:
+        one: "%{tag} person"
+        other: "%{tag} people"
+  alert:
+    are_you_sure: Are you sure?
+  user:
+    welcome:
+      hi: Hi %{name}!
+      are_you_any: Are you any of these people?
+      already_in_directory: You were already in the directory! Please review your details and let us know they're right.
+      add_yourself: Add yourself to %{organization}
+      review_details: Review your details
+      is_this_you: Might this be you?
+      is_this_you_q: Is this you?
+      is_this_you_hint: It looks like someone may have already added you to %{organization}.
+      provider: We imported as much info as we could from your %{provider} account. Look it over and hit the big button to get started.
+    index:
+      title: Users
+      person_id: "Person %{id}:"
+    home:
+      what_to_do: What would you like to do?
+      title: Hey there!
+      linked_accounts: Linked Accounts
+  main_nav:
+    projects_products:
+      link: Projects & Products
+    groups:
+      link: Groups
+    resources:
+      link: Resources
+    companies:
+      link: Companies
+    people:
+      link: People

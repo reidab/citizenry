@@ -1,6 +1,10 @@
 # environent-specific settings will be deep merged with the common hash, overriding values therein
 
 common:
+  # Language locale to use, see http://en.wikipedia.org/wiki/ISO_639-1 for list of valid names. The locale is used to lookup a file with the matching name, e.g. translation file "config/locales/en.yml" for locale "en":
+  locale: en
+  # Timezone to use by default, run `bundle exec rake time:zones:all` to list valid names:
+  time_zone: 'Pacific Time (US & Canada)'
   providers:
     - twitter
     - open_id

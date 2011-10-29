@@ -8,11 +8,11 @@ feature "A user with a linked person should be join and leave things:" do
         visit url_for(@thing)
         page.should have_selector "a.join"
 
-        click_link("Join this #{thing}")
+        click_link(I18n::t("#{thing}.button.join"))
         page.find('.section.members').should have_content @user.person.name
         page.should have_selector "a.leave"
 
-        click_link("Leave this #{thing}")
+        click_link(I18n::t("#{thing}.button.leave"))
         page.find('.section.members').should_not have_content @user.person.name
         page.should have_selector "a.join"
       end

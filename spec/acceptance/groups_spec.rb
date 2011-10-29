@@ -33,12 +33,12 @@ feature "The group index" do
 
   scenario "should display warning when told to paginate by invalid page number" do
     visit groups_path(:page => "asdf")
-    page.find("#flash .error").should have_content "paginate"
+    page.find("#flash .error").should have_content I18n.t('error.invalid_page_number')
   end
 
   scenario "should display warning when told to sort by invalid parameters" do
     visit groups_path(:order => "asdf")
-    page.find("#flash .error").should have_content "sort"
+    page.find("#flash .error").should have_content I18n.t('error.invalid_sort_params')
   end
 end
 
@@ -81,7 +81,7 @@ feature "The group delete button" do
       page.should have_content @first.name
 
       visit group_path(@first)
-      click_link "Delete"
+      click_link I18n::t("button.delete")
 
       visit groups_path
       page.should_not have_content @first.name
@@ -93,7 +93,7 @@ feature "The group delete button" do
     page.should have_content @first.name
 
     visit group_path(@first)
-    click_link "Delete"
+    click_link I18n::t("button.delete")
 
     current_path.should == new_user_session_path
 
@@ -144,7 +144,7 @@ feature "The group edit form" do
     visit edit_group_path(@first)
 
     current_path.should == new_user_session_path
-    page.should have_content "sign in"
+    page.should have_content I18n::t("sign_in")
   end
 
   scenario "should be accessible to users" do

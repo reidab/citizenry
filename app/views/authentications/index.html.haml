@@ -1,12 +1,12 @@
-%h1 Authentications
+%h1 t("Authentications")
 
 %table
   %tr
     %th 
-    %th Provider
-    %th Name
-    %th Account
-    %th Actions
+    %th t("Provider")
+    %th t("Name")
+    %th t("Account")
+    %th t("Actions")
   - for authentication in @authentications
     %tr
       %td
@@ -17,4 +17,4 @@
       %td= authentication.info[:nickname]
       %td
         - if @authentications.size > 1
-          = link_to "Remove", authentication_path(authentication), :confirm => 'Are you sure?', :method => :delete
+          = link_to t("Remove"), authentication_path(authentication), :confirm => t('Are you sure?'), :method => :delete
