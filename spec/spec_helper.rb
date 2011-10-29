@@ -1,3 +1,13 @@
+# Enable SimpleCov-based coverage when run through `rake simplecov` or `COVERAGE=1 rspec spec/models/person_spec.rb`. This really does need to be at the top of this file
+if ENV['COVERAGE']
+  begin
+    require 'simplecov'
+    SimpleCov.start('rails')
+  rescue LoadError
+    puts "COVERAGE: Can't require 'simplecov'. If you're on Ruby 1.8, use `rake spec:rcov` instead."
+  end
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)

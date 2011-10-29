@@ -79,9 +79,12 @@ group :development, :test do
   gem 'utility_belt'
 
   # -- [ Tools ] ---------------------------------------------------------------
-  gem 'rcov'
+  gem 'rcov', :platform => :mri_18, :require => false
+  gem 'simplecov', :platform => :mri_19, :require => false
+
   gem 'ruby-debug', :platform => :mri_18
   gem 'ruby-debug19', :platform => :mri_19
+
   gem 'annotate'
   gem "nifty-generators"
 end

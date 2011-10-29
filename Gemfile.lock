@@ -288,6 +288,10 @@ GEM
       json_pure
       rubyzip
     simple_oauth (0.1.5)
+    simplecov (0.5.4)
+      multi_json (~> 1.0.3)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     spork (0.8.5)
     sprockets (2.0.0)
       hike (~> 1.2)
@@ -374,6 +378,7 @@ DEPENDENCIES
   ruby-debug19
   ruby-openid (~> 2.1.8)
   sass (~> 3.1.4)
+  simplecov
   spork
   steak (= 2.0.0)
   thinking-sphinx (~> 2.0.1)
