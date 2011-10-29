@@ -66,9 +66,6 @@ module CustomizableSlug
       cattr_accessor :friendly_id_source_attribute
       self.friendly_id_source_attribute = attribute
 
-      # Accessor used by internals of "friendly_id" plugin.
-      attr_accessor :generate_new_slug
-
       # Activate "friendly_id" plugin.
       extend FriendlyId
       friendly_id :custom_slug_or_source, :use => :history, :slug_generator_class => ::CustomizableSlug::CustomizableSlugGenerator
@@ -91,17 +88,6 @@ module CustomizableSlug
   # Return the custom slug or the value of the attribute that contains the source value.
   def custom_slug_or_source
     @custom_slug.presence || "#{self.send(self.class.friendly_id_source_attribute)}"
-  end
-
-  # Method used by internals of "friendly_id" plugin.
-  def should_generate_new_friendly_id?
-    return false
-    # if @custom_slug.present? || self.generate_new_slug == "1"
-    if @custom_slug != self.sluggable.slug || self.generate_new_slug == "1"
-      super
-    else
-      ! self.slug
-    end
   end
 
   def validate_custom_slug
