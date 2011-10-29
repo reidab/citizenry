@@ -80,7 +80,7 @@ module ApplicationHelper
     }
 
     if flowery_vocabulary[type]
-      return "#{flowery_vocabulary[type].choice}!"
+      return "#{flowery_vocabulary[type].sample}!"
     else
       return type.to_s.titleize
     end
