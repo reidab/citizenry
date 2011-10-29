@@ -291,6 +291,12 @@ en:
       what_to_do: What would you like to do?
       title: Hey there!
       linked_accounts: Linked Accounts
+  authentications:
+    title: Authentications
+    provider: Provider
+    name: Name
+    account: Account
+    actions: Actions
   main_nav:
     projects_products:
       link: Projects & Products

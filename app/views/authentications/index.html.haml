@@ -1,18 +1,18 @@
-%h1 t("Authentications")
+%h1= t('authentications.title')
 
 %table
   %tr
     %th 
-    %th t("Provider")
-    %th t("Name")
-    %th t("Account")
-    %th t("Actions")
+    %th= t('authentications.provider')
+    %th= t('authentications.name')
+    %th= t('authentications.account')
+    %th= t('authentications.actions')
   - for authentication in @authentications
     %tr
       %td
         - if authentication.info[:image]
           %img{:src => authentication.info[:image], :width => 48, :height => 48}
-      %td=provider_icon(authentication.provider)
+      %td= provider_icon(authentication.provider)
       %td= authentication.info[:name]
       %td= authentication.info[:nickname]
       %td

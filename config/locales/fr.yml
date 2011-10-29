@@ -303,6 +303,12 @@ fr:
       what_to_do: Que souhaitez-vous faire?
       title: Bonjour vous!
       linked_accounts: Comptes liés
+  authentications:
+    title: Authentifications
+    provider: Service d'authentification
+    name: Nom
+    account: Compte
+    actions: Actions
   main_nav:
     groups:
       link: Groupes
