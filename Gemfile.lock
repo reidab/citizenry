@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/igal/paper_trail_manager.git
-  revision: 45ea70992d77ef9051377b7e6c0547317cd90228
-  specs:
-    paper_trail_manager (0.1.3)
-      paper_trail (~> 2.0)
-      rails (~> 3.0)
-      will_paginate (~> 3.0.pre2)
-
-GIT
   remote: https://github.com/pengwynn/linkedin.git
   revision: 5ba7d9adc3c4491abb0c1ef9c3cc0ca1ae7aff13
   tag: v0.2.2
@@ -113,7 +104,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
+      rack (>= 1.1.0, < 2)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
     ffi (1.0.9)
@@ -122,8 +113,8 @@ GEM
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
     foursquare2 (1.1.1)
-      faraday (< 0.8, >= 0.6)
-      faraday_middleware (< 0.8, >= 0.6)
+      faraday (>= 0.6, < 0.8)
+      faraday_middleware (>= 0.6, < 0.8)
       hashie (~> 1.0)
     fssm (0.2.7)
     haml (3.1.3)
@@ -206,6 +197,10 @@ GEM
     orm_adapter (0.0.5)
     paper_trail (2.3.3)
       rails (~> 3)
+    paper_trail_manager (0.1.4)
+      paper_trail (~> 2.0)
+      rails (~> 3.0)
+      will_paginate (~> 3.0.pre2)
     paperclip (2.4.1)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -284,7 +279,7 @@ GEM
     sprockets (2.0.0)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     steak (2.0.0)
       capybara (>= 1.0.0)
       rspec-rails (>= 2.5.0)
@@ -353,7 +348,7 @@ DEPENDENCIES
   nifty-generators
   omniauth (~> 0.2.6)
   paper_trail (~> 2)
-  paper_trail_manager!
+  paper_trail_manager
   paperclip (~> 2.3)
   rack-jsonp (~> 1.2.0)
   rails (= 3.1.0)
