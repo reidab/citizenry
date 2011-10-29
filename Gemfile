@@ -79,7 +79,8 @@ group :development, :test do
 
   # -- [ Tools ] ---------------------------------------------------------------
   gem 'rcov'
-  gem 'ruby-debug'
+  gem 'ruby-debug', :platform => :mri_18
+  gem 'ruby-debug19', :platform => :mri_19
   gem 'annotate'
   gem "nifty-generators"
 end
