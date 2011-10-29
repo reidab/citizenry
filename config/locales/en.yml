@@ -127,6 +127,10 @@ en:
       actions: "Please pick a login provider to continue:"
       title: Ack! Something went wrong!
       description: We received an error of some kind back from your login provider. You can try again with the same login provider or choose another service.
+    unknown:
+      title: "Eep! We couldn't find a way to log you in!"
+      explanation: "We tried to automatically pick a login provider for you based on your email address, but didn't find one."
+      instructions: "Please pick a login provider to continue:"
   title:
     technologies: Technologies
     tags: Tags

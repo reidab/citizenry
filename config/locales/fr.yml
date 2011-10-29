@@ -137,6 +137,11 @@ fr:
       actions: "Choisissez une méthode d'authentification pour continuer:"
       title: Oups, ça s'est pas passé comme prévu
       description: Nous avons reçu une erreur de la part de votre service d'authentification. Vous pouvez réessayer avec le même ou en utiliser un autre.
+    # TODO review this section's translation:
+    unknown:
+      title: "Oups, nous ne pouvions pas trouver un moyen de vous connecter!"
+      explanation: "Nous avons essayé de vous connecter automatiquement choisir un fournisseur pour vous en fonction de votre adresse email, mais ne pas en trouver un."
+      instructions: "S'il vous plaît choisir un fournisseur de connexion pour continuer:"
   title:
     technologies: Technologies
     tags: Tags
