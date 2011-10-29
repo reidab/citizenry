@@ -20,6 +20,7 @@ module Citizenry
       "#{config.root}/app/#{name}"
     end
 
+    $LOAD_PATH << "#{config.root}/lib"
     config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
