@@ -4,6 +4,7 @@ class CompaniesController < InheritedResources::Base
                   :resource => [:join, :leave]
 
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
+  before_filter :redirect_historical_slugs
 
   def tag
     @tag = params[:tag]

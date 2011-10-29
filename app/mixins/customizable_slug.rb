@@ -18,13 +18,40 @@
 #   m.slug # => "bar"
 module CustomizableSlug
 
+  # Override behavior of gem.
   require 'friendly_id/slug_generator'
   class CustomizableSlugGenerator < FriendlyId::SlugGenerator
+    # When generating the slug, if there's a conflict, stop immediately and mark the record as an error so they can pick something else.
+    #
+    # The gem's original behavior is to always generate a unique slug, even if this means adding a number to the end of it. This is bad design because if the user wants to be "foo", but that's taken, they'll end up as "foo-2", rather than being told to pick another slug.
     def generate
       if conflict?
         sluggable.errors.add(:custom_slug, "is not unique")
       end
-      normalized
+      return normalized
+    end
+
+    # Check history for conflicts, if using history.
+    #
+    # The gem's original behavior doesn't check history, so if you try to create a conflicting record, the #save will fail with a raw SQL uniqueness constraint error.
+    def conflicts
+      # If any regular conflicts are found, return them immediately.
+      scope = super
+      return scope if scope.count > 0
+
+      # If no regular conflicts are found, search the history.
+      if friendly_id_config.model_class.included_modules.include?(FriendlyId::History)
+        history = FriendlyId::Slug.where(:slug => normalized, :sluggable_type => self.sluggable.class.to_s)
+        unless self.sluggable.new_record?
+          # If record exists, exclude it from the history check.
+          history = history.where('sluggable_id <> ?', self.sluggable.id)
+        end
+
+        return history if history.count > 0
+      end
+
+      # No conflicts of any sort found.
+      return []
     end
   end
 
@@ -44,7 +71,7 @@ module CustomizableSlug
 
       # Activate "friendly_id" plugin.
       extend FriendlyId
-      friendly_id :custom_slug_or_source, :use => :slugged, :slug_generator_class => ::CustomizableSlug::CustomizableSlugGenerator
+      friendly_id :custom_slug_or_source, :use => :history, :slug_generator_class => ::CustomizableSlug::CustomizableSlugGenerator
 
       # Add validation for "custom_slug" field.
       validate :validate_custom_slug
@@ -68,7 +95,9 @@ module CustomizableSlug
 
   # Method used by internals of "friendly_id" plugin.
   def should_generate_new_friendly_id?
-    if @custom_slug.present? || self.generate_new_slug == "1"
+    return false
+    # if @custom_slug.present? || self.generate_new_slug == "1"
+    if @custom_slug != self.sluggable.slug || self.generate_new_slug == "1"
       super
     else
       ! self.slug
@@ -76,6 +105,9 @@ module CustomizableSlug
   end
 
   def validate_custom_slug
+    # Ensure that the slug starts with a letter or Rails will try to match it as a numeric ID. :(
+    #
+    # TODO Figure out what to do about slugs that really start with a digit, e.g. "37signals".
     if @custom_slug.present? && @custom_slug !~ /\D/
       self.errors.add(:custom_slug, "must contain a non-digit character")
     end

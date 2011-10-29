@@ -116,6 +116,22 @@ describe Person do
       bubba.errors[:custom_slug].should be_present
     end
 
+    it "should not allow duplicate slugs based on history" do
+      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+      bob.update_attribute(:custom_slug, "bob.smith")
+
+      bubba = Factory.build(:person, :name => "Bubba Jack", :custom_slug => "bob")
+      bubba.should_not be_valid
+      bubba.error_on(:custom_slug).first.should =~ /unique/
+    end
+
+    it "should not think an non-change update is a conflict" do
+      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+
+      bob.custom_slug = "bob"
+      bob.save!
+    end
+
     it "should not allow custom slugs without non-digits" do
       person = Factory.build(:person, :custom_slug => "99")
 
