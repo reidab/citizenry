@@ -76,6 +76,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Should a login be allowed as a specific user? Used by the AuthenticationsController and views. Stub this in specs!
+  def self.allow_login_as_specific_user?
+    Rails.env == "development"
+  end
+
+  # Wrapper for ApplicationController::allow_login_as_specific_user? because there's no way to stub it. Integration tests can't get to the instance and RSpec's #any_instance is broken.
+  def allow_login_as_specific_user?
+    return self.class.allow_login_as_specific_user?
+  end
+  helper_method :allow_login_as_specific_user?
+
   def page_title(value=nil)
     @page_title = value unless value.nil?
 
