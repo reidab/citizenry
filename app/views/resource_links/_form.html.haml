@@ -1,9 +1,9 @@
 = semantic_form_for(@resource_link) do |f|
   = display_errors_for @resource_link
   = f.inputs do
-    = f.input :name, :label => t('field.name.label')
-    = f.input :url, :label => t('resource_links.field.url.label')
-    = f.input :description, :label => t('resource_links.field.url.description')
+    = f.input :name
+    = f.input :url
+    = f.input :description
     = f.input :category
 
   = f.buttons do

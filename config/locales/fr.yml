@@ -1,38 +1,44 @@
 ---
 fr:
-  models:
-    group: Groupe
-    groups: Groupes
-    people: Personnes
-    person: Personne
-    company: Entreprise
-    companies: Entreprises
-    project: Projet
-    projects: Projets
-    resource_link: Ressource
-    resources_links: Ressources
+  # Common attribute names used on all models:
+  attributes:
+    address: "Adresse"
+    category: "Catégorie"
+    created_at: "Créé le"
+    description: "Description"
+    email: "Adresse email ou identifiant"
+    location: "Adresse"
+    logo_content_type: "Logo content-type" # TODO translate
+    logo_url: "Logo URL"
+    mailing_list: "Mailing list"
+    meeting_info: "Infos réunion"
+    name: "Nom"
+    photo_content_type: "Photo content-type" # TODO translate
+    photo_import_url: "Photo import URL" # TODO translate
+    tag_list: "Tags"
+    technology_list: "Technologies utilisées (langages, frameworks, etc)"
+    twitter: "Twitter"
+    updated_at: "Modifié le"
+    url: "Site web (URL)"
 
   activerecord:
+    models:
+      group: Groupe
+      groups: Groupes
+      people: Personnes
+      person: Personne
+      company: Entreprise
+      companies: Entreprises
+      project: Projet
+      projects: Projets
+      resource_link: Ressource
+      resources_links: Ressources
     attributes:
-      company:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
-      group:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
+      # Common attribute names provided by `attributes`.
       person:
-        photo_import_url: "Photo import URL"
-        photo_content_type: "Photo content-type"
-        url: "URL"
-      project:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
-      resource_link:
-        url: "URL"
-    
+        bio: "Bio"
+        location: "Localisation"
+
   sign_in: Connexion
   group:
     new:
@@ -81,10 +87,6 @@ fr:
       add: + Ajouter un lien
     edit:
       title: Modification de %{name}
-    field:
-      url:
-        label: URL
-        description: Brève description
     index:
       title:
         one: "ressource taggée %{tag}"
@@ -190,7 +192,7 @@ fr:
       label: "…ou choisissez sur votre disque dur."
       hint: "De préférence %{size}px de large ou plus"
     url:
-      label: Site web
+      label: Site web (URL)
       title: Liens
     members:
       title: Membres
@@ -251,6 +253,8 @@ fr:
       search_result: résultats de la recherche
   people:
     new:
+      email:
+        hint: "Utilisés pour s'inscrire dans le; nous allons garder ce secret"
       limit_reset_time: la limite est réinitialisée dans %{time}.
       search_network: Recherchez quelqu'un dans votre réseau
       submit: Ajouter %{name} à l'annuaire

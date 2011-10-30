@@ -2,26 +2,34 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 ---
 en:
+  # Common attribute names used on all models:
+  attributes:
+    address: "Address"
+    category: "Category"
+    created_at: "Created at"
+    description: "Description"
+    email: "Email address"
+    location: "Location"
+    logo_content_type: "Logo content-type"
+    logo_url: "Logo URL"
+    mailing_list: "Mailing list"
+    meeting_info: "Meeting information"
+    name: "Name"
+    photo_content_type: "Photo content-type"
+    photo_import_url: "Photo import URL"
+    tag_list: "Tags"
+    technology_list: "Technologies used (langages, frameworks, etc)"
+    twitter: "Twitter"
+    updated_at: "Updated at"
+    url: "Website (URL)"
+
   activerecord:
+    # models: # Defaults are fine for English.
     attributes:
-      company:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
-      group:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
+      # Common attribute names provided by `attributes`.
       person:
-        photo_import_url: "Photo import URL"
-        photo_content_type: "Photo content-type"
-        url: "URL"
-      project:
-        logo_content_type: "Logo content-type"
-        logo_url: "Logo URL"
-        url: "URL"
-      resource_link:
-        url: "URL"
+        bio: "Bio"
+        location: "Location"
 
   sign_in: Sign In
   group:
@@ -29,7 +37,7 @@ en:
       join: Join this group
       leave: Leave this group
       add: + Add a Group
-      addit: Add this Group      
+      addit: Add this Group
     new:
       title: New group
     edit:
@@ -243,6 +251,8 @@ en:
       claim: That's me!
       search: Search
     new:
+      email:
+        hint: "Used to sign in; we'll keep this secret"
       search_network: Search your networks to add someone
       limit_reset_time: limit resets in %{time}.
       title: Add someone to %{organization}

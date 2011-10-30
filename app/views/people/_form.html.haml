@@ -2,17 +2,16 @@
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
   = display_errors_for @person
   = f.inputs do
-    = f.input :name, :label => t('field.name.label')
-    -# = f.input :email, :label => t('field.email.label'), :hint => t('field.email.hint')
+    = f.input :name
     -# = f.input :twitter
     - unless @person.new_record?
       = f.semantic_fields_for :user do |u|
-        = u.input :email, :label => "Email address", :hint => "Used to sign in; we'll keep this secret"
-    = f.input :location, :label => t('field.location.label'), :hint => t('field.location.hint')
-    = f.input :url, :label => t('field.url.label')
-    = f.input :bio, :label => t('field.bio.label')
-    = f.input :tag_list, :as => :text, :label => t('people.field.tag_list.label'), :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
+        = u.input :email, :hint => t('people.new.email.hint')
+    = f.input :location, :hint => t('field.location.hint')
+    = f.input :url
+    = f.input :bio
+    = f.input :tag_list, :as => :text, :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
     = import_image_from_url_tags_for f, @person, :photo
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
     - if current_user.admin?

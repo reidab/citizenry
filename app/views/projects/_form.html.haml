@@ -1,10 +1,10 @@
 = semantic_form_for(@project, :html => {:multipart => true}) do |f|
   = display_errors_for @project
   = f.inputs do
-    = f.input :name, :label => t('field.name.label')
-    = f.input :url, :label => t('field.url.label')
-    = f.input :description, :label => t('field.description.label')
-    = f.input :tag_list, :as => :text, :label => t('field.tag_list.label'), :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => t('field.technology_list.label'), :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :name
+    = f.input :url
+    = f.input :description
+    = f.input :tag_list, :as => :text, :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
     = import_image_from_url_tags_for f, @project, :logo
   = f.buttons
