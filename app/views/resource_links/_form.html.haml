@@ -2,12 +2,12 @@
   = display_errors_for @resource_link
   = f.inputs do
     = f.input :name
-    = f.input :url, :label => "URL"
-    = f.input :description, :label => "Brief description"
+    = f.input :url
+    = f.input :description
     = f.input :category
 
   = f.buttons do
     = f.commit_button
     - unless @resource_link.new_record?
       %li
-        = link_to "Delete", resource_link_path(@resource), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+        = link_to t('button.delete'), resource_link_path(@resource), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'

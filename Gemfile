@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 gem 'rake', :require => false
+gem 'rails-i18n'
 
 # You may need to add the following to your .bash_profile (or
 # similar):
@@ -96,13 +97,12 @@ group :test do
   gem "mocha"
   gem "fakeweb"
   gem "factory_girl_rails"
-  gem 'faker'
+  gem 'faker', '>= 1.0'
   gem 'uuid'
   gem 'steak', '2.0.0'
   gem 'capybara', '~> 1.1.1'
   # gem 'capybara-envjs'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'spork'
 end

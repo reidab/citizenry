@@ -70,7 +70,7 @@ feature "The company delete button" do
       page.should have_content @first.name
 
       visit company_path(@first)
-      click_link "Delete"
+      click_link I18n::t('button.delete')
 
       visit companies_path
       page.should_not have_content @first.name
@@ -82,7 +82,7 @@ feature "The company delete button" do
     page.should have_content @first.name
 
     visit company_path(@first)
-    click_link "Delete"
+    click_link I18n::t('button.delete')
 
     current_path.should == new_user_session_path
 
@@ -131,7 +131,7 @@ feature "The company edit form" do
     visit edit_company_path(@first)
 
     current_path.should == new_user_session_path
-    page.should have_content "sign in"
+    page.should have_content I18n::t("sign_in")
   end
 
   scenario "should be accessible to users" do
