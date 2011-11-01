@@ -8,13 +8,13 @@ fr:
     description: "Description"
     email: "Adresse email ou identifiant"
     location: "Adresse"
-    logo_content_type: "Logo content-type" # TODO translate
-    logo_url: "Logo URL"
+    logo_content_type: "Format du logo"
+    logo_url: "URL du logo"
     mailing_list: "Mailing list"
     meeting_info: "Infos réunion"
     name: "Nom"
-    photo_content_type: "Photo content-type" # TODO translate
-    photo_import_url: "Photo import URL" # TODO translate
+    photo_content_type: "Format de la photo"
+    photo_import_url: "URL de la photo à importer"
     tag_list: "Tags"
     technology_list: "Technologies utilisées (langages, frameworks, etc)"
     twitter: "Twitter"
