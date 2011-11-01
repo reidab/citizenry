@@ -136,13 +136,13 @@ fr:
     error9: Zut
   auth:
     failure:
-      actions: "Choisissez une méthode d'authentification pour continuer:"
+      actions: "Choisissez un service d'authentification pour continuer:"
       title: Oups, ça s'est pas passé comme prévu
       description: Nous avons reçu une erreur de la part de votre service d'authentification. Vous pouvez réessayer avec le même ou en utiliser un autre.
     unknown:
       title: "Oups, nous n'avons pas réussi à trouver un moyen de vous connecter!"
       explanation: "Nous avons essayé de vous connecter en choisissant un service basé sur votre adresse email, mais aucun service ne semble correspondre."
-      instructions: "Merci de choisir un service de connexion pour continuer:"
+      instructions: "Merci de choisir un service d'authentification pour continuer:"
   title:
     technologies: Technologies
     tags: Tags
