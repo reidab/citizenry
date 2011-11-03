@@ -31,6 +31,8 @@ Citizenry::Application.routes.draw do
     member do
       get 'claim'
       get 'photo'
+      get 'contact', :action => :show_contact_form
+      post 'contact', :action => :submit_contact_form
     end
   end
   get '/people/tag/:tag(.:format)' => 'people#tag', :as => 'people_tagged', :constraints => {:tag => /.*/}

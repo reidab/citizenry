@@ -36,10 +36,27 @@ common:
     host: host
     host_url: host@domain.com
     logotype: <span>e</span>Logo
+  mailer:
+    # delivery specific settings should be set in environment configs below
+    # (you don't want to send out real emails in tests, do you?)
+    default_from: contact@domain.localhost
   search: sql
   mentoring: false # enables experimental mentor matching features
+
 development:
   auth_credentials:
     github:
       key: developmentkey
       secret: devseekrit!
+  mailer:
+    # passed to ActionMailer (overrides values in config/environments/*.rb)
+    # http://edgeguides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
+    raise_delivery_errors: false # ActionMailer::Base.raise_delivery_errors = false
+    #delivery_method: :smtp       # ActionMailer::Base.delivery_method = :smtp
+    #smtp_settings:               # ActionMailer::Base.smtp_settings = { ... }
+    #  domain: domain.org
+    #  address: smtp.domain.org
+    #  port: 25
+    #  user_name: smtp_user
+    #  password: smtp_password
+    #  authentication: plain
