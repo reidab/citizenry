@@ -1,0 +1,6 @@
+<%= @from_user.name ? "#{@from_user.name} (#{@from_user.email})" : @from_user.email %> has sent you a message.
+
+<%= @message %>
+
+---------------------------------
+This message was sent using the <%= SETTINGS['organization']['url'] %> contact mailer.
