@@ -16,7 +16,7 @@ module Citizenry
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    config.eager_load_paths = ['app/mixins', 'app/models', 'app/controllers', 'app/helpers']
+    config.eager_load_paths = ['app/mixins', 'app/models', 'app/controllers', 'app/mailers', 'app/helpers']
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
