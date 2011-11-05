@@ -83,4 +83,60 @@ describe Person do
       person.should be_valid
     end
   end
+
+  describe "when using slugs" do
+    before :each do
+      DatabaseCleaner.clean
+    end
+
+    it "should create a slug when saving a new record" do
+      person = Factory.build(:person, :name => "Bob Smith")
+      person.slug.should be_nil
+
+      person.save!
+      person.slug.should == "bob-smith"
+    end
+
+    it "should allow the slug to be overriden" do
+      person = Factory.create(:person)
+
+      person.custom_slug = "Bubba Jack"
+      person.save!
+      person.slug == "bubba-jack"
+    end
+
+    it "should not allow duplicate slugs" do
+      bob = Factory.create(:person, :name => "Bob Smith")
+      bubba = Factory.create(:person, :name => "Bubba Jack")
+
+      bubba.custom_slug = "bob-smith"
+      bob.slug.should == bubba.custom_slug
+
+      bubba.should_not be_valid
+      bubba.errors[:custom_slug].should be_present
+    end
+
+    it "should not allow duplicate slugs based on history" do
+      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+      bob.update_attribute(:custom_slug, "bob.smith")
+
+      bubba = Factory.build(:person, :name => "Bubba Jack", :custom_slug => "bob")
+      bubba.should_not be_valid
+      bubba.error_on(:custom_slug).first.should =~ /unique/
+    end
+
+    it "should not think an non-change update is a conflict" do
+      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+
+      bob.custom_slug = "bob"
+      bob.save!
+    end
+
+    it "should not allow custom slugs without non-digits" do
+      person = Factory.build(:person, :custom_slug => "99")
+
+      person.should_not be_valid
+      person.errors[:custom_slug].should be_present
+    end
+  end
 end

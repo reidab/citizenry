@@ -76,6 +76,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Should a login be allowed as a specific user? Used by the AuthenticationsController and views. Stub this in specs!
+  def self.allow_login_as_specific_user?
+    Rails.env == "development"
+  end
+
+  # Wrapper for ApplicationController::allow_login_as_specific_user? because there's no way to stub it. Integration tests can't get to the instance and RSpec's #any_instance is broken.
+  def allow_login_as_specific_user?
+    return self.class.allow_login_as_specific_user?
+  end
+  helper_method :allow_login_as_specific_user?
+
   def page_title(value=nil)
     @page_title = value unless value.nil?
 
@@ -102,4 +113,13 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :page_title
+
+  # Preserve old links to resources by redirecting to their current location.
+  #
+  # The "friendly_id" slug history tracks the resource's slug over time. If a resource is available under a newer slug name, redirect its "show" action to the current name. E.g. "/request/old-name" will redirect to "/request/new-name" if the slug was changed from "old-name" to "new-name".
+  def redirect_historical_slugs
+    if self.action_name == "show" && request.path != resource_path(resource)
+      return redirect_to resource, :status => :moved_permanently
+    end
+  end
 end

@@ -14,6 +14,8 @@ class Company < ActiveRecord::Base
 
   import_image_from_url_as :logo
 
+  customizable_slug_from :name
+
   has_many :company_projects
   has_many :projects, :through => :company_projects
 

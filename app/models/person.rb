@@ -17,6 +17,8 @@ class Person < ActiveRecord::Base
 
   import_image_from_url_as :photo, :gravatar => true
 
+  customizable_slug_from :name
+
   belongs_to :user
   accepts_nested_attributes_for :user, :update_only => true
 
@@ -74,6 +76,7 @@ class Person < ActiveRecord::Base
     end
     return person
   end
+
 end
 
 
