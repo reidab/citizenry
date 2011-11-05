@@ -16,10 +16,13 @@ class Authentication < ActiveRecord::Base
     scope "via_#{provider.to_sym}", where("provider = ?", provider)
   end
 
-  PROVIDER_OPTIONS = [[I18n.t('authentication_method.choose_automatically'), 'auto']] \
-                        + SETTINGS['providers'].map{|provider|
-                            [OmniAuth::Utils.camelize(provider), provider]
-                          }
+  def self.provider_options
+    @provider_options ||= \
+      [[I18n.t('authentication_method.choose_automatically'), 'auto']] \
+        + SETTINGS['providers'].map{|provider|
+            [OmniAuth::Utils.camelize(provider), provider]
+          }
+  end
 
   def api_client
     APIClient.for(self)
