@@ -40,6 +40,9 @@ class Person < ActiveRecord::Base
   scope :mentors, where('interested_mentor IS true')
   scope :mentees, where('interested_mentee IS true')
 
+  def email
+    read_attribute(:email) || user.presence.email
+  end
 
   private
 
