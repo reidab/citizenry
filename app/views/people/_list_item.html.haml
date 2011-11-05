@@ -11,8 +11,6 @@
     %p.bio= list_item.mentor_topics
   - elsif params[:mentees]
     %p.bio= list_item.mentee_topics
-  - else
-    %p.bio= strip_links(list_item.bio)
   - if context == :claim
     .actions
       = link_to t('people.button.claim'), claim_person_path(list_item), :class => 'claim'
