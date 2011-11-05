@@ -65,6 +65,7 @@ en:
   button:
     back: Back
     login_as_sample_user: Login as sample user
+    login_as_this_user: Login as this user
     sign_in: sign_in
     claim_people: Claim this person
     edit: edit
@@ -147,6 +148,7 @@ en:
       title: "Eep! We couldn't find a way to log you in!"
       explanation: "We tried to automatically pick a login provider for you based on your email address, but didn't find one."
       instructions: "Please pick a login provider to continue:"
+    user_not_found: "Can't find user record for id: %{user_id}"
   title:
     technologies: Technologies
     tags: Tags

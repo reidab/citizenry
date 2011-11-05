@@ -41,10 +41,20 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env["omniauth.auth"]
 
-    if self.login_as_sample_user?
-      user = User.find_or_create_sample
-      sign_in :user, user
-      return redirect_to(stored_location_for(:user) || welcome_users_path)
+    if self.allow_login_as_specific_user? && request.env["omniauth.auth"].nil?
+      if params["username"] == "sample"
+        user = User.find_or_create_sample
+        sign_in :user, user
+        return redirect_to(stored_location_for(:user) || welcome_users_path)
+      elsif params["user_id"].present?
+        begin
+          user = User.find(params["user_id"])
+          sign_in :user, user
+        rescue ActiveRecord::RecordNotFound
+          flash[:failure] = t('auth.user_not_found', :user_id => params['user_id'])
+        end
+        return redirect_to(stored_location_for(:user) || welcome_users_path)
+      end
     end
 
     if auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'].to_s)
@@ -90,11 +100,5 @@ class AuthenticationsController < ApplicationController
     @authentication.destroy
     flash[:success] = t('success.account_removed', {:account => OmniAuth::Utils.camelize(@authentication.provider)})
     redirect_to home_users_path
-  end
-
-  protected
-
-  def login_as_sample_user?
-    Rails.env == "development" && params["username"] == "sample" && request.env["omniauth.auth"].nil?
   end
 end
