@@ -365,7 +365,7 @@ feature "The person contact form" do
     visit contact_person_path(@first_person)
 
     current_path.should == new_user_session_path
-    page.should have_content "sign in"
+    page.should have_content I18n.t('sign_in')
   end
 
   scenario "should be accessible by users with or without person" do

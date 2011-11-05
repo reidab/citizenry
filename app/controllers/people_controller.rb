@@ -84,7 +84,7 @@ class PeopleController < InheritedResources::Base
     @person = Person.find(params[:id])
     @form = ContactForm.new(params[:contact_form])
     if @form.valid? && PersonMailer.message_from_user(@person, current_user, @form.message).deliver
-      flash[:notice] = "Message has been sent to #{@person.name}."
+      flash[:notice] = t('people.contact.message_has_been_sent', :name => @person.name)
       redirect_to(:action => 'show') and return
     else
       render 'contact'

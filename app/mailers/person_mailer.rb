@@ -6,7 +6,7 @@ class PersonMailer < ActionMailer::Base
     @from_user = from_user
     @message = message
 
-    subject = "#{SETTINGS['organization']['name']} Message From #{from_user.name || from_user.email}"
+    subject = t('people.contact.message_subject', :site_name => SETTINGS['organization']['name'], :from => (from_user.name || from_user.email))
     mail(:to => to_person.email, :reply_to => from_user.email, :subject => subject)
   end
 

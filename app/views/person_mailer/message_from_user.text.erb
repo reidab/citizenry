@@ -1,6 +1,6 @@
-<%= @from_user.name ? "#{@from_user.name} (#{@from_user.email})" : @from_user.email %> has sent you a message.
+<%= t('people.contact.has_sent_you_a_message', :from => (@from_user.name ? "#{@from_user.name} (#{@from_user.email})" : @from_user.email)) %>
 
 <%= @message %>
 
 ---------------------------------
-This message was sent using the <%= SETTINGS['organization']['url'] %> contact mailer.
+<%= t('people.contact.message_footer', :site_name => SETTINGS['organization']['name'], :site_url => SETTINGS['organization']['url']) %>

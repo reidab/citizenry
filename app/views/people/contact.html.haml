@@ -7,10 +7,10 @@
   = semantic_form_for(@form, :url => contact_person_path(@person, @form)) do |f|
     = display_errors_for @form
     = f.inputs do
-      %label From:
+      %label= t('people.contact.field.from.label') 
       = current_user.name ? "#{current_user.name} <#{current_user.email}>" : current_user.email
-      = f.input :message, :as => :text, :label => "Message"
+      = f.input :message, :as => :text
     = f.buttons do
-      = f.commit_button "Send Message"
+      = f.commit_button t('people.contact.button.send_message')
 
-  = link_to 'Back', person_path(@person)
+  = link_to t('button.back'), person_path(@person)
