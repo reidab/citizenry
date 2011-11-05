@@ -13,7 +13,7 @@
     = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
     = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
   - if mentoring_enabled?
-    = f.inputs :name => t('field.mentoring.title') do
+    = f.inputs :name => t('people.field.mentoring.title') do
       = f.input :interested_mentor
       = f.input :mentor_topics
       = f.input :interested_mentee
