@@ -165,45 +165,45 @@ en:
         one: "%{tag} project<span class='desktop-only'> or product</span>"
         other: "%{tag} projects<span class='desktop-only'> & products</span>"
   field:
-    name:
-      label: "Name" # people#index
-    created_at:
-      label: "Date added" # people#index
-    company_list:
-      title: "Companies" # people#show
     collaborators:
       title: "Collaborators" # groups#show
-    url:
-      title: "Links" # groups#show
-    tag_list:
-      title: "Tags" # people#show
+    company_list:
+      title: "Companies" # people#show
+    created_at:
+      label: "Date added" # people#index
+    email_address:
+      label: "Email address" # authentications#_login
+    group_list:
+      title: "Groups" # people#show
+    import_file:
+      label: "…or upload one from your computer." # site#_import_image_from_url_tags
+      hint: "Preferably %{size}px wide or larger" # site#_import_image_from_url_tags
+    import_url:
+      label: "Import a %{thing} from a URL…" # site#_import_image_from_url_tags
     mailing_list:
       label: "Mailing list" # groups#show
     meeting_info:
       title: "Meeting Info" # groups#show
-    random:
-      label: "Random" # people#show
     members:
       title: "Members" # group#show
+    name:
+      label: "Name" # people#index
     project_list:
       title: "Projects" # people#show
-    email_address:
-      label: "Email address" # authentications#_login
-    technology_list:
-      title: "Technologies" # people#show
-    user:
-      blankoption: "none" # people#_form
-    group_list:
-      title: "Groups" # people#show
     provider:
       label: Add an account
       add: Add it!
       prompt: "Pick a service…"
-    import_url:
-      label: "Import a %{thing} from a URL…" # site#_import_image_from_url_tags
-    import_file:
-      label: "…or upload one from your computer." # site#_import_image_from_url_tags
-      hint: "Preferably %{size}px wide or larger" # site#_import_image_from_url_tags
+    random:
+      label: "Random" # people#show
+    tag_list:
+      title: "Tags" # people#show
+    technology_list:
+      title: "Technologies" # people#show
+    url:
+      title: "Links" # groups#show
+    user:
+      blankoption: "none" # people#_form
   site:
     err404:
       text: "The record you requested doesn't exist. Are you sure you asked for the right item? Maybe it was deleted? Maybe it was abducted by aliens? So sorry. Here's a creepy baby sloth to make you feel better:"

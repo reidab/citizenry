@@ -169,43 +169,45 @@ fr:
         one: "%{tag} projet<span class='desktop-only'> ou produit</span>"
         other: "%{tag} projets<span class='desktop-only'> & produits</span>"
   field:
-    name:
-      label: "Nom" # people#index
-    created_at:
-      label: "Date de création" # people#index
     collaborators:
       title: "Collaborateurs" # projects#show
     company_list:
       title: "Entreprises" # people:show
-    import_url:
-      label: "importer une %{thing} depuis le web…" # site#_import_image_from_url_tags
+    created_at:
+      label: "Date de création" # people#index
+    email_address:
+      label: "Adresse email ou identifiant" # authentications#_login
+    group_list:
+      title: "Groupes" # people#show
     import_file:
       label: "…ou choisissez sur votre disque dur." # site#_import_image_from_url_tags
       hint: "De préférence %{size}px de large ou plus" # site#_import_image_from_url_tags
-    url:
-      title: "Liens" # groups#show
-    members:
-      title: "Membres" # groups#show
-    random:
-      label: "Aléatoire" # people#index
+    import_url:
+      label: "importer une %{thing} depuis le web…" # site#_import_image_from_url_tags
+    mailing_list:
+      label: "Mailing list" # groups#show
     meeting_info:
       title: "Infos réunion" # groups#show
-    tag_list:
-      title: "Tags" # people#show
-    technology_list:
-      title: "Technologies" # people#show
-    email_address:
-      label: "Adresse email ou identifiant" # authentications#_login
+    members:
+      title: "Membres" # groups#show
+    name:
+      label: "Nom" # people#index
     project_list:
       title: "Projets" # people#show
-    user:
-      blankoption: "aucun" # people#_form
     provider:
       label: Service d'authentification
       add: Ajouter!
       prompt: "Choisissez un service…"
-    group_list:
-      title: "Groupes" # people#show
+    random:
+      label: "Aléatoire" # people#index
+    tag_list:
+      title: "Tags" # people#show
+    technology_list:
+      title: "Technologies" # people#show
+    url:
+      title: "Liens" # groups#show
+    user:
+      blankoption: "aucun" # people#_form
   site:
     err404:
       text: "L'enregistrement que vous avez demandé n'existe pas. Etes-vous bien certain de votre demande? Il a été peut-être supprimé? Ou alors enlevé par les extraterrestres? Désolé. Voilà un bébé paresseux tout mimi pour vous consoler:"
