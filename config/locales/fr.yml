@@ -76,6 +76,7 @@ fr:
     claim_people: Réclamer cette personne
     sign_in: Connexion
     login_as_sample_user: Se connecter en tant qu'utilisateur exemple
+    login_as_this_user: "Se connecter en tant c'est utilisateur" # TODO review translation
     back: Retour
     edit: Modifier
     edit_profile: Modifier votre profil
@@ -148,6 +149,7 @@ fr:
       title: "Oups, nous n'avons pas réussi à trouver un moyen de vous connecter!"
       explanation: "Nous avons essayé de vous connecter en choisissant un service basé sur votre adresse email, mais aucun service ne semble correspondre."
       instructions: "Merci de choisir un service d'authentification pour continuer:"
+    user_not_found: "Can't find user record for id: %{user_id}" # TODO translate
   title:
     technologies: Technologies
     tags: Tags
