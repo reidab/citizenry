@@ -7,6 +7,7 @@ en:
     address: "Address"
     category: "Category"
     created_at: "Created at"
+    custom_slug: "URL slug"
     description: "Description"
     email: "Email address"
     location: "Location"
@@ -30,6 +31,8 @@ en:
       person:
         bio: "Bio"
         location: "Location"
+    errors:
+      must_start_with_non_digit: "must start with a non-digit"
 
   sign_in: Sign In
   group:
@@ -62,6 +65,7 @@ en:
   button:
     back: Back
     login_as_sample_user: Login as sample user
+    login_as_this_user: Login as this user
     sign_in: sign_in
     claim_people: Claim this person
     edit: edit
@@ -144,6 +148,7 @@ en:
       title: "Eep! We couldn't find a way to log you in!"
       explanation: "We tried to automatically pick a login provider for you based on your email address, but didn't find one."
       instructions: "Please pick a login provider to continue:"
+    user_not_found: "Can't find user record for id: %{user_id}"
   title:
     technologies: Technologies
     tags: Tags
@@ -178,6 +183,8 @@ en:
       label: "Date added" # people#index
     email_address:
       label: "Email address" # authentications#_login
+    example:
+      fragment: "e.g." # site#_custom_slug_field
     group_list:
       title: "Groups" # people#show
     import_file:
@@ -191,6 +198,8 @@ en:
       title: "Meeting Info" # groups#show
     members:
       title: "Members" # group#show
+    my:
+      fragment: "my" # site#_custom_slug_field
     name:
       label: "Name" # people#index
     project_list:

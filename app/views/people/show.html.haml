@@ -1,6 +1,8 @@
 .single_record.person{:class => @person.photo.file? ? 'with_image' : 'without_image'}
   = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person) if @person.photo.file?
+
   %h1= @person.name
+
   - if current_user && @person.user.blank? && current_person.nil?
     #claim_user
       %p= t('people.show.are_you_this_person', :name => @person.name)
@@ -53,6 +55,12 @@
         %p= @person.mentee_topics
 
   .record_actions
-    - if current_user && (current_user.admin? || current_user.person == @person)
+    - if display_record_controls?(@person)
       = link_to t('button.edit'), edit_person_path(@person), :class => 'edit'
       = link_to t('button.delete'), person_path(@person), :confirm => t('alert.are_you_sure'), :method => :delete, :class => 'delete'
+      - if display_login_as_control?(@person)
+        <br />
+    - if display_login_as_control?(@person)
+      %p.development_only.login_as_this_user
+        DEV:
+        = link_to t('button.login_as_this_user'), authentications_path(:user_id => @person.user.id), :method => :post

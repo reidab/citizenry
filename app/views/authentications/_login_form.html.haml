@@ -3,7 +3,7 @@
     = f.input :email, :label => t('field.email_address.label'), :input_html => {:size => nil, :autocorrect => "off", :autocapitalize => "off"}
     = f.input :provider, :label=>t('field.provider.label') , :collection => Authentication::PROVIDER_OPTIONS, :include_blank => false
     = f.commit_button t('button.sign_in')
-    - if display_sign_in_as_sample?
-      %p.development_only
+    - if allow_login_as_specific_user?
+      %p.development_only.login_as_sample_user
         DEV:
         = link_to t('button.login_as_sample_user'), authentications_path(:username => "sample"), :method => :post
