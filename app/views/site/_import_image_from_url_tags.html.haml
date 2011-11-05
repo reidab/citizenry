@@ -4,10 +4,14 @@
 -# * form: The Rails HTML form instance.
 -# * record: The ActiveRecord model instance.
 -# * field: The String or Symbol name of the field containing the image, e.g. :logo.
+-#
+-# # TODO Extract pixel size into model, the '220' below.
+- size = 220
+
 = form.inputs :name => record.class.human_attribute_name(field) do
   - if image_url = record.send("#{field}_import_url").presence || (record.send(field).file? && record.send(field).url(:medium))
     %li
-      = image_tag image_url, :size => '220'
+      = image_tag image_url, :size => size
 
-  = form.input "#{field}_import_url".to_sym, :label => "Import a #{record.class.human_attribute_name(field)} from a URL…"
-  = form.input "#{field}".to_sym, :label => "…or upload one from your computer.", :hint => "Preferably 220px wide or larger"
+  = form.input "#{field}_import_url".to_sym, :label => t('field.import_url.label', :thing => record.class.human_attribute_name(field))
+  = form.input "#{field}".to_sym, :label => t('field.import_file.label'), :hint => t('field.import_file.hint', :size => size)

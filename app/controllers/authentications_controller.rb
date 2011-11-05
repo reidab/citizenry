@@ -56,18 +56,18 @@ class AuthenticationsController < ApplicationController
     elsif current_user
       # Logged in user => give them a new authentication
       Authentication.create_from_omniauth!(omniauth, :user => current_user)
-      flash[:success] = "Your #{OmniAuth::Utils.camelize(omniauth['provider'])} account has been added."
+      flash[:success] = t('success.omniauth_account_added',{:account => OmniAuth::Utils.camelize(omniauth['provider'])})
       redirect_to home_users_path
     else
       # Entirely new user
 
       if session[:login_email].blank?
-        flash[:error] = "It looks like you might have cookies disabled. Please re-enable cookies and try again."
+        flash[:error] = t('error.cookies_disabled')
       elsif User.find_by_email(session[:login_email])
-        flash[:error] = "A user already exists for #{session[:login_email]}, but you're using a different login method than we've seen for them. Please try again with with the 'choose automatically' option selected."
+        flash[:error] = t('error.email_exists',{:email => session[:login_email]})
       else
         auth = Authentication.create_from_omniauth!(omniauth, :new_user => {:email => session[:login_email]})
-        flash[:notice] = "Signed in successfully."
+        flash[:notice] = t('notice.signed_in_successful')
       end
 
       session[:login_email] = nil
@@ -88,7 +88,7 @@ class AuthenticationsController < ApplicationController
       @authentication = current_user.authentications.find(params[:id])
     end
     @authentication.destroy
-    flash[:success] = "Your #{OmniAuth::Utils.camelize(@authentication.provider)} account has been removed."
+    flash[:success] = t('success.account_removed', {:account => OmniAuth::Utils.camelize(@authentication.provider)})
     redirect_to home_users_path
   end
 

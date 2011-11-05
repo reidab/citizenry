@@ -1,6 +1,6 @@
-<h1>Editing company</h1>
+<h1><%=t('company.edit.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to t('button.show'), @company %> |
+<%= link_to t('button.back'), companies_path %>

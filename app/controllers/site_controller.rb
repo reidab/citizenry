@@ -20,7 +20,7 @@ class SiteController < ApplicationController
       @results = SearchEngine.search(params[:query], {:match_mode => :extended}.merge(pagination_options))
 
       if request.format.html? && @results.length == 1
-        flash[:notice] = "This is the one result we found when searching for <em>#{params[:query]}</em>. Enjoy!".html_safe
+        flash[:notice] = t('notice.search_one_result',{:term=>params[:query]}).html_safe
         redirect_to @results.first and return
       end
 

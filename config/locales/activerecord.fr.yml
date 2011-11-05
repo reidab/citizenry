@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    models:
+      company: Entreprise
+      group: Groupe
+      person: Personne
+      resource: Ressource
+      

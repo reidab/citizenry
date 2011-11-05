@@ -39,9 +39,9 @@ feature "The person index" do
   scenario "should be able to switch between the list and the grid" do
     visit people_path
     page.should have_css "ul.people.resource_list li", :count => 3
-    click_link "Grid"
+    click_link I18n::t("list.view_as.grid")
     page.should have_css "ul.people.resource_grid li", :count => 3
-    click_link "List"
+    click_link I18n::t("list.view_as.list")
     page.should have_css "ul.people.resource_list li", :count => 3
   end
 end
@@ -110,7 +110,7 @@ feature "The person delete button" do
       page.should have_content @person.name
 
       visit person_path(@person)
-      click_link "Delete"
+      click_link I18n::t("button.delete")
 
       visit people_path
       page.should_not have_content @person.name
@@ -123,7 +123,7 @@ feature "The person delete button" do
       page.should have_content @first_person.name
 
       visit person_path(@first_person)
-      click_link "Delete"
+      click_link I18n::t("button.delete")
 
       visit people_path
       page.should_not have_content @first_person.name
@@ -140,7 +140,7 @@ feature "The person edit form" do
     visit edit_person_path(@first_person)
 
     current_path.should == new_user_session_path
-    page.should have_content "sign in"
+    page.should have_content I18n.t('sign_in')
   end
 
   scenario "should be accessible by the person's owner" do
