@@ -169,67 +169,43 @@ fr:
         one: "%{tag} projet<span class='desktop-only'> ou produit</span>"
         other: "%{tag} projets<span class='desktop-only'> & produits</span>"
   field:
-    address:
-      label: Adresse
-      hint: ex. 35 rue Gambetta, 31000 Toulouse
     name:
-      label: Nom
-    photo:
-      label: Photo
-    location:
-      label: Localisation
-      hint: De préférence le nom de votre quartier
+      label: "Nom" # people#index
     created_at:
-      label: Date de création
+      label: "Date de création" # people#index
     collaborators:
-      title: Collaborateurs
+      title: "Collaborateurs" # projects#show
     company_list:
-      title: Entreprises
+      title: "Entreprises" # people:show
     import_url:
-      label: "importer une %{thing} depuis le web…"
+      label: "importer une %{thing} depuis le web…" # site#_import_image_from_url_tags
     import_file:
-      label: "…ou choisissez sur votre disque dur."
-      hint: "De préférence %{size}px de large ou plus"
+      label: "…ou choisissez sur votre disque dur." # site#_import_image_from_url_tags
+      hint: "De préférence %{size}px de large ou plus" # site#_import_image_from_url_tags
     url:
-      label: Site web (URL)
-      title: Liens
+      title: "Liens" # groups#show
     members:
-      title: Membres
+      title: "Membres" # groups#show
     random:
-      label: Aléatoire
+      label: "Aléatoire" # people#index
     meeting_info:
-      label: Infos réunion
-      title: Infos réunion
-    mailing_list:
-      label: Mailing list
-      hint: URL d'inscription à votre list
+      title: "Infos réunion" # groups#show
     tag_list:
-      label: Tags
-      title: Tags
-      hint: Séparés par des virgules SVP
-    description:
-      label: Description
+      title: "Tags" # people#show
     technology_list:
-      label: Technologies utilisées (langages, frameworks, etc)
-      title: Technologies
-      hint: Séparés par des virgules SVP
+      title: "Technologies" # people#show
     email_address:
-      label: Adresse email ou identifiant
-    bio:
-      label: Bio
+      label: "Adresse email ou identifiant" # authentications#_login
     project_list:
-      title: Projets
+      title: "Projets" # people#show
     user:
-      blankoption: aucun
+      blankoption: "aucun" # people#_form
     provider:
       label: Service d'authentification
       add: Ajouter!
       prompt: "Choisissez un service…"
-    email:
-      label: Adresse email
-      hint: Elle ne sera pas communiquée
     group_list:
-      title: Groupes
+      title: "Groupes" # people#show
   site:
     err404:
       text: "L'enregistrement que vous avez demandé n'existe pas. Etes-vous bien certain de votre demande? Il a été peut-être supprimé? Ou alors enlevé par les extraterrestres? Désolé. Voilà un bébé paresseux tout mimi pour vous consoler:"
@@ -252,8 +228,6 @@ fr:
       search_result: résultats de la recherche
   people:
     new:
-      email:
-        hint: "Utilisés pour s'inscrire dans le; nous allons garder ce secret"
       limit_reset_time: la limite est réinitialisée dans %{time}.
       search_network: Recherchez quelqu'un dans votre réseau
       submit: Ajouter %{name} à l'annuaire
@@ -325,6 +299,17 @@ fr:
     people:
       link: Personnes
   formtastic:
+    hints:
+      tag_list: "Séparés par des virgules SVP"
+      technology_list: "Séparés par des virgules SVP"
+      person:
+        location: "De préférence le nom de votre quartier"
+      user:
+        email: "Utilisés pour s'inscrire dans le; nous allons garder ce secret"
+      company:
+        address: "ex. 35 rue Gambetta, 31000 Toulouse"
+      group:
+        mailing_list: "URL d'inscription à votre list"
     :yes: 'Oui'
     :no: 'Non'
     :create: 'Créer %{model}'

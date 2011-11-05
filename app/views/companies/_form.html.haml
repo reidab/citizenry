@@ -3,9 +3,9 @@
   = f.inputs do
     = f.input :name
     = f.input :url
-    = f.input :address, :as => :string, :hint => t('field.address.hint')
+    = f.input :address, :as => :string
     = f.input :description
-    = f.input :tag_list, :as => :text, :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
     = import_image_from_url_tags_for f, @company, :logo
   = f.buttons

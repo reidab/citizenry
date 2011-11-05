@@ -6,9 +6,9 @@
       %span.sorting
         %strong
           = t('list.sort_by') + ':'
-        = sort_link(:name) + ","
+        = sort_link(:name, :label => t('field.name.label')) + ","
         = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc) + ","
-        = sort_link(:random, :is_default => :asc)
+        = sort_link(:random, :label => t('field.random.label'), :is_default => :asc)
       %span.view
         %strong
           = t('list.view_as.title') + ':'

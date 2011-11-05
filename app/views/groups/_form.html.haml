@@ -3,10 +3,10 @@
   = f.inputs do
     = f.input :name
     = f.input :url
-    = f.input :mailing_list, :hint => t('field.mailing_list.hint')
+    = f.input :mailing_list
     = f.input :description
     = f.input :meeting_info
-    = f.input :tag_list, :as => :text, :hint => t('field.tag_list.hint'), :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :hint => t('field.technology_list.hint'), :input_html => {:class => 'tags'}
+    = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
     = import_image_from_url_tags_for f, @group, :logo
     = f.buttons

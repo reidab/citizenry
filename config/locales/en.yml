@@ -166,64 +166,44 @@ en:
         other: "%{tag} projects<span class='desktop-only'> & products</span>"
   field:
     name:
-      label: Name
-    address:
-      label: Address
-      hint: e.g. 115 NW 5th, Portland, OR
+      label: "Name" # people#index
     created_at:
-      label: Date added
-    location:
-      label: Location
-      hint: Neighborhood-level info preferred
+      label: "Date added" # people#index
     company_list:
-      title: Companies
+      title: "Companies" # people#show
     collaborators:
-      title: Collaborators
+      title: "Collaborators" # groups#show
     url:
-      label: Website
-      title: Links
+      title: "Links" # groups#show
     tag_list:
-      label: Tags
-      title: Tags
-      hint: Comma separated, please
+      title: "Tags" # people#show
     mailing_list:
-      label: Mailing list
-      hint: URL to list information
+      label: "Mailing list" # groups#show
     meeting_info:
-      label: Meeting info
-      title: Meeting Info
+      title: "Meeting Info" # groups#show
     random:
-      label: Random
+      label: "Random" # people#show
     members:
-      title: Members
+      title: "Members" # group#show
     project_list:
-      title: Projects
-    bio:
-      label: Bio
+      title: "Projects" # people#show
     email_address:
-      label: Email address
+      label: "Email address" # authentications#_login
     technology_list:
-      label: Technologies used (languages, frameworks, etc)
-      title: Technologies
-      hint: Comma separated, please
-    description:
-      label: Description
+      title: "Technologies" # people#show
     user:
-      blankoption: none
+      blankoption: "none" # people#_form
     group_list:
-      title: Groups
-    email:
-      label: Email address
-      hint: We'll keep this secret
+      title: "Groups" # people#show
     provider:
       label: Add an account
       add: Add it!
       prompt: "Pick a service…"
     import_url:
-      label: "Import a %{thing} from a URL…"
+      label: "Import a %{thing} from a URL…" # site#_import_image_from_url_tags
     import_file:
-      label: "…or upload one from your computer."
-      hint: "Preferably %{size}px wide or larger"
+      label: "…or upload one from your computer." # site#_import_image_from_url_tags
+      hint: "Preferably %{size}px wide or larger" # site#_import_image_from_url_tags
   site:
     err404:
       text: "The record you requested doesn't exist. Are you sure you asked for the right item? Maybe it was deleted? Maybe it was abducted by aliens? So sorry. Here's a creepy baby sloth to make you feel better:"
@@ -251,8 +231,6 @@ en:
       claim: That's me!
       search: Search
     new:
-      email:
-        hint: "Used to sign in; we'll keep this secret"
       search_network: Search your networks to add someone
       limit_reset_time: limit resets in %{time}.
       title: Add someone to %{organization}
@@ -319,3 +297,15 @@ en:
       link: Companies
     people:
       link: People
+  formtastic:
+    hints:
+      tag_list: "Comma separated, please"
+      technology_list: "Comma separated, please"
+      person:
+        location: "Neighborhood-level info preferred"
+      user:
+        email: "We'll keep this secret"
+      company:
+        address: "e.g. 115 NW 5th, Portland, OR"
+      group:
+        mailing_list: "URL to list information"
