@@ -78,7 +78,7 @@ private
 
   # Internal helper to shell out and run a query. Doesn't select a database.
   def mysql_query(sql)
-    "su -c \'/usr/bin/mysql -u root -e \"#{sql}\"\'"
+    "/usr/bin/mysql -u root -e '#{sql}'"
   end
 
   def mysql_version
