@@ -2,11 +2,11 @@
   = display_errors_for @group
   = f.inputs do
     = f.input :name
-    = f.input :url, :label => 'Website'
-    = f.input :mailing_list, :hint => "URL to list information"
+    = f.input :url
+    = f.input :mailing_list
     = f.input :description
     = f.input :meeting_info
-    = f.input :tag_list, :as => :text, :label => 'Tags', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :label => 'Technologies (languages, frameworks, etc)', :hint => "Comma separated, please", :input_html => {:class => 'tags'}
+    = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
+    = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
     = import_image_from_url_tags_for f, @group, :logo
-  = f.buttons
+    = f.buttons

@@ -1,20 +1,20 @@
-%h1 Authentications
+%h1= t('authentications.title')
 
 %table
   %tr
     %th 
-    %th Provider
-    %th Name
-    %th Account
-    %th Actions
+    %th= t('authentications.provider')
+    %th= t('authentications.name')
+    %th= t('authentications.account')
+    %th= t('authentications.actions')
   - for authentication in @authentications
     %tr
       %td
         - if authentication.info[:image]
           %img{:src => authentication.info[:image], :width => 48, :height => 48}
-      %td=provider_icon(authentication.provider)
+      %td= provider_icon(authentication.provider)
       %td= authentication.info[:name]
       %td= authentication.info[:nickname]
       %td
         - if @authentications.size > 1
-          = link_to "Remove", authentication_path(authentication), :confirm => 'Are you sure?', :method => :delete
+          = link_to t("Remove"), authentication_path(authentication), :confirm => t('Are you sure?'), :method => :delete

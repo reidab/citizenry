@@ -1,0 +1,2 @@
+= stylesheet_link_tag('http://fonts.googleapis.com/css?family=Comfortaa', :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
+= stylesheet_link_tag('compiled/custom', :media => force_mobile ? 'none' : 'all and (min-device-width: 961px)')
