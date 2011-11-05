@@ -25,7 +25,28 @@ en:
     url: "Website (URL)"
 
   activerecord:
-    # models: # Defaults are fine for English.
+    models:
+      authentication:
+        one: Authentication
+        other: Authentications
+      company:
+        one: Company
+        other: Companies
+      group:
+        one: Group
+        other: Groups
+      person:
+        one: Person
+        other: People
+      project:
+        one: Project
+        other: Projects
+      resource_link:
+        one: Ressource
+        other: Ressources
+      user:
+        one: User
+        other: Users
     attributes:
       # Common attribute names provided by `attributes`.
       person:

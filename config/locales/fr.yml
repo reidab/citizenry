@@ -24,18 +24,27 @@ fr:
 
   activerecord:
     models:
-      group: Groupe
-      groups: Groupes
-      people: Personnes
-      person: Personne
-      company: Entreprise
-      companies: Entreprises
-      project: Projet
-      projects: Projets
-      resource_link: Ressource
-      resources_links: Ressources
-      user: Utilisateur
-      users: Utilisateurs
+      authentication:
+        one: Authentification
+        other: Authentifications
+      company:
+        one: Entreprise
+        other: Entreprises
+      group:
+        one: Groupe
+        other: Groupes
+      person:
+        one: Personne
+        other: Personnes
+      project:
+        one: Projet
+        other: Projets
+      resource_link:
+        one: Ressource
+        other: Ressources
+      user:
+        one: Utilisateur
+        other: Utilisateurs
     attributes:
       # Common attribute names provided by `attributes`.
       person:

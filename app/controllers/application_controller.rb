@@ -93,24 +93,27 @@ class ApplicationController < ActionController::Base
   helper_method :allow_login_as_specific_user?
 
   def page_title(value=nil)
+    model_name = controller_name.singularize.underscore
+    model_name_singular_human = t("activerecord.models.#{model_name}.one", :default => controller_name.singularize.humanize).downcase
+
     @page_title = value unless value.nil?
 
     if @page_title.nil?
       @page_title ||=
         case action_name.to_sym
         when :index
-          t("activerecord.models.#{controller_name.downcase}" , :default => controller_name.humanize.titleize)
+          t("activerecord.models.#{model_name}.other" , :default => controller_name.humanize.titleize)
         when :new, :create
-          t("title.model.new",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}" , :default => controller_name.singularize.humanize.downcase))
+          t("title.model.new", :modelname => model_name_singular_human)
         when :edit, :update
-          t("title.model.edit",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
+          t("title.model.edit",:modelname => model_name_singular_human)
         when :destroy
-          t("title.model.destroy",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
+          t("title.model.destroy",:modelname => model_name_singular_human)
         else
           begin
             get_resource_ivar.name
           rescue Exception => e
-            t("activerecord.models.#{controller_name.singularize.downcase}")
+            model_name_singular_human.titleize
           end
         end
     else
