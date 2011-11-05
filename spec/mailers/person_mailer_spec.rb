@@ -16,6 +16,9 @@ describe PersonMailer do
     end
 
     it "will be addressed from the default from address" do
+      pending "No default from address was set, please add one in settings.yml" \
+        if SETTINGS['mailer']['default_from'].nil?
+
       mail.from.should == [SETTINGS['mailer']['default_from']]
     end
 
