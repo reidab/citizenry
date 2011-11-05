@@ -1,0 +1,6 @@
+<%= t('people.contact.has_sent_you_a_message', :from => (@from_user.name ? "#{@from_user.name} (#{@from_user.email})" : @from_user.email)) %>
+
+<%= @message %>
+
+---------------------------------
+<%= t('people.contact.message_footer', :site_name => SETTINGS['organization']['name'], :site_url => SETTINGS['organization']['url']) %>

@@ -15,6 +15,7 @@ en:
     logo_url: "Logo URL"
     mailing_list: "Mailing list"
     meeting_info: "Meeting information"
+    message: "Message"
     name: "Name"
     photo_content_type: "Photo content-type"
     photo_import_url: "Photo import URL"
@@ -299,6 +300,16 @@ en:
       provider_not_logged_in: but you aren't logged in using your %{provider} account.
     show:
       are_you_this_person: Are you %{name}?
+    contact:
+      message_has_been_sent: "Message has been sent to %{name}."
+      message_subject: "%{site_name}: Message from %{from}"
+      message_footer: "This message was sent from %{site_name} at %{site_url}."
+      has_sent_you_a_message: "%{from} has sent you a message"
+      field:
+        from: 
+          label: "From"
+      button:
+        send_message: "Send message"
     index:
       title:
         one: "%{tag} person"

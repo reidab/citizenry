@@ -1,0 +1,16 @@
+.single_record.person{:class => @person.photo.file? ? 'with_image' : 'without_image'}
+  = link_to image_tag(@person.photo.url(:medium), :class => 'person_photo'), photo_person_path(@person) if @person.photo.file?
+  %h1= @person.name
+  - if @person.location.present?
+    .location= @person.location
+
+  = semantic_form_for(@form, :url => contact_person_path(@person, @form)) do |f|
+    = display_errors_for @form
+    = f.inputs do
+      %label= t('people.contact.field.from.label') 
+      = current_user.name ? "#{current_user.name} <#{current_user.email}>" : current_user.email
+      = f.input :message, :as => :text
+    = f.buttons do
+      = f.commit_button t('people.contact.button.send_message')
+
+  = link_to t('button.back'), person_path(@person)

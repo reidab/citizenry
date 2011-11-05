@@ -16,7 +16,7 @@ module Citizenry
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    config.eager_load_paths = %w[mixins models controllers helpers].map do |name|
+    config.eager_load_paths = %w[mailers mixins models controllers helpers].map do |name|
       "#{config.root}/app/#{name}"
     end
 

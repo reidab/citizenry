@@ -4,7 +4,7 @@ class PeopleController < InheritedResources::Base
                   :resource => [:claim, :photo]
 
   include Localness
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:new, :create, :show_contact_form, :submit_contact_form]
   before_filter :require_owner_or_admin!, :only => [:edit, :update, :destroy]
   before_filter :pick_photo_input, :only => [:update, :create]
   before_filter :set_user_id_if_admin, :only => [:update, :create]
@@ -71,6 +71,23 @@ class PeopleController < InheritedResources::Base
     if resource.user.present?
       flash[:error] = t('error.person_already_claimed')
       redirect_to(:action => 'show') and return
+    end
+  end
+
+  def show_contact_form
+    @person = Person.find(params[:id])
+    @form = ContactForm.new
+    render 'contact'
+  end
+
+  def submit_contact_form
+    @person = Person.find(params[:id])
+    @form = ContactForm.new(params[:contact_form])
+    if @form.valid? && PersonMailer.message_from_user(@person, current_user, @form.message).deliver
+      flash[:notice] = t('people.contact.message_has_been_sent', :name => @person.name)
+      redirect_to(:action => 'show') and return
+    else
+      render 'contact'
     end
   end
 

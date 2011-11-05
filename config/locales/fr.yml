@@ -13,6 +13,8 @@ fr:
     logo_url: "URL du logo"
     mailing_list: "Mailing list"
     meeting_info: "Infos réunion"
+    # TODO Review translation
+    message: "Message"
     name: "Nom"
     photo_content_type: "Format de la photo"
     photo_import_url: "URL de la photo à importer"
@@ -282,6 +284,17 @@ fr:
       imported_from: Cette personne a été importée de %{provider}
       sign_in_to_provider: Connectez-vous sur %{provider} pour continuer
       provider_not_logged_in: mais vous n'êtes pas connecté avec votre compte %{provider}.
+    # TODO Review translation
+    contact:
+      message_has_been_sent: "Le message a été envoyé à %{name}."
+      message_subject: "%{site_name}: Un message de %{from}"
+      message_footer: "Ce message a été envoyé à partir %{site_name} au %{site_url}"
+      has_sent_you_a_message: "%{from} vous a envoyé un message"
+      field:
+        from:
+          label: "De"
+      button:
+        send_message: "Envoyer le message"
     field:
       mentoring:
         title: "Mentorat" # people#form

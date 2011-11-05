@@ -356,3 +356,41 @@ feature "The person edit form" do
   end
 end
 
+feature "The person contact form" do
+  background do
+    setup_people
+  end
+
+  scenario "should not be accessible by anonymous users" do
+    visit contact_person_path(@first_person)
+
+    current_path.should == new_user_session_path
+    page.should have_content I18n.t('sign_in')
+  end
+
+  scenario "should be accessible by users with or without person" do
+    signed_in_as(:user_with_person) do
+      visit contact_person_path(@first_person)
+      current_path.should == contact_person_path(@first_person)
+    end
+
+    signed_in_as(:user) do
+      visit contact_person_path(@first_person)
+      current_path.should == contact_person_path(@first_person)
+    end
+  end
+
+  scenario "should be able contact person" do
+    signed_in_as(:user) do
+      visit contact_person_path(@first_person)
+
+      within 'form.contact_form' do
+        fill_in 'contact_form_message', :with => 'Test message.'
+        find("input[name='commit']").click
+      end
+
+      page.should have_selector('.notice')
+    end
+  end
+
+end
