@@ -33,6 +33,8 @@ fr:
       projects: Projets
       resource_link: Ressource
       resources_links: Ressources
+      user: Utilisateur
+      users: Utilisateurs
     attributes:
       # Common attribute names provided by `attributes`.
       person:
