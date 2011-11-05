@@ -83,18 +83,18 @@ class ApplicationController < ActionController::Base
       @page_title ||=
         case action_name.to_sym
         when :index
-          t("models.#{controller_name.downcase}" , :default => controller_name.humanize.titleize)
+          t("activerecord.models.#{controller_name.downcase}" , :default => controller_name.humanize.titleize)
         when :new, :create
-          t("title.model.new",:modelname => t("models.#{controller_name.singularize.downcase}" , :default => controller_name.singularize.humanize.downcase))
+          t("title.model.new",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}" , :default => controller_name.singularize.humanize.downcase))
         when :edit, :update
-          t("title.model.edit",:modelname => t("models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
+          t("title.model.edit",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
         when :destroy
-          t("title.model.destroy",:modelname => t("models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
+          t("title.model.destroy",:modelname => t("activerecord.models.#{controller_name.singularize.downcase}", :default => controller_name.singularize.humanize.downcase))
         else
           begin
             get_resource_ivar.name
           rescue Exception => e
-            controller_name.singularize.humanize.titleize
+            t("activerecord.models.#{controller_name.singularize.downcase}")
           end
         end
     else
