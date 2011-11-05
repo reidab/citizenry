@@ -103,6 +103,11 @@ en:
       title: View as
       grid: Grid
     sort_by: Sort by
+    mentor_filter:
+      title: Show
+      all: All
+      mentors: Mentors
+      mentees: Mentees
   flowery:
     success7: Yeah
     success8: Yay
@@ -249,6 +254,12 @@ en:
     edit:
       title: Editing person
     field:
+      mentoring:
+        title: "Mentoring" # people#form
+      mentor_topics:
+        title: "Topics I can mentor"
+      mentee_topics:
+        title: "Topics I would like mentoring in"
       tag_list:
         label: Tags (interests, titles, personal descriptors)
     claim:
@@ -262,6 +273,13 @@ en:
       title:
         one: "%{tag} person"
         other: "%{tag} people"
+      mentor_title:
+        one: "interested mentor"
+        other: "interested mentors"
+      mentee_title:
+        one: "interested mentee"
+        other: "interested mentees"
+
   alert:
     are_you_sure: Are you sure?
   user:
@@ -300,11 +318,21 @@ en:
     people:
       link: People
   formtastic:
+    labels:
+      person:
+        interested_mentor: "I am interested in mentoring"
+        mentor_topics: "I am interested in mentoring these topics"
+        interested_mentee: "I am interested in being mentored"
+        mentee_topics: "I am interested in being mentored in these topics"
     hints:
       tag_list: "Comma separated, please"
       technology_list: "Comma separated, please"
       person:
         location: "Neighborhood-level info preferred"
+        interested_mentor: "Would you like to mentor other people?"
+        mentor_topics: "Comma separated, please"
+        interested_mentee: "Would you like to be mentored?"
+        mentee_topics: "Comma separated, please"
       user:
         email: "We'll keep this secret"
       company:

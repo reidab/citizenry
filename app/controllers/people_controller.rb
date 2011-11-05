@@ -76,7 +76,11 @@ class PeopleController < InheritedResources::Base
   protected
 
   def collection
-    @people ||= filter_sort_and_paginate(end_of_association_chain, true)
+    people = end_of_association_chain
+    people = people.mentors if mentoring_enabled? && params[:mentors]
+    people = people.mentees if mentoring_enabled? && params[:mentees]
+
+    @people ||= filter_sort_and_paginate(people, true)
   end
 
   def require_owner_or_admin!
