@@ -35,8 +35,8 @@ class Person < ActiveRecord::Base
 
   scope :claimed, where('user_id IS NOT null')
   scope :unclaimed, where('user_id IS null')
-  scope :mentor, where('interested_mentor IS true')
-  scope :mentee, where('interested_mentee IS true')
+  scope :mentors, where('interested_mentor IS true')
+  scope :mentees, where('interested_mentee IS true')
 
 
   private
