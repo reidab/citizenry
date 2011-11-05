@@ -12,6 +12,12 @@
     = f.input :bio
     = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
     = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
+  - if mentoring_enabled?
+    = f.inputs :name => t('people.field.mentoring.title') do
+      = f.input :interested_mentor
+      = f.input :mentor_topics
+      = f.input :interested_mentee
+      = f.input :mentee_topics
     = import_image_from_url_tags_for f, @person, :photo
     = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
     - if current_user.admin?

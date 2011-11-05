@@ -1,11 +1,11 @@
 - content_for(:section_header) do
-  .section_header{:class => 'resources'}
+  .section_header.resources
     %h1= semantic_pluralize(ResourceLink.count, t('resource_links.index.title.one', :tag => @tag).strip.titleize, t('resource_links.index.title.other', :tag => @tag).strip.titleize)
     = link_to t('resource_links.button.add'), url_for(:action => :new), :class => 'new'
 
 - @resource_links.keys.sort.each do |category|
   %h2 #{category}
-  %ul{:class => 'resources'}
+  %ul.resources
     - @resource_links[category].sort_by(&:name).each do |resource|
       %li{:id => resource.id}
         %a{:href => normalize_url(resource.url)}

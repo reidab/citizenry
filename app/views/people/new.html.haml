@@ -27,7 +27,7 @@
 
 
       - if @found_people.present?
-        %ul{:id => 'people_search_results', :class => 'resource_list people'}
+        %ul#people_search_results.resource_list.people
           - @found_people.each do |person|
             %li{:class => [person.new_record? ? person.imported_from_provider : 'existing']}
               - if (photo_url = person.photo_import_url || person.photo.url).present?
@@ -37,8 +37,8 @@
               - if person.imported_from_provider == 'twitter' && person.imported_from_screen_name.present?
                 %strong
                   = t('people.list.on_twitter', :link => twitter_link(person.imported_from_screen_name)).html_safe
-              %p{:class=>'location'}= person.location
-              %p{:class=>'bio'}= person.bio
+              %p.location= person.location
+              %p.bio= person.bio
               - if !person.new_record?
                 .existing_user_label
                   = t('people.new.name_knows_known', :name => SETTINGS['organization']['name'], :known => person.name)

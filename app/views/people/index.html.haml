@@ -1,6 +1,6 @@
 - content_for(:section_header) do
-  .section_header{:class => 'people'}
-    %h1= semantic_pluralize(@people.respond_to?(:total_entries) ? @people.total_entries : @people.size, t('people.index.title.one', :tag => @tag).strip.titleize, t('people.index.title.other', :tag => @tag).strip.titleize)
+  .section_header.people
+    %h1= people_list_title(@people, @tag)
     = link_to t('people.button.add'), new_person_path, :class => 'new', :id => 'new_person'
     #view_options
       %span.sorting
@@ -15,6 +15,14 @@
         = link_to_unless_current t('list.view_as.list'), people_path(:page => params[:page], :column => params[:column], :order => params[:order])
         = "|"
         = link_to_unless_current t('list.view_as.grid'), grid_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+      %span.show
+        %strong= t('list.mentor_filter.title') + ':'
+        = link_to_unless_current t('list.mentor_filter.all'), people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+        = "|"
+        = link_to_unless_current t('list.mentor_filter.mentors'), mentors_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+        = "|"
+        = link_to_unless_current t('list.mentor_filter.mentees'), mentees_people_path(:page => params[:page], :column => params[:column], :order => params[:order])
+
 
 - if @view == :grid
   = render :partial => 'grid', :object => @people

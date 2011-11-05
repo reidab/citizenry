@@ -41,6 +41,7 @@ common:
     host_url: host@domain.com
     logotype: <span>e</span>Logo
   search: sql
+  mentoring: false # enables experimental mentor matching features
 development:
   auth_credentials:
     github:

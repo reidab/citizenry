@@ -4,9 +4,13 @@
   %h3
     =link_to list_item.name, person_path(list_item)
   - if list_item.twitter.present?
-    %span{:class => 'twitter_link'}
+    %span.twitter_link
       = t('people.list.on_twitter', :link => twitter_link(list_item.twitter)).html_safe
-  %p{:class=>'bio'}= strip_links(list_item.bio)
+  %p.bio= strip_links(list_item.bio)
+  - if params[:mentors]
+    %p.bio= list_item.mentor_topics
+  - elsif params[:mentees]
+    %p.bio= list_item.mentee_topics
   - if context == :claim
     .actions
       = link_to t('people.button.claim'), claim_person_path(list_item), :class => 'claim'

@@ -1,5 +1,5 @@
 - content_for(:section_header) do
-  .section_header{:class => 'groups'}
+  .section_header.groups
     %h1= semantic_pluralize(@groups.respond_to?(:total_entries) ? @groups.total_entries : @groups.size, t('group.index.title.one',{:tag => @tag}).strip.titleize, t('group.index.title.other',{:tag => @tag}).strip.titleize)
     = link_to t('group.button.add'), new_group_path, :class => 'new'
     #view_options
