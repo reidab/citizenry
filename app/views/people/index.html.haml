@@ -1,5 +1,5 @@
 - content_for(:section_header) do
-  .section_header{:class => 'people'}
+  .section_header.people
     %h1= people_list_title(@people, @tag)
     = link_to t('people.button.add'), new_person_path, :class => 'new', :id => 'new_person'
     #view_options
