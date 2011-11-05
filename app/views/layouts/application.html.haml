@@ -68,7 +68,7 @@
           /%li= link_to "Events", 'http://calagator.org', :class => 'events'
 
         %form{:action => search_path, :method => :get, :id => 'global_search'}
-          %input{ :type => 'search', :placeholder => 'Search…', :name => 'q', :value => params[:query], |
+          %input{ :type => 'search', :placeholder => t('field.search.placeholder'), :name => 'q', :value => params[:query], |
                   :results => 10, :autosave => 'citizenry_global_search'}
 
       - if current_user.blank?

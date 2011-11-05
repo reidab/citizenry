@@ -200,6 +200,8 @@ fr:
       prompt: "Choisissez un service…"
     random:
       label: "Aléatoire" # people#index
+    search:
+      placeholder: "Recherche…" # layout
     tag_list:
       title: "Tags" # people#show
     technology_list:

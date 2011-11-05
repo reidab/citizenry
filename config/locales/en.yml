@@ -196,6 +196,8 @@ en:
       prompt: "Pick a service…"
     random:
       label: "Random" # people#show
+    search:
+      placeholder: "Search…"
     tag_list:
       title: "Tags" # people#show
     technology_list:
