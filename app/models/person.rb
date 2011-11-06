@@ -41,7 +41,7 @@ class Person < ActiveRecord::Base
   scope :mentees, where('interested_mentee IS true')
 
   def email
-    read_attribute(:email) || user.presence.email
+    read_attribute(:email) || user.try(:email)
   end
 
   private

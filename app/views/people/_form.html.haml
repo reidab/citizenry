@@ -18,9 +18,9 @@
       = f.input :mentor_topics
       = f.input :interested_mentee
       = f.input :mentee_topics
-    = import_image_from_url_tags_for f, @person, :photo
-    = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
-    - if current_user.admin?
-      = f.input :user, :include_blank => "-- #{t('field.user.blankoption')} --", :label_method => :label_for_admin
-    = hidden_field_tag :form_context, context
+  = import_image_from_url_tags_for f, @person, :photo
+  = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
+  - if current_user.admin?
+    = f.input :user, :include_blank => "-- #{t('field.user.blankoption')} --", :label_method => :label_for_admin
+  = hidden_field_tag :form_context, context
   = f.buttons
