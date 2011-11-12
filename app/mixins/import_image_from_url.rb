@@ -42,7 +42,8 @@ module ImportImageFromURL
       }
 
       # Activate PaperClip attachment on field
-      self.has_attached_file(field, :styles => leaf[:thumbnail_styles])
+      options = { :styles => leaf[:thumbnail_styles] }.merge(SETTINGS['image_upload'].symbolize_keys)
+      self.has_attached_file(field, options)
 
       # Validate size of attachment
       self.validates_attachment_size(field, :less_than => leaf[:maximum_size])
