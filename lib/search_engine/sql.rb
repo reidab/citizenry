@@ -22,14 +22,16 @@ class SearchEngine::Sql < SearchEngine::Base
         order = opts[:order] || "LOWER(#{self.table_name}.name) ASC"
 
         pagination_options = {}
-        pagination_options[:page] = opts.delete(:page) if opts[:page].present?
+        pagination_options[:page] = opts[:page].present? ? opts.delete(:page) : 1
         pagination_options[:per_page] = opts.delete(:per_page) if opts[:per_page].present?
 
         conditions_text = fields.map{|field| "LOWER(#{self.table_name}.#{field}) LIKE :like_query"}.join(" OR ")
         conditions = [conditions_text, {:like_query => "%#{query.downcase}%"}]
 
-        results = self.all(:conditions => conditions, :order => order, :limit => limit)
+        results = self
         results = results.paginate(pagination_options) unless pagination_options.empty?
+        results = results.limit(limit) if limit.present?
+        results = results.all(:conditions => conditions, :order => order)
 
         return results
       end
