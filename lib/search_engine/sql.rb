@@ -50,8 +50,17 @@ class SearchEngine::Sql < SearchEngine::Base
   end
 
   def self.search(query, options = {})
-    SearchEngine.searchable_models.map {|model|
-      model.to_s.constantize.search(query, options)
-    }.flatten
+    SearchEngine.searchable_models.inject(SearchCollection.new) {|collection, model|
+      results = model.to_s.constantize.search(query, options)
+      collection.total_entries += results.total_entries
+      collection.concat(results)
+    }
+  end
+
+  class SearchCollection < Array
+    attr_accessor :total_entries
+    def initialize
+      self.total_entries = 0
+    end
   end
 end
