@@ -27,7 +27,7 @@ gem 'devise', "~> 1.4.5"
 gem 'omniauth', "~> 0.2.6"
 
 # Automatic login provider selection
-gem 'redfinger', '~> 0.1.0', :git => "https://github.com/reidab/redfinger.git"
+gem 'redfinger', '~> 0.1.0', :git => "https://github.com/intridea/redfinger.git"
 gem 'ruby-openid', '~> 2.1.8'
 gem 'net-dns', '~> 0.6.1', :require => 'net/dns/resolver'
 
