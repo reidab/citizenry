@@ -47,7 +47,7 @@ You will need to install more software to do development on your local machine:
 
   1. Copy the sample database settings into place:
 
-        cp config/database-sample.yml config/databse.yml
+        cp config/database-sample.yml config/database.yml
 
   1. Configure the database settings in the `config/database.yml` file as needed, see the instructions in the `config/database-sample.yml` file for details.
 
