@@ -27,15 +27,15 @@ gem 'devise', "~> 1.4.5"
 gem 'omniauth', "~> 0.2.6"
 
 # Automatic login provider selection
-gem 'redfinger', '~> 0.1.0', :git => "https://github.com/reidab/redfinger.git"
+gem 'redfinger', '~> 0.1.0', :git => "git://github.com/reidab/redfinger.git"
 gem 'ruby-openid', '~> 2.1.8'
 gem 'net-dns', '~> 0.6.1', :require => 'net/dns/resolver'
 
 # Client libraries for authenticated services
 # TODO: Upgrade these to newer versions after omniauth 0.3 upgrade
 gem 'twitter', '~> 1.6.0'
-gem 'linkedin', '~> 0.2.2', :git => "https://github.com/pengwynn/linkedin.git", :tag => 'v0.2.2'
-gem 'mogli', '~>0.0.25', :git => "https://github.com/reidab/mogli.git" # facebook
+gem 'linkedin', '~> 0.2.2', :git => "git://github.com/pengwynn/linkedin.git", :tag => 'v0.2.2'
+gem 'mogli', '~>0.0.25', :git => "git://github.com/reidab/mogli.git" # facebook
 gem 'foursquare2', '~>1.1.0'   # https://gist.github.com/419219 <- github oauth docs!
 
 #--[ Search ]-------------------------------------------------------------------
@@ -53,7 +53,7 @@ gem 'friendly_id', '4.0.0.beta14'
 
 gem 'paper_trail', '~> 2'
 gem 'paper_trail_manager'
-# gem 'paper_trail_manager', :git => 'https://github.com/igal/paper_trail_manager.git'
+# gem 'paper_trail_manager', :git => 'git://github.com/igal/paper_trail_manager.git'
 # gem 'paper_trail_manager', :path => '../paper_trail_manager'
 
 #--[ View ]---------------------------------------------------------------------
