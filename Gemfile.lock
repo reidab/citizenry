@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/pengwynn/linkedin.git
+  remote: git://github.com/pengwynn/linkedin.git
   revision: 5ba7d9adc3c4491abb0c1ef9c3cc0ca1ae7aff13
   tag: v0.2.2
   specs:
@@ -8,14 +8,14 @@ GIT
       oauth (~> 0.4.0)
 
 GIT
-  remote: https://github.com/reidab/mogli.git
+  remote: git://github.com/reidab/mogli.git
   revision: bf9cc73404b66c5812f07fd542af2f373b7a3e76
   specs:
     mogli (0.0.25)
       httparty (>= 0.4.3)
 
 GIT
-  remote: https://github.com/reidab/redfinger.git
+  remote: git://github.com/reidab/redfinger.git
   revision: 46be5f9695be4b3e2b38b21603570dfaa4a5aeb4
   specs:
     redfinger (0.1.0)
