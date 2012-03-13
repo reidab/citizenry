@@ -23,25 +23,26 @@ gem "json", "~> 1.6.1"
 gem 'addressable', '~> 2.2.6'
 
 #--[ Authentication ]-----------------------------------------------------------
-gem 'devise', "~> 1.4.7"
-gem 'omniauth', "~> 0.3.0"
+gem 'devise', "~> 1.4.5"
+
+gem 'omniauth', "~> 1.0.3"
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'omniauth-foursquare'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-yahoo'
+gem 'omniauth-viadeo'
 
 # Automatic login provider selection
 gem 'redfinger', '~> 0.1.0'
 gem 'ruby-openid', '~> 2.1.8'
 gem 'net-dns', '~> 0.6.1', :require => 'net/dns/resolver'
 
-# Client libraries for authenticated services
-# depenency that couldn't get resolved by bundle 
-gem 'hashie', '~> 1.1.0'
-gem 'twitter', '~> 1.7.2'
-gem 'linkedin', '~> 0.3.2'
-gem 'mogli', '~> 0.0.34' # facebook
-gem 'foursquare2', '~>1.1.0'   # https://gist.github.com/419219 <- github oauth docs!
 
 #--[ Search ]-------------------------------------------------------------------
 # If you're using the default sql-based search, you can comment this out.
-gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
+#gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"
