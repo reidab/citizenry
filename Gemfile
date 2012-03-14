@@ -33,6 +33,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-yahoo'
 gem 'omniauth-viadeo'
+gem 'omniauth-github'
+gem 'omniauth-openid'
+gem 'omniauth-google-apps'
 
 # Automatic login provider selection
 gem 'redfinger', '~> 0.1.0'
