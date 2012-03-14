@@ -37,6 +37,15 @@ gem 'omniauth-github'
 gem 'omniauth-openid'
 gem 'omniauth-google-apps'
 
+#-- [ APIClient ]---------------------------------------------------------------
+
+# Client libraries for authenticated services
+# TODO: Upgrade these to newer versions after omniauth 0.3 upgrade
+gem 'twitter', '~> 2.1.1'
+gem 'linkedin', '~> 0.3.6', :git => "git://github.com/pengwynn/linkedin.git", :tag => 'v0.3.6'
+gem 'mogli', :git => "git://github.com/reidab/mogli.git" # facebook
+gem 'foursquare2'    # https://gist.github.com/419219 <- github oauth docs!
+
 # Automatic login provider selection
 gem 'redfinger', '~> 0.1.0'
 gem 'ruby-openid', '~> 2.1.8'
