@@ -1,0 +1,32 @@
+#profile_welcome
+  %h1 Let&apos;s finish setting up your mentoring profile.
+  .intro
+    %h2 Welcome to ePDX! 
+    %p 
+      ePDX is the community-edited guide to Portland's awesome tech community and where your mentoring profile will live. 
+      You can sign in anytime to search for mentorship connections and edit your profile.
+    %p
+      While you're here, be sure to check out the rest of the site for a look at the many people, companies, and groups that make up the world of Portland tech.
+
+  .user_welcome
+    - if current_user
+      %p You're currently signed in to ePDX as:
+      .signed_in_user
+        - if current_user.avatar_url
+          %img.avatar{:src => normalize_url(current_user.avatar_url), :align => 'left'}
+        .name
+          %strong= current_user.name
+        %p
+          If this isn't you, you can 
+          = link_to t('sign_out'), mentoring_sign_out_path
+    - elsif @matched_user.present?
+      .matched-user
+        %h3 Welcome back!
+        %p Based on your email address, it looks like you've already got an ePDX account.
+        .sign_in_form
+          = semantic_form_for(SignInData.new(:email => @matched_user.email, :provider => 'auto'), :url => user_sessions_path) do |f|
+            = f.input :email, :as => :hidden
+            = f.input :provider, :as => :hidden
+            = f.commit_button t('button.sign_in') + " to continue"
+    - else
+      = render :partial => 'authentications/login_form', :locals => {:button_text => "Continue"}

@@ -207,6 +207,15 @@ body
     #add_yourself
       +grid(10,16)
       +alpha
+    #mentoring_profile_edit
+      #add_yourself
+        +grid(16,16)
+      .person_info, .mentorship_info
+        +grid(8,16)
+      .person_info
+        +alpha
+      .mentorship_info
+        +omega
   #user_home
     #profile
       +grid(10,16)
@@ -217,6 +226,15 @@ body
   #view_options
     .show
       padding-left: 20px
+  #profile_welcome
+    h1
+      padding-bottom: .5em
+    .intro
+      +grid(6,16)
+      +alpha
+    .user_welcome
+      +grid(7,16)
+
 
 div#creepy-baby-sloth
   margin: 2em auto 0 auto

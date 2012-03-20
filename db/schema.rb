@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924171945) do
+ActiveRecord::Schema.define(:version => 20120320053424) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -104,6 +104,13 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
 
   add_index "groups", ["slug"], :name => "index_groups_on_slug", :unique => true
 
+  create_table "mentorship_topics", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.string   "email"
     t.string   "twitter"
@@ -131,6 +138,16 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
   end
 
   add_index "people", ["slug"], :name => "index_people_on_slug", :unique => true
+
+  create_table "person_mentee_topics", :force => true do |t|
+    t.integer "person_id"
+    t.integer "mentorship_topic_id"
+  end
+
+  create_table "person_mentor_topics", :force => true do |t|
+    t.integer "person_id"
+    t.integer "mentorship_topic_id"
+  end
 
   create_table "project_memberships", :force => true do |t|
     t.integer  "person_id"

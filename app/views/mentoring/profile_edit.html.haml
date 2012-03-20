@@ -1,0 +1,46 @@
+#welcome
+  %h1= t('user.welcome.hi', :name => @name.split(' ').first)
+  #mentoring_profile_edit
+    #add_yourself
+      - if @person.new_record?
+        %h2= t('user.welcome.add_yourself', :organization => SETTINGS['organization']['name'])
+        %p= t('user.welcome.provider', :provider => provider_name(current_user.authentications.first.provider))
+      - else
+        %h2= t('user.welcome.review_details')
+        %p= t('user.welcome.already_in_directory')
+
+    -# TODO: re-combine this with people/_form
+    - context ||= @person.new_record? ? :add_self : :review
+    = semantic_form_for(@person, :html => {:multipart => true}) do |f|
+      = display_errors_for @person
+      .person_info
+        = f.inputs :name => "Personal Information" do
+          = f.input :name
+          = render 'site/custom_slug_field', :form => f
+          - unless @person.new_record?
+            = f.semantic_fields_for :user do |u|
+              = u.input :email
+          = f.input :location
+          = f.input :url
+          = f.input :bio
+          = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
+          = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
+        = import_image_from_url_tags_for f, @person, :photo
+      - if mentoring_enabled?
+        .mentorship_info
+          = f.inputs :name => t('people.field.mentoring.title') do
+            = f.input :interested_mentor
+            = f.input :mentor_topic_models, :label_method => :humanize, :label => "I am interested in mentoring these topics", :hint => "Choosing from these structured topics will increase your chance of finding mentees."
+            = f.input :mentor_topics, :label => "Other topics I'd like to mentor", :as => :string
+            = f.input :interested_mentee
+            = f.input :mentee_topic_models, :label_method => :humanize, :label => "I am interested in being mentored in these topics", :hint => "Choosing from these structured topics will increase your chance of finding mentees."
+            = f.input :mentee_topics, :label => "Other topics I'd like mentorship in", :as => :string
+      = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
+      - if current_user.admin?
+        = f.input :user, :include_blank => "-- #{t('field.user.blankoption')} --", :label_method => :label_for_admin
+      = hidden_field_tag :form_context, context
+      %hr
+      = f.buttons do
+        = f.commit_button "Save and Continue"
+        
+

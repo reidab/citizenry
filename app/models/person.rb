@@ -19,6 +19,11 @@ class Person < ActiveRecord::Base
 
   customizable_slug_from :name
 
+  has_many :person_mentor_topics
+  has_many :person_mentee_topics
+  has_many :mentor_topic_models, :through => :person_mentor_topics, :source => :mentorship_topic
+  has_many :mentee_topic_models, :through => :person_mentee_topics, :source => :mentorship_topic
+
   belongs_to :user
   accepts_nested_attributes_for :user, :update_only => true
 

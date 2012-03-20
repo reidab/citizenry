@@ -49,12 +49,12 @@
     - if @person.interested_mentor
       .section.mentor
         %h2= t('people.field.mentor_topics.title')
-        %p= @person.mentor_topics
+        %p= (@person.mentor_topic_models.map{|t| t.humanize} << @person.mentor_topics.presence).compact.join(", ")
 
     - if @person.interested_mentee
       .section.mentee
         %h2= t('people.field.mentee_topics.title')
-        %p= @person.mentee_topics
+        %p= (@person.mentee_topic_models.map{|t| t.humanize} << @person.mentee_topics.presence).compact.join(", ")
 
   .record_actions
     - if display_record_controls?(@person)
