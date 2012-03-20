@@ -228,6 +228,7 @@ en:
       title: "Projects" # people#show
     provider:
       label: Add an account
+      label_sign_in: Sign in using…
       add: Add it!
       prompt: "Pick a service…"
     random:

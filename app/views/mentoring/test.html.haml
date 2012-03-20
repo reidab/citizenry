@@ -1,0 +1,37 @@
+= form_tag mentoring_search_path, :method => :post do
+  = hidden_field_tag :firstname, "Reid"
+  = hidden_field_tag :lastname, "Beels"
+  = hidden_field_tag :companyname, "Pixeldye"
+  = hidden_field_tag :email, "mail@reidbeels.com"
+  = hidden_field_tag :phone, ""
+
+  = hidden_field_tag :mentor_type, ""
+  = hidden_field_tag :mentor_areas, "startup,strategy,raisingmoney,productdev"
+  = hidden_field_tag :mentor_area_details, "startup_protection,startup_team,strategy_market,strategy_validation,strategy_size,funding_model,funding_decision,funding_amount,productdev_requirements,productdev_roadmap"
+  = hidden_field_tag :mentee_area_other, "OTHER MARKETING,OTHER SALES,OTHER OPS,OTHER EXIT"
+
+  = hidden_field_tag :mentee_type, ""
+  = hidden_field_tag :mentee_area_details, "marketing_plan,marketing_budget,marketing_target-market,sales_sales-plan,sales_sales-budget,sales_comp-levels,operations_requirements,operations_office-space,exit_strategy,exit_valuation"
+  = hidden_field_tag :mentee_areas, "marketing,sales,bizoperations,exitstrategy"
+  = hidden_field_tag :mentor_area_other, "OTHER STARTUP,OTHER STRATEGY,OTHER FUNDRAISING,OTHER PRODUCT"
+
+  = submit_tag "POST search request"
+
+= form_tag mentoring_profile_path, :method => :post do
+  = hidden_field_tag :firstname, "Reid"
+  = hidden_field_tag :lastname, "Beels"
+  = hidden_field_tag :companyname, "Pixeldye"
+  = hidden_field_tag :email, "mail3@reidbeels.com"
+  = hidden_field_tag :phone, ""
+
+  = hidden_field_tag :mentor_type, ""
+  = hidden_field_tag :mentor_areas, "startup,strategy,raisingmoney,productdev"
+  = hidden_field_tag :mentor_area_details, "startup_protection,startup_team,strategy_market,strategy_validation,strategy_size,funding_model,funding_decision,funding_amount,productdev_requirements,productdev_roadmap"
+  = hidden_field_tag :mentee_area_other, "OTHER MARKETING,OTHER SALES,OTHER OPS,OTHER EXIT"
+
+  = hidden_field_tag :mentee_type, ""
+  = hidden_field_tag :mentee_area_details, "marketing_plan,marketing_budget,marketing_target-market,sales_sales-plan,sales_sales-budget,sales_comp-levels,operations_requirements,operations_office-space,exit_strategy,exit_valuation"
+  = hidden_field_tag :mentee_areas, "marketing,sales,bizoperations,exitstrategy"
+  = hidden_field_tag :mentor_area_other, "OTHER STARTUP,OTHER STRATEGY,OTHER FUNDRAISING,OTHER PRODUCT"
+
+  = submit_tag "POST profile request"

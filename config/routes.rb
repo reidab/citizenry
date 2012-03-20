@@ -5,6 +5,14 @@ Citizenry::Application.routes.draw do
   get '/s(/:query)' => 'site#search', :as => :short_search
   get '/opensearch(.:format)' => 'site#opensearch', :as => :opensearch
 
+  get  '/mentoring/test/' => 'mentoring#test'
+  post '/mentoring/search' => 'mentoring#search', :as => :mentoring_search
+  post '/mentoring/profile' => 'mentoring#profile', :as => :mentoring_profile
+  get '/mentoring/profile/welcome' => 'mentoring#profile_welcome', :as => :mentoring_profile_welcome
+  get '/mentoring/profile/edit' => 'mentoring#profile_edit', :as => :mentoring_profile_edit
+  get '/mentoring/sign_out' => 'mentoring#sign_out_preserve_mentoring', :as => :mentoring_sign_out
+  get '/mentoring/matches/:kind' => 'mentoring#matches', :as => :mentoring_matches
+
   resources :authentications
   resources :companies do
     member do

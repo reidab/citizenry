@@ -1,0 +1,23 @@
+#mentoring_matches
+  - if params[:kind] == 'mentors'
+    .mentors
+      %h2 Potential Mentors
+      %p
+        You're looking for mentorship in the following topics:
+        = current_person.mentor_topic_models.map{|t| t.humanize }.join(', ')
+      - if @potential_mentors.present?
+        %p Here are some mentors that match
+        = render :partial => 'people/list', :object => @potential_mentors
+      - else
+        %p We couldn't find any mentors that matched. Check back later, as new mentors may join.
+  - elsif params[:kind] == 'mentees'
+    .mentees
+      %h2 Potential Mentees
+      %p
+        You're looking to mentor people in the following topics:
+        = current_person.mentor_topic_models.map{|t| t.humanize }.join(', ')
+      - if @potential_mentees.present?
+        %p Here are some interested mentees that match
+        = render :partial => 'people/list', :object => @potential_mentees
+      - else
+        %p We couldn't find any mentees that matched. Check back later, as new mentees may join.
