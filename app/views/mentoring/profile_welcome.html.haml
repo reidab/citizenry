@@ -19,6 +19,8 @@
         %p
           If this isn't you, you can
           = link_to t('sign_out'), mentoring_sign_out_path
+        %p
+          = link_to "Continue", mentoring_profile_edit_path
     - elsif @matched_user.present?
       .matched-user
         %h3 Welcome back!

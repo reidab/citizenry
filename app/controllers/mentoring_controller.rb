@@ -47,6 +47,7 @@ class MentoringController < ApplicationController
         mentor_rankings = Hash.new(0)
         current_person.mentee_topic_models.each do |topic|
           topic.mentors.each do |mentor|
+            next if mentor == current_person
             mentor_rankings[mentor] += 1
           end
         end
@@ -55,6 +56,7 @@ class MentoringController < ApplicationController
         mentee_rankings = Hash.new(0)
         current_person.mentor_topic_models.each do |topic|
           topic.mentees.each do |mentee|
+            next if mentee == current_person
             mentee_rankings[mentee] += 1
           end
         end
