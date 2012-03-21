@@ -1,26 +1,43 @@
 - context ||= :general
+- button_text ||= nil
 = semantic_form_for(@person, :html => {:multipart => true}) do |f|
   = display_errors_for @person
-  = f.inputs do
-    = f.input :name
-    = render 'site/custom_slug_field', :form => f
-    - unless @person.new_record?
-      = f.semantic_fields_for :user do |u|
-        = u.input :email
-    = f.input :location
-    = f.input :url
-    = f.input :bio
-    = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
-    = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
+  .person_info
+    = f.inputs :name => "Personal Information" do
+      = f.input :name
+      = render 'site/custom_slug_field', :form => f
+      - unless @person.new_record?
+        = f.semantic_fields_for :user do |u|
+          = u.input :email
+      = f.input :location
+      = f.input :url
+      = f.input :bio
+      = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
+      = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
+    = import_image_from_url_tags_for f, @person, :photo
   - if mentoring_enabled?
-    = f.inputs :name => t('people.field.mentoring.title') do
-      = f.input :interested_mentor
-      = f.input :mentor_topics
-      = f.input :interested_mentee
-      = f.input :mentee_topics
-  = import_image_from_url_tags_for f, @person, :photo
+    .mentorship_info
+      = f.inputs :name => t('people.field.mentoring.title') do
+        %p
+          In partnership with the PDX11 Mentor Program, ePDX is building tools
+          to help connect mentors and mentees. Initially, we're focusing our efforts
+          on business skill mentoring, but will be expanding to encompass technical
+          topics in the coming weeks.
+        %p
+          You can learn more through the
+          = link_to "PDX11 Mentor Program LinkedIn group", "http://www.linkedin.com/groups?gid=3956973"
+        %hr
+
+        = f.input :interested_mentor
+        = f.input :mentor_topic_models, :label_method => :humanize, :label => "I am interested in mentoring these topics", :hint => "Choosing from these structured topics will increase your chance of finding mentees."
+        = f.input :mentor_topics, :label => "Other topics I'd like to mentor", :as => :string
+        = f.input :interested_mentee
+        = f.input :mentee_topic_models, :label_method => :humanize, :label => "I am interested in being mentored in these topics", :hint => "Choosing from these structured topics will increase your chance of finding mentees."
+        = f.input :mentee_topics, :label => "Other topics I'd like mentorship in", :as => :string
   = f.input :reviewed, :input_html => {:value => true}, :as => :hidden
   - if current_user.admin?
     = f.input :user, :include_blank => "-- #{t('field.user.blankoption')} --", :label_method => :label_for_admin
   = hidden_field_tag :form_context, context
-  = f.buttons
+  %hr
+  = f.buttons do
+    = f.commit_button button_text

@@ -11,6 +11,13 @@
       %li= link_to t('button.add_friend'), new_person_path
       - if current_person.companies.blank?
         %li= link_to t('button.add_company'), new_company_path
+    - if mentoring_enabled? && (current_person.interested_mentor || current_person.interested_mentee)
+      %h2 Mentoring
+      %ul
+        - if current_person.interested_mentee
+          %li= link_to "View mentor matches", mentoring_matches_path(:kind => :mentors)
+        - if current_person.interested_mentor
+          %li= link_to "View mentee matches", mentoring_matches_path(:kind => :mentees)
   #authentications
     %h2= t('user.home.linked_accounts')
     = semantic_form_for(SignInData.new(:email => current_user.email), :url => user_sessions_path) do |f|

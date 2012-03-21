@@ -192,11 +192,16 @@ body
       z-index: 10
     #claim_user
       float: right
+  .formtastic
+    &.person
+      .person_info, .mentorship_info
+        +grid(8,16)
+      .person_info
+        +alpha
+      .mentorship_info
+        +omega
   #welcome
     #possible_duplicates
-      +grid(6,16)
-      +omega
-      float: right
       li
         position: relative
         padding-right: 120px
@@ -204,18 +209,9 @@ body
           position: absolute
           right: 0
           top: 10px
-    #add_yourself
-      +grid(10,16)
-      +alpha
     #mentoring_profile_edit
       #add_yourself
         +grid(16,16)
-      .person_info, .mentorship_info
-        +grid(8,16)
-      .person_info
-        +alpha
-      .mentorship_info
-        +omega
   #user_home
     #profile
       +grid(10,16)
