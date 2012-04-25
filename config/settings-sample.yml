@@ -11,7 +11,7 @@ common:
     - google
     - yahoo
     - facebook
-    - linked_in
+    - linkedin
     - github
     - foursquare
   auth_credentials:
@@ -21,7 +21,7 @@ common:
     facebook:
       key: skeletonkey
       secret: seekrit!
-    linked_in:
+    linkedin:
       key:
       secret: seekrit!
   # Sometimes, you'll need to specify the location of your CA certs. Try first without.

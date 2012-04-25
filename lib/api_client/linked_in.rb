@@ -3,8 +3,8 @@ module APIClient
     def initialize(auth, options={})
       super(auth)
 
-      @client = ::LinkedIn::Client.new( SETTINGS['auth_credentials']['linked_in']['key'],
-                                        SETTINGS['auth_credentials']['linked_in']['secret'] )
+      @client = ::LinkedIn::Client.new( SETTINGS['auth_credentials']['linkedin']['key'],
+                                        SETTINGS['auth_credentials']['linkedin']['secret'] )
       @client.authorize_from_access(@auth.access_token, @auth.access_token_secret)
     end
 
@@ -38,7 +38,7 @@ module APIClient
                   :url                    => li_user.public_profile_url,
                   :location               => li_user.location.try(:name) ) \
                   .tap{|person|
-                    person.imported_from_provider = 'linked_in'
+                    person.imported_from_provider = 'linkedin'
                     person.imported_from_id       = li_user.id
                   }
     end
