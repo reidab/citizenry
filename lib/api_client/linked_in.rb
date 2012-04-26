@@ -1,9 +1,9 @@
 module APIClient
-  class Linkedin < APIClient::OAuth
+  class LinkedIn < APIClient::OAuth
     def initialize(auth, options={})
       super(auth)
 
-      @client = ::LinkedIn::Client.new( SETTINGS['auth_credentials']['linkedin']['key'],
+      @client = ::Linkedin::Client.new( SETTINGS['auth_credentials']['linkedin']['key'],
                                         SETTINGS['auth_credentials']['linkedin']['secret'] )
       @client.authorize_from_access(@auth.access_token, @auth.access_token_secret)
     end
