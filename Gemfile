@@ -44,6 +44,8 @@ gem 'thinking-sphinx', '~> 2.0.1', :require => 'thinking_sphinx'
 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"
+# If using s3 for file storage, uncomment to install the required aws-s3 gem
+# gem "aws-s3", "~> 0.6.2"
 gem "inherited_resources", "~> 1.3.0"
 gem "responders", "~> 0.6.2"
 

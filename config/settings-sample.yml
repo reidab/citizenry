@@ -46,6 +46,14 @@ common:
     default_from: contact@domain.localhost
   search: sql
   mentoring: false # enables experimental mentor matching features
+  # Avatar and logo image uploads
+  image_upload:
+    # if you choose storage: s3, uncomment bucket, access_key_id, and secret_access_key with your s3 credentials
+    storage: filesystem
+    #s3_credentials:
+    #  bucket: bucket-name
+    #  access_key_id: skeletonkey
+    #  secret_access_key: seekrit!
 
 development:
   auth_credentials:
