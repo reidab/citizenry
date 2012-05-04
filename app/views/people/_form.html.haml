@@ -10,7 +10,7 @@
         = f.semantic_fields_for :user do |u|
           = u.input :email
       = f.input :location
-      = f.input :url
+      = f.input :url, :as => :string
       = f.input :bio
       = f.input :tag_list, :as => :text, :input_html => {:class => 'tags'}
       = f.input :technology_list, :as => :text, :input_html => {:class => 'tags'}
