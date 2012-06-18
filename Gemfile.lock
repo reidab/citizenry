@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/pengwynn/linkedin.git
-  revision: de8a9ebdac18b18a95984b32111d33d1630caf8d
-  tag: v0.3.6
+  revision: 5e1a4d501dea19001b2b06b8ec12b9493a16d2e4
+  tag: v0.3.7
   specs:
-    linkedin (0.3.6)
-      hashie (~> 1.2.0)
-      multi_json (~> 1.0.3)
-      oauth (~> 0.4.5)
+    linkedin (0.3.7)
+      hashie (~> 1.2)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
 
 GIT
   remote: git://github.com/reidab/mogli.git
@@ -361,7 +361,7 @@ DEPENDENCIES
   json (~> 1.6.1)
   kaminari (~> 0.12.4)
   launchy
-  linkedin (~> 0.3.6)!
+  linkedin (~> 0.3.7)!
   mocha
   mogli!
   mysql2 (~> 0.3.2)

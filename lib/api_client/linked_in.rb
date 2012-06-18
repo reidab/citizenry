@@ -3,17 +3,21 @@ module APIClient
     def initialize(auth, options={})
       super(auth)
 
-      @client = ::Linkedin::Client.new( SETTINGS['auth_credentials']['linkedin']['key'],
+      @client = ::LinkedIn::Client.new( SETTINGS['auth_credentials']['linkedin']['key'],
                                         SETTINGS['auth_credentials']['linkedin']['secret'] )
       @client.authorize_from_access(@auth.access_token, @auth.access_token_secret)
     end
 
     def search(query, options = {})
-      @client.search(:keywords => query, :count => (options[:limit] || DEFAULT_LIMIT)).profiles.map{|li_user|
-        self.person_from(li_user)
-      }.reject{|p| p.name == "Private"}
-    rescue ::LinkedIn::Unauthorized => e
-      raise APIAuthenticationError, e.inspect
+      @client
+        .search(:keywords => query, :count => (options[:limit] || DEFAULT_LIMIT))\
+        .people
+        .all
+        .map{|li_user|
+          self.person_from(li_user)
+        }.reject{|p| p.name == "Private"}
+     rescue ::LinkedIn::Unauthorized => e
+       raise APIAuthenticationError, e.inspect
     end
 
     def get(id)
@@ -32,11 +36,12 @@ module APIClient
     end
 
     def person_from(li_user)
+      user = @client.profile(:id => li_user.id,:fields => ['picture_url', 'headline', 'public_profile_url', 'location'])
       Person.new( :name                   => [li_user.first_name, li_user.last_name].reject{|n| n.blank? }.join(' '),
-                  :bio                    => li_user.headline,
-                  :photo_import_url       => picture_url_for(li_user),
-                  :url                    => li_user.public_profile_url,
-                  :location               => li_user.location.try(:name) ) \
+                  :bio                    => user.headline,
+                  :photo_import_url       => user.picture_url,
+                  :url                    => user.public_profile_url,
+                  :location               => user.location.try(:name) ) \
                   .tap{|person|
                     person.imported_from_provider = 'linkedin'
                     person.imported_from_id       = li_user.id
