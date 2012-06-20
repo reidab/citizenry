@@ -14,8 +14,8 @@ module APIClient
         .people
         .all
         .map{|li_user|
-          self.person_from(li_user)
-        }.reject{|p| p.name == "Private"}
+          self.person_from(li_user) rescue nil
+        }.reject{|p| p.nil? || p.name == "Private"}
      rescue ::LinkedIn::Unauthorized => e
        raise APIAuthenticationError, e.inspect
     end
