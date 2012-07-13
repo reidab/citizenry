@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.6'
 gem 'rake', :require => false
 gem 'rails-i18n'
 
