@@ -107,7 +107,7 @@ feature "The new group form" do
     # where attributes are defined as the things that are actually stored on the group model, not tags or other bits
     signed_in_as(:user) do
       visit new_group_path
-      @from_factory = Factory.build(:group)
+      @from_factory = FactoryGirl.build(:group)
 
       within 'form.group' do
         fill_in 'group_name', :with => @from_factory.name

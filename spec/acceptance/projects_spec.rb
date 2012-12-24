@@ -96,7 +96,7 @@ feature "The new project form" do
     # where attributes are defined as the things that are actually stored on the project model, not tags or other bits
     signed_in_as(:user) do
       visit new_project_path
-      @from_factory = Factory.build(:project)
+      @from_factory = FactoryGirl.build(:project)
 
       within 'form.project' do
         fill_in 'project_name', :with => @from_factory.name

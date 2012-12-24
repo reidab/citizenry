@@ -6,8 +6,8 @@ describe PersonMailer do
   end
 
   describe "#message_from_user" do
-    let(:user) { Factory.build(:user, :email => 'francis@bacon.localdomain') }
-    let(:person) { Factory.build(:person, :email => 'alice@barnham.localdomain') }
+    let(:user) { FactoryGirl.build(:user, :email => 'francis@bacon.localdomain') }
+    let(:person) { FactoryGirl.build(:person, :email => 'alice@barnham.localdomain') }
     let(:message) { "I forgive you.  I'll be home when I get over this dreaded case of pneumonia." }
     let(:mail) { PersonMailer.message_from_user(person, user, message) }
 
