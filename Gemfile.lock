@@ -106,7 +106,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
+      rack (>= 1.1.0, < 2)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
     ffi (1.0.9)
@@ -115,8 +115,8 @@ GEM
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
     foursquare2 (1.1.2)
-      faraday (< 0.8, >= 0.6)
-      faraday_middleware (< 0.8, >= 0.6)
+      faraday (>= 0.6, < 0.8)
+      faraday_middleware (>= 0.6, < 0.8)
       hashie (~> 1.0)
     friendly_id (4.0.0.beta14)
     fssm (0.2.7)
@@ -292,7 +292,6 @@ GEM
       ffi (= 1.0.9)
       json_pure
       rubyzip
-    simple_oauth (0.1.5)
     simplecov (0.5.4)
       multi_json (~> 1.0.3)
       simplecov-html (~> 0.5.3)
@@ -301,7 +300,7 @@ GEM
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     steak (2.0.0)
       capybara (>= 1.0.0)
       rspec-rails (>= 2.5.0)
@@ -315,13 +314,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    twitter (1.6.0)
-      faraday (~> 0.6.1)
-      faraday_middleware (~> 0.6.3)
-      hashie (~> 1.0.0)
-      multi_json (~> 1.0.0)
-      multi_xml (~> 0.2.0)
-      simple_oauth (~> 0.1.5)
     tzinfo (0.3.30)
     utility_belt (1.1.0)
       Platform (>= 0.4.0)
@@ -390,7 +382,6 @@ DEPENDENCIES
   spork
   steak (= 2.0.0)
   thinking-sphinx (~> 2.0.1)
-  twitter (~> 1.6.0)
   utility_belt
   uuid
   will_paginate (~> 3.0.1)
