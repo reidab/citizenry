@@ -96,7 +96,7 @@ feature "The new company form" do
     # where attributes are defined as the things that are actually stored on the company model, not tags or other bits
     signed_in_as(:user) do
       visit new_company_path
-      @from_factory = Factory.build(:company)
+      @from_factory = FactoryGirl.build(:company)
 
       within 'form.company' do
         fill_in 'company_name', :with => @from_factory.name

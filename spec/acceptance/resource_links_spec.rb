@@ -57,7 +57,7 @@ feature "The new resource form" do
     # where attributes are defined as the things that are actually stored on the resource model, not tags or other bits
     signed_in_as(:user) do
       visit new_resource_link_path
-      @from_factory = Factory.build(:resource_link)
+      @from_factory = FactoryGirl.build(:resource_link)
 
       within 'form.resource_link' do
         fill_in 'resource_link_name', :with => @from_factory.name

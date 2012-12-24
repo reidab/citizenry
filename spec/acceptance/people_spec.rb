@@ -297,7 +297,7 @@ feature "The person edit form" do
   end
 
   scenario "should not allow duplicate slug" do
-    Factory.create(:person, :name => "Foo Bar", :custom_slug => "foo-bar")
+    FactoryGirl.create(:person, :name => "Foo Bar", :custom_slug => "foo-bar")
 
     signed_in_as(:user_with_person) do
       person = @user.person
