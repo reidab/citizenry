@@ -10,7 +10,7 @@
       %label= t('people.contact.field.from.label') 
       = current_user.name ? "#{current_user.name} <#{current_user.email}>" : current_user.email
       = f.input :message, :as => :text
-    = f.buttons do
-      = f.commit_button t('people.contact.button.send_message')
+    = f.actions do
+      = f.action(:submit, :as => :input, :label => t('people.contact.button.send_message'))
 
   = link_to t('button.back'), person_path(@person)

@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 def setup_people
   DatabaseCleaner.clean
-  @first_person  = Factory(:person)
-  @second_person = Factory(:person)
-  @third_person  = Factory(:person)
+  @first_person  = FactoryGirl.create(:person)
+  @second_person = FactoryGirl.create(:person)
+  @third_person  = FactoryGirl.create(:person)
   @people = [@first_person, @second_person, @third_person]
 end
 

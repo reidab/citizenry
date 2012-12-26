@@ -54,6 +54,8 @@ class Authentication < ActiveRecord::Base
     extract_info_from_omniauth(omniauth)
   end
 
+  # See 1.0 https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
+
   def extract_credentials_from_omniauth(omniauth)
     if omniauth.has_key?('credentials')
       self.access_token = omniauth['credentials']['token']
@@ -62,11 +64,12 @@ class Authentication < ActiveRecord::Base
   end
 
   # We only want to retain certain user info from omniauth responses, depending on the provider.
+  # Favor 'extra > raw_info'. If none found, depend on 'info'
   def extract_info_from_omniauth(omniauth)
-    if omniauth.has_key?('extra') && omniauth['extra'].has_key?('user_hash')
-      self.info = omniauth['user_info'].merge(omniauth['extra']['user_hash']).symbolize_keys
-    else
-      self.info = omniauth['user_info'].symbolize_keys
+    if omniauth.has_key?('extra') && omniauth['extra'].has_key?('raw_info')
+      self.info = omniauth['info'].merge(omniauth['extra']['raw_info']).symbolize_keys
+    elsif omniauth.has_key?('info') # last resort
+      self.info = omniauth['info'].symbolize_keys
     end
   end
 

@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 def setup_companies
   DatabaseCleaner.clean
-  @first  = Factory(:company)
-  @second = Factory(:company)
-  @third  = Factory(:company)
+  @first  = FactoryGirl.create(:company)
+  @second = FactoryGirl.create(:company)
+  @third  = FactoryGirl.create(:company)
   @companies = [@first, @second, @third]
 end
 
