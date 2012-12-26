@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Person do
   describe "when importing photos" do
     it "should not import unless a URL was specified" do
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.should_not_receive(:import_photo)
 
       person.save!
@@ -16,7 +16,7 @@ describe Person do
         :content_type => "image/jpeg",
         :body => File.read(Rails.root + 'spec/samples/heart.png'))
 
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = url
 
       person.should_receive(:import_images).and_return(true)
@@ -25,7 +25,7 @@ describe Person do
     end
 
     it "should display error if URL was invalid" do
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = "\\invalid"
 
       person.should_not be_valid
@@ -35,7 +35,7 @@ describe Person do
     it "should display error if unable to download from URL" do
       FakeWeb.register_uri(:get, "http://foo", :status => ["404", "Not Found"])
 
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = "http://foo"
 
       person.should_not be_valid
@@ -49,7 +49,7 @@ describe Person do
         :content_type => "image/jpeg",
         :body => "")
 
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = url
 
       person.should_not be_valid
@@ -63,7 +63,7 @@ describe Person do
         :content_type => "image/jpeg",
         :body => ("." * (Person.import_image_from_url_settings[:photo][:maximum_size] + 1)))
 
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = url
 
       person.should_not be_valid
@@ -77,7 +77,7 @@ describe Person do
         :content_type => "image/jpeg",
         :body => File.read(Rails.root + 'spec/samples/heart.png'))
 
-      person = Factory.build(:person)
+      person = FactoryGirl.build(:person)
       person.photo_import_url = url
 
       person.should be_valid
@@ -90,7 +90,7 @@ describe Person do
     end
 
     it "should create a slug when saving a new record" do
-      person = Factory.build(:person, :name => "Bob Smith")
+      person = FactoryGirl.build(:person, :name => "Bob Smith")
       person.slug.should be_nil
 
       person.save!
@@ -98,7 +98,7 @@ describe Person do
     end
 
     it "should allow the slug to be overriden" do
-      person = Factory.create(:person)
+      person = FactoryGirl.create(:person)
 
       person.custom_slug = "Bubba Jack"
       person.save!
@@ -106,8 +106,8 @@ describe Person do
     end
 
     it "should not allow duplicate slugs" do
-      bob = Factory.create(:person, :name => "Bob Smith")
-      bubba = Factory.create(:person, :name => "Bubba Jack")
+      bob = FactoryGirl.create(:person, :name => "Bob Smith")
+      bubba = FactoryGirl.create(:person, :name => "Bubba Jack")
 
       bubba.custom_slug = "bob-smith"
       bob.slug.should == bubba.custom_slug
@@ -117,23 +117,23 @@ describe Person do
     end
 
     it "should not allow duplicate slugs based on history" do
-      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+      bob = FactoryGirl.create(:person, :name => "Bob Smith", :custom_slug => "bob")
       bob.update_attribute(:custom_slug, "bob.smith")
 
-      bubba = Factory.build(:person, :name => "Bubba Jack", :custom_slug => "bob")
+      bubba = FactoryGirl.build(:person, :name => "Bubba Jack", :custom_slug => "bob")
       bubba.should_not be_valid
       bubba.error_on(:custom_slug).first.should =~ /#{I18n.t('activerecord.errors.messages.taken')}/
     end
 
     it "should not think an non-change update is a conflict" do
-      bob = Factory.create(:person, :name => "Bob Smith", :custom_slug => "bob")
+      bob = FactoryGirl.create(:person, :name => "Bob Smith", :custom_slug => "bob")
 
       bob.custom_slug = "bob"
       bob.save!
     end
 
     it "should not allow custom slugs without non-digits" do
-      person = Factory.build(:person, :custom_slug => "99")
+      person = FactoryGirl.build(:person, :custom_slug => "99")
 
       person.should_not be_valid
       person.errors[:custom_slug].should be_present
