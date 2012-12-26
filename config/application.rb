@@ -49,10 +49,14 @@ module Citizenry
     config.filter_parameters += [:password]
 
     # Enable the asset pipeline
-    # config.assets.enbled = true
+    config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    # config.assets.version = '1.0'
+    config.assets.version = '1.0'
+
+    # Force application to not access the DB or load models when precompiling
+    # assets. Heroku requires this to be false
+    config.assets.initialize_on_precompile = false
 
     # Middleware!
     config.middleware.use Rack::JSONP

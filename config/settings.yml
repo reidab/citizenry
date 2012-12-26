@@ -1,0 +1,91 @@
+# environent-specific settings will be deep merged with the common hash, overriding values therein
+
+common:
+  # Language locale to use, see http://en.wikipedia.org/wiki/ISO_639-1 for list of valid names. The locale is used to lookup a file with the matching name, e.g. translation file "config/locales/en.yml" for locale "en":
+  locale: en
+  # Timezone to use by default, run `bundle exec rake time:zones:all` to list valid names:
+  time_zone: 'Pacific Time (US & Canada)'
+  providers:
+    - twitter
+    # - github
+    # - openid
+    # - google
+    # - yahoo
+    # - facebook
+    # - linked_in
+    # - foursquare
+  auth_credentials:
+    twitter:
+      key: <%= ENV['TWITTER_KEY'] %>
+      secret: <%= ENV['TWITTER_SECRET'] %>
+    # facebook:
+    #   key: skeletonkey
+    #   secret: seekrit!
+    # linked_in:
+    #   key:
+    #   secret: seekrit!
+  # Sometimes, you'll need to specify the location of your CA certs. Try first without.
+  # ssl_ca_path: "/etc/ssl/certs"
+  google_analytics_id: <%= ENV['GOOGLE_ANALYTICS_ID'] %>
+  hoptoad: seekrit!
+  secret_token: c63463de2c67e13400b5ee30329a12e6d95df8e7a24112c4420ceb0b540829cdcfa48cd1d54d9dff3cc89c552013cf9f5aab7dd2539291d9355bc2069367bafe
+  session_cookie_key: _your_app_session
+  organization:
+    name: Washington Row
+    city: Phoenix
+    state: Arizona
+    url: http://washingtonrow.com
+    twitter: washingtonrow
+    email: marc@openphoenix.org
+    host: Washington Row
+    host_url: http://washingtonrow.com
+    logotype: <span>washington</span>row
+  mailer:
+    # delivery specific settings should be set in environment configs below
+    # (you don't want to send out real emails in tests, do you?)
+    default_from: contact@domain.localhost
+  search: sql
+  mentoring: false # enables experimental mentor matching features
+
+development:
+  providers:
+    - twitter
+    - github
+  auth_credentials:
+    twitter:
+      key: <%= ENV['TWITTER_KEY'] %>
+      secret: <%= ENV['TWITTER_SECRET'] %>
+    github:
+      key: <%= ENV['GITHUB_KEY'] %>
+      secret: <%= ENV['GITHUB_SECRET'] %>
+  mailer:
+    # passed to ActionMailer (overrides values in config/environments/*.rb)
+    # http://edgeguides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
+    raise_delivery_errors: false # ActionMailer::Base.raise_delivery_errors = false
+    #delivery_method: :smtp       # ActionMailer::Base.delivery_method = :smtp
+    #smtp_settings:               # ActionMailer::Base.smtp_settings = { ... }
+    #  domain: domain.org
+    #  address: smtp.domain.org
+    #  port: 25
+    #  user_name: smtp_user
+    #  password: smtp_password
+    #  authentication: plain
+  # using foreman? great, create a .env and keep the environment variables there:
+  # ie.
+  # $ cat .env
+  # S3_KEY=19jxmx
+  # S3_SECRET=decc
+  # S3_BUCKET=team-development
+  s3_key: <%= ENV['S3_KEY'] %>
+  s3_secret: <%= ENV['S3_SECRET'] %>
+  s3_bucket: <%= ENV['S3_BUCKET'] %>
+
+test:
+  providers:
+    - twitter
+    - open_id
+
+production:
+  s3_key: <%= ENV['S3_KEY'] %>
+  s3_secret: <%= ENV['S3_SECRET'] %>
+  s3_bucket: <%= ENV['S3_BUCKET'] %>

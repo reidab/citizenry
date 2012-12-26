@@ -5,7 +5,8 @@ log/*.log
 tmp/**/*
 public/stylesheets/compiled/
 config/database.yml
-config/settings.yml
+# ensure file exists on heroku
+# config/settings.yml
 .sass-cache/
 public/system/
 tmp
@@ -25,3 +26,6 @@ tags
 app/stylesheets/custom.sass
 app/views/layouts/_custom_css_includes.html.haml
 .rvmrc
+
+# Ignore application configuration
+.env

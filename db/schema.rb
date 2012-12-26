@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "access_token"
     t.string   "access_token_secret"
     t.text     "info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "twitter"
     t.text     "address"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "logo_url"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -46,16 +46,16 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
   create_table "company_projects", :force => true do |t|
     t.integer  "company_id"
     t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "employments", :force => true do |t|
     t.integer  "person_id"
     t.integer  "company_id"
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "friendly_id_slugs", :force => true do |t|
@@ -73,15 +73,15 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.integer  "group_id"
     t.integer  "person_id"
     t.string   "membership_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "group_projects", :force => true do |t|
     t.integer  "group_id"
     t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "groups", :force => true do |t|
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "mailing_list"
     t.string   "twitter"
     t.text     "meeting_info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "logo_url"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "twitter"
     t.string   "url"
     t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "user_id"
     t.string   "name"
     t.string   "imported_from_provider"
@@ -135,8 +135,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
   create_table "project_memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -144,8 +144,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "url"
     t.string   "twitter"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -161,8 +161,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.string   "url"
     t.text     "description"
     t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.boolean  "delta",       :default => true, :null => false
   end
 
@@ -170,8 +170,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.integer  "group_id"
     t.integer  "company_id"
     t.string   "sponsorship_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -199,8 +199,8 @@ ActiveRecord::Schema.define(:version => 20110924171945) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.boolean  "admin",               :default => false
     t.string   "email"
   end
