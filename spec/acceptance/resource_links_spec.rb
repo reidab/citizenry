@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 def setup_resources
   DatabaseCleaner.clean
-  @first  = Factory(:resource_link)
-  @second = Factory(:resource_link)
-  @third  = Factory(:resource_link)
+  @first  = FactoryGirl.create(:resource_link)
+  @second = FactoryGirl.create(:resource_link)
+  @third  = FactoryGirl.create(:resource_link)
   @resources = [@first, @second, @third]
 end
 

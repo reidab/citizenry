@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "The person's profile" do
   background do
     DatabaseCleaner.clean
-    @user   = Factory(:user_with_person)
+    @user   = FactoryGirl.create(:user_with_person)
     @person = @user.person
   end
 
@@ -24,7 +24,7 @@ feature "The person's profile" do
 
   scenario "should show failure if trying to login with invalid 'user_id'" do
     # Create a user/person with an ID that we can be certain isn't in the database.
-    user   = Factory(:user_with_person)
+    user   = FactoryGirl.create(:user_with_person)
     person = user.person
     user_id = user.id
     person.destroy

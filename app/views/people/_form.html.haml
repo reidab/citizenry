@@ -23,4 +23,4 @@
   - if current_user.admin?
     = f.input :user, :include_blank => "-- #{t('field.user.blankoption')} --", :label_method => :label_for_admin
   = hidden_field_tag :form_context, context
-  = f.buttons
+  = f.actions
