@@ -14,7 +14,7 @@ FactoryGirl.define do
     url {|c| "http://#{c.name.gsub(/[^\w]/,'').downcase}.com/" }
     address { [ Faker::Address.street_address,
                 Faker::Address.secondary_address,
-                Faker::Address.city, Faker::Address.us_state, Faker::Address.zip_code
+                Faker::Address.city, Faker::Address.state, Faker::Address.zip_code
               ].join(', ') }
     description { "We #{Faker::Company.bs}." }
   end
@@ -70,8 +70,8 @@ FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
     admin false
-    after_build do |user|
-      user.authentications = [ FactoryGirl.build(:authentication, :user => user) ]
+    after(:create) do |user, evaluator|
+      FactoryGirl.create_list(:authentication, 1, :user => user)
     end
   end
 

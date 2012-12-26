@@ -4,7 +4,7 @@ module HelperMethods
               when Numeric
                 User.find(user_or_user_id_or_factory)
               when Symbol
-                Factory(user_or_user_id_or_factory)
+                FactoryGirl.create(user_or_user_id_or_factory)
               when User
                 user_or_user_id_or_factory
               else

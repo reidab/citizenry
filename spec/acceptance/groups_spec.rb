@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 def setup_groups
   DatabaseCleaner.clean
-  @first  = Factory(:group)
-  @second = Factory(:group)
-  @third  = Factory(:group)
+  @first  = FactoryGirl.create(:group)
+  @second = FactoryGirl.create(:group)
+  @third  = FactoryGirl.create(:group)
   @groups = [@first, @second, @third]
 end
 

@@ -70,31 +70,34 @@ feature "Users:" do
     current_path.should == '/user_sessions/new'
   end
 
-  # TODO(mchung): Fix twitter then uncomment this
-  # scenario "A user should be able to add and remove a linked account" do
-  #   OmniAuth.config.mock_auth[:twitter] = {
-  #     'provider' => 'twitter',
-  #     'uid' => 'the_twitterer',
-  #     'user_info' => {}
-  #   }
-  #   
-  #   signed_in_as(:user_with_person) do
-  #     visit home_users_path
-  # 
-  #     within '#authentications #new_sign_in_data' do
-  #       select 'Twitter', :from => 'sign_in_data_provider'
-  #       find("input[name='commit']").click
-  #     end
-  #     
-  #     page.should have_selector "#twitter_the_twitterer"
-  # 
-  #     within "#twitter_the_twitterer" do
-  #       click_link I18n.t('button.remove')
-  #     end
-  # 
-  #     page.should_not have_selector "#twitter_the_twitterer"
-  #   end
-  # end
+  scenario "A user should be able to add and remove a linked account" do
+    OmniAuth.config.mock_auth[:twitter] = {
+      'provider' => 'twitter',
+      'uid' => 'the_twitterer',
+      'raw_info' => {},
+      'info' => {
+        'nickname' => 'twitterhandle'
+      }
+    }
+
+    signed_in_as(:user_with_person) do
+      visit home_users_path
+      save_and_open_page
+
+      within '#authentications #new_sign_in_data' do
+        select 'Twitter', :from => 'sign_in_data_provider'
+        find("input[name='commit']").click
+      end
+
+      page.should have_selector "#twitter_the_twitterer"
+
+      within "#twitter_the_twitterer" do
+        click_link I18n.t('button.remove')
+      end
+
+      page.should_not have_selector "#twitter_the_twitterer"
+    end
+  end
 end
 
 

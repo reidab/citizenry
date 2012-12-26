@@ -17,7 +17,7 @@
       = f.inputs do
         = f.input :email, :as => :hidden
         = f.input :provider, :collection => Authentication.provider_options, :prompt => t('field.provider.prompt'), :label => t('field.provider.label')
-      = f.buttons do
-        = f.commit_button t('field.provider.add')
+      = f.actions do
+        = f.action(:submit, :as => :input, :label => t('field.provider.add'))
 
     = render :partial => 'authentications/list', :object => current_user.authentications
