@@ -2,7 +2,7 @@
   = semantic_form_for((@signin_data || SignInData.new), :url => user_sessions_path) do |f|
     = f.input :email, :label => t('field.email_address.label'), :input_html => {:size => nil, :autocorrect => "off", :autocapitalize => "off"}
     = f.input :provider, :label=>t('field.provider.label') , :collection => Authentication.provider_options, :include_blank => false
-    = f.commit_button t('button.sign_in')
+    = f.action(:submit, :as => :input, :label => t('button.sign_in'), :wrapper_html => { :class => 'commit' })
     - if allow_login_as_specific_user?
       %p.development_only.login_as_sample_user
         DEV:
