@@ -19,6 +19,7 @@ group :assets do
   gem "sass-rails", "~> 3.2.3"
   gem "coffee-rails", "~> 3.2.1"
   gem "uglifier", ">=1.0.3"
+  gem 'compass-rails'
 end
 
 gem "hoptoad_notifier"
@@ -67,7 +68,6 @@ gem "paper_trail_manager"
 #--[ View ]---------------------------------------------------------------------
 gem "haml", "~> 3.1.2"
 gem "sass", "~> 3.1.4"
-gem "compass", "~> 0.11.5"
 gem "compass-960-plugin", "~> 0.10.4", :require => "ninesixty"
 gem "jquery-rails", ">= 1.0.14"
 gem "formtastic", "2.2.1"

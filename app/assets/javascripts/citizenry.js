@@ -54,7 +54,7 @@ Citizenry.Views.SignInForm = Backbone.View.extend({
       $(this.el).add('#global_sign_in_form').toggleClass('open', show);
     } else {
       $(this.el).add('#global_sign_in_form').toggleClass('open');
-    } 
+    }
 
     if($(this.el).hasClass('open')) { this.emailInput.focus(); }
 
