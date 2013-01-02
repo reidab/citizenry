@@ -7,6 +7,9 @@ Citizenry::Application.routes.draw do
 
   resources :authentications
   resources :companies do
+    collection do
+      get 'map', :action => :index, :map => "1"
+    end
     member do
       post 'join'
       post 'leave'

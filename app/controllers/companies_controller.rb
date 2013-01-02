@@ -6,6 +6,11 @@ class CompaniesController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:index, :show, :tag]
   before_filter :redirect_historical_slugs
 
+  def index
+    @view = :map if params[:map] && SETTINGS["maps"]
+    index!
+  end
+
   def tag
     @tag = params[:tag]
 
