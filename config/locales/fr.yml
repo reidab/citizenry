@@ -260,15 +260,11 @@ fr:
       search_result: résultats de la recherche
   people:
     new:
-      limit_reset_time: la limite est réinitialisée dans %{time}.
       search_network: Recherchez quelqu'un dans votre réseau
       submit: Ajouter %{name} à l'annuaire
       name_knows_known: "%{name} connait déjà %{known}!"
       search_using: "Recherche avec:"
       title: Ajouter une personne à %{organization}
-      calls_remaining:
-        one: il ne vous reste qu'un appel disponbile à l'API twitter
-        other: Vous avez %{count} appels disponibles pour l'API Twitter
       no_service_linked: Vous n'avez actuellement aucun service relié à votre compte. Nous recommandons fortement d'associer des gens par le biais de leur réseau plutôt que de les ajouter directement, afin qu'ils puissent ensuite réclamer leur compte.
       add_provider: Ajouter un compte %{provider}
     button:

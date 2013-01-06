@@ -270,15 +270,11 @@ en:
       search: Search
     new:
       search_network: Search your networks to add someone
-      limit_reset_time: limit resets in %{time}.
       title: Add someone to %{organization}
       search_using: "Search using:"
       name_knows_known: "%{name} already knows %{known}!"
       submit: Add %{name} to directory
       no_service_linked: You don't currently have searchable services linked to your account. We really recommend importing people instead of adding them directly so that they can claim their entries if they sign up.
-      calls_remaining:
-        one: You have one Twitter API call remaining;
-        other: You have %{count} Twitter API calls remaining;
       add_provider: Add a %{provider} account
     list:
       on_twitter: "%{link} on Twitter"
