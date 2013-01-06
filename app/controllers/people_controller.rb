@@ -41,10 +41,6 @@ class PeopleController < InheritedResources::Base
           rescue APIAuthenticationError => e
             notify_hoptoad(ex)
           end
-
-          if auth.provider == 'twitter'
-            @rate_limit_status = auth.api_client.client.rate_limit_status
-          end
         end
       end
 
