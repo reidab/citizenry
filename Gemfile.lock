@@ -16,6 +16,17 @@ GIT
       httparty (>= 0.4.3)
 
 GIT
+  remote: git://github.com/sferik/twitter.git
+  revision: e72ef3b6a255dbdabe4e5d81737811e29d828d77
+  tag: v2.1.1
+  specs:
+    twitter (2.1.1)
+      activesupport (>= 2.3.9, < 4)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.1)
+
+GIT
   remote: https://github.com/reidab/redfinger.git
   revision: 46be5f9695be4b3e2b38b21603570dfaa4a5aeb4
   specs:
@@ -55,9 +66,9 @@ GEM
     activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts-as-taggable-on (2.1.1)
-      rails
-    addressable (2.2.7)
+    acts-as-taggable-on (2.3.1)
+      rails (~> 3.0)
+    addressable (2.2.8)
     airbrake (3.0.9)
       activesupport
       builder
@@ -105,19 +116,17 @@ GEM
     faker (1.0.1)
       i18n (~> 0.4)
     fakeweb (1.3.0)
-    faraday (0.7.6)
-      addressable (~> 2.2)
+    faraday (0.8.4)
       multipart-post (~> 1.1)
-      rack (~> 1.1)
-    faraday_middleware (0.8.5)
+    faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
     ffi (1.0.11)
     formtastic (1.2.4)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
-    foursquare2 (1.3.6)
-      faraday (>= 0.6, < 0.8)
+    foursquare2 (1.9.1)
+      faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
     friendly_id (4.0.0.beta14)
@@ -213,7 +222,10 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
-    rack (1.4.1)
+    rabl-rails (0.1.2)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+    rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-jsonp (1.2.1)
@@ -289,7 +301,7 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
-    simple_oauth (0.1.5)
+    simple_oauth (0.2.0)
     simplecov (0.6.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
@@ -308,11 +320,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    twitter (2.1.1)
-      activesupport (>= 2.3.9, < 4)
-      faraday (~> 0.7)
-      multi_json (~> 1.0)
-      simple_oauth (~> 0.1)
     tzinfo (0.3.33)
     utility_belt (1.1.0)
       Platform (>= 0.4.0)
@@ -390,7 +397,8 @@ DEPENDENCIES
   simplecov
   spork
   steak (= 2.0.0)
-  twitter (~> 2.1.1)
+  twitter!
+  uglifier
   utility_belt
   uuid (~> 2.3.4)
   wirble
