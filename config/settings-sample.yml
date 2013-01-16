@@ -5,6 +5,9 @@ common:
   locale: en
   # Timezone to use by default, run `bundle exec rake time:zones:all` to list valid names:
   time_zone: 'Pacific Time (US & Canada)'
+  # The OmniAuth Providers to use for authentication
+  #
+  # If you remove any of these, you may want to comment our the corresponding "omniauth-<name>" gems in the Gemfile
   providers:
     - twitter
     - open_id
