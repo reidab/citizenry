@@ -42,11 +42,11 @@ gem "net-dns", "~> 0.6.1", :require => "net/dns/resolver"
 gem "omniauth-github"
 gem "omniauth-openid"
 gem "omniauth-twitter"
-# gem "omniauth-linkedin"
-# gem "omniauth-facebook"
-# gem "omniauth-foursquare"
-# gem "omniauth-google-apps"
-# gem "omniauth-yahoo"
+gem "omniauth-linkedin"
+gem "omniauth-facebook"
+gem "omniauth-foursquare"
+gem "omniauth-google-apps"
+gem "omniauth-yahoo"
 
 #--[ Search ]-------------------------------------------------------------------
 # If you"re using the default sql-based search, you can comment this out.
