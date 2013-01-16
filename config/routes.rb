@@ -5,7 +5,7 @@ Citizenry::Application.routes.draw do
   get '/s(/:query)' => 'site#search', :as => :short_search
   get '/opensearch(.:format)' => 'site#opensearch', :as => :opensearch
 
-  # get  '/mentoring/test/' => 'mentoring#test'
+  get  '/mentoring/test/' => 'mentoring#test'
   post '/mentoring/search' => 'mentoring#search', :as => :mentoring_search
   post '/mentoring/profile' => 'mentoring#profile', :as => :mentoring_profile
   get '/mentoring/profile/welcome' => 'mentoring#profile_welcome', :as => :mentoring_profile_welcome
