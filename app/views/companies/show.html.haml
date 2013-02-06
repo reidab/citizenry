@@ -3,6 +3,9 @@
   %h1= @company.name
   - if @company.address.present?
     .location= @company.address
+    - if SETTINGS["maps"]
+      .location_map
+        #company_map_canvas{"data-address" => @company.address, "data-name" => @company.name}
   - if @company.description.present?
     .description= simple_format @company.description
   .links

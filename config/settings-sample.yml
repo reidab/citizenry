@@ -49,6 +49,8 @@ common:
     default_from: contact@domain.localhost
   search: sql
   mentoring: false # enables experimental mentor matching features
+  maps: false # enables companies/map features
+  gmap_api_key: Abcdefghi123
 
 development:
   auth_credentials:

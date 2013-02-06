@@ -13,6 +13,8 @@
 //= require 'jquery-1.5'
 //= require 'jquery.hotkeys'
 //= require 'jquery.placeholder.min'
+//= require 'jquery-ui-map/jquery.ui.map'
+//= require 'jquery-ui-map/jquery.ui.map.services'
 //= require 'json2'
 //= require 'underscore'
 //= require 'backbone'

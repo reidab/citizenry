@@ -29,9 +29,10 @@
       = stylesheet_link_tag('desktop', :media => 'all')
 
     = javascript_include_tag "application"
+    %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{SETTINGS['gmap_api_key']}&sensor=true", :type => "text/javascript"}
     %script
       $(function() { $('#flash .message.success, #flash .message.notice').delay(4000).hide('blind'); });
-
+      var GMAP_API_KEY = "#{SETTINGS['gmap_api_key']}";
     = csrf_meta_tag
     = render :partial => 'layouts/google_analytics'
   %body{:class => "#{controller_name} #{controller_name}_#{action_name} #{user_signed_in? ? 'signed_in' : 'not_signed_in'}"}

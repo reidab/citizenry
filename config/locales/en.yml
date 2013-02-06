@@ -128,6 +128,7 @@ en:
       list: List
       title: View as
       grid: Grid
+      map: Map
     sort_by: Sort by
     mentor_filter:
       title: Show

@@ -9,5 +9,17 @@
         = sort_link(:name, :label => t('field.name.label')) + ","
         = sort_link(:created_at, :label => t('field.created_at.label'), :default_order => :desc, :is_default => :desc) + ","
         = sort_link(:random, :label => t('field.random.label'))
+      - if SETTINGS["maps"]
+        %span.view
+          %strong
+            = t('list.view_as.title') + ':'
+          = link_to_unless_current t('list.view_as.list'), companies_path(:page => params[:page], :column => params[:column], :order => params[:order])
+          = "|"
+          = link_to_unless_current t('list.view_as.map'), map_companies_path(:page => params[:page], :column => params[:column], :order => params[:order])
 
-= render :partial => 'companies/list', :object => @companies
+- if @view == :map
+  = render :partial => 'companies/map', :object => @companies
+- else
+  = render :partial => 'companies/list', :object => @companies
+
+
