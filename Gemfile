@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 ## Deployment ##
 gem "puma"
+gem "capistrano"
 ################
 
 gem "rails", "3.2.11"
