@@ -1,5 +1,9 @@
 source "http://rubygems.org"
 
+## Deployment ##
+gem "puma"
+################
+
 gem "rails", "3.2.11"
 # gem "rake", :require => false
 gem "rails-i18n"

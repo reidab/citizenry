@@ -202,6 +202,8 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
+    puma (2.0.1)
+      rack (>= 1.1, < 2.0)
     rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -365,6 +367,7 @@ DEPENDENCIES
   paper_trail (~> 2)
   paper_trail_manager
   paperclip (~> 2.3)
+  puma
   rack-jsonp (~> 1.2.0)
   rails (= 3.2.11)
   rails-i18n
