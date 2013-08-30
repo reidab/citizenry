@@ -13,18 +13,18 @@ module APIClient
       @client.user_search(query, :per_page => (options[:limit] || DEFAULT_LIMIT)).map{|twitter_user|
         self.person_from(twitter_user)
       }
-    rescue ::Twitter::NotFound
+    rescue ::Twitter::Error::NotFound
       []
-    rescue ::Twitter::Unauthorized => e
+    rescue ::Twitter::Error::Unauthorized => e
       raise APIAuthenticationError, e.inspect
     end
 
     def get(id)
       twitter_user = @client.user(:user_id => id)
       self.person_from(twitter_user) if twitter_user.present?
-    rescue ::Twitter::NotFound
+    rescue ::Twitter::Error::NotFound
       nil
-    rescue ::Twitter::Unauthorized => e
+    rescue ::Twitter::Error::Unauthorized => e
       raise APIAuthenticationError, e.inspect
     end
 
