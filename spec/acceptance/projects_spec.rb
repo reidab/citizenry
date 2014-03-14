@@ -172,7 +172,7 @@ feature "The project edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_project_path(@first)
-      page.find("#project_tag_list").value.should == "newtag"
+      page.find("#project_tag_list").value.should match "newtag"
       
       # Change 'newtag' to 'newertag'
       within 'form.project' do
@@ -204,7 +204,7 @@ feature "The project edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_project_path(@first)
-      page.find("#project_technology_list").value.should == "newtechnology"
+      page.find("#project_technology_list").value.should match "newtechnology"
       
       # Change 'newtechnology' to 'newertechnology'
       within 'form.project' do

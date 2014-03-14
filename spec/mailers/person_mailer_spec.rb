@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PersonMailer do
   it "pulls default_from address from settings" do
-    PersonMailer.default.from.should == SETTINGS['mailer']['default_from']
+    PersonMailer.default[:from].should == SETTINGS['mailer']['default_from']
   end
 
   describe "#message_from_user" do

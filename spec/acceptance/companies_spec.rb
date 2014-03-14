@@ -176,7 +176,7 @@ feature "The company edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_company_path(@first)
-      page.find("#company_tag_list").value.should == "newtag"
+      page.find("#company_tag_list").value.should match "newtag"
       
       # Change 'newtag' to 'newertag'
       within 'form.company' do
@@ -208,7 +208,7 @@ feature "The company edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_company_path(@first)
-      page.find("#company_technology_list").value.should == "newtechnology"
+      page.find("#company_technology_list").value.should match "newtechnology"
       
       # Change 'newtechnology' to 'newertechnology'
       within 'form.company' do

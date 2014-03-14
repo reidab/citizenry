@@ -225,7 +225,7 @@ feature "The person edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_person_path(@person)
-      page.find("#person_tag_list").value.should == "newtag"
+      page.find("#person_tag_list").value.should match "newtag"
       
       # Change 'newtag' to 'newertag'
       within 'form.person' do
@@ -259,7 +259,7 @@ feature "The person edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_person_path(@person)
-      page.find("#person_technology_list").value.should == "newtechnology"
+      page.find("#person_technology_list").value.should match "newtechnology"
       
       # Change 'newtechnology' to 'newertechnology'
       within 'form.person' do

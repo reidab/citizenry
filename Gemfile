@@ -96,7 +96,7 @@ group :development, :test do
 
   # -- [ Tools ] ---------------------------------------------------------------
   gem 'simplecov', :require => false
-  gem 'ruby-debug19'
+  #gem 'ruby-debug19'
   gem 'annotate'
   gem "nifty-generators"
 end

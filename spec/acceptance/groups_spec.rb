@@ -191,7 +191,7 @@ feature "The group edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_group_path(@first)
-      page.find("#group_tag_list").value.should == "newtag"
+      page.find("#group_tag_list").value.should match "newtag"
       
       # Change 'newtag' to 'newertag'
       within 'form.group' do
@@ -223,7 +223,7 @@ feature "The group edit form" do
 
       # Make sure it shows back up in the edit form
       visit edit_group_path(@first)
-      page.find("#group_technology_list").value.should == "newtechnology"
+      page.find("#group_technology_list").value.should match "newtechnology"
       
       # Change 'newtechnology' to 'newertechnology'
       within 'form.group' do
