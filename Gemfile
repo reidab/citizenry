@@ -24,6 +24,9 @@ gem "hoptoad_notifier"
 
 #--[ ePDX Deployment ]----------------------------------------------------------
 gem 'puma', '~> 2.6.0'
+gem 'capistrano-rails', '~> 1.0.0', group: :development
+gem 'capistrano-bundler', '~> 1.0.0', group: :development
+
 #--[ Utility ]------------------------------------------------------------------
 gem "httparty", "~> 0.8.0"
 gem "json", "~> 1.6.1"
