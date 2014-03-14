@@ -73,7 +73,7 @@ class AuthProbe
 
     module Twitter
       def self.discover(email)
-        twitter_user_exists = !(HTTParty.get("http://twitter.com/users/email_available", :body => {:email => email}).parsed_response['valid'])
+        twitter_user_exists = !(HTTParty.get("http://twitter.com/users/email_available", :query => {:email => email}).parsed_response['valid'])
         twitter_user_exists ? [:twitter, nil] : nil
       end
     end

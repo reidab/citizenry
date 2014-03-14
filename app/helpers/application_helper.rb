@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module ApplicationHelper
   def semantic_pluralize(count, singular, plural = nil)
     content_tag(:span, "#{count || 0} ", :class => 'count') +

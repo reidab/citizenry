@@ -38,13 +38,13 @@ class PeopleController < InheritedResources::Base
         if auth.api_client
           begin
             @found_people += auth.api_client.search(query)
-          rescue APIAuthenticationError => e
+          rescue APIClient::APIAuthenticationError => ex
             notify_hoptoad(ex)
           end
 
-          if auth.provider == 'twitter'
-            @rate_limit_status = auth.api_client.client.rate_limit_status
-          end
+          #if auth.provider == 'twitter'
+          #  @rate_limit_status = auth.api_client.client.rate_limit_status
+          #end
         end
       end
 
