@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 def setup_people
   DatabaseCleaner.clean
-  @first_person  = Factory(:person)
-  @second_person = Factory(:person)
-  @third_person  = Factory(:person)
+  @first_person  = FactoryGirl.create(:person)
+  @second_person = FactoryGirl.create(:person)
+  @third_person  = FactoryGirl.create(:person)
   @people = [@first_person, @second_person, @third_person]
 end
 
@@ -297,7 +297,7 @@ feature "The person edit form" do
   end
 
   scenario "should not allow duplicate slug" do
-    Factory.create(:person, :name => "Foo Bar", :custom_slug => "foo-bar")
+    FactoryGirl.create(:person, :name => "Foo Bar", :custom_slug => "foo-bar")
 
     signed_in_as(:user_with_person) do
       person = @user.person

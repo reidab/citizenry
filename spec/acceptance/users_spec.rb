@@ -74,9 +74,12 @@ feature "Users:" do
     OmniAuth.config.mock_auth[:twitter] = {
       'provider' => 'twitter',
       'uid' => 'the_twitterer',
-      'user_info' => {}
+      'raw_info' => {},
+      'info' => {
+        'nickname' => 'twitterhandle'
+      }
     }
-    
+
     signed_in_as(:user_with_person) do
       visit home_users_path
 
@@ -84,7 +87,7 @@ feature "Users:" do
         select 'Twitter', :from => 'sign_in_data_provider'
         find("input[name='commit']").click
       end
-      
+
       page.should have_selector "#twitter_the_twitterer"
 
       within "#twitter_the_twitterer" do
