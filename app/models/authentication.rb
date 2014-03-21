@@ -30,7 +30,8 @@ class Authentication < ActiveRecord::Base
   memoize :api_client
 
   def to_person
-    if self.api_client
+    # FIXME: Excluding Twitter from this, as their API has changed.
+    if ['twitter', 'github', 'foursquare'].include? provider && self.api_client
       if self.uid.present?
         api_client.get(self.uid)
       else
