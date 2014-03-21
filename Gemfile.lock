@@ -146,6 +146,8 @@ GEM
     multi_xml (0.5.1)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
+    mogli (0.0.28)
+      httparty (>= 0.4.3)
     net-dns (0.6.1)
     nifty-generators (0.4.6)
     nokogiri (1.5.6)
@@ -344,6 +346,7 @@ DEPENDENCIES
   jquery-rails (>= 1.0.14)
   json (~> 1.6.1)
   launchy
+  mogli
   mysql2 (~> 0.3.2)
   net-dns (~> 0.6.1)
   nifty-generators
