@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.2.11"
-# gem "rake", :require => false
+gem "rails", "~> 3.2.11"
 gem "rails-i18n"
 
 # You may need to add the following to your .bash_profile (or
