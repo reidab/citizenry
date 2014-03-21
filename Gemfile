@@ -84,20 +84,8 @@ gem "rack-jsonp", "~> 1.2.0"
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  # -- [ IRB ] -----------------------------------------------------------------
-  gem "awesome_print"
-  gem "drx"
-  gem "wirble"
-  gem "utility_belt"
-
   # -- [ Tools ] ---------------------------------------------------------------
-  gem "rcov", :platform => :mri_18, :require => false
-  gem "simplecov", :platform => :mri_19, :require => false
-
-  gem "ruby-debug", :platform => :mri_18
-  gem "ruby-debug19", :platform => :mri_19
-
-  gem "annotate"
+  gem "simplecov", :require => false
   gem "nifty-generators"
   gem "rspec-rails", ">= 2.6.0"
 end
