@@ -44,6 +44,10 @@ gem "omniauth-twitter"
 gem "omniauth-linkedin"
 gem "omniauth-facebook"
 gem "omniauth-foursquare"
+# TODO: Switch to using OAuth for Google and Yahoo sign-in
+# gem "omniauth-google-apps"
+# gem "omniauth-yahoo"
+#
 
 #--[ Search ]-------------------------------------------------------------------
 # If you"re using the default sql-based search, you can comment this out.
