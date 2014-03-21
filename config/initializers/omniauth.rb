@@ -16,23 +16,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   provider(:open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'open_id') if SETTINGS['providers'].include?('open_id')
 
-# https://github.com/intridea/omniauth/issues/525
-# https://github.com/intridea/omniauth/blob/master/lib/omniauth/builder.rb
-# https://github.com/intridea/omniauth
-  # provider(:openid, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'openid') if SETTINGS['providers'].include?('openid')
-  # provider(:google, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google') if SETTINGS['providers'].include?('google')
-  #
-  # use(OmniAuth::Strategies::OpenID, OpenID::Store::Filesystem.new('/tmp'),
-  #     :name => 'yahoo',
-  #     :identifier => 'yahoo.com') \
-  #     if SETTINGS['providers'].include?('yahoo')
-  #
-  # use(OmniAuth::Strategies::OpenID, OpenID::Store::Filesystem.new('/tmp'),
-  #     :name => 'google',
-  #     :identifier => 'https://www.google.com/accounts/o8/id') \
-  #     if SETTINGS['providers'].include?('google')
-  #
-  # provider(:google, :store => OpenID::Store::Filesystem.new('/tmp'))
+  if SETTINGS['providers'].include?('google')
+    provider(:open_id, :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id')
+  end
+
+  if SETTINGS['providers'].include?('yahoo')
+    provider(:open_id, :name => 'yahoo', :identifier => 'yahoo.com')
+  end
 end
 
 consumers = {}
