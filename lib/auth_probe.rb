@@ -71,13 +71,6 @@ class AuthProbe
       end
     end
 
-    module Twitter
-      def self.discover(email)
-        twitter_user_exists = !(HTTParty.get("http://twitter.com/users/email_available", :body => {:email => email}).parsed_response['valid'])
-        twitter_user_exists ? [:twitter, nil] : nil
-      end
-    end
-
     module Facebook
       def self.discover(email)
         token = "2227470867|2.Qc2Uk25ASvCOpGzCePEXEQ__.3600.1297152000-100001040613184|4qe_KyKiBFc_njg9uD-Rn-OsLIs"
@@ -89,15 +82,19 @@ class AuthProbe
 
     module GitHub
       def self.discover(email)
-        HTTParty.get("http://github.com/api/v2/json/user/email/#{CGI::escape email}").parsed_response.has_key?("user") ? [:github, nil] : nil
+        HTTParty.get("https://api.github.com/search/users",
+                      query: {q: "#{email} in:email"},
+                      headers: {"User-Agent" => SETTINGS['organization']['name'] || "Citizenry"}
+                    ).parsed_response["total_count"] > 0 ? [:github, nil] : nil
       end
     end
   end
 
-   STRATEGIES = [Strategy::Twitter,
-                Strategy::WebFinger,
-                Strategy::HostOpenID,
-                Strategy::GoogleAppsMX,
-                Strategy::YahooMailMX,
-                Strategy::GitHub]
+   STRATEGIES = [
+     Strategy::WebFinger,
+     Strategy::HostOpenID,
+     Strategy::GitHub,
+     Strategy::GoogleAppsMX,
+     Strategy::YahooMailMX
+   ]
 end
