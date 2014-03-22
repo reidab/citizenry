@@ -42,7 +42,7 @@ gem "omniauth-openid"
 gem "omniauth-twitter"
 gem "omniauth-linkedin"
 gem "omniauth-facebook"
-gem "omniauth-foursquare", git: "https://github.com/reidab/omniauth-foursquare.git"
+gem "omniauth-foursquare", "~> 1.0.1"
 # TODO: Switch to using OAuth for Google and Yahoo sign-in
 # gem "omniauth-google-apps"
 # gem "omniauth-yahoo"

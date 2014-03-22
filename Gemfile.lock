@@ -7,14 +7,6 @@ GIT
       nokogiri (>= 1.4.0)
       rest-client (>= 1.5.0)
 
-GIT
-  remote: https://github.com/reidab/omniauth-foursquare.git
-  revision: f6093dd8b08828c7832430a303ebf2abc64d3846
-  specs:
-    omniauth-foursquare (1.0.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -159,6 +151,9 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (1.6.0)
       omniauth-oauth2 (~> 1.1)
+    omniauth-foursquare (1.0.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-github (1.1.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -322,7 +317,7 @@ DEPENDENCIES
   nifty-generators
   omniauth (~> 1.1)
   omniauth-facebook
-  omniauth-foursquare!
+  omniauth-foursquare (~> 1.0.1)
   omniauth-github
   omniauth-linkedin
   omniauth-openid
