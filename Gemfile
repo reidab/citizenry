@@ -9,7 +9,7 @@ gem "rails-i18n"
 #     export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 #
 # Note: the exact path to your MySQL lib/ directory may vary.
-gem "mysql2", "~> 0.3.2"
+gem "mysql2", "~> 0.3.15"
 # Uncomment if you"re using sqlite
 # gem "sqlite3-ruby", :require => "sqlite3"
 
@@ -51,7 +51,7 @@ gem 'mogli'
 
 #--[ Search ]-------------------------------------------------------------------
 # If you"re using the default sql-based search, you can comment this out.
-gem "thinking-sphinx", "~> 2.0.1", :require => "thinking_sphinx"
+gem "thinking-sphinx", "~> 3.1.0"
 
 #--[ Model ]--------------------------------------------------------------------
 gem "paperclip", "~> 2.3"

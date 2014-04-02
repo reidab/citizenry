@@ -4,55 +4,47 @@ class SearchEngine::ThinkingSphinx < SearchEngine::Base
   score true
 
   def self.add_searching_to(model)
+    model.class_eval do
+      include ThinkingSphinx::Scopes
+    end
+
     case model.new
     when Person
-      model.class_eval do
-        define_index do
-          indexes :name, :sortable => true
-          indexes :bio
-          indexes :url
-          indexes :location
-          indexes taggings.tag.name, :as => :tags
+      ThinkingSphinx::Index.define :person, :with => :active_record, :delta => true do
+        indexes :name, :sortable => true
+        indexes :bio
+        indexes :url
+        indexes :location
+        indexes taggings.tag.name, :as => :tags
 
-          has :created_at, :updated_at
-          set_property :delta => true
-        end
+        has :created_at, :updated_at
       end
     when Company
-      model.class_eval do
-        define_index do
-          indexes :name, :sortable => true
-          indexes :description
-          indexes :url
-          indexes :address
-          indexes taggings.tag.name, :as => :tags
+      ThinkingSphinx::Index.define :company, :with => :active_record, :delta => true do
+        indexes :name, :sortable => true
+        indexes :description
+        indexes :url
+        indexes :address
+        indexes taggings.tag.name, :as => :tags
 
-          has :created_at, :updated_at
-          set_property :delta => true
-        end
+        has :created_at, :updated_at
       end
-    when Group, Project, ResourceLink
-      model.class_eval do
-        define_index do
-          indexes :name, :sortable => true
-          indexes :description
-          indexes :url
-          indexes taggings.tag.name, :as => :tags
+    when Group, Project
+      ThinkingSphinx::Index.define model.to_s.underscore.to_sym, :with => :active_record, :delta => true do
+        indexes :name, :sortable => true
+        indexes :description
+        indexes :url
+        indexes taggings.tag.name, :as => :tags
 
-          has :created_at, :updated_at
-          set_property :delta => true
-        end
+        has :created_at, :updated_at
       end
     when ResourceLink
-      model.class_eval do
-        define_index do
-          indexes :name, :sortable => true
-          indexes :description
-          indexes :url
+      ThinkingSphinx::Index.define :resource_link, :with => :active_record, :delta => true do
+        indexes :name, :sortable => true
+        indexes :description
+        indexes :url
 
-          has :created_at, :updated_at
-          set_property :delta => true
-        end
+        has :created_at, :updated_at
       end
     else
       raise TypeError, "Unknown model class: #{model.name}"
@@ -60,6 +52,6 @@ class SearchEngine::ThinkingSphinx < SearchEngine::Base
   end
 
   def self.search(query, options = {})
-    ThinkingSphinx.search(query, options)
+    ThinkingSphinx.search(Riddle::Query.escape(query), options)
   end
 end
