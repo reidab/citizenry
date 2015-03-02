@@ -1,5 +1,6 @@
 APPDIR = "/vagrant" # Application directory
 USER = "vagrant"      # User that owns files
+TEMP_DIR = "/usr/local/src"
 
 # Change directory to /vagrant after doing a `vagrant ssh`.
 execute "update-profile-chdir" do
@@ -15,6 +16,31 @@ execute "update-apt" do
   only_if do
     ! File.exist?(timestamp) || (File.stat(timestamp).mtime + 60*60) < Time.now
   end
+end
+
+# Install a modern Ruby version
+execute "Create Temp Dir" do
+  command "mkdir -p #{TEMP_DIR}"
+end
+
+execute "Get ruby source"do
+  cwd TEMP_DIR
+  command "wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz"
+end
+
+execute "Extract Ruby Source" do
+  cwd TEMP_DIR
+  command "tar -xvzf ruby-2.1.2.tar.gz && rm ruby-2.1.2.tar.gz"
+end
+
+execute "Configure ruby for build" do
+  cwd "#{TEMP_DIR}/ruby-2.1.2"
+  command "./configure --prefix=/opt/vagrant_ruby"
+end
+
+execute "Make and Install Ruby" do
+  cwd "#{TEMP_DIR}/ruby-2.1.2"
+  command "make && sudo make install"
 end
 
 # Remove obsolete file
