@@ -44,7 +44,9 @@ module ApplicationHelper
 
   # Return a URL for the given +string+.
   def normalize_url(string)
-    return Addressable::URI.heuristic_parse(string).to_s
+    Addressable::URI.heuristic_parse(string).to_s
+  rescue Addressable::URI::InvalidURIError
+    string
   end
 
   def provider_name(provider)
