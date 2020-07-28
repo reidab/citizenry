@@ -24,7 +24,7 @@ gem "hoptoad_notifier"
 
 #--[ Utility ]------------------------------------------------------------------
 gem "httparty", "~> 0.8.0"
-gem "json", "~> 1.6.1"
+gem "json", "~> 2.3.1"
 gem "addressable", "2.3.2", :require => 'addressable/uri'
 
 #--[ Authentication ]-----------------------------------------------------------
