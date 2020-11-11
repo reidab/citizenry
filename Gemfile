@@ -29,7 +29,7 @@ gem "addressable", "2.3.2", :require => 'addressable/uri'
 
 #--[ Authentication ]-----------------------------------------------------------
 gem "devise", "~> 1.4.5"
-gem "omniauth", "~> 1.1"
+gem "omniauth", "~> 1.4"
 
 # Automatic login provider selection
 gem "redfinger", "~> 0.1.0", :git => "git://github.com/reidab/redfinger.git"
