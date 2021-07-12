@@ -39,7 +39,8 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.1.1)
       rails
-    addressable (2.3.2)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     arel (3.0.3)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -192,6 +193,7 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.4)
+    public_suffix (4.0.6)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -299,7 +301,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.1.1)
-  addressable (= 2.3.2)
+  addressable (= 2.8.0)
   capybara (~> 1.1.1)
   coffee-rails (~> 3.2.1)
   compass-960-plugin (~> 0.10.4)
