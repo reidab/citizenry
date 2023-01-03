@@ -23,7 +23,7 @@ end
 gem "hoptoad_notifier"
 
 #--[ Utility ]------------------------------------------------------------------
-gem "httparty", "~> 0.8.0"
+gem "httparty", "~> 0.21.0"
 gem "json", "~> 1.6.1"
 gem "addressable", "2.3.2", :require => 'addressable/uri'
 
